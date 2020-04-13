@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MyColors{
@@ -7,7 +6,6 @@ class MyColors{
 
   static final Color contentColor = Color(0xFFAAAAAA);
   static final Color contentBgColor = Color(0xFA303030);
-
 
   static final Color primary = Color(0xFFFFFFFF);
   static final Color textPrimaryColor = Color(0xFF33C3A5);
@@ -32,9 +30,6 @@ class MyColors{
   static final Color meTextColor = Color(0xFF85682F);
   static final Color meRedTextColor = Color(0xFFFF7634);
   static final Color paginationColor = Color(0xFFD8D8D8);
-
-
-
 
 
 }

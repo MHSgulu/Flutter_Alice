@@ -41,6 +41,9 @@ dependencies:
   # Dart代码中的透明图像，表示为Uint8List。
   transparent_image: ^1.0.0
 
+  # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
+  fluttertoast: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:

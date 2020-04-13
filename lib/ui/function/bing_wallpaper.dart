@@ -1,11 +1,14 @@
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/util/photo_view_single_screen.dart';
+import 'package:alice/values/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:transparent_image/transparent_image.dart';
+
 
 /*网络请求必应壁纸*/
 Future<BingWallpaper> fetchBingWallpaper() async {
@@ -16,7 +19,7 @@ Future<BingWallpaper> fetchBingWallpaper() async {
     return BingWallpaper.fromJson(json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
-    throw Exception('服务器响应未成功');
+    throw Exception('服务器未响应未成功');
   }
 }
 
@@ -94,12 +97,16 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
                       alignment: Alignment.bottomLeft,
                       children: <Widget>[
                         GestureDetector(
-                          child:Image.network('https://cn.bing.com/'+snapshot.data.images[0].url),
+                          child:FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: Util.bingUrl+snapshot.data.images[0].url,
+                          ),
+                    /*Image.network('https://cn.bing.com/'+snapshot.data.images[0].url)*/
                           onTap: (){
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
-                                imageProvider:NetworkImage('https://cn.bing.com/'+snapshot.data.images[0].url),
+                                imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[0].url),
                                 heroTag: 'simple',
                               )),
                             );
@@ -197,7 +204,7 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   child: Card(
-                    //Stack有堆叠的特性，刚猜的错误在于——文本代码放在图像代码之前被挡住了。注意顺序
+                    //Stack有堆叠的特性，刚才的错误在于——文本代码放在图像代码之前被挡住了。注意顺序
                     child:Stack(
                       //此参数决定如何去对齐没有定位（没有使用Positioned）或部分定位的子组件。
                       // 所谓部分定位，在这里特指没有在某一个轴上定位：left、right为横轴，top、bottom为纵轴，只要包含某个轴上的一个定位属性就算在该轴上有定位。
@@ -208,12 +215,16 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
-                                imageProvider:NetworkImage('https://cn.bing.com/'+snapshot.data.images[index].url),
+                                imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[index].url),
                                 heroTag: 'simple',
                               )),
                             );
                           },
-                          child:  Image.network('https://cn.bing.com/'+snapshot.data.images[index].url),
+                          child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: Util.bingUrl+snapshot.data.images[index].url,
+                          ),
+                          /*Image.network('https://cn.bing.com/'+snapshot.data.images[index].url),*/
                         ),
                         Align(
                           alignment: Alignment.bottomRight,
