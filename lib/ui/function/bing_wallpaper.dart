@@ -140,7 +140,7 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
               child: CircularProgressIndicator(),
             );
           },
-        )
+        ),
     );
   }
 
