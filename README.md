@@ -1,6 +1,6 @@
 # alice
 
-A new Flutter application.
+学习Flutter的练手入门个人作品
 
 ## Getting Started
 
