@@ -107,6 +107,9 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
                               context,
                               MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
                                 imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[0].url),
+                                ///必须设为double类型
+                                minScale: 0.2,  ///定义允许图像采用的最小大小，它与原始图像大小成比例
+                                maxScale: 0.5,  ///定义允许图像采用的最大大小，它与原始图像大小成比例。
                                 heroTag: 'simple',
                               )),
                             );
@@ -216,6 +219,8 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
                               context,
                               MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
                                 imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[index].url),
+                                minScale: 0.2,
+                                maxScale: 0.5,
                                 heroTag: 'simple',
                               )),
                             );

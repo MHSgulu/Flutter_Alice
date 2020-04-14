@@ -6,8 +6,8 @@ class PhotoViewSimpleScreen extends StatelessWidget{
     this.imageProvider,//图片
     this.loadingChild,//加载时的widget
     this.backgroundDecoration,//背景修饰
-    this.minScale,//最大缩放倍数
-    this.maxScale,//最小缩放倍数
+    this.minScale,//最小缩放倍数
+    this.maxScale,//最大缩放倍数
     this.heroTag,//hero动画tagid
   });
   final ImageProvider imageProvider;

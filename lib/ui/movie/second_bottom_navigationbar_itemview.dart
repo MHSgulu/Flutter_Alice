@@ -9,7 +9,7 @@ class SecondBottomNavigationBarItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.teal[400],
         title: Container(
           //width: ,
           height: 35.0,

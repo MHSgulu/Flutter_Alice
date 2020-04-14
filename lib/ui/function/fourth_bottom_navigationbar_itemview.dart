@@ -15,7 +15,7 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('展示'),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.cyan[300],
       ),
       //SingleChildScrollView类似于Android中的ScrollView，它只能接收一个子组件
       //通过默认构造函数构建的ListView没有应用基于Sliver的懒加载模型。实际上通过此方式创建的ListView和使用SingleChildScrollView+Column的方式没有本质的区别

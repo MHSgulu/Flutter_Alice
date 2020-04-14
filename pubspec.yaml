@@ -44,6 +44,9 @@ dependencies:
   # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
   fluttertoast: ^4.0.0
 
+  # 提供上拉加载和下拉刷新
+  pull_to_refresh: ^1.5.7
+
 
 dev_dependencies:
   flutter_test:
