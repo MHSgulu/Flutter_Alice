@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-
+/*异步网络操作*/
 Future<MobiePhoneEntity> query(String phone) async {
   final http.Response response = await http.post(
     'https://way.jd.com/jisuapi/query4?shouji=${phone}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
@@ -42,7 +42,7 @@ class QueryMobilePhoneNumberHomeView extends StatefulWidget {
   }*/
 
   @override
-  QueryMobilePhoneNumberHomeViewState  createState() => QueryMobilePhoneNumberHomeViewState();
+  QueryMobilePhoneNumberHomeViewState createState() => QueryMobilePhoneNumberHomeViewState();
 
 }
 

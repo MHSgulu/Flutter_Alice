@@ -63,11 +63,11 @@ class ThirdBottomNavigationBarItemViewState extends State<ThirdBottomNavigationB
               //标题与Icon之间的距离是固定的： margin: const EdgeInsets.only(bottom: 10.0),
               // 当前 TabBar高度源码已经规定  未设置 Icon 时的高度 const double _kTabHeight = 46.0;  设置 Icon 之后的高度  const double _kTextAndIconTabHeight = 72.0;
               isScrollable: false, //是否可滚动 默认否
-              indicatorColor: Colors.red[300], //指示器颜色
+              indicatorColor: Colors.deepOrangeAccent[100], //指示器颜色
               indicatorWeight: 2.0, //默认指示器高度
               indicatorPadding: EdgeInsets.zero, //底部指示器的Padding 默认值  不知啥作用
               indicatorSize: TabBarIndicatorSize.label, //指示器大小计算方式，TabBarIndicatorSize.label跟文字等宽,TabBarIndicatorSize.tab跟每个tab等宽
-              labelColor: Colors.black,//选中label颜色
+              labelColor: Colors.deepOrangeAccent[100],//选中label颜色
               unselectedLabelColor: Colors.black54,  //未选中label颜色
               controller: _tabController,
               tabs: myTabs,

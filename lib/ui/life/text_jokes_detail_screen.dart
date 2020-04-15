@@ -1,4 +1,3 @@
-import 'package:alice/model/written_jokes_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

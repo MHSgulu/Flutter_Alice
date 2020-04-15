@@ -207,7 +207,7 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
           if (snapshot.hasData) {
             return ListView.builder(
               //padding: const EdgeInsets.all(8),
-              /*itemExtent: 60,*/
+              //itemExtent: 60,
               itemCount: 8,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
@@ -234,7 +234,6 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
                               placeholder: kTransparentImage,
                               image: Util.bingUrl+snapshot.data.images[index].url,
                           ),
-                          /*Image.network('https://cn.bing.com/'+snapshot.data.images[index].url),*/
                         ),
                         Align(
                           alignment: Alignment.bottomRight,
