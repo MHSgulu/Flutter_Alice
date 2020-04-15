@@ -140,7 +140,12 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
               return Text("${snapshot.error}");
             }
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                //value: 0.8,    //如果 value 为 null 或空，则显示一个动画，否则显示一个定值。Progress 的值只能设置 0 ~ 1.0，如果大于 1，则表示已经结束。
+                //backgroundColor: Colors.black,  ///补齐画圆的线的颜色 形成完整的圆
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlue[400]),
+                strokeWidth: 3,  //用来画圆的线的宽度 默认4.0
+              ),
             );
           },
         ),
@@ -258,7 +263,10 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
           }
           //默认情况下，显示加载微调器。
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlue[400]),
+            ),
           );
         },
       ) ,

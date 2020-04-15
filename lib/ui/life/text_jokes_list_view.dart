@@ -180,6 +180,7 @@ class TextJokesListViewState extends State<TextJokesListView> {
             return Center(
               child: CircularProgressIndicator(
                 strokeWidth: 3.0,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent[100]),
               ),
             );
           },

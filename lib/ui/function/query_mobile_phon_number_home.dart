@@ -453,7 +453,10 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
             );
           }
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blueGrey[400]),
+            ),
           );
         },
       ),

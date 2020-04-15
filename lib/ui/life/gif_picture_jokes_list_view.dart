@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 
 
@@ -159,7 +160,24 @@ class GifPictureJokesListViewState extends State<GifPictureJokesListView> {
                                           )),
                                         );
                                       },
-                                      child: Image.network(
+                                      child: Stack(
+                                        children: <Widget>[
+                                          Center(
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                              valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent[100]),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: FadeInImage.memoryNetwork(
+                                              placeholder: kTransparentImage,
+                                              image: snapshot.data.result.showapiResBody.contentlist[index].img,
+                                              width: 100,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      /*Image.network(
                                         snapshot.data.result.showapiResBody.contentlist[index].img,
                                         //fill：会拉伸填充满显示空间，图片本身长宽比会发生变化，图片会变形。
                                         //cover：会按图片的长宽比放大后居中填满显示空间，图片不会变形，超出显示空间部分会被剪裁。
@@ -172,7 +190,7 @@ class GifPictureJokesListViewState extends State<GifPictureJokesListView> {
                                         // 如果只设置width、height的其中一个，那么另一个属性默认会按比例缩放
                                         width: 100,
                                         //height: 100,
-                                      ),
+                                      )*/
                                     ),
                                   ),
                                 ),
@@ -197,7 +215,10 @@ class GifPictureJokesListViewState extends State<GifPictureJokesListView> {
               return Text("${snapshot.error}");
             }
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent[100]),
+              ),
             );
           },
         ),

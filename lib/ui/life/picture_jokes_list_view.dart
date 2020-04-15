@@ -1,8 +1,5 @@
-import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
-import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
-import 'package:alice/ui/life/text_jokes_list_view.dart';
 import 'package:alice/util/photo_view_single_screen.dart';
 import 'package:alice/values/strings.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:transparent_image/transparent_image.dart';
 
 
 /*异步网络请求图片笑话*/
@@ -143,9 +142,9 @@ class PictureJokesListViewState extends State<PictureJokesListView> {
                                           )),
                                         );
                                       },
-                                      child: Image.network(
-                                        snapshot.data.result.showapiResBody.contentlist[index].img,
-                                        fit: BoxFit.contain,
+                                      child: FadeInImage.memoryNetwork(
+                                        placeholder: kTransparentImage,
+                                        image: snapshot.data.result.showapiResBody.contentlist[index].img,
                                         width: 100,
                                       ),
                                     ),
@@ -171,7 +170,10 @@ class PictureJokesListViewState extends State<PictureJokesListView> {
               return Text("${snapshot.error}");
             }
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent[100]),
+              ),
             );
           },
         ),
