@@ -104,7 +104,7 @@ class _HomeScreenStatefulWidgetState extends State<HomeScreenStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.more),
             title: Text('更多'),
-            backgroundColor: Colors.cyan[200],/*blueGrey*/
+            backgroundColor: Colors.cyan[200],
           ),
         ],
         currentIndex: _selectedIndex,
