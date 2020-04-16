@@ -1,3 +1,5 @@
+import 'package:alice/ui/news/real_time_hotspot_ranking_screen.dart';
+import 'package:alice/ui/news/search_news_screen.dart';
 import 'package:alice/ui/news/tab_news_list_screen_1.dart';
 import 'package:alice/ui/news/tab_news_list_screen_10.dart';
 import 'package:alice/ui/news/tab_news_list_screen_11.dart';
@@ -97,16 +99,30 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
               ),
               Container(
                 margin: EdgeInsets.only(left: 10),
-                child:Text(
-                  '点击此处搜索你想了解的新闻',
-                  style: TextStyle(color: Colors.grey[600], fontSize:14.0),
+                child:GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen()));
+                  },
+                  child: Text(
+                    '点击此处搜索你想了解的新闻',
+                    style: TextStyle(color: Colors.grey[600], fontSize:14.0),
+                  ),
                 ),
               ),
             ],
           ),
         ),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.assessment), onPressed: null)
+          IconButton(
+            color: Colors.white, ///如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
+            icon: Icon(Icons.assessment),
+            onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RealTimeHotspotScreen()),
+              );
+            },
+          )
         ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(48.0),

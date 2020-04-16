@@ -11,12 +11,6 @@ import 'dart:convert';
 Future<MobiePhoneEntity> query(String phone) async {
   final http.Response response = await http.post(
     'https://way.jd.com/jisuapi/query4?shouji=${phone}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
-    /*headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      'phone': phone,
-    }),*/
   );
   if (response.statusCode == 200) {
     return mobiePhoneEntityFromJson(MobiePhoneEntity(),json.decode(response.body));
@@ -77,6 +71,13 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
                       style: TextStyle(color: Colors.blueGrey),
                       maxLength: 11,  //代表输入框文本的最大长度，设置后输入框右下角会显示输入的文本计数
                       ///用于设置该输入框默认的键盘输入类型
+                      //text	文本输入键盘
+                      //multiline	多行文本，需和maxLines配合使用(设为null或大于1)
+                      //number	数字；会弹出数字键盘
+                      //phone	优化后的电话号码输入键盘；会弹出数字键盘并显示“* #”
+                      //datetime	优化后的日期输入键盘；Android上会显示“: -”
+                      //emailAddress	优化后的电子邮件地址；会显示“@ .”
+                      //url	优化后的url输入键盘； 会显示“/ .”
                       keyboardType:  TextInputType.phone,    //优化后的电话号码输入键盘；会弹出数字键盘并显示“* #”   //TextInputType.numberWithOptions(),  数字；会弹出数字键盘
                       decoration: InputDecoration(
                         //icon: Icon(Icons.search),  //在输入字段前和装饰外部显示的图标

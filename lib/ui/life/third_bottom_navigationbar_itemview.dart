@@ -48,8 +48,9 @@ class ThirdBottomNavigationBarItemViewState extends State<ThirdBottomNavigationB
         leading: Icon(Icons.mood),
         actions: <Widget>[
           IconButton(
+            color: Colors.white,
             icon: Icon(Icons.more_horiz),
-            onPressed: null,
+            onPressed: (){},
           ),
         ],
         centerTitle: true,

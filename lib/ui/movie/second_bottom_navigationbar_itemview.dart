@@ -39,7 +39,11 @@ class SecondBottomNavigationBarItemView extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.movie_filter), onPressed: null)
+          IconButton(
+            color: Colors.white,
+            icon: Icon(Icons.movie_filter),
+            onPressed: (){},
+          )
         ],
       ),
     );
