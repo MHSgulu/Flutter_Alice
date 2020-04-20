@@ -54,9 +54,6 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
     futureBingWallpaper = fetchBingWallpaper();
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,45 +90,48 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
               return Column(
                 children: <Widget>[
                   Card(
-                    child: Stack(
-                      alignment: Alignment.bottomLeft,
-                      children: <Widget>[
-                        GestureDetector(
-                          child:FadeInImage.memoryNetwork(
+                    child: Container(
+                      //margin: EdgeInsets.all(5.0),
+                      child: Stack(
+                        alignment: Alignment.bottomLeft,
+                        children: <Widget>[
+                          GestureDetector(
+                            child:FadeInImage.memoryNetwork(
                               placeholder: kTransparentImage,
                               image: Util.bingUrl+snapshot.data.images[0].url,
+                            ),
+                            /*Image.network('https://cn.bing.com/'+snapshot.data.images[0].url)*/
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
+                                  imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[0].url),
+                                  ///必须设为double类型
+                                  minScale: 0.2,  ///定义允许图像采用的最小大小，它与原始图像大小成比例
+                                  maxScale: 0.5,  ///定义允许图像采用的最大大小，它与原始图像大小成比例。
+                                  heroTag: 'simple',
+                                )),
+                              );
+                            },
                           ),
-                    /*Image.network('https://cn.bing.com/'+snapshot.data.images[0].url)*/
-                          onTap: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
-                                imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[0].url),
-                                ///必须设为double类型
-                                minScale: 0.2,  ///定义允许图像采用的最小大小，它与原始图像大小成比例
-                                maxScale: 0.5,  ///定义允许图像采用的最大大小，它与原始图像大小成比例。
-                                heroTag: 'simple',
-                              )),
-                            );
-                          },
-                        ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child:Container(
-                            margin: EdgeInsets.all(2.0),
-                            child: Text(snapshot.data.images[0].startdate,style: TextStyle(color: Colors.white70, fontSize: 10.0)),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child:Container(
+                              margin: EdgeInsets.all(2.0),
+                              child: Text(snapshot.data.images[0].startdate,style: TextStyle(color: Colors.white70, fontSize: 10.0)),
+                            ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: (){
-                            _launchWebUrl(snapshot.data.images[0].copyrightlink);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
-                            child: Text(snapshot.data.images[0].copyright,style: TextStyle(color: Colors.white70, fontSize: 12.0)),
+                          GestureDetector(
+                            onTap: (){
+                              _launchWebUrl(snapshot.data.images[0].copyrightlink);
+                            },
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
+                              child: Text(snapshot.data.images[0].copyright,style: TextStyle(color: Colors.white70, fontSize: 12.0)),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

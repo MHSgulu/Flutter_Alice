@@ -170,8 +170,6 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
                                           ///为了防止 有数据字段没有pic字段 进行判空
                                           image: snapshot.data.result.result.xList[index].pic == null
                                               ? 'http://hbimg.b0.upaiyun.com/348d78256f8f810af1291d357c8aa233a0b6a1f64b0b8-C6KJIS_fw658'
-                                          ///Flutter 图片
-                                          /*'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=653666270,723497068&fm=26&gp=0.jpg'*/
                                               : snapshot.data.result.result.xList[index].pic,
                                         ),
                                       ),

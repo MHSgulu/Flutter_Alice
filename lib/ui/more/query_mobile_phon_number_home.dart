@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+//async用来表示函数是异步的，定义的函数会返回一个Future对象，可以使用then方法添加回调函数。
+//await 后面是一个Future，表示等待该异步任务完成，异步完成后才会往下走；await必须出现在 async 函数内部。
+//通过async/await将一个异步流用同步的代码表示出来
+//其实，无论是在JavaScript还是Dart中，async/await都只是一个语法糖，编译器或解释器最终都会将其转化为一个Promise（Future）的调用链。
 
 /*异步网络操作*/
 Future<MobiePhoneEntity> query(String phone) async {

@@ -50,6 +50,9 @@ dependencies:
   # Flutter小部件，用于将静态html标签呈现为Flutter小部件。
   flutter_html: ^0.11.1
 
+  # Flutter轮播图
+  flutter_swiper: ^1.1.6
+
 
 dev_dependencies:
   flutter_test:

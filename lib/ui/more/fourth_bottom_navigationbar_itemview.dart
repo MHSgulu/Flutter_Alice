@@ -1,5 +1,5 @@
-import 'package:alice/ui/function/bing_wallpaper.dart';
-import 'package:alice/ui/function/query_mobile_phon_number_home.dart';
+import 'package:alice/ui/more/bing_wallpaper.dart';
+import 'package:alice/ui/more/query_mobile_phon_number_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
