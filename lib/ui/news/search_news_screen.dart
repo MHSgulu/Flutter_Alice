@@ -24,6 +24,7 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
   @override
   void initState() {
     super.initState();
+    ///如果是从新闻首页跳转至此，赋值默认构造  如果是是从实时热点跳转至此，赋值输入框文本热点关键词
     _controller =  widget.keyword == '' ? TextEditingController() : TextEditingController(text: widget.keyword);
   }
 
