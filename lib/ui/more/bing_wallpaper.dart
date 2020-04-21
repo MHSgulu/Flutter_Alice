@@ -131,7 +131,17 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
                             },
                             child: Container(
                               margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
-                              child: Text(snapshot.data.images[0].copyright,style: TextStyle(color: Colors.white70, fontSize: 12.0)),
+                              child: Text(
+                                  snapshot.data.images[0].copyright,
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12.0,
+                                    fontStyle: FontStyle.italic,  //文字样式（italic斜体，normal正常体）
+                                    //decoration: TextDecoration.underline,  //文字装饰线（none没有线，lineThrough删除线，overline上划线，underline下划线）
+                                    //decorationColor: Colors.lightBlue[400],  //文字装饰线颜色
+                                    //decorationStyle: TextDecorationStyle.solid,  //文字装饰线风格（[dashed,dotted]虚线，double两根线，solid一根实线，wavy波浪线）
+                                  ),
+                              ),
                             ),
                           ),
                         ],
@@ -257,7 +267,7 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
                           },
                           child: Container(
                             margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
-                            child: Text(snapshot.data.images[index].copyright,style: TextStyle(color: Colors.white70, fontSize: 12.0)),
+                            child: Text(snapshot.data.images[index].copyright,style: TextStyle(color: Colors.white70, fontSize: 12.0,fontStyle: FontStyle.italic)),
                           ),
                         ),
                       ],
