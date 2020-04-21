@@ -90,6 +90,11 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
               return Column(
                 children: <Widget>[
                   Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusDirectional.circular(4.0),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    elevation: 2.0,
                     child: Container(
                       //margin: EdgeInsets.all(5.0),
                       child: Stack(
@@ -100,7 +105,6 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
                               placeholder: kTransparentImage,
                               image: Util.bingUrl+snapshot.data.images[0].url,
                             ),
-                            /*Image.network('https://cn.bing.com/'+snapshot.data.images[0].url)*/
                             onTap: (){
                               Navigator.push(
                                 context,
@@ -212,6 +216,11 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusDirectional.circular(4.0),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    elevation: 2.0,
                     //Stack有堆叠的特性，刚才的错误在于——文本代码放在图像代码之前被挡住了。注意顺序
                     child:Stack(
                       //此参数决定如何去对齐没有定位（没有使用Positioned）或部分定位的子组件。
