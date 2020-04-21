@@ -15,21 +15,21 @@ void _launchWebUrl(String url) async {
   }
 }
 
-class IsShowingUpListScreen extends StatefulWidget {
+class ToBeSoonListScreen extends StatefulWidget {
 
   final Future<MovieEntity> futureData;
 
-  IsShowingUpListScreen({Key key, @required this.futureData}) : super(key: key);
+  ToBeSoonListScreen({Key key, @required this.futureData}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return IsShowingUpListScreenState();
+    return ToBeSoonListScreenState();
   }
 
 }
 
 
-class IsShowingUpListScreenState extends State<IsShowingUpListScreen> {
+class ToBeSoonListScreenState extends State<ToBeSoonListScreen> {
 
   Future<MovieEntity> futureMovieEntity;
 
@@ -50,7 +50,7 @@ class IsShowingUpListScreenState extends State<IsShowingUpListScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[400],
-        title: Text('正在热映的电影'),
+        title: Text('即将上映的电影'),
       ),
       body: FutureBuilder<MovieEntity> (
         future: futureMovieEntity,
@@ -152,26 +152,26 @@ class IsShowingUpListScreenState extends State<IsShowingUpListScreen> {
                         width: 90,
                         padding: EdgeInsets.only(top: 8),
                         child: Column(
-                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(top: 48),
-                                child: GestureDetector(
-                                  onTap: (){
-                                    _launchWebUrl(snapshot.data.subjects[index].alt);
-                                  },
-                                  child: Icon(Icons.stars, color: Colors.orangeAccent),
-                                ),
+                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(top: 48),
+                              child: GestureDetector(
+                                onTap: (){
+                                  _launchWebUrl(snapshot.data.subjects[index].alt);
+                                },
+                                child: Icon(Icons.stars, color: Colors.orangeAccent),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(top: 45),
-                                child: Text(
-                                  snapshot.data.subjects[index].collectCount.toString()+'人看过',
-                                  style: TextStyle(fontSize: 13, color: Colors.black54),
-                                ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 45),
+                              child: Text(
+                                snapshot.data.subjects[index].collectCount.toString()+'人看过',
+                                style: TextStyle(fontSize: 13, color: Colors.black54),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

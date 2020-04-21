@@ -54,10 +54,15 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                child: ListTile(
-                  leading:  Icon(Icons.chat_bubble),
-                  title: Text('智能聊天机器人菲菲'),
+              GestureDetector(
+                onTap: (){
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => ChatRobotScreen()));
+                },
+                child: Card(
+                  child: ListTile(
+                    leading:  Icon(Icons.chat_bubble),
+                    title: Text('智能聊天机器人菲菲'),
+                  ),
                 ),
               ),
               Card(

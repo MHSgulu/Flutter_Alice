@@ -1,9 +1,8 @@
 import 'package:alice/generated/json/movie_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/ui/movie/is_showing_up_list_screen.dart';
-import 'package:alice/ui/movie/is_showing_up_screen.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
-import 'package:alice/ui/movie/to_be_shown_soon.dart';
+import 'package:alice/ui/movie/to_be_shown_soon_list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -317,7 +316,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                               Container(
                                 child: GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => IsShowingUpListScreen(futureData: futureMovieEntity,)));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToBeSoonListScreen(futureData: futureMovieEntity2,)));
                                   },
                                   child:Row(
                                     children: <Widget>[
