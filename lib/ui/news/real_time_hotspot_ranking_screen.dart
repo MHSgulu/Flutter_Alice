@@ -1,10 +1,10 @@
 import 'package:alice/ui/news/search_news_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:flutter/material.dart';
-
 
 
 /*异步网络请求实时热点数据*/
@@ -66,7 +66,9 @@ class RealTimeHotspotScreenState extends State<RealTimeHotspotScreen> {
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen(keyword: snapshot.data.result.showapiResBody.xList[index].name)));
+                      ///存儲文本到剪切板
+                      Clipboard.setData(ClipboardData(text: snapshot.data.result.showapiResBody.xList[index].name));
                     },
                     child: Row(
                       children: <Widget>[
