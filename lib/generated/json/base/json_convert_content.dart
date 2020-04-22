@@ -11,6 +11,8 @@ import 'package:alice/model/news_entity.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
+import 'package:alice/model/moive_details_entity.dart';
+import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
@@ -45,7 +47,29 @@ class JsonConvert<T> {
 			return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;			case PictureJokeResult:
 			return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case GifPictureJokesEntity:
+			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case MoiveDetailsEntity:
+			return moiveDetailsEntityFromJson(data as MoiveDetailsEntity, json) as T;			case MoiveDetailsRating:
+			return moiveDetailsRatingFromJson(data as MoiveDetailsRating, json) as T;			case MoiveDetailsRatingDetails:
+			return moiveDetailsRatingDetailsFromJson(data as MoiveDetailsRatingDetails, json) as T;			case MoiveDetailsVideo:
+			return moiveDetailsVideoFromJson(data as MoiveDetailsVideo, json) as T;			case MoiveDetailsVideosSource:
+			return moiveDetailsVideosSourceFromJson(data as MoiveDetailsVideosSource, json) as T;			case MoiveDetailsImages:
+			return moiveDetailsImagesFromJson(data as MoiveDetailsImages, json) as T;			case MoiveDetailsPopularCommants:
+			return moiveDetailsPopularCommantsFromJson(data as MoiveDetailsPopularCommants, json) as T;			case MoiveDetailsPopularCommentsRating:
+			return moiveDetailsPopularCommentsRatingFromJson(data as MoiveDetailsPopularCommentsRating, json) as T;			case MoiveDetailsPopularCommentsAuthor:
+			return moiveDetailsPopularCommentsAuthorFromJson(data as MoiveDetailsPopularCommentsAuthor, json) as T;			case MoiveDetailsWriter:
+			return moiveDetailsWriterFromJson(data as MoiveDetailsWriter, json) as T;			case MoiveDetailsWritersAvatars:
+			return moiveDetailsWritersAvatarsFromJson(data as MoiveDetailsWritersAvatars, json) as T;			case MoiveDetailsTrailer:
+			return moiveDetailsTrailerFromJson(data as MoiveDetailsTrailer, json) as T;			case MoiveDetailsBlooper:
+			return moiveDetailsBlooperFromJson(data as MoiveDetailsBlooper, json) as T;			case MoiveDetailsCast:
+			return moiveDetailsCastFromJson(data as MoiveDetailsCast, json) as T;			case MoiveDetailsCastsAvatars:
+			return moiveDetailsCastsAvatarsFromJson(data as MoiveDetailsCastsAvatars, json) as T;			case MoiveDetailsPhoto:
+			return moiveDetailsPhotoFromJson(data as MoiveDetailsPhoto, json) as T;			case MoiveDetailsClip:
+			return moiveDetailsClipFromJson(data as MoiveDetailsClip, json) as T;			case MoiveDetailsDirector:
+			return moiveDetailsDirectorFromJson(data as MoiveDetailsDirector, json) as T;			case MoiveDetailsDirectorsAvatars:
+			return moiveDetailsDirectorsAvatarsFromJson(data as MoiveDetailsDirectorsAvatars, json) as T;			case MoiveDetailsPopularReview:
+			return moiveDetailsPopularReviewFromJson(data as MoiveDetailsPopularReview, json) as T;			case MoiveDetailsPopularReviewsRating:
+			return moiveDetailsPopularReviewsRatingFromJson(data as MoiveDetailsPopularReviewsRating, json) as T;			case MoiveDetailsPopularReviewsAuthor:
+			return moiveDetailsPopularReviewsAuthorFromJson(data as MoiveDetailsPopularReviewsAuthor, json) as T;			case GifPictureJokesEntity:
 			return gifPictureJokesEntityFromJson(data as GifPictureJokesEntity, json) as T;			case GifPictureJokesResult:
 			return gifPictureJokesResultFromJson(data as GifPictureJokesResult, json) as T;			case GifPictureJokesResultShowapiResBody:
 			return gifPictureJokesResultShowapiResBodyFromJson(data as GifPictureJokesResultShowapiResBody, json) as T;			case GifPictureJokesResultShowapiResBodyContentlist:
@@ -86,7 +110,29 @@ class JsonConvert<T> {
 			return pictureJokeEntityToJson(data as PictureJokeEntity);			case PictureJokeResult:
 			return pictureJokeResultToJson(data as PictureJokeResult);			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case GifPictureJokesEntity:
+			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case MoiveDetailsEntity:
+			return moiveDetailsEntityToJson(data as MoiveDetailsEntity);			case MoiveDetailsRating:
+			return moiveDetailsRatingToJson(data as MoiveDetailsRating);			case MoiveDetailsRatingDetails:
+			return moiveDetailsRatingDetailsToJson(data as MoiveDetailsRatingDetails);			case MoiveDetailsVideo:
+			return moiveDetailsVideoToJson(data as MoiveDetailsVideo);			case MoiveDetailsVideosSource:
+			return moiveDetailsVideosSourceToJson(data as MoiveDetailsVideosSource);			case MoiveDetailsImages:
+			return moiveDetailsImagesToJson(data as MoiveDetailsImages);			case MoiveDetailsPopularCommants:
+			return moiveDetailsPopularCommantsToJson(data as MoiveDetailsPopularCommants);			case MoiveDetailsPopularCommentsRating:
+			return moiveDetailsPopularCommentsRatingToJson(data as MoiveDetailsPopularCommentsRating);			case MoiveDetailsPopularCommentsAuthor:
+			return moiveDetailsPopularCommentsAuthorToJson(data as MoiveDetailsPopularCommentsAuthor);			case MoiveDetailsWriter:
+			return moiveDetailsWriterToJson(data as MoiveDetailsWriter);			case MoiveDetailsWritersAvatars:
+			return moiveDetailsWritersAvatarsToJson(data as MoiveDetailsWritersAvatars);			case MoiveDetailsTrailer:
+			return moiveDetailsTrailerToJson(data as MoiveDetailsTrailer);			case MoiveDetailsBlooper:
+			return moiveDetailsBlooperToJson(data as MoiveDetailsBlooper);			case MoiveDetailsCast:
+			return moiveDetailsCastToJson(data as MoiveDetailsCast);			case MoiveDetailsCastsAvatars:
+			return moiveDetailsCastsAvatarsToJson(data as MoiveDetailsCastsAvatars);			case MoiveDetailsPhoto:
+			return moiveDetailsPhotoToJson(data as MoiveDetailsPhoto);			case MoiveDetailsClip:
+			return moiveDetailsClipToJson(data as MoiveDetailsClip);			case MoiveDetailsDirector:
+			return moiveDetailsDirectorToJson(data as MoiveDetailsDirector);			case MoiveDetailsDirectorsAvatars:
+			return moiveDetailsDirectorsAvatarsToJson(data as MoiveDetailsDirectorsAvatars);			case MoiveDetailsPopularReview:
+			return moiveDetailsPopularReviewToJson(data as MoiveDetailsPopularReview);			case MoiveDetailsPopularReviewsRating:
+			return moiveDetailsPopularReviewsRatingToJson(data as MoiveDetailsPopularReviewsRating);			case MoiveDetailsPopularReviewsAuthor:
+			return moiveDetailsPopularReviewsAuthorToJson(data as MoiveDetailsPopularReviewsAuthor);			case GifPictureJokesEntity:
 			return gifPictureJokesEntityToJson(data as GifPictureJokesEntity);			case GifPictureJokesResult:
 			return gifPictureJokesResultToJson(data as GifPictureJokesResult);			case GifPictureJokesResultShowapiResBody:
 			return gifPictureJokesResultShowapiResBodyToJson(data as GifPictureJokesResultShowapiResBody);			case GifPictureJokesResultShowapiResBodyContentlist:
@@ -127,7 +173,29 @@ class JsonConvert<T> {
 			return PictureJokeEntity().fromJson(json);			case 'PictureJokeResult':
 			return PictureJokeResult().fromJson(json);			case 'PictureJokeResultShowapiResBody':
 			return PictureJokeResultShowapiResBody().fromJson(json);			case 'PictureJokeResultShowapiResBodyContentlist':
-			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'GifPictureJokesEntity':
+			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'MoiveDetailsEntity':
+			return MoiveDetailsEntity().fromJson(json);			case 'MoiveDetailsRating':
+			return MoiveDetailsRating().fromJson(json);			case 'MoiveDetailsRatingDetails':
+			return MoiveDetailsRatingDetails().fromJson(json);			case 'MoiveDetailsVideo':
+			return MoiveDetailsVideo().fromJson(json);			case 'MoiveDetailsVideosSource':
+			return MoiveDetailsVideosSource().fromJson(json);			case 'MoiveDetailsImages':
+			return MoiveDetailsImages().fromJson(json);			case 'MoiveDetailsPopularCommants':
+			return MoiveDetailsPopularCommants().fromJson(json);			case 'MoiveDetailsPopularCommentsRating':
+			return MoiveDetailsPopularCommentsRating().fromJson(json);			case 'MoiveDetailsPopularCommentsAuthor':
+			return MoiveDetailsPopularCommentsAuthor().fromJson(json);			case 'MoiveDetailsWriter':
+			return MoiveDetailsWriter().fromJson(json);			case 'MoiveDetailsWritersAvatars':
+			return MoiveDetailsWritersAvatars().fromJson(json);			case 'MoiveDetailsTrailer':
+			return MoiveDetailsTrailer().fromJson(json);			case 'MoiveDetailsBlooper':
+			return MoiveDetailsBlooper().fromJson(json);			case 'MoiveDetailsCast':
+			return MoiveDetailsCast().fromJson(json);			case 'MoiveDetailsCastsAvatars':
+			return MoiveDetailsCastsAvatars().fromJson(json);			case 'MoiveDetailsPhoto':
+			return MoiveDetailsPhoto().fromJson(json);			case 'MoiveDetailsClip':
+			return MoiveDetailsClip().fromJson(json);			case 'MoiveDetailsDirector':
+			return MoiveDetailsDirector().fromJson(json);			case 'MoiveDetailsDirectorsAvatars':
+			return MoiveDetailsDirectorsAvatars().fromJson(json);			case 'MoiveDetailsPopularReview':
+			return MoiveDetailsPopularReview().fromJson(json);			case 'MoiveDetailsPopularReviewsRating':
+			return MoiveDetailsPopularReviewsRating().fromJson(json);			case 'MoiveDetailsPopularReviewsAuthor':
+			return MoiveDetailsPopularReviewsAuthor().fromJson(json);			case 'GifPictureJokesEntity':
 			return GifPictureJokesEntity().fromJson(json);			case 'GifPictureJokesResult':
 			return GifPictureJokesResult().fromJson(json);			case 'GifPictureJokesResultShowapiResBody':
 			return GifPictureJokesResultShowapiResBody().fromJson(json);			case 'GifPictureJokesResultShowapiResBodyContentlist':
@@ -169,7 +237,29 @@ class JsonConvert<T> {
 			return List<PictureJokeEntity>();			case 'PictureJokeResult':
 			return List<PictureJokeResult>();			case 'PictureJokeResultShowapiResBody':
 			return List<PictureJokeResultShowapiResBody>();			case 'PictureJokeResultShowapiResBodyContentlist':
-			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'GifPictureJokesEntity':
+			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'MoiveDetailsEntity':
+			return List<MoiveDetailsEntity>();			case 'MoiveDetailsRating':
+			return List<MoiveDetailsRating>();			case 'MoiveDetailsRatingDetails':
+			return List<MoiveDetailsRatingDetails>();			case 'MoiveDetailsVideo':
+			return List<MoiveDetailsVideo>();			case 'MoiveDetailsVideosSource':
+			return List<MoiveDetailsVideosSource>();			case 'MoiveDetailsImages':
+			return List<MoiveDetailsImages>();			case 'MoiveDetailsPopularCommants':
+			return List<MoiveDetailsPopularCommants>();			case 'MoiveDetailsPopularCommentsRating':
+			return List<MoiveDetailsPopularCommentsRating>();			case 'MoiveDetailsPopularCommentsAuthor':
+			return List<MoiveDetailsPopularCommentsAuthor>();			case 'MoiveDetailsWriter':
+			return List<MoiveDetailsWriter>();			case 'MoiveDetailsWritersAvatars':
+			return List<MoiveDetailsWritersAvatars>();			case 'MoiveDetailsTrailer':
+			return List<MoiveDetailsTrailer>();			case 'MoiveDetailsBlooper':
+			return List<MoiveDetailsBlooper>();			case 'MoiveDetailsCast':
+			return List<MoiveDetailsCast>();			case 'MoiveDetailsCastsAvatars':
+			return List<MoiveDetailsCastsAvatars>();			case 'MoiveDetailsPhoto':
+			return List<MoiveDetailsPhoto>();			case 'MoiveDetailsClip':
+			return List<MoiveDetailsClip>();			case 'MoiveDetailsDirector':
+			return List<MoiveDetailsDirector>();			case 'MoiveDetailsDirectorsAvatars':
+			return List<MoiveDetailsDirectorsAvatars>();			case 'MoiveDetailsPopularReview':
+			return List<MoiveDetailsPopularReview>();			case 'MoiveDetailsPopularReviewsRating':
+			return List<MoiveDetailsPopularReviewsRating>();			case 'MoiveDetailsPopularReviewsAuthor':
+			return List<MoiveDetailsPopularReviewsAuthor>();			case 'GifPictureJokesEntity':
 			return List<GifPictureJokesEntity>();			case 'GifPictureJokesResult':
 			return List<GifPictureJokesResult>();			case 'GifPictureJokesResultShowapiResBody':
 			return List<GifPictureJokesResultShowapiResBody>();			case 'GifPictureJokesResultShowapiResBodyContentlist':

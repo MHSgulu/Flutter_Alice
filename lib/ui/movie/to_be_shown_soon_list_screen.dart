@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import 'movie_details_screen.dart';
+
 
 /*打开手机自带浏览器启动url网址*/
 void _launchWebUrl(String url) async {
@@ -73,7 +75,10 @@ class ToBeSoonListScreenState extends State<ToBeSoonListScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadiusDirectional.circular(2.0)
                           ),
-                          child: Container(
+                          child: GestureDetector(
+                            onTap: (){
+                              //Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(futureData: futureMovieEntity)));
+                            },
                             child: Image.network(
                               snapshot.data.subjects[index].images.large,
                               width: 100,

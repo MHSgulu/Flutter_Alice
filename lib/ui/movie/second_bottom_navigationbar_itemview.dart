@@ -1,6 +1,7 @@
 import 'package:alice/generated/json/movie_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/ui/movie/is_showing_up_list_screen.dart';
+import 'package:alice/ui/movie/movie_details_screen.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:alice/ui/movie/to_be_shown_soon_list_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -241,7 +242,10 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                             shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadiusDirectional.circular(2.0)
                                             ),
-                                            child: Container(
+                                            child: GestureDetector(
+                                              onTap: (){
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,)));
+                                              },
                                               child: Image.network(
                                                 snapshot.data.subjects[index].images.large,
                                                 ///以下两行代码 暂时解决 图片高度不一致的问题 可能会出现不适配的为 比如在手机长度比较小 不是主流机型长宽比的那种
@@ -377,7 +381,10 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadiusDirectional.circular(4.0)
                                         ),
-                                        child: Container(
+                                        child: GestureDetector(
+                                          onTap: (){
+                                            //Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(futureData: futureMovieSubject)));
+                                          },
                                           child: Image.network(
                                             snapshot.data.subjects[index].images.large,
                                             ///以下两行代码 暂时解决 图片高度不一致的问题 可能会出现不适配的为 比如在手机长度比较小 不是主流机型长宽比的那种

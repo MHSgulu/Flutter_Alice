@@ -8,11 +8,11 @@ class NoStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -27,11 +27,11 @@ class HalfStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star_half, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star_half, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -46,11 +46,11 @@ class OneStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -65,11 +65,11 @@ class OneStarsHalfScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_half, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star_half, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -84,11 +84,11 @@ class TwoStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -103,11 +103,11 @@ class TwoStarsHalfScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_half, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star_half, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -122,11 +122,11 @@ class ThreeStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -141,11 +141,11 @@ class ThreeStarsHalfScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_half, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star_half, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -160,11 +160,11 @@ class FourStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_border, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -179,11 +179,11 @@ class FourStarsHalfScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star_half, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star_half, size: 12,color: Colors.grey),
       ],
     );
   }
@@ -198,11 +198,11 @@ class FiveStarsScore extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
-        Icon(Icons.star, size: 12,color: Colors.orange),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
+        Icon(Icons.star, size: 12,color: Colors.amber),
       ],
     );
   }
