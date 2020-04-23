@@ -1,11 +1,15 @@
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
+import 'package:alice/model/movie_entity.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
+import 'package:alice/values/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:alice/model/moive_details_entity.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:palette_generator/palette_generator.dart';
 
 
 //List  转String  直接toString()会带上方括号[]
@@ -16,10 +20,6 @@ String listToString(List list) {
   });
   return sb.toString();
 }
-
-
-
-
 
 
 
@@ -42,7 +42,9 @@ Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
 class MovieDetailsScreen extends StatefulWidget {
   final String movieId;
 
-  MovieDetailsScreen({Key key, @required this.movieId}) : super(key: key);
+  final MovieSubject data;
+
+  MovieDetailsScreen({Key key, @required this.movieId, @required this.data}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -53,15 +55,38 @@ class MovieDetailsScreen extends StatefulWidget {
 class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
-
+  MovieSubject movieSubject;
+  Color dynamicBackgroundColor;
   bool isExpand = false;
 
+  PaletteGenerator generator;
+
+  Future<void> fetchMainColorPicture() async {
+    generator = await PaletteGenerator.fromImageProvider(
+      NetworkImage(movieSubject.images.small),
+    );
+    if (generator == null || generator.colors.isEmpty) {
+      dynamicBackgroundColor = MyColors.movieDetailsBackgroundColor;
+      }
+    else {
+      ///setState防止AppBar颜色不更改
+      setState(() {
+        dynamicBackgroundColor = generator.dominantColor.color;
+        print(dynamicBackgroundColor.toString());
+      });
+      }
+  }
+  
+  
   @override
   void initState() {
     super.initState();
+    movieSubject = widget.data;
+    fetchMainColorPicture();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
   }
 
+  
 
   //展开或者收起 简介内容
   void _changedExpand(){
@@ -69,14 +94,13 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
   }
 
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0, //阴影度
-        backgroundColor: Colors.teal[400],
+        ///此处代码 防止AppBar颜色与页面不一致  页面的颜色加载慢  AppBar特别快
+        backgroundColor: dynamicBackgroundColor == null ? MyColors.movieDetailsBackgroundColor : dynamicBackgroundColor,
         centerTitle: true,
         title: Text('电影', style: TextStyle(fontSize: 16.0)),
         actions: <Widget>[
@@ -92,7 +116,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
           if (snapshot.hasData) {
             return SingleChildScrollView(
               child: Container(
-                color: Colors.teal[400],
+                color: dynamicBackgroundColor == null ? MyColors.movieDetailsBackgroundColor : dynamicBackgroundColor,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,  //该代码为了使简介栏 横轴 左开始
                   children: <Widget>[
@@ -112,7 +136,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.network(
-                                  snapshot.data.images.small,
+                                  /*snapshot.data.images.small*/movieSubject.images.small,
                                   width: 110,
                                   fit: BoxFit.fitHeight,
                                 ),

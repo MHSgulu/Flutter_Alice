@@ -244,7 +244,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                             ),
                                             child: GestureDetector(
                                               onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,)));
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,data: snapshot.data.subjects[index])));
                                               },
                                               child: Image.network(
                                                 snapshot.data.subjects[index].images.large,
