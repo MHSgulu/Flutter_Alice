@@ -26,19 +26,13 @@ class ChatRobotScreenState extends State<ChatRobotScreen>{
         title: Text('菲菲聊天室'),
       ),
       body: Container(
-        child: Column(
-          children: <Widget>[
-            ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
                   return Text('liebioa');
-                }
+          }
             ),
-            Container(
-              child: Text('底部'),
-            ),
-          ],
-        ),
       ),
     );
   }

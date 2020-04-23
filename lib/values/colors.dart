@@ -32,4 +32,10 @@ class MyColors{
   static final Color paginationColor = Color(0xFFD8D8D8);
 
 
+
+  static const Color _kBackgroundColor = Color(0xffa0a0a0);
+  static const Color _kSelectionRectangleBackground = Color(0x15000000);
+
+
+
 }

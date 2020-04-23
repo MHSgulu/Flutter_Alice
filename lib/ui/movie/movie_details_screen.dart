@@ -19,6 +19,11 @@ String listToString(List list) {
 
 
 
+
+
+
+
+
 /*网络请求异步操作 根据电影id请求电影详情*/
 Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
   final response = await http.get(
@@ -49,11 +54,22 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
 
+  bool isExpand = false;
+
   @override
   void initState() {
     super.initState();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
   }
+
+
+  //展开或者收起 简介内容
+  void _changedExpand(){
+    isExpand = ! isExpand;
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +94,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
               child: Container(
                 color: Colors.teal[400],
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,  //该代码为了使简介栏 横轴 左开始
                   children: <Widget>[
                     ///电影信息栏
                     Container(
@@ -163,6 +180,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: snapshot.data.rating.average == 0
+                            ///未上映
                           ? Container(
                               child: Row(
                                 children: <Widget>[
@@ -224,6 +242,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                 ],
                               ),
                             )
+                            ///已上映
                           : Container(
                               child: Column(
                                 children: <Widget>[
@@ -675,6 +694,169 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               ),
                             ),
                     ),
+                    ///相关分类栏
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.fromLTRB(16, 0, 8, 0),
+                            child: Text('相关分类', style: TextStyle(color: Colors.white54, fontSize: 13.0)),
+                          ),
+                          ///当横向列表被嵌套在行里  对容器进行宽高约束
+                          Container(
+                            width: 260,
+                            height: 25,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.data.tags.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Container(
+                                      margin: EdgeInsets.only(right: 12.0),
+                                      padding: EdgeInsets.fromLTRB(8, 2, 10, 2),
+                                      decoration: BoxDecoration(
+                                        color: Colors.black12,
+                                        borderRadius: BorderRadius.circular(16.0),
+                                        ),
+                                      child: Text(snapshot.data.tags[index], style: TextStyle(color: Colors.white70, fontSize: 13.0)),
+                                    );
+                                  },
+                              ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    ///简介栏
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start, //该代码为了使简介栏 两列文字 左对齐
+                        children: <Widget>[
+                          Container(
+                            child: Text('简介',style: TextStyle(fontSize: 16, color: Colors.white)),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 8.0),
+                            child: isExpand == false
+                                  ///展开
+                                ? Text(
+                                snapshot.data.summary,
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(fontSize: 13, color: Colors.white70))
+                                  ///收起
+                                : Text(
+                                snapshot.data.summary,
+                                style: TextStyle(fontSize: 13, color: Colors.white70))
+                          ),
+                          Container(
+                            child: isExpand == false
+                                  ///展开
+                                ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      _changedExpand();
+                                    });
+                                  },
+                                  child: Container(
+                                    child: Text('展开', style: TextStyle(color: Colors.white70,fontSize: 13)),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 2.0),
+                                  child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
+                                )
+                              ],
+                            )
+                                  ///收起
+                                : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      _changedExpand();
+                                    });
+                                  },
+                                  child: Container(
+                                    child: Text('收起', style: TextStyle(color: Colors.white70,fontSize: 13)),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 2.0),
+                                  child: Icon(Icons.keyboard_arrow_up, color: Colors.white70),
+                                )
+                              ],
+                            )
+                          ),
+                        ],
+                      ),
+                    ),
+                    ///演职员栏 标题栏
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            child: Text('演职员', style: TextStyle(fontSize: 16, color: Colors.white)),
+                          )
+                        ],
+                      ),
+                    ),
+                    ///演职员栏
+                    Container(
+                      //width: 390,
+                      height: 150,
+                      //padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: snapshot.data.directors.length + snapshot.data.casts.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: Card(
+                                    elevation: 2.0,
+                                    clipBehavior: Clip.antiAlias,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadiusDirectional.circular(4.0)),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Image.network(
+                                        snapshot.data.directors.length - index > 0
+                                            ?  snapshot.data.directors[index].avatars.small
+                                            :  snapshot.data.casts[index-snapshot.data.directors.length].avatars.small,
+                                        width: 80,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Text(
+                                    snapshot.data.directors.length - index > 0
+                                        ?  snapshot.data.directors[index].name
+                                        :  snapshot.data.casts[index-snapshot.data.directors.length].name,
+                                    style: TextStyle(color: Colors.white, fontSize: 13),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
                   ],
                 ),
               ),

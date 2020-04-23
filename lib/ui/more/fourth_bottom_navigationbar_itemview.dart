@@ -1,4 +1,5 @@
 import 'package:alice/ui/more/bing_wallpaper.dart';
+import 'package:alice/ui/more/chat_robot_screen.dart';
 import 'package:alice/ui/more/query_mobile_phon_number_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (){
-                  //Navigator.push(context, MaterialPageRoute(builder: (context) => ChatRobotScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChatRobotScreen()));
                 },
                 child: Card(
                   child: ListTile(

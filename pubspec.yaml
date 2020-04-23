@@ -47,11 +47,14 @@ dependencies:
   # 提供上拉加载和下拉刷新
   pull_to_refresh: ^1.5.7
 
-  # Flutter小部件，用于将静态html标签呈现为Flutter小部件。
+  # 用于将静态html标签呈现为Flutter小部件。
   flutter_html: ^0.11.1
 
-  # Flutter轮播图
+  # 轮播图
   flutter_swiper: ^1.1.6
+
+  # Flutter软件包,用于从源图像生成调色板颜色。
+  palette_generator: ^0.2.2
 
 
 dev_dependencies:
