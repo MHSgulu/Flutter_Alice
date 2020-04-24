@@ -1,4 +1,5 @@
 import 'package:alice/model/bingwallpaper.dart';
+import 'package:alice/util/bing_wallpaper_photo_view_gallry_screen.dart';
 import 'package:alice/util/photo_view_single_screen.dart';
 import 'package:alice/values/strings.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+
+
+
+
 
 
 /*网络请求必应壁纸*/
@@ -241,11 +247,10 @@ class BingWallpaperListViewState extends State<BingWallpaperListView> {
                           onTap: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
-                                imageProvider:NetworkImage(Util.bingUrl+snapshot.data.images[index].url),
-                                minScale: 0.2,
-                                maxScale: 0.5,
-                                heroTag: 'simple',
+                              MaterialPageRoute(builder: (context) => PhotoViewGalleryScreen(
+                                imageList: snapshot.data.images,//传入图片list
+                                index: index,//传入当前点击的图片的index
+                                heroTag: 'hero${index}',//传入当前点击的图片的hero tag （可选）
                               )),
                             );
                           },
