@@ -11,7 +11,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-/*网络请求异步操作*/
+/*网络请求异步操作  正在热映*/
 Future<MovieEntity> fetchInTheatersMovieListData() async {
   final response = await http.get('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b');
 
@@ -25,7 +25,7 @@ Future<MovieEntity> fetchInTheatersMovieListData() async {
 }
 
 
-/*网络请求异步操作*/
+/*网络请求异步操作  即将上映*/
 Future<MovieEntity> fetchComingSoonMovieListData() async {
   final response = await http.get('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b');
 
@@ -383,7 +383,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                         ),
                                         child: GestureDetector(
                                           onTap: (){
-                                            //Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(futureData: futureMovieSubject)));
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,data: snapshot.data.subjects[index])));
                                           },
                                           child: Image.network(
                                             snapshot.data.subjects[index].images.large,

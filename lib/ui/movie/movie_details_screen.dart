@@ -1,6 +1,10 @@
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
+import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
+import 'package:alice/model/short_film_review_entity.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
+import 'package:alice/util/film_stills_photo_view_gallry_screen.dart';
+import 'package:alice/util/photo_view_single_screen.dart';
 import 'package:alice/values/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +14,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:palette_generator/palette_generator.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 
 //List  转String  直接toString()会带上方括号[]
@@ -31,17 +36,36 @@ Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
 
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
-    return moiveDetailsEntityFromJson(
-        MoiveDetailsEntity(), json.decode(response.body));
+    return moiveDetailsEntityFromJson(MoiveDetailsEntity(), json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
     throw Exception('服务器未响应未成功');
   }
 }
 
+
+/*网络请求异步操作 根据电影id请求电影短评*/
+Future<ShortFilmReviewEntity> fetchMovieShortReviewData(String movieId) async {
+  final response = await http.get(
+      'https://api.douban.com/v2/movie/subject/${movieId}/comments?apikey=0b2bdeda43b5688921839c8ecb20399b');
+
+  if (response.statusCode == 200) {
+    //如果服务器确实返回了200 OK响应,然后解析JSON
+    return shortFilmReviewEntityFromJson(ShortFilmReviewEntity(), json.decode(response.body));
+  } else {
+    //如果服务器没有返回200 OK响应,然后抛出一个异常。
+    throw Exception('服务器未响应未成功');
+  }
+}
+
+
+
+
+
+
+
 class MovieDetailsScreen extends StatefulWidget {
   final String movieId;
-
   final MovieSubject data;
 
   MovieDetailsScreen({Key key, @required this.movieId, @required this.data}) : super(key: key);
@@ -55,6 +79,7 @@ class MovieDetailsScreen extends StatefulWidget {
 class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
+  Future<ShortFilmReviewEntity> futureShortFilmReviewEntity;
   MovieSubject movieSubject;
   Color dynamicBackgroundColor;
   bool isExpand = false;
@@ -84,6 +109,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
     movieSubject = widget.data;
     fetchMainColorPicture();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
+    futureShortFilmReviewEntity = fetchMovieShortReviewData(widget.movieId);
   }
 
   
@@ -134,9 +160,20 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadiusDirectional.circular(2.0)),
                               child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => PhotoViewSimpleScreen(
+                                      imageProvider:NetworkImage(snapshot.data.images.large),
+                                      ///必须设为double类型
+                                      minScale: 0.5,  ///定义允许图像采用的最小大小，它与原始图像大小成比例
+                                      maxScale: 0.8,  ///定义允许图像采用的最大大小，它与原始图像大小成比例。
+                                      heroTag: 'simple',
+                                    )),
+                                  );
+                                },
                                 child: Image.network(
-                                  /*snapshot.data.images.small*/movieSubject.images.small,
+                                  snapshot.data.images.medium,
                                   width: 110,
                                   fit: BoxFit.fitHeight,
                                 ),
@@ -180,7 +217,8 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                   Container(
                                     padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                                     child: Text(
-                                      '${listToString(snapshot.data.countries)} / ${listToString(snapshot.data.genres)} / 上映时间:  ${snapshot.data.mainlandPubdate} (中国大陆) / 片长:  ${snapshot.data.durations[0]}',
+                                      ///检查durations List是否为空  和null判断无效果 要用到isEmpty
+                                      '${listToString(snapshot.data.countries)} / ${listToString(snapshot.data.genres)} / 上映时间:  ${snapshot.data.mainlandPubdate} (中国大陆) / 片长:  ${snapshot.data.durations.isEmpty ? '未知' : snapshot.data.durations[0]}',
                                       style: TextStyle(
                                           fontSize: 12, color: Colors.white70),
                                       maxLines: 2, //文字显示最大行数
@@ -855,9 +893,12 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.network(
-                                        snapshot.data.directors.length - index > 0
+                                        ///先判断 是否把导演图片数据取完，在判断是否有演员图片，再取出演员图片数据
+                                       snapshot.data.directors.length - index > 0
                                             ?  snapshot.data.directors[index].avatars.small
-                                            :  snapshot.data.casts[index-snapshot.data.directors.length].avatars.small,
+                                            :  snapshot.data.casts[index-snapshot.data.directors.length].avatars == null
+                                             ? 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587698979260&di=f640134e030eb7b7d8f208069f5896f6&imgtype=0&src=http%3A%2F%2Fpic2.cxtuku.com%2F00%2F05%2F13%2Fb845ec14e524.jpg'
+                                             : snapshot.data.casts[index-snapshot.data.directors.length].avatars.small,
                                         width: 80,
                                         fit: BoxFit.fitHeight,
                                       ),
@@ -880,16 +921,331 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         },
                       ),
                     ),
-
+                    ///预告片、剧照标题栏
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            child: Text('预告片 / 剧照', style: TextStyle(fontSize: 16, color: Colors.white)),
+                          )
+                        ],
+                      ),
+                    ),
+                    ///预告片、剧照栏
+                    Container(
+                      //width: 390,
+                      height: 180,
+                      //padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        ///预告片内容为空，列表长度为剧照的长度，方便按照index取出剧照数据 不为空 剧照数据长度+1 只取出一个预告片数据
+                        itemCount: snapshot.data.trailers.isEmpty ?  snapshot.data.photos.length : snapshot.data.photos.length + 1,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: Card(
+                                    elevation: 2.0,
+                                    clipBehavior: Clip.antiAlias,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadiusDirectional.circular(4.0)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if(snapshot.data.trailers.isNotEmpty){
+                                          if(index == 0){
+                                            print('这是视频');
+                                          }else{
+                                            //print('剩下的都是剧照');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => PhotoViewGalleryScreen(
+                                                imageList: snapshot.data.photos,//传入图片list
+                                                index: index-1,//传入当前点击的图片的index
+                                                heroTag: 'hero${index-1}',//传入当前点击的图片的hero tag （可选）
+                                              )),
+                                            );
+                                          }
+                                        }else{
+                                          //print('全是剧照');
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => PhotoViewGalleryScreen(
+                                              imageList: snapshot.data.photos,//传入图片list
+                                              index: index,//传入当前点击的图片的index
+                                              heroTag: 'hero${index}',//传入当前点击的图片的hero tag （可选）
+                                            )),
+                                          );
+                                        }
+                                      },
+                                      ///判断预告片内容不为空，加载预告片和剧照数据，为空 只加载剧照数据
+                                      child: snapshot.data.trailers.isNotEmpty
+                                          ? index == 0
+                                            ? Container(
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: <Widget>[
+                                            Image.network(
+                                              snapshot.data.trailers[index].medium,
+                                              width: 200,
+                                              height: 150,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            Positioned(
+                                              top: 4,
+                                              left: 4,
+                                              child: Container(
+                                                padding: EdgeInsets.fromLTRB(3, 1, 3, 2),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.amber,
+                                                  borderRadius: BorderRadius.circular(2.0),
+                                                ),
+                                                child: Text('预告片', style: TextStyle(color: Colors.white, fontSize: 11)),
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Icon(Icons.play_circle_outline, color: Colors.white, size: 28),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                            : FadeInImage.memoryNetwork(
+                                        placeholder: kTransparentImage,
+                                        image: snapshot.data.photos[index-1].image,
+                                        width: 200,
+                                        height: 150,
+                                        fit: BoxFit.cover,
+                                      )
+                                          : FadeInImage.memoryNetwork(
+                                        placeholder: kTransparentImage,
+                                        image: snapshot.data.photos[index].image,
+                                        width: 200,
+                                        height: 150,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    ///短评栏
+                    Container(
+                      margin: EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            ///短评标题栏
+                            Container(
+                              padding: EdgeInsets.fromLTRB(16, 10, 2, 8),
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    child: Text('短评',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0)),
+                                  ),
+                                  Expanded(
+                                    child: Container(),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      '全部'+snapshot.data.commentsCount.toString(),
+                                      style: TextStyle(color: Colors.white60, fontSize: 12),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(right: 4.0),
+                                    child: Icon(Icons.navigate_next,
+                                        color: Colors.white60, size: 20),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ///短评列表栏
+                            Container(
+                              child:  FutureBuilder<ShortFilmReviewEntity> (
+                                future: futureShortFilmReviewEntity,
+                                builder: (context,snapshot) {
+                                  if (snapshot.hasData) {
+                                    return ListView.separated(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: 4,
+                                      separatorBuilder: (BuildContext context, int index){
+                                        return Container(
+                                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                                          child: Divider(
+                                            color: Colors.white10,
+                                            //height: 20,
+                                          ),
+                                        );
+                                      },
+                                      itemBuilder: (BuildContext context, int index){
+                                        return Container(
+                                          padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              ///用户评论信息栏
+                                              Container(
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    ///用户头像
+                                                    Container(
+                                                      child: ClipOval(
+                                                        child: Image.network(
+                                                          snapshot.data.comments[index].author.avatar,
+                                                          width: 30,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    ///用户名称、评分星级、评论时间
+                                                    Container(
+                                                      padding: EdgeInsets.only(left: 10.0),
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: <Widget>[
+                                                          Container(
+                                                            child: Text(
+                                                              snapshot.data.comments[index].author.name,
+                                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            child: Row(
+                                                              children: <Widget>[
+                                                                ///用户评星
+                                                                Container(
+                                                                  //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                                                  child: snapshot.data.comments[index].rating.value == 5 ? FiveStarsScore()
+                                                                         : snapshot.data.comments[index].rating.value == 4 ? FourStarsScore()
+                                                                          : snapshot.data.comments[index].rating.value == 3 ? ThreeStarsScore()
+                                                                           : snapshot.data.comments[index].rating.value == 2 ? TwoStarsScore()
+                                                                            : snapshot.data.comments[index].rating.value == 1 ? OneStarsScore() : NoStarsScore(),
+                                                                ),
+                                                                ///用户评论时间
+                                                                Container(
+                                                                  child: Text(
+                                                                    snapshot.data.comments[index].createdAt.substring(0,10),
+                                                                    style: TextStyle(color: Colors.white54, fontSize: 12),
+                                                                  ),
+                                                                  padding: EdgeInsets.only(left: 8.0),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                        child: Container(),
+                                                    ),
+                                                    Container(
+                                                      child: Icon(Icons.more_horiz, color: Colors.white60),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              ///评论内容栏
+                                              Container(
+                                                padding: EdgeInsets.fromLTRB(0, 16, 0, 10),
+                                                child: Text(
+                                                  snapshot.data.comments[index].content,
+                                                  style: TextStyle(color: Colors.white70),
+                                                  //maxLines: 4,
+                                                  //overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                              ///评论点赞数
+                                              Container(
+                                                padding: EdgeInsets.only(bottom: 4.0),
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    Container(
+                                                      child: Icon(Icons.thumb_up, color: Colors.white54, size: 14),
+                                                    ),
+                                                    Container(
+                                                      padding: EdgeInsets.only(left: 8.0),
+                                                      child: Text(
+                                                        snapshot.data.comments[index].usefulCount.toString(),
+                                                        style: TextStyle(color: Colors.white54, fontSize: 12),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  }
+                                  else if (snapshot.hasError) {
+                                    return Text("${snapshot.error}");
+                                  }
+                                  return Center(
+                                    child: Container(),
+                                  );
+                                },
+                              ),
+                            ),
+                            ///分割栏
+                            Container(
+                              padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                              child: Divider(
+                                color: Colors.white10,
+                                //height: 20,
+                              ),
+                            ),
+                            ///短评尾栏
+                            Container(
+                              padding: EdgeInsets.fromLTRB(16, 8, 8, 16),
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    child: Text('查看全部短评',
+                                        style: TextStyle(color: Colors.white)),
+                                  ),
+                                  Expanded(
+                                    child: Container(),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(right: 4.0),
+                                    child: Icon(Icons.navigate_next,
+                                        color: Colors.white60, size: 20),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
             );
-          } else if (snapshot.hasError) {
+          }
+          else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
           return Center(
-            child: Container(),
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal[400]),
+              strokeWidth: 3,
+            ),
           );
         },
       ),
