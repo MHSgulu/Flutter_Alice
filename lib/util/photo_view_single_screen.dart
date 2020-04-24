@@ -38,7 +38,7 @@ class PhotoViewSimpleScreen extends StatelessWidget{
                 minScale: minScale,
                 maxScale: maxScale,
                 heroAttributes: PhotoViewHeroAttributes(tag: heroTag),
-                enableRotation: true,
+                enableRotation: false,  ///启用旋转手势支持的标志
               ),
             ),
             Positioned(//右上角关闭按钮
