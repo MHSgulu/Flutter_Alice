@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/model/short_film_review_entity.dart';
+import 'package:alice/ui/movie/movie_related_videos_screen.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:alice/util/film_stills_photo_view_gallry_screen.dart';
 import 'package:alice/util/photo_view_single_screen.dart';
@@ -17,6 +16,7 @@ import 'dart:convert';
 
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:chewie/chewie.dart';
 
 
 ///List  转String  直接toString()会带上方括号[]
@@ -991,7 +991,8 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                       onTap: () {
                                         if(snapshot.data.trailers.isNotEmpty){
                                           if(index == 0){
-                                            print('这是视频');
+                                            //print('这是视频');
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieRelatedVideosScreen(videoUrl: snapshot.data.trailers[index].resourceUrl,data: snapshot.data.trailers,)));
                                           }else{
                                             //print('剩下的都是剧照');
                                             Navigator.push(

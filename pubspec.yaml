@@ -56,6 +56,12 @@ dependencies:
   # Flutter软件包,用于从源图像生成调色板颜色。
   palette_generator: ^0.2.2
 
+  # Flutter的视频播放器，带有Cupertino和Material播放控件
+  chewie: ^0.9.10
+
+  # 官方Flutter插件，用于与Android和iOS上的其他Flutter小部件一起显示嵌入式视频。
+  video_player: ^0.10.9+1
+
 
 dev_dependencies:
   flutter_test:
