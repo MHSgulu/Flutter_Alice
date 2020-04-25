@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
@@ -17,7 +19,7 @@ import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 
-//List  转String  直接toString()会带上方括号[]
+///List  转String  直接toString()会带上方括号[]
 String listToString(List list) {
   StringBuffer sb = new StringBuffer();
   list.forEach((item) {
@@ -25,6 +27,54 @@ String listToString(List list) {
   });
   return sb.toString();
 }
+
+///判断电影简介的文本是否溢出
+bool isFilmIntroductionOverflow(String text, double maxWidth) {
+
+  var textPainter = TextPainter(
+    maxLines: 4,
+    textAlign: TextAlign.left,
+    textDirection: TextDirection.ltr,
+    text: TextSpan(
+      text: text,
+      style: TextStyle(color: Colors.white70),
+    ),
+  )..layout(maxWidth: maxWidth);
+
+  return textPainter.didExceedMaxLines;
+
+}
+
+
+///判断用户评论的文本是否溢出
+bool isCommentTextOverflow(String text, double maxWidth) {
+  // 生成文本跨度
+  var span = TextSpan(
+    text: text,
+    style: TextStyle(color: Colors.white70),
+  );
+
+// 文本绘制器 确定是否超过最大行数
+  var tp = TextPainter(
+    maxLines: 4,
+    textAlign: TextAlign.left,
+    textDirection: TextDirection.ltr,
+    text: span,
+  );
+
+// 触发到布局
+  tp.layout(maxWidth: maxWidth);
+
+// 文本是否溢出
+  var exceeded = tp.didExceedMaxLines;
+
+  return exceeded;
+
+}
+
+
+
+
 
 
 
@@ -81,10 +131,15 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
   Future<ShortFilmReviewEntity> futureShortFilmReviewEntity;
   MovieSubject movieSubject;
+  ///动态背景色
   Color dynamicBackgroundColor;
+  ///是否展开电影简介的内容
   bool isExpand = false;
+  ///是否展开用户评论的内容
+  bool isOpen = false;
 
   PaletteGenerator generator;
+
 
   Future<void> fetchMainColorPicture() async {
     generator = await PaletteGenerator.fromImageProvider(
@@ -110,13 +165,6 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
     fetchMainColorPicture();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
     futureShortFilmReviewEntity = fetchMovieShortReviewData(widget.movieId);
-  }
-
-  
-
-  //展开或者收起 简介内容
-  void _changedExpand(){
-    isExpand = ! isExpand;
   }
 
 
@@ -801,60 +849,46 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           ),
                           Container(
                             padding: EdgeInsets.only(top: 8.0),
-                            child: isExpand == false
-                                  ///展开
+                            child: isExpand
                                 ? Text(
-                                snapshot.data.summary,
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 13, color: Colors.white70))
-                                  ///收起
-                                : Text(
-                                snapshot.data.summary,
-                                style: TextStyle(fontSize: 13, color: Colors.white70))
-                          ),
-                          Container(
-                            child: isExpand == false
-                                  ///展开
-                                ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                GestureDetector(
-                                  onTap: (){
-                                    setState(() {
-                                      _changedExpand();
-                                    });
-                                  },
-                                  child: Container(
-                                    child: Text('展开', style: TextStyle(color: Colors.white70,fontSize: 13)),
+                              snapshot.data.summary,
+                              style: TextStyle(color: Colors.white70),)
+                                : LayoutBuilder(builder: (context,size){
+                              return Column(
+                                children: <Widget>[
+                                  Text.rich(
+                                    TextSpan(
+                                      text: snapshot.data.summary,
+                                      style: TextStyle(fontSize: 14,color: Colors.white70),
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 4,
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(top: 2.0),
-                                  child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
-                                )
-                              ],
-                            )
-                                  ///收起
-                                : Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                GestureDetector(
-                                  onTap: (){
-                                    setState(() {
-                                      _changedExpand();
-                                    });
-                                  },
-                                  child: Container(
-                                    child: Text('收起', style: TextStyle(color: Colors.white70,fontSize: 13)),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(top: 2.0),
-                                  child: Icon(Icons.keyboard_arrow_up, color: Colors.white70),
-                                )
-                              ],
-                            )
+                                  isFilmIntroductionOverflow(snapshot.data.summary, size.maxWidth)
+                                      ? GestureDetector(
+                                    onTap: (){
+                                      //print('点击展开');
+                                      setState(() {
+                                        isExpand = true;
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          '展开',
+                                          style: TextStyle(color: Colors.white70,fontSize: 13),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.only(top: 2.0),
+                                          child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
+                                        ),
+                                      ],),
+                                  )
+                                      : Container(),
+                                ],
+                              );
+                            }),
                           ),
                         ],
                       ),
@@ -1079,7 +1113,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                 future: futureShortFilmReviewEntity,
                                 builder: (context,snapshot) {
                                   if (snapshot.hasData) {
-                                    return ListView.separated(
+                                    return snapshot.data.comments.isEmpty ? Container() : ListView.separated(
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: 4,
@@ -1130,10 +1164,10 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                                                 Container(
                                                                   //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                                                   child: snapshot.data.comments[index].rating.value == 5 ? FiveStarsScore()
-                                                                         : snapshot.data.comments[index].rating.value == 4 ? FourStarsScore()
-                                                                          : snapshot.data.comments[index].rating.value == 3 ? ThreeStarsScore()
-                                                                           : snapshot.data.comments[index].rating.value == 2 ? TwoStarsScore()
-                                                                            : snapshot.data.comments[index].rating.value == 1 ? OneStarsScore() : NoStarsScore(),
+                                                                      : snapshot.data.comments[index].rating.value == 4 ? FourStarsScore()
+                                                                      : snapshot.data.comments[index].rating.value == 3 ? ThreeStarsScore()
+                                                                      : snapshot.data.comments[index].rating.value == 2 ? TwoStarsScore()
+                                                                      : snapshot.data.comments[index].rating.value == 1 ? OneStarsScore() : NoStarsScore(),
                                                                 ),
                                                                 ///用户评论时间
                                                                 Container(
@@ -1150,7 +1184,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                                       ),
                                                     ),
                                                     Expanded(
-                                                        child: Container(),
+                                                      child: Container(),
                                                     ),
                                                     Container(
                                                       child: Icon(Icons.more_horiz, color: Colors.white60),
@@ -1160,17 +1194,52 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                               ),
                                               ///评论内容栏
                                               Container(
-                                                padding: EdgeInsets.fromLTRB(0, 16, 0, 10),
-                                                child: Text(
+                                                padding: EdgeInsets.fromLTRB(0, 16, 0, 4),
+                                                child: isOpen
+                                                    ? Text(
                                                   snapshot.data.comments[index].content,
-                                                  style: TextStyle(color: Colors.white70),
-                                                  //maxLines: 4,
-                                                  //overflow: TextOverflow.ellipsis,
-                                                ),
+                                                  style: TextStyle(color: Colors.white70),)
+                                                    : LayoutBuilder(builder: (context,size){
+                                                  return Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      Text.rich(
+                                                        TextSpan(
+                                                          text: snapshot.data.comments[index].content,
+                                                          style: TextStyle(fontSize: 14,color: Colors.white70),
+                                                        ),
+                                                        overflow: TextOverflow.ellipsis,
+                                                        maxLines: 4,
+                                                      ),
+                                                      isCommentTextOverflow(snapshot.data.comments[index].content, size.maxWidth)
+                                                          ? GestureDetector(
+                                                        onTap: (){
+                                                          //print('点击展开');
+                                                          setState(() {
+                                                            isOpen = true;
+                                                          });
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: <Widget>[
+                                                            Text(
+                                                              '展开',
+                                                              style: TextStyle(color: Colors.white70),
+                                                            ),
+                                                            Container(
+                                                              padding: EdgeInsets.only(top: 2.0),
+                                                              child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
+                                                            ),
+                                                          ],),
+                                                      )
+                                                          : Container(),
+                                                    ],
+                                                  );
+                                                }),
                                               ),
                                               ///评论点赞数
                                               Container(
-                                                padding: EdgeInsets.only(bottom: 4.0),
+                                                padding: EdgeInsets.fromLTRB(0, 8, 0, 4),
                                                 child: Row(
                                                   children: <Widget>[
                                                     Container(

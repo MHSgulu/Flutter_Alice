@@ -44,8 +44,8 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
                     return PhotoViewGalleryPageOptions(
                       imageProvider: NetworkImage(widget.imageList[index].cover),  ///cover > image > thumb
                       heroAttributes: widget.heroTag.isNotEmpty?PhotoViewHeroAttributes(tag: widget.heroTag):null,
-                      minScale: 0.2,
-                      maxScale: 0.5,
+                      minScale: 0.5,
+                      maxScale: 0.8,
                     );
                   },
                   itemCount: widget.imageList.length,
