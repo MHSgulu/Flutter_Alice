@@ -39,7 +39,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
     //print(widget.videoUrl.replaceRange(0, 4, 'https'));
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
-      aspectRatio: 1.5,
+      aspectRatio: 1.6,
       autoPlay: true,
       looping: true,
     );
@@ -54,7 +54,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
       _videoPlayerController = VideoPlayerController.network(url.replaceRange(0, 4, 'https'));
       _chewieController = ChewieController(
         videoPlayerController: _videoPlayerController,
-        aspectRatio: 1.5,
+        aspectRatio: 1.6,
         autoPlay: true,
         looping: true,
       );
@@ -155,7 +155,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                           child: FlatButton(
                             ///如果当前item被选中更换背景色，当前index等于被选中的index
-                            color: index == selectedIndex ? Colors.orange[100] : Colors.white,
+                            color: index == selectedIndex ? Colors.orange[100] : Colors.white12, ///默认页面背景色  white12
                             splashColor: Colors.orange[100],
                             onPressed: (){
                               replaceVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
@@ -165,7 +165,6 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                               children: <Widget>[
                                 Container(
                                   child: Card(
-                                    elevation: 2.0,
                                     clipBehavior: Clip.antiAlias,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadiusDirectional.circular(2.0)),
