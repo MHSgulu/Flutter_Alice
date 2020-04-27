@@ -16,7 +16,6 @@ import 'dart:convert';
 
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:chewie/chewie.dart';
 
 
 ///List  转String  直接toString()会带上方括号[]
@@ -220,10 +219,14 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                     )),
                                   );
                                 },
-                                child: Image.network(
-                                  snapshot.data.images.medium,
-                                  width: 110,
-                                  fit: BoxFit.fitHeight,
+                                child: Container(
+                                  color: dynamicBackgroundColor == null ? MyColors.movieDetailsBackgroundColor : dynamicBackgroundColor,
+                                  child: FadeInImage.memoryNetwork(
+                                    width: 110,
+                                    fit: BoxFit.fitHeight,
+                                    placeholder: kTransparentImage,
+                                    image: snapshot.data.images.medium,
+                                  ),
                                 ),
                               ),
                             ),
