@@ -11,8 +11,10 @@ class MovieRelatedVideosScreen extends StatefulWidget {
 
   final String videoUrl;
   final List<MoiveDetailsTrailer> data;
+  final List<MoiveDetailsBlooper> data2;
+  final List<MoiveDetailsClip> data3;
 
-  MovieRelatedVideosScreen({Key key, @required this.videoUrl, this.data}) : super(key: key);
+  MovieRelatedVideosScreen({Key key, @required this.videoUrl, this.data,this.data2,this.data3}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -24,9 +26,18 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
   TargetPlatform _platform;
   VideoPlayerController _videoPlayerController;
   ChewieController _chewieController;
+  //预告片列表
   List<MoiveDetailsTrailer> moiveDetailsTrailerlList;
+  //花絮列表
+  List<MoiveDetailsBlooper> moiveDetailsBlooperlList;
+  //片段列表
+  List<MoiveDetailsClip> moiveDetailsCliplList;
   //当前被选中的预告片索引
   int selectedIndex;
+  //当前被选中的花絮索引
+  int selectedBlooperIndex;
+  //当前被选中的片段索引
+  int selectedClipIndex;
 
 
   @override
@@ -34,7 +45,9 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
     super.initState();
     selectedIndex = 0;
     moiveDetailsTrailerlList = widget.data;
-    ///只能识别https http格式无法播放                          用[replacement]替换从[start]到[end]的子字符串。
+    moiveDetailsBlooperlList = widget.data2;
+    moiveDetailsCliplList = widget.data3;
+    ///只能识别https     http开头无法播放                          用[replacement]替换从[start]到[end]的子字符串。
     _videoPlayerController = VideoPlayerController.network(widget.videoUrl.replaceRange(0, 4, 'https'));
     //print(widget.videoUrl.replaceRange(0, 4, 'https'));
     _chewieController = ChewieController(
@@ -45,7 +58,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
     );
   }
 
-  void replaceVideo(String url, int currentIndex){
+  void replaceTrailerVideo(String url, int currentIndex){
     ///禁止setState（）在dispose（）之后调用，意思是当前页面在构建树里已被销毁，无法改变状态。
     setState(() {
       _chewieController.dispose();
@@ -59,8 +72,51 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
         looping: true,
       );
       selectedIndex = currentIndex;
+      selectedBlooperIndex = null;
+      selectedClipIndex = null;
     });
   }
+
+  void replaceBlooperVideo(String url, int currentIndex){
+    ///禁止setState（）在dispose（）之后调用，意思是当前页面在构建树里已被销毁，无法改变状态。
+    setState(() {
+      _chewieController.dispose();
+      _videoPlayerController.pause();
+      //_videoPlayerController.seekTo(Duration(seconds: 0));
+      _videoPlayerController = VideoPlayerController.network(url.replaceRange(0, 4, 'https'));
+      _chewieController = ChewieController(
+        videoPlayerController: _videoPlayerController,
+        aspectRatio: 1.6,
+        autoPlay: true,
+        looping: true,
+      );
+      selectedIndex = null;
+      selectedBlooperIndex = currentIndex;
+      selectedClipIndex = null;
+    });
+  }
+
+  void replaceClipVideo(String url, int currentIndex){
+    ///禁止setState（）在dispose（）之后调用，意思是当前页面在构建树里已被销毁，无法改变状态。
+    setState(() {
+      _chewieController.dispose();
+      _videoPlayerController.pause();
+      //_videoPlayerController.seekTo(Duration(seconds: 0));
+      _videoPlayerController = VideoPlayerController.network(url.replaceRange(0, 4, 'https'));
+      _chewieController = ChewieController(
+        videoPlayerController: _videoPlayerController,
+        aspectRatio: 1.6,
+        autoPlay: true,
+        looping: true,
+      );
+      selectedIndex = null;
+      selectedBlooperIndex = null;
+      selectedClipIndex = currentIndex;
+    });
+  }
+
+
+
 
 
 
@@ -104,11 +160,13 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
         body: SingleChildScrollView(
               child: Column(
                   children: <Widget>[
+                    ///视频播放器视口
                     Container(
                       child: Chewie(
                         controller: _chewieController,
                       ),
                     ),
+                    ///播放器样式选择
                     Row(
                       children: <Widget>[
                         Expanded(
@@ -139,6 +197,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                         )
                       ],
                     ),
+                    ///预告片列表
                     ListView.separated(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -158,7 +217,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                             color: index == selectedIndex ? Colors.orange[100] : Colors.white12, ///默认页面背景色  white12
                             splashColor: Colors.orange[100],
                             onPressed: (){
-                              replaceVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
+                              replaceTrailerVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,6 +255,128 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                         );
                       },
                     ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      child: Divider(
+                      ),
+                    ),
+                    moiveDetailsBlooperlList.isNotEmpty ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: moiveDetailsBlooperlList.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          child: Divider(
+                          ),
+                        );
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          child: FlatButton(
+                            color: index == selectedBlooperIndex ? Colors.orange[100] : Colors.white12,
+                            splashColor: Colors.orange[100],
+                            onPressed: (){
+                              replaceBlooperVideo(moiveDetailsBlooperlList[index].resourceUrl,index);
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  child: Card(
+                                    clipBehavior: Clip.antiAlias,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: <Widget>[
+                                        Image.network(
+                                          moiveDetailsBlooperlList[index].medium,
+                                          width: 120,
+                                          //height: 150,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Container(
+                                          child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
+                                    child: Text(moiveDetailsBlooperlList[index].title),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ) : Container(),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      child: Divider(
+                      ),
+                    ),
+                    moiveDetailsCliplList.isNotEmpty ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: moiveDetailsCliplList.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          child: Divider(
+                          ),
+                        );
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          child: FlatButton(
+                            color: index == selectedClipIndex ? Colors.orange[100] : Colors.white12,
+                            splashColor: Colors.orange[100],
+                            onPressed: (){
+                              replaceClipVideo(moiveDetailsCliplList[index].resourceUrl,index);
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  child: Card(
+                                    clipBehavior: Clip.antiAlias,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: <Widget>[
+                                        Image.network(
+                                          moiveDetailsCliplList[index].medium,
+                                          width: 120,
+                                          //height: 150,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Container(
+                                          child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
+                                    child: Text(moiveDetailsCliplList[index].title),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ) : Container(),
                   ],
                 ),
             ),
