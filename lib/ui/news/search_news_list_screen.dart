@@ -17,7 +17,7 @@ Future<SearchNewsEntity> queryNews(String keyword) async {
   if (response.statusCode == 200) {
     return searchNewsEntityFromJson(SearchNewsEntity(),json.decode(response.body));
   } else {
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 

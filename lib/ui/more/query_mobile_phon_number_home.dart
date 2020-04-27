@@ -19,7 +19,7 @@ Future<MobiePhoneEntity> query(String phone) async {
   if (response.statusCode == 200) {
     return mobiePhoneEntityFromJson(MobiePhoneEntity(),json.decode(response.body));
   } else {
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 

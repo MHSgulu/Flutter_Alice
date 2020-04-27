@@ -16,7 +16,7 @@ Future<RealTimeHotspotEntity> fetchHotNewsData() async {
     return realTimeHotspotEntityFromJson(
         RealTimeHotspotEntity(), json.decode(response.body));
   } else {
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 

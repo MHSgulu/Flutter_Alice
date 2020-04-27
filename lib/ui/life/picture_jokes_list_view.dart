@@ -20,7 +20,7 @@ Future<PictureJokeEntity> fetchPictureJokeData(int page) async {
     return pictureJokeEntityFromJson(PictureJokeEntity(),json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 
