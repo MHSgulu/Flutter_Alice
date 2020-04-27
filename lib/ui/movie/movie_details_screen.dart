@@ -2,6 +2,7 @@ import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/model/short_film_review_entity.dart';
+import 'package:alice/ui/movie/all_film_stills_screen.dart';
 import 'package:alice/ui/movie/movie_related_videos_screen.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:alice/util/film_stills_photo_view_gallry_screen.dart';
@@ -73,11 +74,6 @@ bool isCommentTextOverflow(String text, double maxWidth) {
 
 
 
-
-
-
-
-
 /*网络请求异步操作 根据电影id请求电影详情*/
 Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
   final response = await http.get(
@@ -88,7 +84,7 @@ Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
     return moiveDetailsEntityFromJson(MoiveDetailsEntity(), json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 
@@ -103,7 +99,7 @@ Future<ShortFilmReviewEntity> fetchMovieShortReviewData(String movieId) async {
     return shortFilmReviewEntityFromJson(ShortFilmReviewEntity(), json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
-    throw Exception('服务器未响应未成功');
+    throw Exception('服务器未响应成功');
   }
 }
 
@@ -128,14 +124,15 @@ class MovieDetailsScreen extends StatefulWidget {
 class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
-  Future<ShortFilmReviewEntity> futureShortFilmReviewEntity;
+  //Future<ShortFilmReviewEntity> futureShortFilmReviewEntity;
   MovieSubject movieSubject;
   ///动态背景色
   Color dynamicBackgroundColor;
   ///是否展开电影简介的内容
   bool isExpand = false;
-  ///是否展开用户评论的内容
+  ///是否展开item当前用户评论的内容
   bool isOpen = false;
+  int openIndex;
 
   PaletteGenerator generator;
 
@@ -163,7 +160,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
     movieSubject = widget.data;
     fetchMainColorPicture();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
-    futureShortFilmReviewEntity = fetchMovieShortReviewData(widget.movieId);
+    //futureShortFilmReviewEntity = fetchMovieShortReviewData(widget.movieId);
   }
 
 
@@ -965,7 +962,26 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         children: <Widget>[
                           Container(
                             child: Text('预告片 / 剧照', style: TextStyle(fontSize: 16, color: Colors.white)),
-                          )
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => AllFilmStillsScreen(
+                                  movieId: snapshot.data.id,valueColor: dynamicBackgroundColor)));
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  child: Text('全部', style: TextStyle(fontSize: 12, color: Colors.white60)),
+                                ),
+                                Container(
+                                  child: Icon(Icons.navigate_next, color: Colors.white60, size: 22),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -995,7 +1011,12 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                         if(snapshot.data.trailers.isNotEmpty){
                                           if(index == 0){
                                             //print('这是视频');
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieRelatedVideosScreen(videoUrl: snapshot.data.trailers[index].resourceUrl,data: snapshot.data.trailers,)));
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieRelatedVideosScreen(
+                                              videoUrl: snapshot.data.trailers[index].resourceUrl,
+                                              data: snapshot.data.trailers,
+                                              data2: snapshot.data.bloopers,
+                                              data3: snapshot.data.clips,
+                                            )));
                                           }else{
                                             //print('剩下的都是剧照');
                                             Navigator.push(
@@ -1113,163 +1134,149 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             ),
                             ///短评列表栏
                             Container(
-                              child:  FutureBuilder<ShortFilmReviewEntity> (
-                                future: futureShortFilmReviewEntity,
-                                builder: (context,snapshot) {
-                                  if (snapshot.hasData) {
-                                    return snapshot.data.comments.isEmpty ? Container() : ListView.separated(
-                                      shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemCount: 4,
-                                      separatorBuilder: (BuildContext context, int index){
-                                        return Container(
-                                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                                          child: Divider(
-                                            color: Colors.white10,
-                                            //height: 20,
-                                          ),
-                                        );
-                                      },
-                                      itemBuilder: (BuildContext context, int index){
-                                        return Container(
-                                          padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                              child:  snapshot.data.popularComments.isEmpty ? Container() : ListView.separated(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: snapshot.data.popularComments.length,
+                                separatorBuilder: (BuildContext context, int index){
+                                  return Container(
+                                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                                    child: Divider(
+                                      color: Colors.white10,
+                                      //height: 20,
+                                    ),
+                                  );
+                                },
+                                itemBuilder: (BuildContext context, int index){
+                                  return Container(
+                                    padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        ///用户评论信息栏
+                                        Container(
+                                          child: Row(
                                             children: <Widget>[
-                                              ///用户评论信息栏
+                                              ///用户头像
                                               Container(
-                                                child: Row(
+                                                child: ClipOval(
+                                                  child: Image.network(
+                                                    snapshot.data.popularComments[index].author.avatar,
+                                                    width: 30,
+                                                  ),
+                                                ),
+                                              ),
+                                              ///用户名称、评分星级、评论时间
+                                              Container(
+                                                padding: EdgeInsets.only(left: 10.0),
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: <Widget>[
-                                                    ///用户头像
                                                     Container(
-                                                      child: ClipOval(
-                                                        child: Image.network(
-                                                          snapshot.data.comments[index].author.avatar,
-                                                          width: 30,
-                                                        ),
+                                                      child: Text(
+                                                        snapshot.data.popularComments[index].author.name,
+                                                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                                                       ),
                                                     ),
-                                                    ///用户名称、评分星级、评论时间
                                                     Container(
-                                                      padding: EdgeInsets.only(left: 10.0),
-                                                      child: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                      child: Row(
                                                         children: <Widget>[
+                                                          ///用户评星
+                                                          Container(
+                                                            //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                                            child: snapshot.data.popularComments[index].rating.value == 5 ? FiveStarsScore()
+                                                                : snapshot.data.popularComments[index].rating.value == 4 ? FourStarsScore()
+                                                                : snapshot.data.popularComments[index].rating.value == 3 ? ThreeStarsScore()
+                                                                : snapshot.data.popularComments[index].rating.value == 2 ? TwoStarsScore()
+                                                                : snapshot.data.popularComments[index].rating.value == 1 ? OneStarsScore() : NoStarsScore(),
+                                                          ),
+                                                          ///用户评论时间
                                                           Container(
                                                             child: Text(
-                                                              snapshot.data.comments[index].author.name,
-                                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                                                              snapshot.data.popularComments[index].createdAt.substring(0,10),
+                                                              style: TextStyle(color: Colors.white54, fontSize: 12),
                                                             ),
-                                                          ),
-                                                          Container(
-                                                            child: Row(
-                                                              children: <Widget>[
-                                                                ///用户评星
-                                                                Container(
-                                                                  //padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                                                  child: snapshot.data.comments[index].rating.value == 5 ? FiveStarsScore()
-                                                                      : snapshot.data.comments[index].rating.value == 4 ? FourStarsScore()
-                                                                      : snapshot.data.comments[index].rating.value == 3 ? ThreeStarsScore()
-                                                                      : snapshot.data.comments[index].rating.value == 2 ? TwoStarsScore()
-                                                                      : snapshot.data.comments[index].rating.value == 1 ? OneStarsScore() : NoStarsScore(),
-                                                                ),
-                                                                ///用户评论时间
-                                                                Container(
-                                                                  child: Text(
-                                                                    snapshot.data.comments[index].createdAt.substring(0,10),
-                                                                    style: TextStyle(color: Colors.white54, fontSize: 12),
-                                                                  ),
-                                                                  padding: EdgeInsets.only(left: 8.0),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                            padding: EdgeInsets.only(left: 8.0),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                    Expanded(
-                                                      child: Container(),
-                                                    ),
-                                                    Container(
-                                                      child: Icon(Icons.more_horiz, color: Colors.white60),
-                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              ///评论内容栏
-                                              Container(
-                                                padding: EdgeInsets.fromLTRB(0, 16, 0, 4),
-                                                child: isOpen
-                                                    ? Text(
-                                                  snapshot.data.comments[index].content,
-                                                  style: TextStyle(color: Colors.white70),)
-                                                    : LayoutBuilder(builder: (context,size){
-                                                  return Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: <Widget>[
-                                                      Text.rich(
-                                                        TextSpan(
-                                                          text: snapshot.data.comments[index].content,
-                                                          style: TextStyle(fontSize: 14,color: Colors.white70),
-                                                        ),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        maxLines: 4,
-                                                      ),
-                                                      isCommentTextOverflow(snapshot.data.comments[index].content, size.maxWidth)
-                                                          ? GestureDetector(
-                                                        onTap: (){
-                                                          //print('点击展开');
-                                                          setState(() {
-                                                            isOpen = true;
-                                                          });
-                                                        },
-                                                        child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: <Widget>[
-                                                            Text(
-                                                              '展开',
-                                                              style: TextStyle(color: Colors.white70),
-                                                            ),
-                                                            Container(
-                                                              padding: EdgeInsets.only(top: 2.0),
-                                                              child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
-                                                            ),
-                                                          ],),
-                                                      )
-                                                          : Container(),
-                                                    ],
-                                                  );
-                                                }),
+                                              Expanded(
+                                                child: Container(),
                                               ),
-                                              ///评论点赞数
                                               Container(
-                                                padding: EdgeInsets.fromLTRB(0, 8, 0, 4),
-                                                child: Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Icon(Icons.thumb_up, color: Colors.white54, size: 14),
-                                                    ),
-                                                    Container(
-                                                      padding: EdgeInsets.only(left: 8.0),
-                                                      child: Text(
-                                                        snapshot.data.comments[index].usefulCount.toString(),
-                                                        style: TextStyle(color: Colors.white54, fontSize: 12),
+                                                child: Icon(Icons.more_horiz, color: Colors.white60),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        ///评论内容栏
+                                        Container(
+                                          padding: EdgeInsets.fromLTRB(0, 16, 0, 4),
+                                          child:  openIndex == index  ? Text(
+                                              snapshot.data.popularComments[index].content,
+                                              style: TextStyle(color: Colors.white70)) : LayoutBuilder(builder: (context,size){
+                                            return Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text.rich(
+                                                  TextSpan(
+                                                    text: snapshot.data.popularComments[index].content,
+                                                    style: TextStyle(fontSize: 14,color: Colors.white70),
+                                                  ),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 4,
+                                                ),
+                                                isCommentTextOverflow(snapshot.data.popularComments[index].content, size.maxWidth)
+                                                    ? GestureDetector(
+                                                  onTap: (){
+                                                    //print('点击展开');
+                                                    setState(() {
+                                                      isOpen = true;
+                                                      openIndex = index;
+                                                    });
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        '展开',
+                                                        style: TextStyle(color: Colors.white70),
                                                       ),
-                                                    ),
-                                                  ],
+                                                      Container(
+                                                        padding: EdgeInsets.only(top: 2.0),
+                                                        child: Icon(Icons.keyboard_arrow_down, color: Colors.white70),
+                                                      ),
+                                                    ],),
+                                                )
+                                                    : Container(),
+                                              ],
+                                            );
+                                          }),
+                                        ),
+                                        ///评论点赞数
+                                        Container(
+                                          padding: EdgeInsets.fromLTRB(0, 8, 0, 4),
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Icon(Icons.thumb_up, color: Colors.white54, size: 14),
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.only(left: 8.0),
+                                                child: Text(
+                                                  snapshot.data.popularComments[index].usefulCount.toString(),
+                                                  style: TextStyle(color: Colors.white54, fontSize: 12),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        );
-                                      },
-                                    );
-                                  }
-                                  else if (snapshot.hasError) {
-                                    return Text("${snapshot.error}");
-                                  }
-                                  return Center(
-                                    child: Container(),
+                                        ),
+                                      ],
+                                    ),
                                   );
                                 },
                               ),
