@@ -25,11 +25,14 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
   VideoPlayerController _videoPlayerController;
   ChewieController _chewieController;
   List<MoiveDetailsTrailer> moiveDetailsTrailerlList;
+  //当前被选中的预告片索引
+  int selectedIndex;
 
 
   @override
   void initState() {
     super.initState();
+    selectedIndex = 0;
     moiveDetailsTrailerlList = widget.data;
     ///只能识别https http格式无法播放                          用[replacement]替换从[start]到[end]的子字符串。
     _videoPlayerController = VideoPlayerController.network(widget.videoUrl.replaceRange(0, 4, 'https'));
@@ -42,7 +45,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
     );
   }
 
-  void replaceVideo(String url){
+  void replaceVideo(String url, int currentIndex){
     ///禁止setState（）在dispose（）之后调用，意思是当前页面在构建树里已被销毁，无法改变状态。
     setState(() {
       _chewieController.dispose();
@@ -55,6 +58,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
         autoPlay: true,
         looping: true,
       );
+      selectedIndex = currentIndex;
     });
   }
 
@@ -142,15 +146,19 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                       separatorBuilder: (BuildContext context, int index) {
                         return Container(
                           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: Divider(),
+                          child: Divider(
+                          ),
                         );
                       },
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                           child: FlatButton(
+                            ///如果当前item被选中更换背景色，当前index等于被选中的index
+                            color: index == selectedIndex ? Colors.orange[100] : Colors.white,
+                            splashColor: Colors.orange[100],
                             onPressed: (){
-                              replaceVideo(moiveDetailsTrailerlList[index].resourceUrl);
+                              replaceVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +168,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
                                     elevation: 2.0,
                                     clipBehavior: Clip.antiAlias,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadiusDirectional.circular(4.0)),
+                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
                                     child: Stack(
                                       alignment: Alignment.center,
                                       children: <Widget>[
