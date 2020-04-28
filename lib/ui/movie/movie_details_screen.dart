@@ -3,6 +3,7 @@ import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/model/short_film_review_entity.dart';
 import 'package:alice/ui/movie/all_film_stills_screen.dart';
+import 'package:alice/ui/movie/filmmaker_details_screen.dart';
 import 'package:alice/ui/movie/movie_related_videos_screen.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:alice/util/film_stills_photo_view_gallry_screen.dart';
@@ -77,7 +78,7 @@ bool isCommentTextOverflow(String text, double maxWidth) {
 /*网络请求异步操作 根据电影id请求电影详情*/
 Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
   final response = await http.get(
-      'http://api.douban.com/v2/movie/subject/${movieId}?apikey=0b2bdeda43b5688921839c8ecb20399b');
+      'http://api.douban.com/v2/movie/subject/$movieId?apikey=0b2bdeda43b5688921839c8ecb20399b');
 
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
@@ -92,7 +93,7 @@ Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
 /*网络请求异步操作 根据电影id请求电影短评*/
 Future<ShortFilmReviewEntity> fetchMovieShortReviewData(String movieId) async {
   final response = await http.get(
-      'https://api.douban.com/v2/movie/subject/${movieId}/comments?apikey=0b2bdeda43b5688921839c8ecb20399b');
+      'https://api.douban.com/v2/movie/subject/$movieId/comments?apikey=0b2bdeda43b5688921839c8ecb20399b');
 
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
@@ -111,9 +112,9 @@ Future<ShortFilmReviewEntity> fetchMovieShortReviewData(String movieId) async {
 
 class MovieDetailsScreen extends StatefulWidget {
   final String movieId;
-  final MovieSubject data;
+  final String imgUrl;
 
-  MovieDetailsScreen({Key key, @required this.movieId, @required this.data}) : super(key: key);
+  MovieDetailsScreen({Key key, @required this.movieId, @required this.imgUrl}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -125,7 +126,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<MoiveDetailsEntity> futureMoiveDetailsEntity;
   //Future<ShortFilmReviewEntity> futureShortFilmReviewEntity;
-  MovieSubject movieSubject;
+  String imageUrl;
   ///动态背景色
   Color dynamicBackgroundColor;
   ///是否展开电影简介的内容
@@ -139,7 +140,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   Future<void> fetchMainColorPicture() async {
     generator = await PaletteGenerator.fromImageProvider(
-      NetworkImage(movieSubject.images.small),
+      NetworkImage(imageUrl),
     );
     if (generator == null || generator.colors.isEmpty) {
       dynamicBackgroundColor = MyColors.movieDetailsBackgroundColor;
@@ -157,7 +158,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
   @override
   void initState() {
     super.initState();
-    movieSubject = widget.data;
+    imageUrl = widget.imgUrl;
     fetchMainColorPicture();
     futureMoiveDetailsEntity = fetchMovieDetailsData(widget.movieId);
     //futureShortFilmReviewEntity = fetchMovieShortReviewData(widget.movieId);
@@ -174,10 +175,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
         centerTitle: true,
         title: Text('电影', style: TextStyle(fontSize: 16.0)),
         actions: <Widget>[
-          Container(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.more_horiz),
-          ),
+          IconButton(icon: Icon(Icons.more_horiz), onPressed: (){}),
         ],
       ),
       body: FutureBuilder<MoiveDetailsEntity>(
@@ -920,12 +918,18 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               children: <Widget>[
                                 Container(
                                   child: Card(
-                                    elevation: 2.0,
                                     clipBehavior: Clip.antiAlias,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadiusDirectional.circular(4.0)),
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerDeatailsScreen(
+                                            id:
+                                            snapshot.data.directors.length - index > 0
+                                            ? snapshot.data.directors[index].id
+                                            : snapshot.data.casts[index-snapshot.data.directors.length].id,
+                                        )));
+                                      },
                                       child: Image.network(
                                         ///先判断 是否把导演图片数据取完，在判断是否有演员图片，再取出演员图片数据
                                        snapshot.data.directors.length - index > 0
