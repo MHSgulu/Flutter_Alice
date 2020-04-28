@@ -9,6 +9,8 @@ import 'package:alice/model/short_film_review_entity.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
+import 'package:alice/model/film_maker_album_entity.dart';
+import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
 import 'package:alice/model/film_maker_entity.dart';
@@ -57,7 +59,12 @@ class JsonConvert<T> {
 			return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;			case PictureJokeResult:
 			return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case RealTimeHotspotEntity:
+			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case FilmMakerAlbumEntity:
+			return filmMakerAlbumEntityFromJson(data as FilmMakerAlbumEntity, json) as T;			case FilmMakerAlbumPhoto:
+			return filmMakerAlbumPhotoFromJson(data as FilmMakerAlbumPhoto, json) as T;			case FilmMakerAlbumPhotosAuthor:
+			return filmMakerAlbumPhotosAuthorFromJson(data as FilmMakerAlbumPhotosAuthor, json) as T;			case FilmMakerAlbumCelebrity:
+			return filmMakerAlbumCelebrityFromJson(data as FilmMakerAlbumCelebrity, json) as T;			case FilmMakerAlbumCelebrityAvatars:
+			return filmMakerAlbumCelebrityAvatarsFromJson(data as FilmMakerAlbumCelebrityAvatars, json) as T;			case RealTimeHotspotEntity:
 			return realTimeHotspotEntityFromJson(data as RealTimeHotspotEntity, json) as T;			case RealTimeHotspotResult:
 			return realTimeHotspotResultFromJson(data as RealTimeHotspotResult, json) as T;			case RealTimeHotspotResultShowapiResBody:
 			return realTimeHotspotResultShowapiResBodyFromJson(data as RealTimeHotspotResultShowapiResBody, json) as T;			case RealTimeHotspotResultShowapiResBodyList:
@@ -155,7 +162,12 @@ class JsonConvert<T> {
 			return pictureJokeEntityToJson(data as PictureJokeEntity);			case PictureJokeResult:
 			return pictureJokeResultToJson(data as PictureJokeResult);			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case RealTimeHotspotEntity:
+			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case FilmMakerAlbumEntity:
+			return filmMakerAlbumEntityToJson(data as FilmMakerAlbumEntity);			case FilmMakerAlbumPhoto:
+			return filmMakerAlbumPhotoToJson(data as FilmMakerAlbumPhoto);			case FilmMakerAlbumPhotosAuthor:
+			return filmMakerAlbumPhotosAuthorToJson(data as FilmMakerAlbumPhotosAuthor);			case FilmMakerAlbumCelebrity:
+			return filmMakerAlbumCelebrityToJson(data as FilmMakerAlbumCelebrity);			case FilmMakerAlbumCelebrityAvatars:
+			return filmMakerAlbumCelebrityAvatarsToJson(data as FilmMakerAlbumCelebrityAvatars);			case RealTimeHotspotEntity:
 			return realTimeHotspotEntityToJson(data as RealTimeHotspotEntity);			case RealTimeHotspotResult:
 			return realTimeHotspotResultToJson(data as RealTimeHotspotResult);			case RealTimeHotspotResultShowapiResBody:
 			return realTimeHotspotResultShowapiResBodyToJson(data as RealTimeHotspotResultShowapiResBody);			case RealTimeHotspotResultShowapiResBodyList:
@@ -253,7 +265,12 @@ class JsonConvert<T> {
 			return PictureJokeEntity().fromJson(json);			case 'PictureJokeResult':
 			return PictureJokeResult().fromJson(json);			case 'PictureJokeResultShowapiResBody':
 			return PictureJokeResultShowapiResBody().fromJson(json);			case 'PictureJokeResultShowapiResBodyContentlist':
-			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'RealTimeHotspotEntity':
+			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'FilmMakerAlbumEntity':
+			return FilmMakerAlbumEntity().fromJson(json);			case 'FilmMakerAlbumPhoto':
+			return FilmMakerAlbumPhoto().fromJson(json);			case 'FilmMakerAlbumPhotosAuthor':
+			return FilmMakerAlbumPhotosAuthor().fromJson(json);			case 'FilmMakerAlbumCelebrity':
+			return FilmMakerAlbumCelebrity().fromJson(json);			case 'FilmMakerAlbumCelebrityAvatars':
+			return FilmMakerAlbumCelebrityAvatars().fromJson(json);			case 'RealTimeHotspotEntity':
 			return RealTimeHotspotEntity().fromJson(json);			case 'RealTimeHotspotResult':
 			return RealTimeHotspotResult().fromJson(json);			case 'RealTimeHotspotResultShowapiResBody':
 			return RealTimeHotspotResultShowapiResBody().fromJson(json);			case 'RealTimeHotspotResultShowapiResBodyList':
@@ -352,7 +369,12 @@ class JsonConvert<T> {
 			return List<PictureJokeEntity>();			case 'PictureJokeResult':
 			return List<PictureJokeResult>();			case 'PictureJokeResultShowapiResBody':
 			return List<PictureJokeResultShowapiResBody>();			case 'PictureJokeResultShowapiResBodyContentlist':
-			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'RealTimeHotspotEntity':
+			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'FilmMakerAlbumEntity':
+			return List<FilmMakerAlbumEntity>();			case 'FilmMakerAlbumPhoto':
+			return List<FilmMakerAlbumPhoto>();			case 'FilmMakerAlbumPhotosAuthor':
+			return List<FilmMakerAlbumPhotosAuthor>();			case 'FilmMakerAlbumCelebrity':
+			return List<FilmMakerAlbumCelebrity>();			case 'FilmMakerAlbumCelebrityAvatars':
+			return List<FilmMakerAlbumCelebrityAvatars>();			case 'RealTimeHotspotEntity':
 			return List<RealTimeHotspotEntity>();			case 'RealTimeHotspotResult':
 			return List<RealTimeHotspotResult>();			case 'RealTimeHotspotResultShowapiResBody':
 			return List<RealTimeHotspotResultShowapiResBody>();			case 'RealTimeHotspotResultShowapiResBodyList':
