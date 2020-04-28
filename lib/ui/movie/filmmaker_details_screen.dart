@@ -1,5 +1,6 @@
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
 import 'package:alice/model/film_maker_entity.dart';
+import 'package:alice/ui/movie/filmmaker_album_screen.dart';
 import 'package:alice/util/film_maker_album_photo_view_gallry_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -61,14 +62,11 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                 ///参数 [forceElevated], [primary], [floating], [pinned], [snap], [automaticallyImplyLeading] 不能为空
                 SliverAppBar(
                   backgroundColor: Colors.black54,
-                  floating: false,
-                  ///应用程序栏是否应该在用户滚动时变为可见 默认false
-                  pinned: true,
-                  ///应用程序栏是否应在滚动视图开始时保持可见。 默认false  主流true
-                  snap: false,
-                  ///默认false
+                  floating: false,   ///默认false
+                  pinned: true,  ///应用程序栏是否应该在用户滚动时变为可见 默认false
+                  snap: false,   ///应用程序栏是否应在滚动视图开始时保持可见。 默认false  主流true
                   brightness: Brightness.dark,
-                  expandedHeight: 250.0,
+                  expandedHeight: 250.0,  ///可滚动视图的高度
                   ///应用程序栏完全展开时的大小。
                   ///创建灵活的空格键。 创建灵活的空格键。
                   flexibleSpace: FlexibleSpaceBar(
@@ -224,12 +222,23 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.all(16.0),
+                            padding: EdgeInsets.fromLTRB(16, 16, 8, 16),
                             child: Row(
                               children: <Widget>[
                                 Text('相册',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                                 Expanded(
                                   child: Container(),
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerAlbumScreen(id: snapshot.data.id)));
+                                  },
+                                  child: Container(
+                                    child: Text('全部相册',style: TextStyle(color: Colors.black54)),
+                                  ),
+                                ),
+                                Container(
+                                  child: Icon(Icons.navigate_next,color: Colors.black38),
                                 ),
                               ],
                             ),
