@@ -66,7 +66,7 @@ class IsShowingUpListScreenState extends State<IsShowingUpListScreen> {
               itemBuilder: (BuildContext context, int index){
                 return GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,data: snapshot.data.subjects[index])));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id, imgUrl: snapshot.data.subjects[index].images.small)));
                   },
                   child: Container(
                     child: Row(

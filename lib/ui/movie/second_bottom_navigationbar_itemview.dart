@@ -244,7 +244,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                             ),
                                             child: GestureDetector(
                                               onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,data: snapshot.data.subjects[index])));
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id, imgUrl: snapshot.data.subjects[index].images.small)));
                                               },
                                               child: Image.network(
                                                 snapshot.data.subjects[index].images.large,
@@ -383,7 +383,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                                         ),
                                         child: GestureDetector(
                                           onTap: (){
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id,data: snapshot.data.subjects[index])));
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id, imgUrl: snapshot.data.subjects[index].images.small)));
                                           },
                                           child: Image.network(
                                             snapshot.data.subjects[index].images.large,
