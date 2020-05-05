@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,  ///去掉DuBug模式下 右上角的标志
       title: _title,
       /*theme: ThemeData(
         primarySwatch: Colors.red

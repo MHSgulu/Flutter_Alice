@@ -1,8 +1,10 @@
 import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
+import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
 import 'package:alice/generated/json/film_maker_works_entity_helper.dart';
 import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/model/film_maker_entity.dart';
+import 'package:alice/model/film_maker_work_entity.dart';
 import 'package:alice/model/film_maker_works_entity.dart';
 import 'package:alice/ui/movie/filmmaker_album_screen.dart';
 import 'package:alice/util/film_maker_album_photo_view_gallry_screen.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'filmmaker_works_screen.dart';
 import 'movie_details_screen.dart';
 
 
@@ -49,13 +52,13 @@ Future<FilmMakerAlbumEntity> fetchFilmMakerAlbumData(String id) async {
 
 
 /*网络请求异步操作 根据电影id请求影人全部作品*/
-Future<FilmMakerWorksEntity> fetchFilmMakerWorksData(String id) async {
+Future<FilmMakerWorkEntity> fetchFilmMakerWorksData(String id) async {
   final response = await http.get(
-      'https://api.douban.com/v2/movie/celebrity/$id/works?apikey=0b2bdeda43b5688921839c8ecb20399b');
+      'https://api.douban.com/v2/movie/celebrity/$id/works?apikey=0b2bdeda43b5688921839c8ecb20399b&count=100');  ///豆瓣数据请求count最大数量为100
 
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
-    return filmMakerWorksEntityFromJson(FilmMakerWorksEntity(), json.decode(response.body));
+    return filmMakerWorkEntityFromJson(FilmMakerWorkEntity(), json.decode(response.body));
   } else {
     //如果服务器没有返回200 OK响应,然后抛出一个异常。
     throw Exception('服务器未响应成功');
@@ -79,16 +82,16 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
 
   Future<FilmMakerEntity> futureFilmMakerEntity;
   Future<FilmMakerAlbumEntity> _futureFilmMakerAlbumEntity;
-  Future<FilmMakerWorksEntity> _futureFilmMakerWorksEntity;
+  Future<FilmMakerWorkEntity> _futureFilmMakerWorkEntity;
 
   @override
   void initState() {
     super.initState();
     futureFilmMakerEntity = fetchFilmMakerDetailsData(widget.id);
     _futureFilmMakerAlbumEntity = fetchFilmMakerAlbumData(widget.id);
-    _futureFilmMakerWorksEntity = fetchFilmMakerWorksData(widget.id);
+    _futureFilmMakerWorkEntity = fetchFilmMakerWorksData(widget.id);
 
-    //print(widget.id);
+    print(widget.id);
   }
 
   @override
@@ -202,7 +205,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerAlbumScreen(data: _futureFilmMakerWorksEntity)));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerWorksScreen(data: _futureFilmMakerWorkEntity)));
                                   },
                                   child: Row(
                                     children: <Widget>[
@@ -211,8 +214,8 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                                       ),
                                       Container(
                                         padding: EdgeInsets.fromLTRB(3, 1, 0, 0),
-                                        child: FutureBuilder<FilmMakerWorksEntity> (
-                                          future: _futureFilmMakerWorksEntity,
+                                        child: FutureBuilder<FilmMakerWorkEntity> (
+                                          future: _futureFilmMakerWorkEntity,
                                           builder: (context,snapshot) {
                                             if (snapshot.hasData) {
                                               return Text(snapshot.data.total.toString(),style: TextStyle(color: Colors.black54, fontSize: 13.0));
