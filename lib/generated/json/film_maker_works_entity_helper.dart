@@ -1,5 +1,7 @@
 import 'package:alice/model/film_maker_works_entity.dart';
-
+/*
+* 废弃
+*/
 filmMakerWorksEntityFromJson(FilmMakerWorksEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
 		data.count = json['count']?.toInt();
