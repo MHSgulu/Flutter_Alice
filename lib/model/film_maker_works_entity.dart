@@ -1,6 +1,10 @@
 import 'package:alice/generated/json/base/json_convert_content.dart';
 import 'package:alice/generated/json/base/json_filed.dart';
 
+/*
+*  废弃  int average 类型未转化成功
+*/
+
 class FilmMakerWorksEntity with JsonConvert<FilmMakerWorksEntity> {
 	int count;
 	int start;
