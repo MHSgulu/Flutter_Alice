@@ -1,6 +1,7 @@
 name: alice
 description: A new Flutter application.
 
+
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -41,6 +42,9 @@ dependencies:
   # Dart代码中的透明图像，表示为Uint8List。
   transparent_image: ^1.0.0
 
+  # Flutter库可加载和缓存网络图像。也可以与占位符和错误小部件一起使用
+  cached_network_image: ^2.2.0
+
   # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
   fluttertoast: ^4.0.0
 
@@ -67,8 +71,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+#  flutterpluginsimple:
+#    path: ./flutter_plugin_simple
+
   build_runner: ^1.8.1
   json_serializable: ^3.2.5
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
