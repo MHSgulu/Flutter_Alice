@@ -25,6 +25,8 @@ import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
 import 'package:alice/generated/json/search_news_entity_helper.dart';
+import 'package:alice/model/film_maker_work_entity.dart';
+import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
 import 'package:alice/model/movie_stills_entity.dart';
 import 'package:alice/generated/json/movie_stills_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
@@ -128,7 +130,19 @@ class JsonConvert<T> {
 			return searchNewsEntityFromJson(data as SearchNewsEntity, json) as T;			case SearchNewsResult:
 			return searchNewsResultFromJson(data as SearchNewsResult, json) as T;			case SearchNewsResultResult:
 			return searchNewsResultResultFromJson(data as SearchNewsResultResult, json) as T;			case SearchNewsResultResultList:
-			return searchNewsResultResultListFromJson(data as SearchNewsResultResultList, json) as T;			case MovieStillsEntity:
+			return searchNewsResultResultListFromJson(data as SearchNewsResultResultList, json) as T;			case FilmMakerWorkEntity:
+			return filmMakerWorkEntityFromJson(data as FilmMakerWorkEntity, json) as T;			case FilmMakerWorkCelebrity:
+			return filmMakerWorkCelebrityFromJson(data as FilmMakerWorkCelebrity, json) as T;			case FilmMakerWorkCelebrityAvatars:
+			return filmMakerWorkCelebrityAvatarsFromJson(data as FilmMakerWorkCelebrityAvatars, json) as T;			case FilmMakerWorkWork:
+			return filmMakerWorkWorkFromJson(data as FilmMakerWorkWork, json) as T;			case FilmMakerWorkWorksSubject:
+			return filmMakerWorkWorksSubjectFromJson(data as FilmMakerWorkWorksSubject, json) as T;			case FilmMakerWorkWorksSubjectRating:
+			return filmMakerWorkWorksSubjectRatingFromJson(data as FilmMakerWorkWorksSubjectRating, json) as T;			case FilmMakerWorkWorksSubjectRatingDetails:
+			return filmMakerWorkWorksSubjectRatingDetailsFromJson(data as FilmMakerWorkWorksSubjectRatingDetails, json) as T;			case FilmMakerWorkWorksSubjectCast:
+			return filmMakerWorkWorksSubjectCastFromJson(data as FilmMakerWorkWorksSubjectCast, json) as T;			case FilmMakerWorkWorksSubjectCastsAvatars:
+			return filmMakerWorkWorksSubjectCastsAvatarsFromJson(data as FilmMakerWorkWorksSubjectCastsAvatars, json) as T;			case FilmMakerWorkWorksSubjectDirector:
+			return filmMakerWorkWorksSubjectDirectorFromJson(data as FilmMakerWorkWorksSubjectDirector, json) as T;			case FilmMakerWorkWorksSubjectDirectorsAvatars:
+			return filmMakerWorkWorksSubjectDirectorsAvatarsFromJson(data as FilmMakerWorkWorksSubjectDirectorsAvatars, json) as T;			case FilmMakerWorkWorksSubjectImages:
+			return filmMakerWorkWorksSubjectImagesFromJson(data as FilmMakerWorkWorksSubjectImages, json) as T;			case MovieStillsEntity:
 			return movieStillsEntityFromJson(data as MovieStillsEntity, json) as T;			case MovieStillsPhoto:
 			return movieStillsPhotoFromJson(data as MovieStillsPhoto, json) as T;			case MovieStillsPhotosAuthor:
 			return movieStillsPhotosAuthorFromJson(data as MovieStillsPhotosAuthor, json) as T;			case MovieStillsSubject:
@@ -243,7 +257,19 @@ class JsonConvert<T> {
 			return searchNewsEntityToJson(data as SearchNewsEntity);			case SearchNewsResult:
 			return searchNewsResultToJson(data as SearchNewsResult);			case SearchNewsResultResult:
 			return searchNewsResultResultToJson(data as SearchNewsResultResult);			case SearchNewsResultResultList:
-			return searchNewsResultResultListToJson(data as SearchNewsResultResultList);			case MovieStillsEntity:
+			return searchNewsResultResultListToJson(data as SearchNewsResultResultList);			case FilmMakerWorkEntity:
+			return filmMakerWorkEntityToJson(data as FilmMakerWorkEntity);			case FilmMakerWorkCelebrity:
+			return filmMakerWorkCelebrityToJson(data as FilmMakerWorkCelebrity);			case FilmMakerWorkCelebrityAvatars:
+			return filmMakerWorkCelebrityAvatarsToJson(data as FilmMakerWorkCelebrityAvatars);			case FilmMakerWorkWork:
+			return filmMakerWorkWorkToJson(data as FilmMakerWorkWork);			case FilmMakerWorkWorksSubject:
+			return filmMakerWorkWorksSubjectToJson(data as FilmMakerWorkWorksSubject);			case FilmMakerWorkWorksSubjectRating:
+			return filmMakerWorkWorksSubjectRatingToJson(data as FilmMakerWorkWorksSubjectRating);			case FilmMakerWorkWorksSubjectRatingDetails:
+			return filmMakerWorkWorksSubjectRatingDetailsToJson(data as FilmMakerWorkWorksSubjectRatingDetails);			case FilmMakerWorkWorksSubjectCast:
+			return filmMakerWorkWorksSubjectCastToJson(data as FilmMakerWorkWorksSubjectCast);			case FilmMakerWorkWorksSubjectCastsAvatars:
+			return filmMakerWorkWorksSubjectCastsAvatarsToJson(data as FilmMakerWorkWorksSubjectCastsAvatars);			case FilmMakerWorkWorksSubjectDirector:
+			return filmMakerWorkWorksSubjectDirectorToJson(data as FilmMakerWorkWorksSubjectDirector);			case FilmMakerWorkWorksSubjectDirectorsAvatars:
+			return filmMakerWorkWorksSubjectDirectorsAvatarsToJson(data as FilmMakerWorkWorksSubjectDirectorsAvatars);			case FilmMakerWorkWorksSubjectImages:
+			return filmMakerWorkWorksSubjectImagesToJson(data as FilmMakerWorkWorksSubjectImages);			case MovieStillsEntity:
 			return movieStillsEntityToJson(data as MovieStillsEntity);			case MovieStillsPhoto:
 			return movieStillsPhotoToJson(data as MovieStillsPhoto);			case MovieStillsPhotosAuthor:
 			return movieStillsPhotosAuthorToJson(data as MovieStillsPhotosAuthor);			case MovieStillsSubject:
@@ -358,7 +384,19 @@ class JsonConvert<T> {
 			return SearchNewsEntity().fromJson(json);			case 'SearchNewsResult':
 			return SearchNewsResult().fromJson(json);			case 'SearchNewsResultResult':
 			return SearchNewsResultResult().fromJson(json);			case 'SearchNewsResultResultList':
-			return SearchNewsResultResultList().fromJson(json);			case 'MovieStillsEntity':
+			return SearchNewsResultResultList().fromJson(json);			case 'FilmMakerWorkEntity':
+			return FilmMakerWorkEntity().fromJson(json);			case 'FilmMakerWorkCelebrity':
+			return FilmMakerWorkCelebrity().fromJson(json);			case 'FilmMakerWorkCelebrityAvatars':
+			return FilmMakerWorkCelebrityAvatars().fromJson(json);			case 'FilmMakerWorkWork':
+			return FilmMakerWorkWork().fromJson(json);			case 'FilmMakerWorkWorksSubject':
+			return FilmMakerWorkWorksSubject().fromJson(json);			case 'FilmMakerWorkWorksSubjectRating':
+			return FilmMakerWorkWorksSubjectRating().fromJson(json);			case 'FilmMakerWorkWorksSubjectRatingDetails':
+			return FilmMakerWorkWorksSubjectRatingDetails().fromJson(json);			case 'FilmMakerWorkWorksSubjectCast':
+			return FilmMakerWorkWorksSubjectCast().fromJson(json);			case 'FilmMakerWorkWorksSubjectCastsAvatars':
+			return FilmMakerWorkWorksSubjectCastsAvatars().fromJson(json);			case 'FilmMakerWorkWorksSubjectDirector':
+			return FilmMakerWorkWorksSubjectDirector().fromJson(json);			case 'FilmMakerWorkWorksSubjectDirectorsAvatars':
+			return FilmMakerWorkWorksSubjectDirectorsAvatars().fromJson(json);			case 'FilmMakerWorkWorksSubjectImages':
+			return FilmMakerWorkWorksSubjectImages().fromJson(json);			case 'MovieStillsEntity':
 			return MovieStillsEntity().fromJson(json);			case 'MovieStillsPhoto':
 			return MovieStillsPhoto().fromJson(json);			case 'MovieStillsPhotosAuthor':
 			return MovieStillsPhotosAuthor().fromJson(json);			case 'MovieStillsSubject':
@@ -474,7 +512,19 @@ class JsonConvert<T> {
 			return List<SearchNewsEntity>();			case 'SearchNewsResult':
 			return List<SearchNewsResult>();			case 'SearchNewsResultResult':
 			return List<SearchNewsResultResult>();			case 'SearchNewsResultResultList':
-			return List<SearchNewsResultResultList>();			case 'MovieStillsEntity':
+			return List<SearchNewsResultResultList>();			case 'FilmMakerWorkEntity':
+			return List<FilmMakerWorkEntity>();			case 'FilmMakerWorkCelebrity':
+			return List<FilmMakerWorkCelebrity>();			case 'FilmMakerWorkCelebrityAvatars':
+			return List<FilmMakerWorkCelebrityAvatars>();			case 'FilmMakerWorkWork':
+			return List<FilmMakerWorkWork>();			case 'FilmMakerWorkWorksSubject':
+			return List<FilmMakerWorkWorksSubject>();			case 'FilmMakerWorkWorksSubjectRating':
+			return List<FilmMakerWorkWorksSubjectRating>();			case 'FilmMakerWorkWorksSubjectRatingDetails':
+			return List<FilmMakerWorkWorksSubjectRatingDetails>();			case 'FilmMakerWorkWorksSubjectCast':
+			return List<FilmMakerWorkWorksSubjectCast>();			case 'FilmMakerWorkWorksSubjectCastsAvatars':
+			return List<FilmMakerWorkWorksSubjectCastsAvatars>();			case 'FilmMakerWorkWorksSubjectDirector':
+			return List<FilmMakerWorkWorksSubjectDirector>();			case 'FilmMakerWorkWorksSubjectDirectorsAvatars':
+			return List<FilmMakerWorkWorksSubjectDirectorsAvatars>();			case 'FilmMakerWorkWorksSubjectImages':
+			return List<FilmMakerWorkWorksSubjectImages>();			case 'MovieStillsEntity':
 			return List<MovieStillsEntity>();			case 'MovieStillsPhoto':
 			return List<MovieStillsPhoto>();			case 'MovieStillsPhotosAuthor':
 			return List<MovieStillsPhotosAuthor>();			case 'MovieStillsSubject':
