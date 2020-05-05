@@ -1,5 +1,9 @@
+import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
+import 'package:alice/generated/json/film_maker_works_entity_helper.dart';
+import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/model/film_maker_entity.dart';
+import 'package:alice/model/film_maker_works_entity.dart';
 import 'package:alice/ui/movie/filmmaker_album_screen.dart';
 import 'package:alice/util/film_maker_album_photo_view_gallry_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,11 +13,13 @@ import 'dart:convert';
 
 import 'movie_details_screen.dart';
 
+
+
 /*网络请求异步操作 根据影人id请求影人信息*/
 Future<FilmMakerEntity> fetchFilmMakerDetailsData(String movieId) async {
   final response = await http.get(
       'http://api.douban.com/v2/movie/celebrity/$movieId?apikey=0b2bdeda43b5688921839c8ecb20399b');
-
+  //print(response.statusCode);
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
     return filmMakerEntityFromJson(FilmMakerEntity(), json.decode(response.body));
@@ -25,13 +31,43 @@ Future<FilmMakerEntity> fetchFilmMakerDetailsData(String movieId) async {
 
 
 
+/*网络请求异步操作 根据影人id请求影人全部照片*/
+Future<FilmMakerAlbumEntity> fetchFilmMakerAlbumData(String id) async {
+  final response = await http.get(
+      'https://api.douban.com/v2/movie/celebrity/$id/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=100'); ///豆瓣数据请求count最大数量为100
+
+  if (response.statusCode == 200) {
+    //如果服务器确实返回了200 OK响应,然后解析JSON
+    return filmMakerAlbumEntityFromJson(FilmMakerAlbumEntity(), json.decode(response.body));
+  } else {
+    //如果服务器没有返回200 OK响应,然后抛出一个异常。
+    throw Exception('服务器未响应成功');
+  }
+
+}
+
+
+
+/*网络请求异步操作 根据电影id请求影人全部作品*/
+Future<FilmMakerWorksEntity> fetchFilmMakerWorksData(String id) async {
+  final response = await http.get(
+      'https://api.douban.com/v2/movie/celebrity/$id/works?apikey=0b2bdeda43b5688921839c8ecb20399b');
+
+  if (response.statusCode == 200) {
+    //如果服务器确实返回了200 OK响应,然后解析JSON
+    return filmMakerWorksEntityFromJson(FilmMakerWorksEntity(), json.decode(response.body));
+  } else {
+    //如果服务器没有返回200 OK响应,然后抛出一个异常。
+    throw Exception('服务器未响应成功');
+  }
+
+}
+
+
 
 class FilmMakerDeatailsScreen extends StatefulWidget {
-
   final String id;
-
   FilmMakerDeatailsScreen({Key key, @required this.id}) : super(key: key);
-
 
   @override
   State<StatefulWidget> createState() {
@@ -42,11 +78,17 @@ class FilmMakerDeatailsScreen extends StatefulWidget {
 class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
 
   Future<FilmMakerEntity> futureFilmMakerEntity;
+  Future<FilmMakerAlbumEntity> _futureFilmMakerAlbumEntity;
+  Future<FilmMakerWorksEntity> _futureFilmMakerWorksEntity;
 
   @override
   void initState() {
     super.initState();
     futureFilmMakerEntity = fetchFilmMakerDetailsData(widget.id);
+    _futureFilmMakerAlbumEntity = fetchFilmMakerAlbumData(widget.id);
+    _futureFilmMakerWorksEntity = fetchFilmMakerWorksData(widget.id);
+
+    //print(widget.id);
   }
 
   @override
@@ -151,12 +193,42 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.all(16.0),
+                            padding: EdgeInsets.fromLTRB(16, 16, 8, 16),
                             child: Row(
                               children: <Widget>[
                                 Text('影视',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                                 Expanded(
                                   child: Container(),
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerAlbumScreen(data: _futureFilmMakerWorksEntity)));
+                                  },
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text('全部影视',style: TextStyle(color: Colors.black54, fontSize: 13.0)),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.fromLTRB(3, 1, 0, 0),
+                                        child: FutureBuilder<FilmMakerWorksEntity> (
+                                          future: _futureFilmMakerWorksEntity,
+                                          builder: (context,snapshot) {
+                                            if (snapshot.hasData) {
+                                              return Text(snapshot.data.total.toString(),style: TextStyle(color: Colors.black54, fontSize: 13.0));
+                                            }
+                                            else if (snapshot.hasError) {
+                                              return Text("${snapshot.error}");
+                                            }
+                                            return Container();
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Icon(Icons.navigate_next,color: Colors.black38),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -231,14 +303,33 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerAlbumScreen(id: snapshot.data.id)));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => FilmMakerAlbumScreen(data: _futureFilmMakerAlbumEntity)));
                                   },
-                                  child: Container(
-                                    child: Text('全部相册',style: TextStyle(color: Colors.black54)),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text('全部照片',style: TextStyle(color: Colors.black54, fontSize: 13.0)),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.fromLTRB(2, 1, 0, 0),
+                                        child: FutureBuilder<FilmMakerAlbumEntity> (
+                                          future: _futureFilmMakerAlbumEntity,
+                                          builder: (context,snapshot) {
+                                            if (snapshot.hasData) {
+                                              return Text(snapshot.data.total.toString(),style: TextStyle(color: Colors.black54, fontSize: 13.0));
+                                            }
+                                            else if (snapshot.hasError) {
+                                              return Text("${snapshot.error}");
+                                            }
+                                            return Container();
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Icon(Icons.navigate_next,color: Colors.black38),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                Container(
-                                  child: Icon(Icons.navigate_next,color: Colors.black38),
                                 ),
                               ],
                             ),
@@ -295,7 +386,9 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
               ],
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Center(
+              child: Text("${snapshot.error}"),
+            );
           }
           return Center(
             child: CircularProgressIndicator(

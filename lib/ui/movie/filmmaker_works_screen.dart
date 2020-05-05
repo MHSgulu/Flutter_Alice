@@ -49,7 +49,7 @@ class _FilmMakerAlbumScreen extends State<FilmMakerAlbumScreen>{
                 title: Text('${snapshot.data.celebrity.name}的照片(${snapshot.data.total})',style: TextStyle(color: Colors.black)),
               ),
               body: GridView.builder(
-                padding: EdgeInsets.all(2.0),
+                  padding: EdgeInsets.all(2.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 1.0,

@@ -1,6 +1,7 @@
 import 'package:alice/ui/more/bing_wallpaper.dart';
 import 'package:alice/ui/more/chat_robot_screen.dart';
 import 'package:alice/ui/more/query_mobile_phon_number_home.dart';
+import 'package:alice/ui/more/test_plug_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,6 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: (){
-                  //print('活动时间混分巨兽');
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => QueryMobilePhoneNumberHomeView()),
@@ -66,16 +66,26 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                child: ListTile(
-                  leading:  Icon(Icons.android),
-                  title: Text('待后续增加的功能'),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TestPlugScreen()));
+                },
+                child: Card(
+                  child: ListTile(
+                    leading:  Icon(Icons.tap_and_play),
+                    title: Text('Flutter插件-获取手机安卓系统版本'),
+                  ),
                 ),
               ),
-              Card(
-                child: ListTile(
-                  leading:  Icon(Icons.android),
-                  title: Text('待后续增加的功能'),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TestPlugScreen()));
+                },
+                child: Card(
+                  child: ListTile(
+                    leading:  Icon(Icons.tap_and_play),
+                    title: Text('Flutter插件-获取手机电量'),
+                  ),
                 ),
               ),
               Card(
