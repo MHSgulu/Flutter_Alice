@@ -30,6 +30,9 @@ dependencies:
   # http请求 官方库
   http: ^0.12.0+4
 
+  # Dart的功能强大的Http客户端，它支持拦截器，FormData，请求取消，文件下载，超时等。
+  dio: ^3.0.9
+
   # 定义json_serializable用来创建JSON序列化和反序列化代码的注释。
   json_annotation: ^3.0.1
 
