@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/util/all_film_maker_album_photo_view_gallry_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -89,9 +90,9 @@ class _FilmMakerAlbumScreen extends State<FilmMakerAlbumScreen>{
                         );
                       },
                       child: Container(
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: snapshot.data.photos[index].cover,
+                        child: CachedNetworkImage(
+                          imageUrl: snapshot.data.photos[index].cover,
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
                         ),
                       ),
                     );
