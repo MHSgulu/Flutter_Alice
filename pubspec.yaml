@@ -94,7 +94,10 @@ flutter:
 
   # 注意: 由于 yaml 文件对缩进严格，所以必须严格按照每一层两个空格的方式进行缩进，此处assets前面应有两个空格。
   assets:
-    - images/
+    - images/icon_news.png
+    - images/icon_movie.png
+    - images/icon_fun.png
+    - images/icon_more.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

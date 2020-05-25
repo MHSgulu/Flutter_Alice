@@ -2,10 +2,13 @@ import 'package:alice/ui/life/third_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/more/fourth_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/movie/second_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/news/first_bottom_navigationbar_itemview.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+
+import 'http.dart';
 
 
 
@@ -16,6 +19,22 @@ void main() {
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
+
+
+  // add interceptors
+  //dio.interceptors.add(CookieManager(CookieJar()));
+  dio.interceptors.add(LogInterceptor());
+  //(dio.transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
+  //dio.options.receiveTimeout = 15000;
+//  (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+//      (client) {
+//    client.findProxy = (uri) {
+//      //proxy to my PC(charles)
+//      return "PROXY 10.1.10.250:8888";
+//    };
+//  };
+
+
 }
 
 
@@ -71,28 +90,37 @@ class _HomeScreenStatefulWidgetState extends State<HomeScreenStatefulWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),/*_widgetOptions[_selectedIndex],*/
       ),
       bottomNavigationBar: BottomNavigationBar(
-        //type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
         unselectedItemColor: Colors.black54,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.description),
+            icon: ImageIcon(
+                AssetImage('images/icon_news.png'),
+            ),
             title: Text('新闻'),
-            backgroundColor: Colors.blueAccent[200],
+            //backgroundColor: Colors.blueAccent[200],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.movie),
+            icon:  ImageIcon(
+              AssetImage('images/icon_movie.png'),
+            ),
             title: Text('电影'),
-            backgroundColor: Colors.teal[400],
+            //backgroundColor: Colors.teal[400],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
-            title: Text('笑话'),
-            backgroundColor: Colors.deepOrangeAccent[100],
+            icon:  ImageIcon(
+              AssetImage('images/icon_fun.png'),
+            ),
+            title: Text('开心'),
+           // backgroundColor: Colors.deepOrangeAccent[100],
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.more),
+            icon:  ImageIcon(
+              AssetImage('images/icon_more.png'),
+            ),
             title: Text('更多'),
-            backgroundColor: Colors.cyan[200],
+            //backgroundColor: Colors.cyan[200],
           ),
         ],
         currentIndex: _selectedIndex,
