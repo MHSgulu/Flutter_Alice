@@ -2,15 +2,15 @@ name: alice
 description: A new Flutter application.
 
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
+# 下面定义应用程序的版本和内部版本号。
+# 版本号是由点分隔的三个数字，如1.2.43
+# 后跟一个可选的内部版本号，由+分隔。
+# 在flutter中，版本和生成器号都可以被重写
+# 分别通过指定--build name和--build number来生成。
+# 在Android中，build name用作versionName，build number用作versionCode。
+# 有关Android版本控制的详细信息，请访问 https://developer.android.com/studio/publish/versioning
+# 在iOS中，build name用作CFBundleShortVersionString，build number用作CFBundleVersion。
+# 有关iOS版本控制的详细信息，请访问
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
@@ -21,8 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # 下面将Cupertino图标字体添加到应用程序中。用于iOS风格图标的CupertinoIcons类。
   cupertino_icons: ^0.1.2
 
   device_info: ^0.4.2+1
@@ -81,15 +80,13 @@ dev_dependencies:
   json_serializable: ^3.2.5
 
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+# 有关此文件的一般Dart部分的信息，请参见下页
+# https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter.
+# 以下部分是Flutter专用的 .
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # 下一行确保应用程序中包含“材质图标”字体，以便可以使用“材质图标”类中的图标。
   uses-material-design: true
 
   # 注意: 由于 yaml 文件对缩进严格，所以必须严格按照每一层两个空格的方式进行缩进，此处assets前面应有两个空格。
@@ -98,22 +95,20 @@ flutter:
     - images/icon_movie.png
     - images/icon_fun.png
     - images/icon_more.png
-  # To add assets to your application, add an assets section, like this:
+  # 要向应用程序添加资产，请添加资产部分，如下所示：
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
-  # An image asset can refer to one or more resolution-specific "variants", see
+  # 图像资源可以引用一个或多个分辨率特定的“变体”，请参见
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
-  # For details regarding adding assets from package dependencies, see
+  # 有关从包依赖项添加资产的详细信息，请参见
   # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # 要将自定义字体添加到应用程序中，请在此“颤振”部分添加字体部分。
+  # 这个列表中的每个条目都应该有一个“family”键和一个“fonts”键，其中的列表给出了字体的资产和其他描述符。
+  # 例如:
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -126,5 +121,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  # 有关包依赖项中字体的详细信息,请参见
+  # https://flutter.dev/custom-fonts/#from-packages
