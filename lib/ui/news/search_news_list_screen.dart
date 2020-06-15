@@ -60,6 +60,7 @@ class SearchNewsListScreenState extends State<SearchNewsListScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return  ListView.builder(
+                      physics: BouncingScrollPhysics(),
                       padding: const EdgeInsets.all(4),
                       itemExtent: 200,
                       itemCount: snapshot.data.result.result.xList.length,
