@@ -1,11 +1,9 @@
 import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
 import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
-import 'package:alice/generated/json/film_maker_works_entity_helper.dart';
 import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/model/film_maker_entity.dart';
 import 'package:alice/model/film_maker_work_entity.dart';
-import 'package:alice/model/film_maker_works_entity.dart';
 import 'package:alice/ui/movie/filmmaker_album_screen.dart';
 import 'package:alice/util/film_maker_album_photo_view_gallry_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -102,6 +100,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
         builder: (context,snapshot) {
           if (snapshot.hasData) {
             return CustomScrollView(
+              //physics: BouncingScrollPhysics(),
               slivers: <Widget>[
                 ///创建可放置在[CustomScrollView]中的材料设计应用程序栏。
                 ///参数 [forceElevated], [primary], [floating], [pinned], [snap], [automaticallyImplyLeading] 不能为空
@@ -243,6 +242,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
+                              physics: BouncingScrollPhysics(),
                               itemCount: snapshot.data.works.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Container(
@@ -343,6 +343,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
+                              physics: BouncingScrollPhysics(),
                               itemCount: snapshot.data.photos.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Container(
