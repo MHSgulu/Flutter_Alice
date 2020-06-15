@@ -1,3 +1,4 @@
+import 'package:alice/common/my_scroll_behavior.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -131,6 +132,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         platform: _platform ?? Theme.of(context).platform,
       ),
@@ -157,229 +159,232 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
           ],
         ),
         ///SingleChildScrollView在主题最外层才可以滚动。
-        body: SingleChildScrollView(
+        body: ScrollConfiguration(
+            behavior: MyScrollBehavior(),
+            child: SingleChildScrollView(
               child: Column(
-                  children: <Widget>[
-                    ///视频播放器视口
-                    Container(
-                      child: Chewie(
-                        controller: _chewieController,
-                      ),
+                children: <Widget>[
+                  ///视频播放器视口
+                  Container(
+                    child: Chewie(
+                      controller: _chewieController,
                     ),
-                    ///播放器样式选择
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: FlatButton(
-                            onPressed: () {
-                              setState(() {
-                                _platform = TargetPlatform.android;
-                              });
-                            },
-                            child: Padding(
-                              child: Text("Android播放器"),
-                              padding: EdgeInsets.symmetric(vertical: 16.0),
-                            ),
+                  ),
+                  ///播放器样式选择
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              _platform = TargetPlatform.android;
+                            });
+                          },
+                          child: Padding(
+                            child: Text("Android播放器"),
+                            padding: EdgeInsets.symmetric(vertical: 16.0),
                           ),
                         ),
-                        Expanded(
-                          child: FlatButton(
-                            onPressed: () {
-                              setState(() {
-                                _platform = TargetPlatform.iOS;
-                              });
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 16.0),
-                              child: Text("iOS播放器"),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    ///预告片列表
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: moiveDetailsTrailerlList.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: Divider(
-                          ),
-                        );
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: FlatButton(
-                            ///如果当前item被选中更换背景色，当前index等于被选中的index
-                            color: index == selectedIndex ? Colors.orange[100] : Colors.white12, ///默认页面背景色  white12
-                            splashColor: Colors.orange[100],
-                            onPressed: (){
-                              replaceTrailerVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Card(
-                                    clipBehavior: Clip.antiAlias,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: <Widget>[
-                                        Image.network(
-                                          moiveDetailsTrailerlList[index].medium,
-                                          width: 120,
-                                          //height: 150,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Container(
-                                          child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
-                                    child: Text(moiveDetailsTrailerlList[index].title),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                      child: Divider(
                       ),
+                      Expanded(
+                        child: FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              _platform = TargetPlatform.iOS;
+                            });
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                            child: Text("iOS播放器"),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  ///预告片列表
+                  ListView.separated(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: moiveDetailsTrailerlList.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: Divider(
+                        ),
+                      );
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: FlatButton(
+                          ///如果当前item被选中更换背景色，当前index等于被选中的index
+                          color: index == selectedIndex ? Colors.orange[100] : Colors.white12, ///默认页面背景色  white12
+                          splashColor: Colors.orange[100],
+                          onPressed: (){
+                            replaceTrailerVideo(moiveDetailsTrailerlList[index].resourceUrl,index);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadiusDirectional.circular(2.0)),
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: <Widget>[
+                                      Image.network(
+                                        moiveDetailsTrailerlList[index].medium,
+                                        width: 120,
+                                        //height: 150,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      Container(
+                                        child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
+                                  child: Text(moiveDetailsTrailerlList[index].title),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    child: Divider(
                     ),
-                    moiveDetailsBlooperlList.isNotEmpty ? ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: moiveDetailsBlooperlList.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: Divider(
-                          ),
-                        );
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: FlatButton(
-                            color: index == selectedBlooperIndex ? Colors.orange[100] : Colors.white12,
-                            splashColor: Colors.orange[100],
-                            onPressed: (){
-                              replaceBlooperVideo(moiveDetailsBlooperlList[index].resourceUrl,index);
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Card(
-                                    clipBehavior: Clip.antiAlias,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: <Widget>[
-                                        Image.network(
-                                          moiveDetailsBlooperlList[index].medium,
-                                          width: 120,
-                                          //height: 150,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Container(
-                                          child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
-                                        ),
-                                      ],
-                                    ),
+                  ),
+                  moiveDetailsBlooperlList.isNotEmpty ? ListView.separated(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: moiveDetailsBlooperlList.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: Divider(
+                        ),
+                      );
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: FlatButton(
+                          color: index == selectedBlooperIndex ? Colors.orange[100] : Colors.white12,
+                          splashColor: Colors.orange[100],
+                          onPressed: (){
+                            replaceBlooperVideo(moiveDetailsBlooperlList[index].resourceUrl,index);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadiusDirectional.circular(2.0)),
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: <Widget>[
+                                      Image.network(
+                                        moiveDetailsBlooperlList[index].medium,
+                                        width: 120,
+                                        //height: 150,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      Container(
+                                        child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Expanded(
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
-                                    child: Text(moiveDetailsBlooperlList[index].title),
-                                  ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
+                                  child: Text(moiveDetailsBlooperlList[index].title),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                    ) : Container(),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                      child: Divider(
-                      ),
+                        ),
+                      );
+                    },
+                  ) : Container(),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    child: Divider(
                     ),
-                    moiveDetailsCliplList.isNotEmpty ? ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: moiveDetailsCliplList.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: Divider(
-                          ),
-                        );
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: FlatButton(
-                            color: index == selectedClipIndex ? Colors.orange[100] : Colors.white12,
-                            splashColor: Colors.orange[100],
-                            onPressed: (){
-                              replaceClipVideo(moiveDetailsCliplList[index].resourceUrl,index);
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Card(
-                                    clipBehavior: Clip.antiAlias,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadiusDirectional.circular(2.0)),
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: <Widget>[
-                                        Image.network(
-                                          moiveDetailsCliplList[index].medium,
-                                          width: 120,
-                                          //height: 150,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Container(
-                                          child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
-                                        ),
-                                      ],
-                                    ),
+                  ),
+                  moiveDetailsCliplList.isNotEmpty ? ListView.separated(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: moiveDetailsCliplList.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: Divider(
+                        ),
+                      );
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: FlatButton(
+                          color: index == selectedClipIndex ? Colors.orange[100] : Colors.white12,
+                          splashColor: Colors.orange[100],
+                          onPressed: (){
+                            replaceClipVideo(moiveDetailsCliplList[index].resourceUrl,index);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadiusDirectional.circular(2.0)),
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: <Widget>[
+                                      Image.network(
+                                        moiveDetailsCliplList[index].medium,
+                                        width: 120,
+                                        //height: 150,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      Container(
+                                        child: Icon(Icons.play_circle_outline, color: Colors.white70, size: 20),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Expanded(
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
-                                    child: Text(moiveDetailsCliplList[index].title),
-                                  ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(16, 4, 0, 0),
+                                  child: Text(moiveDetailsCliplList[index].title),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                    ) : Container(),
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  ) : Container(),
+                ],
+              ),
             ),
+        ),
       ),
     );
   }
