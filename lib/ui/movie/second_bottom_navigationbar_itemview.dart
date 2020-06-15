@@ -55,6 +55,12 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
   Future<MovieEntity> futureMovieEntity;
   Future<MovieEntity> futureMovieEntity2;
 
+  List<String> bannerImgUrl = [
+    'https://img3.doubanio.com/view/photo/l/public/p2552055511.webp',
+    'https://img1.doubanio.com/view/photo/m/public/p2561712948.webp',
+    'https://img9.doubanio.com/view/photo/l/public/p2576400566.webp',
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -104,6 +110,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
         ],
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
           child: Container(
               child: Column(
                 children: <Widget>[
@@ -115,39 +122,7 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                       child: Swiper(
                         autoplay: true,  //自动播放开关.
                         //autoplayDelay: 3000,  //自动播放延迟毫秒数. 默认3秒
-                        itemBuilder: (BuildContext context,int index){
-                          if(index==0){
-                            return Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusDirectional.circular(4.0),
-                              ),
-                              clipBehavior: Clip.antiAlias,
-                              elevation: 2.0,
-                              child: Image.network("https://img3.doubanio.com/view/photo/l/public/p2552055511.webp",fit: BoxFit.cover),
-                            );
-                          }
-                          if(index==1){
-                            return Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusDirectional.circular(4.0),
-                              ),
-                              clipBehavior: Clip.antiAlias,
-                              elevation: 2.0,
-                              child: Image.network("https://img1.doubanio.com/view/photo/m/public/p2561712948.webp",fit: BoxFit.cover),
-                            );
-                          }
-                          else{
-                            return Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusDirectional.circular(4.0),
-                              ),
-                              clipBehavior: Clip.antiAlias,
-                              elevation: 2.0,
-                              child: Image.network("https://img9.doubanio.com/view/photo/l/public/p2576400566.webp",fit: BoxFit.cover),
-                            );
-                          }
-                        },
-                        itemCount: 3,
+                        itemCount: bannerImgUrl.length,
                         viewportFraction: 0.85,  //当前轮播图的视口大小
                         scale: 0.9,  //两边轮播图的视口距离中间视口的距离 值越大越近
                         pagination: SwiperPagination(),
@@ -156,6 +131,16 @@ class SecondBottomNavigationBarItemViewState extends State<SecondBottomNavigatio
                           //color: Colors.teal,
                           size: 0.0,  //轮播图左右箭头图标大小 为0 相当于去掉图标
                         ),
+                        itemBuilder: (BuildContext context,int index){
+                          return Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadiusDirectional.circular(4.0),
+                              ),
+                              clipBehavior: Clip.antiAlias,
+                              elevation: 2.0,
+                              child: Image.network(bannerImgUrl[index],fit: BoxFit.cover),
+                            );
+                          },
                       ),
                     ),
                   ),
