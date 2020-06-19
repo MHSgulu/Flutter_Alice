@@ -1,22 +1,6 @@
 import 'package:alice/ui/news/real_time_hotspot_ranking_screen.dart';
 import 'package:alice/ui/news/search_news_screen.dart';
-import 'package:alice/ui/news/tab_news_list_screen_1.dart';
-import 'package:alice/ui/news/tab_news_list_screen_10.dart';
-import 'package:alice/ui/news/tab_news_list_screen_11.dart';
-import 'package:alice/ui/news/tab_news_list_screen_12.dart';
-import 'package:alice/ui/news/tab_news_list_screen_13.dart';
-import 'package:alice/ui/news/tab_news_list_screen_14.dart';
-import 'package:alice/ui/news/tab_news_list_screen_15.dart';
-import 'package:alice/ui/news/tab_news_list_screen_16.dart';
-import 'package:alice/ui/news/tab_news_list_screen_17.dart';
-import 'package:alice/ui/news/tab_news_list_screen_2.dart';
-import 'package:alice/ui/news/tab_news_list_screen_3.dart';
-import 'package:alice/ui/news/tab_news_list_screen_4.dart';
-import 'package:alice/ui/news/tab_news_list_screen_5.dart';
-import 'package:alice/ui/news/tab_news_list_screen_6.dart';
-import 'package:alice/ui/news/tab_news_list_screen_7.dart';
-import 'package:alice/ui/news/tab_news_list_screen_8.dart';
-import 'package:alice/ui/news/tab_news_list_screen_9.dart';
+import 'package:alice/ui/news/tab_news_list.dart';
 import 'package:flutter/material.dart';
 
 
@@ -146,55 +130,55 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
         controller: _tabController,
         children: newsTabs.map((Tab tab) {
           if(tab.text=='头条'){
-            return TabNewsListScreen1();
+            return TabNewsList(channelName: '头条');
           }
           if(tab.text=='新闻'){
-            return TabNewsListScreen2();
+            return TabNewsList(channelName: '新闻');
           }
           if(tab.text=='国内'){
-            return TabNewsListScreen3();
+            return TabNewsList(channelName: '国内');
           }
           if(tab.text=='国际'){
-            return TabNewsListScreen4();
+            return TabNewsList(channelName: '国际');
           }
           if(tab.text=='政治'){
-            return TabNewsListScreen5();
+            return TabNewsList(channelName: '政治');
           }
           if(tab.text=='财经'){
-            return TabNewsListScreen6();
+            return TabNewsList(channelName: '财经');
           }
           if(tab.text=='体育'){
-            return TabNewsListScreen7();
+            return TabNewsList(channelName: '体育');
           }
           if(tab.text=='娱乐'){
-            return TabNewsListScreen8();
+            return TabNewsList(channelName: '娱乐');
           }
           if(tab.text=='军事'){
-            return TabNewsListScreen9();
+            return TabNewsList(channelName: '军事');
           }
           if(tab.text=='教育'){
-            return TabNewsListScreen10();
+            return TabNewsList(channelName: '教育');
           }
           if(tab.text=='科技'){
-            return TabNewsListScreen11();
+            return TabNewsList(channelName: '科技');
           }
           if(tab.text=='NBA'){
-            return TabNewsListScreen12();
+            return TabNewsList(channelName: 'NBA');
           }
           if(tab.text=='股票'){
-            return TabNewsListScreen13();
+            return TabNewsList(channelName: '股票');
           }
           if(tab.text=='星座'){
-            return TabNewsListScreen14();
+            return TabNewsList(channelName: '星座');
           }
           if(tab.text=='女性'){
-            return TabNewsListScreen15();
+            return TabNewsList(channelName: '女性');
           }
           if(tab.text=='健康'){
-            return TabNewsListScreen16();
+            return TabNewsList(channelName: '健康');
           }
           if(tab.text=='育儿'){
-            return TabNewsListScreen17();
+            return TabNewsList(channelName: '育儿');
           }
           else{
             return Center(

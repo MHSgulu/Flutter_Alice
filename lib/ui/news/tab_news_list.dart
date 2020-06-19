@@ -11,8 +11,8 @@ import 'news_detail_screen.dart';
 
 
 /*异步网络请求新闻数据*/
-Future<NewsEntity> fetchNewsData() async {
-  final response = await http.get('https://way.jd.com/jisuapi/get?channel=%E5%86%9B%E4%BA%8B&num=40&start=0&appkey=bd1ee420d53dcd93f21d338cd6bebba3');
+Future<NewsEntity> fetchNewsData(String channelName) async {
+  final response = await http.get('https://way.jd.com/jisuapi/get?channel=$channelName&num=40&start=0&appkey=bd1ee420d53dcd93f21d338cd6bebba3');
 
   if (response.statusCode == 200) {
     return newsEntityFromJson(NewsEntity(),json.decode(response.body));
@@ -22,18 +22,24 @@ Future<NewsEntity> fetchNewsData() async {
 }
 
 
-/*军事频道*/
-class TabNewsListScreen9 extends StatefulWidget {
+
+
+
+class TabNewsList extends StatefulWidget {
+
+  final String channelName;
+
+  TabNewsList({Key key, @required this.channelName}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return NewsListScreenState();
+    return _NewsListState();
   }
 
 }
 
 
-class NewsListScreenState extends State<TabNewsListScreen9> {
+class  _NewsListState extends State<TabNewsList> {
 
   RefreshController _refreshController = RefreshController(initialRefresh: false);
   Future<NewsEntity> _futureNewsEntity;
@@ -41,15 +47,12 @@ class NewsListScreenState extends State<TabNewsListScreen9> {
   @override
   void initState() {
     super.initState();
-    _futureNewsEntity = fetchNewsData();
+    _futureNewsEntity = fetchNewsData(widget.channelName);
   }
 
   /*下拉刷新*/
   void _onRefresh() async{
     await Future.delayed(Duration(milliseconds: 1500));
-    setState(() {
-      _futureNewsEntity = fetchNewsData();
-    });
     _refreshController.refreshCompleted();
   }
 
