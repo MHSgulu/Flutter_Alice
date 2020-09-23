@@ -1,5 +1,3 @@
-
-
 import 'package:alice/other/zego/config/zego_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,10 +6,7 @@ import 'package:zego_express_engine/zego_express_engine.dart';
 
 import 'publish_settings_page.dart';
 
-
-
 class PublishStreamPage extends StatefulWidget {
-
   final int screenWidthPx;
   final int screenHeightPx;
 
@@ -22,7 +17,6 @@ class PublishStreamPage extends StatefulWidget {
 }
 
 class _PublishStreamPageState extends State<PublishStreamPage> {
-
   String _title = '';
   bool _isPublishing = false;
 
@@ -58,24 +52,21 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
     setPublisherCallback();
 
     if (ZegoConfig.instance.enablePlatformView) {
-
       setState(() {
         // 创建平台视图小部件
-        _previewViewWidget = ZegoExpressEngine.instance.createPlatformView((viewID) {
-
+        _previewViewWidget =
+            ZegoExpressEngine.instance.createPlatformView((viewID) {
           _previewViewID = viewID;
 
           // 使用平台视图开始预览
           startPreview(viewID);
-
         });
       });
-
     } else {
-
       // 创建纹理渲染器
-      ZegoExpressEngine.instance.createTextureRenderer(widget.screenWidthPx, widget.screenHeightPx).then((textureID) {
-
+      ZegoExpressEngine.instance
+          .createTextureRenderer(widget.screenWidthPx, widget.screenHeightPx)
+          .then((textureID) {
         _previewViewID = textureID;
 
         setState(() {
@@ -90,10 +81,11 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
   }
 
   void setPublisherCallback() {
-
     // 设置发布服务器状态回调
-    ZegoExpressEngine.onPublisherStateUpdate = (String streamID, ZegoPublisherState state, int errorCode, Map<String, dynamic> extendedData) {
-
+    ZegoExpressEngine.onPublisherStateUpdate = (String streamID,
+        ZegoPublisherState state,
+        int errorCode,
+        Map<String, dynamic> extendedData) {
       if (errorCode == 0) {
         setState(() {
           _isPublishing = true;
@@ -102,15 +94,14 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
 
         ZegoConfig.instance.streamID = streamID;
         ZegoConfig.instance.saveConfig();
-
       } else {
         print('Publish error: $errorCode');
       }
     };
 
     //设置发布服务器质量回调
-    ZegoExpressEngine.onPublisherQualityUpdate = (String streamID, ZegoPublishStreamQuality quality) {
-
+    ZegoExpressEngine.onPublisherQualityUpdate =
+        (String streamID, ZegoPublishStreamQuality quality) {
       setState(() {
         _publishCaptureFPS = quality.videoCaptureFPS;
         _publishEncodeFPS = quality.videoEncodeFPS;
@@ -142,7 +133,8 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
     };
 
     // 设置发布服务器视频大小更改回调
-    ZegoExpressEngine.onPublisherVideoSizeChanged = (int width, int height, ZegoPublishChannel channel) {
+    ZegoExpressEngine.onPublisherVideoSizeChanged =
+        (int width, int height, ZegoPublishChannel channel) {
       setState(() {
         _publishWidth = width;
         _publishHeight = height;
@@ -151,9 +143,8 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
   }
 
   void startPreview(int viewID) {
-
     // Set the preview canvas
-    _previewCanvas =  ZegoCanvas.view(viewID);
+    _previewCanvas = ZegoCanvas.view(viewID);
 
     // Start preview
     ZegoExpressEngine.instance.startPreview(canvas: _previewCanvas);
@@ -186,26 +177,21 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
 
     // Logout room
     ZegoExpressEngine.instance.logoutRoom(ZegoConfig.instance.roomID);
-
   }
 
   void onPublishButtonPressed() {
-
     String streamID = _controller.text.trim();
 
     // Start publishing stream
     ZegoExpressEngine.instance.startPublishingStream(streamID);
-
   }
 
   void onCamStateChanged() {
-
     _isUseFrontCamera = !_isUseFrontCamera;
     ZegoExpressEngine.instance.useFrontCamera(_isUseFrontCamera);
   }
 
   void onMicStateChanged() {
-
     setState(() {
       _isUseMic = !_isUseMic;
       ZegoExpressEngine.instance.muteMicrophone(!_isUseMic);
@@ -213,16 +199,14 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
   }
 
   void onVideoMirroModeChanged(int mode) {
-    ZegoExpressEngine.instance.setVideoMirrorMode(ZegoVideoMirrorMode.values[mode]);
+    ZegoExpressEngine.instance
+        .setVideoMirrorMode(ZegoVideoMirrorMode.values[mode]);
   }
-
 
   Widget showPreviewToolPage() {
     return GestureDetector(
-
       behavior: HitTestBehavior.translucent,
       onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
-
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Column(
@@ -232,10 +216,9 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
             ),
             Row(
               children: <Widget>[
-                Text('StreamID: ',
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                Text(
+                  'StreamID: ',
+                  style: TextStyle(color: Colors.white),
                 )
               ],
             ),
@@ -244,35 +227,24 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
             ),
             TextField(
               controller: _controller,
-              style: TextStyle(
-                color: Colors.white
-              ),
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.only(left: 10.0, top: 12.0, bottom: 12.0),
+                  contentPadding: const EdgeInsets.only(
+                      left: 10.0, top: 12.0, bottom: 12.0),
                   hintText: '请输入  streamID',
-                  hintStyle: TextStyle(
-                    color: Color.fromRGBO(255, 255, 255, 0.8)
-                  ),
+                  hintStyle:
+                      TextStyle(color: Color.fromRGBO(255, 255, 255, 0.8)),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white
-                    )
-                  ),
+                      borderSide: BorderSide(color: Colors.white)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color(0xff0e88eb)
-                      )
-                  )
-              ),
+                      borderSide: BorderSide(color: Color(0xff0e88eb)))),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
             ),
             Text(
               'StreamID必须是全局唯一的，长度不应超过255个字节',
-              style: TextStyle(
-                color: Colors.white
-              ),
+              style: TextStyle(color: Colors.white),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 30.0),
@@ -286,10 +258,9 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
               width: 240.0,
               height: 60.0,
               child: CupertinoButton(
-                child: Text('开始发布',
-                  style: TextStyle(
-                      color: Colors.white
-                  ),
+                child: Text(
+                  '开始发布',
+                  style: TextStyle(color: Colors.white),
                 ),
                 onPressed: onPublishButtonPressed,
               ),
@@ -302,7 +273,10 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
 
   Widget showPublishingToolPage() {
     return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: MediaQuery.of(context).padding.bottom + 20.0),
+      padding: EdgeInsets.only(
+          left: 10.0,
+          right: 10.0,
+          bottom: MediaQuery.of(context).padding.bottom + 20.0),
       child: Column(
         children: <Widget>[
           Padding(
@@ -310,101 +284,81 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
           ),
           Row(
             children: <Widget>[
-              Text('RoomID: ${ZegoConfig.instance.roomID} |  StreamID: ${ZegoConfig.instance.streamID}',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 9
-                ),
+              Text(
+                'RoomID: ${ZegoConfig.instance.roomID} |  StreamID: ${ZegoConfig.instance.streamID}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('Rendering with: ${ZegoConfig.instance.enablePlatformView ? 'PlatformView' : 'TextureRenderer'}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'Rendering with: ${ZegoConfig.instance.enablePlatformView ? 'PlatformView' : 'TextureRenderer'}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('Resolution: $_publishWidth x $_publishHeight',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'Resolution: $_publishWidth x $_publishHeight',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('FPS(Capture): ${_publishCaptureFPS.toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'FPS(Capture): ${_publishCaptureFPS.toStringAsFixed(2)}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('FPS(Encode): ${_publishEncodeFPS.toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'FPS(Encode): ${_publishEncodeFPS.toStringAsFixed(2)}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('FPS(Send): ${_publishSendFPS.toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'FPS(Send): ${_publishSendFPS.toStringAsFixed(2)}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('Bitrate(Video): ${_publishVideoBitrate.toStringAsFixed(2)} kb/s',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'Bitrate(Video): ${_publishVideoBitrate.toStringAsFixed(2)} kb/s',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('Bitrate(Audio): ${_publishAudioBitrate.toStringAsFixed(2)} kb/s',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'Bitrate(Audio): ${_publishAudioBitrate.toStringAsFixed(2)} kb/s',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('HardwareEncode: ${_isHardwareEncode ? '✅' : '❎'}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'HardwareEncode: ${_isHardwareEncode ? '✅' : '❎'}',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
           Row(
             children: <Widget>[
-              Text('NetworkQuality: $_networkQuality',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 9
-                ),
+              Text(
+                'NetworkQuality: $_networkQuality',
+                style: TextStyle(color: Colors.white, fontSize: 9),
               ),
             ],
           ),
@@ -416,11 +370,11 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
               CupertinoButton(
                 padding: const EdgeInsets.all(0.0),
                 pressedOpacity: 1.0,
-                borderRadius: BorderRadius.circular(
-                    0.0),
+                borderRadius: BorderRadius.circular(0.0),
                 child: Image(
                   width: 44.0,
-                  image:AssetImage('resources/images/bottom_switchcamera_icon.png'),
+                  image: AssetImage(
+                      'resources/images/bottom_switchcamera_icon.png'),
                 ),
                 onPressed: onCamStateChanged,
               ),
@@ -430,13 +384,14 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
               CupertinoButton(
                 padding: const EdgeInsets.all(0.0),
                 pressedOpacity: 1.0,
-                borderRadius: BorderRadius.circular(
-                    0.0),
+                borderRadius: BorderRadius.circular(0.0),
                 child: Image(
                   width: 44.0,
                   image: _isUseMic
-                      ? AssetImage('resources/images/bottom_microphone_on_icon.png')
-                      : AssetImage('resources/images/bottom_microphone_off_icon.png'),
+                      ? AssetImage(
+                          'resources/images/bottom_microphone_on_icon.png')
+                      : AssetImage(
+                          'resources/images/bottom_microphone_off_icon.png'),
                 ),
                 onPressed: onMicStateChanged,
               ),
@@ -451,37 +406,39 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
   }
 
   void onSettingsButtonClicked() {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return PublishSettingsPage();
-    },fullscreenDialog: true));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => PublishSettingsPage(),
+        fullscreenDialog: true,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        title: Text(_title),
-      ),
-      floatingActionButton: CupertinoButton(
-          child: Icon(
-            Icons.settings,
-            size: 40,
-            color: Colors.white,
-          ),
-          onPressed: onSettingsButtonClicked
-      ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top,
-            child: _previewViewWidget,
-          ),
-          _isPublishing ? showPublishingToolPage() : showPreviewToolPage(),
-        ],
-      )
-    );
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          title: Text(_title),
+        ),
+        floatingActionButton: CupertinoButton(
+            child: Icon(
+              Icons.settings,
+              size: 40,
+              color: Colors.white,
+            ),
+            onPressed: onSettingsButtonClicked),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
+              child: _previewViewWidget,
+            ),
+            _isPublishing ? showPublishingToolPage() : showPreviewToolPage(),
+          ],
+        ));
   }
-
 }

@@ -44,7 +44,7 @@ class _PlayStreamPageState extends State<PlayStreamPage> {
   void initState() {
     super.initState();
 
-    _title = '步骤3 准备推流';
+    _title = '步骤3 准备拉流';
 
     if (ZegoConfig.instance.streamID.isNotEmpty) {
       _controller.text = ZegoConfig.instance.streamID;
@@ -153,7 +153,7 @@ class _PlayStreamPageState extends State<PlayStreamPage> {
 
           _playViewID = viewID;
 
-          // Start playing stream using platform view
+          // 使用平台视图开始播放流
           startPlayingStream(viewID, streamID);
 
         });
@@ -222,10 +222,9 @@ class _PlayStreamPageState extends State<PlayStreamPage> {
             ),
             TextField(
               controller: _controller,
-
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.only(left: 10.0, top: 12.0, bottom: 12.0),
-                  hintText: 'Please enter streamID',
+                  hintText: '请输入 streamID',
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                           color: Colors.grey
@@ -242,7 +241,7 @@ class _PlayStreamPageState extends State<PlayStreamPage> {
               padding: const EdgeInsets.only(bottom: 10.0),
             ),
             Text(
-              'StreamID must be globally unique and the length should not exceed 255 bytes',
+              'StreamID必须是全局唯一的，长度不应超过255个字节',
               style: TextStyle(
                 fontSize: 12.0,
                 color: Colors.black45
@@ -260,7 +259,7 @@ class _PlayStreamPageState extends State<PlayStreamPage> {
               width: 240.0,
               height: 60.0,
               child: CupertinoButton(
-                child: Text('Start Playing',
+                child: Text('开始播放',
                   style: TextStyle(
                       color: Colors.white
                   ),

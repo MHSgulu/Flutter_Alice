@@ -92,7 +92,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            'Video Mirror Mode',
+            '视频镜像模式',
             style: TextStyle(
               fontSize: 15.0
             ),
@@ -102,7 +102,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
               Row(
                 children: <Widget>[
                   Text(
-                    'Preview Mirror',
+                    '预览镜像',
                     style: TextStyle(
                       fontSize: 12.0
                     ),
@@ -116,7 +116,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
               Row(
                 children: <Widget>[
                   Text(
-                    'Publish Mirror',
+                    '发布镜像',
                     style: TextStyle(
                       fontSize: 12.0
                     ),
@@ -148,7 +148,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            'Hardware Encoder',
+            '硬件编码器',
             style: TextStyle(
               fontSize: 15.0
             ),
@@ -156,7 +156,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
           Padding(padding: EdgeInsets.all(15)),
           Expanded(
             child: Text(
-              '(The setting only valid before start publishing stream)',
+              '(该设置仅在开始发布流之前有效)',
               style: TextStyle(
                 fontSize: 10.0
               ),),
@@ -175,7 +175,7 @@ class _PublishSettingsPageState extends State<PublishSettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Setting'),
+        title: Text('设置'),
       ),
       body: Container(
         child: ListView(
