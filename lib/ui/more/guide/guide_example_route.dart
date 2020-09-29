@@ -1,10 +1,16 @@
-import 'package:alice/common/custom_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/ui/example/example_badge.dart';
 import 'package:alice/ui/example/example_device_info.dart';
+import 'package:alice/ui/example/example_font_awesome.dart';
+import 'package:alice/ui/example/example_google_fonts.dart';
+import 'package:alice/ui/example/example_html.dart';
+import 'package:alice/ui/example/example_marquee.dart';
+import 'package:alice/ui/example/example_palette.dart';
 import 'package:alice/ui/example/example_webView.dart';
-import 'package:alice/ui/more/plugin_get_android_version.dart';
-import 'package:alice/ui/more/plugin_get_battery.dart';
-import 'package:alice/ui/more/test_plug_screen.dart';
-import 'package:alice/ui/more/test_staggered_grid.dart';
+import 'package:alice/ui/example/plugin_get_android_version.dart';
+import 'package:alice/ui/example/plugin_get_battery.dart';
+import 'package:alice/ui/example/test_plug_screen.dart';
+import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,6 +30,100 @@ class GuideExampleRoute extends StatelessWidget{
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleBadgePage()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('badge 示例'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleMarquee()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('marquee 示例'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => FontAwesomeGalleryHome()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('font_awesome_flutter 示例'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleFontsPage()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('google_fonts 示例'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => HtmlExamplePage()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('flutter_html(将静态HTML和CSS呈现为Flutter小部件)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ImageColors(
+                        title: '调色板示例',
+                        image: NetworkImage('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=179292083,506023000&fm=26&gp=0.jpg'),
+                        imageSize: Size(256.0, 170.0),
+                      )));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Palette 调色板'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),

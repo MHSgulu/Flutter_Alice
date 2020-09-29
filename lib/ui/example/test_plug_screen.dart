@@ -17,7 +17,7 @@ class TestPlugScreen extends StatefulWidget{
 
 class _TestPlugScreen extends State<TestPlugScreen>{
 
-  String _platformVersion = 'Unknown';
+  String _platformVersion = '未知版本';
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _TestPlugScreen extends State<TestPlugScreen>{
     try {
       //platformVersion = await Flutterpluginsimple.platformVersion;
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      platformVersion = '获取版本失败.';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -47,14 +47,12 @@ class _TestPlugScreen extends State<TestPlugScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('官方插件示例'),
+      ),
+      body: Center(
+        child: Text('Android系统版本: $_platformVersion\n'),
       ),
     );
   }
