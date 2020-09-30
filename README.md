@@ -1,7 +1,8 @@
 # alice
 
 基于Flutter框架开发的个人作品。
-使用个人空闲时间进行Flutter的学习和使用，另外还有基于Android原生代码开发的Alcie.
+使用个人空闲时间进行Flutter的学习和使用。
+（另外还有基于Android原生代码开发的Alice）
 
 
 ## Getting Started
