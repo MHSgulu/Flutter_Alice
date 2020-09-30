@@ -1,13 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ow.alice">
-    <!-- io.flutter.app.FlutterApplication is an android.app.Application that
-         calls FlutterMain.startInitialization(this); in its onCreate method.
-         In most cases you can leave this as-is, but you if you want to provide
-         additional functionality it is fine to subclass or reimplement
-         FlutterApplication and put your custom class here. -->
+
+    <!--io.flutter.app.FlutterApplication是一个android.app.Application
+    调用FlutterMain.startInitialization（this）; 在其onCreate方法中。
+    在大多数情况下，您可以保持原样，但是如果您想提供其他功能，可以继承或重新实现FlutterApplication，然后将自定义类放在此处即可-->
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
 
     <application
         android:name="io.flutter.app.FlutterApplication"
