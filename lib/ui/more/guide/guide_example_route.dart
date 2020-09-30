@@ -9,7 +9,6 @@ import 'package:alice/ui/example/example_palette.dart';
 import 'package:alice/ui/example/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
-import 'package:alice/ui/example/test_plug_screen.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:flutter/material.dart';
 
@@ -169,7 +168,7 @@ class GuideExampleRoute extends StatelessWidget{
                     ),
                   ),
                 ),
-                Card(
+                /*Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
                   ),
@@ -183,7 +182,7 @@ class GuideExampleRoute extends StatelessWidget{
                       title: Text('插件——内嵌方式-获取手机安卓系统版本'),
                     ),
                   ),
-                ),
+                ),*/
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
@@ -195,7 +194,7 @@ class GuideExampleRoute extends StatelessWidget{
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('插件——代码平台通信方式-获取手机电量'),
+                      title: Text('通道通信——获取手机电量'),
                     ),
                   ),
                 ),
@@ -210,7 +209,7 @@ class GuideExampleRoute extends StatelessWidget{
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('插件——整合代码平台通信方式-获取手机安卓系统版本'),
+                      title: Text('通道通信——获取手机安卓系统版本'),
                     ),
                   ),
                 ),
