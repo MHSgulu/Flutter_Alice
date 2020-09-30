@@ -1,7 +1,7 @@
 import 'package:alice/ui/life/third_bottom_navigationbar_itemview.dart';
-import 'package:alice/ui/more/fourth_bottom_navigationbar_itemview.dart';
+import 'package:alice/ui/more/show_more.dart';
 import 'package:alice/ui/movie/second_bottom_navigationbar_itemview.dart';
-import 'package:alice/ui/news/first_bottom_navigationbar_itemview.dart';
+import 'package:alice/ui/one/first_bottom_navigationbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -26,12 +26,8 @@ void main() {
   runApp(MyApp());
   if (Platform.isAndroid) {
     /// 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        //指定系统覆盖样式的首选项。
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-
-    ///顶部状态栏的颜色。仅支持Android M及更高版本中。
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent); //指定系统覆盖样式的首选项。
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle); ///顶部状态栏的颜色。仅支持Android M及更高版本中。
   }
 }
 
@@ -173,13 +169,11 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         ///索引0表示第一个元素  (因此iterable.elementAt(0) 相当于 iterable.first)
         ///可以按迭代顺序迭代元素，忽略第一个[index]元素，然后返回下一个元素。
         ///有些iterable可能有更有效的方法来找到元素。
-        child: _widgetOptions
-            .elementAt(_currentIndex), /*_widgetOptions[_currentIndex],*/
+        child: _widgetOptions.elementAt(_currentIndex), /*_widgetOptions[_currentIndex],*/
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-
         ///The [showUnselectedLabels] argument defaults
         ///if [type] is [BottomNavigationBarType.fixed]   `true`
         ///if [type] is[BottomNavigationBarType.shifting]. `false`
@@ -188,7 +182,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         unselectedItemColor: Colors.black38,
         selectedFontSize: 12,
         unselectedFontSize: 12,
-
         ///当点击[item]之一时调用。
         ///创建底部导航栏的有状态小部件需要跟踪所选[BottomNavigationBarItem]的索引，并调用`setState`以使用新的[currentIndex]重建底部导航栏。
         onTap: _onItemTapped,

@@ -11,7 +11,8 @@ import 'dart:convert';
 
 
 Future<WrittenJokesEntity> fetchTextJokeData(int page) async {
-  final response = await http.get('https://way.jd.com/showapi/wbxh?time=2015-07-10&page=${page}&maxResult=20&showapi_sign=${Util.showApiSign}&appkey=${Util.jdWxApiKey}');
+  final response =
+  await http.get('https://way.jd.com/showapi/wbxh?time=2015-07-10&page=${page}&maxResult=20&showapi_sign=${Util.showApiSign}&appkey=${Util.jdWxApiKey}');
 
   if (response.statusCode == 200) {
     //如果服务器确实返回了200 OK响应,然后解析JSON
@@ -21,6 +22,8 @@ Future<WrittenJokesEntity> fetchTextJokeData(int page) async {
     throw Exception('服务器未响应成功');
   }
 }
+
+
 
 
 
@@ -133,7 +136,7 @@ class TextJokesListViewState extends State<TextJokesListView> {
                   // 在ListView中，指定itemExtent比让子组件自己决定自身长度会更高效，
                   // 这是因为指定itemExtent后，滚动系统可以提前知道列表的长度，而无需每次构建子组件时都去再计算一下，
                   // 尤其是在滚动位置频繁变化时（滚动系统需要频繁去计算列表高度）。
-                  itemExtent: 65,
+                  //itemExtent: 95,
                   //列表项的数量，如果为null，则为无限列表。
                   itemCount: snapshot.data.result.showapiResBody.contentlist.length,
                   //可滚动组件的构造函数如果需要一个列表项Builder，那么通过该构造函数构建的可滚动组件通常就是支持基于Sliver的懒加载模型的，反之则不支持，这是个一般规律。
@@ -150,18 +153,16 @@ class TextJokesListViewState extends State<TextJokesListView> {
                         },
                         child: Card(
                           child: Container(
-                            padding: EdgeInsets.only(left: 16.0),
+                            padding: EdgeInsets.fromLTRB(16, 12, 8, 8),
                             child:Column(
-                              //列的主轴 起始位置开始  在此处相当于 靠屏幕上侧开始
                               mainAxisAlignment: MainAxisAlignment.center,
-                              //列的交叉轴(横轴) 起始位置开始  在此处相当于 靠屏幕左侧开始
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Container(
                                   child: Text(snapshot.data.result.showapiResBody.contentlist[index].title),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 8.0),
+                                  padding: EdgeInsets.only(top: 8.0),
                                   child: Text(snapshot.data.result.showapiResBody.contentlist[index].ct,style: TextStyle(color: Colors.black54,fontSize:12.0)),
                                 ),
                               ],

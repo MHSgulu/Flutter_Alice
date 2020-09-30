@@ -12,6 +12,7 @@ import 'dart:convert';
 //其实，无论是在JavaScript还是Dart中，async/await都只是一个语法糖，编译器或解释器最终都会将其转化为一个Promise（Future）的调用链。
 
 /*异步网络操作*/
+
 Future<MobiePhoneEntity> query(String phone) async {
   final http.Response response = await http.post(
     'https://way.jd.com/jisuapi/query4?shouji=${phone}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
@@ -25,7 +26,6 @@ Future<MobiePhoneEntity> query(String phone) async {
 
 
 
-/*查询手机号码归属地*/
 class QueryMobilePhoneNumberHomeView extends StatefulWidget {
   QueryMobilePhoneNumberHomeView({Key key}) : super(key: key);
 
@@ -47,8 +47,20 @@ class QueryMobilePhoneNumberHomeView extends StatefulWidget {
 
 class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHomeView> {
 
-  final TextEditingController _controller = TextEditingController();
+  TextEditingController _controller;
   Future<MobiePhoneEntity> _futureMobiePhoneEntity;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +99,9 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
                         //icon: Icon(Icons.search),  //在输入字段前和装饰外部显示的图标
                         ///隐藏下划线
                         //border: InputBorder.none,
+                        ///可选的文本前缀，用于放置在输入之前的行上。使用[prefixStyle]。 如果未指定[prefixStyle]，则使用[hintStyle]。前缀文本不会作为用户输入的一部分返回。
+                        ///如果需要更详细的前缀，请考虑改用[prefix]。只能指定[prefix]和[prefixText]之一。如果同时指定了[prefixText]，则[prefixText]出现在[prefixIcon]之后。
+                        //prefixText: '输入框时前的文字',
                         ///一旦设置Icon的初始颜色后，失去点击编辑框改变颜色的效果
                         prefixIcon: Icon(Icons.search,color: Colors.blueGrey),  //在输入之前放置在行上的可选小部件。
                         suffixIcon: Icon(Icons.phone_iphone),  //在输入后放置在行上的可选小部件。
@@ -136,7 +151,7 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
                             Scaffold.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('查询的手机号码不能为空'),
-                                  //backgroundColor: Colors.transparent,  ///Snackbar的背景色
+                                  //backgroundColor: Colors.transparent,  ///SnackBar的背景色
                                   //elevation: 10.0, //阴影大小默认值为6.0。
                                   //shape: ShapeBorder(),
                                   behavior: SnackBarBehavior.floating, ///这定义了SnackBar的行为和位置 它使用[圆角矩形边框]圆角半径为4.0。 默认//[SnackBarBehavior.fixed]未指定重写形状，因此是矩形的
@@ -474,5 +489,7 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
 
     );
   }
+
+
 
 }

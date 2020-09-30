@@ -373,8 +373,7 @@ class _PublishStreamPageState extends State<PublishStreamPage> {
                 borderRadius: BorderRadius.circular(0.0),
                 child: Image(
                   width: 44.0,
-                  image: AssetImage(
-                      'resources/images/bottom_switchcamera_icon.png'),
+                  image: AssetImage('resources/images/bottom_switchcamera_icon.png'),
                 ),
                 onPressed: onCamStateChanged,
               ),

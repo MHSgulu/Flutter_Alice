@@ -79,7 +79,6 @@ class ToBeShownSoonViewPortState extends State<ToBeShownSoonViewPort> {
                           child: Container(
                             child: Image.network(
                               snapshot.data.subjects[index].images.large,
-
                               ///以下两行代码 暂时解决 图片高度不一致的问题 可能会出现不适配的为 比如在手机长度比较小 不是主流机型长宽比的那种
                               fit: BoxFit.fitHeight,
                               height: 150,

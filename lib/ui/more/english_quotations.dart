@@ -81,12 +81,12 @@ class _EnglishQuotationsState extends State<EnglishQuotations>{
                         enabled: true,
                         onTap: (){
                           Fluttertoast.showToast(msg: '已按复制英文短句到剪切板');
-                          ToolUtil.getClipboard(snapshot.data.showapiResBody.data[index].english);
+                          ToolUtil.setTextToClipboard(snapshot.data.showapiResBody.data[index].english);
                           ToolUtil.launchWebUrl(Util.googleTranslationUrl);
                         },
                         onLongPress: (){
                           Fluttertoast.showToast(msg: '已复制中文翻译到剪切板');
-                          ToolUtil.getClipboard(snapshot.data.showapiResBody.data[index].chinese);
+                          ToolUtil.setTextToClipboard(snapshot.data.showapiResBody.data[index].chinese);
                           ToolUtil.launchWebUrl(Util.googleTranslationUrl);
                         },
                         ///如果此平铺也被[启用]，则图标和文本将以相同的颜色呈现。

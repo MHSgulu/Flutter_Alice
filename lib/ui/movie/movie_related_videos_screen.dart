@@ -1,4 +1,4 @@
-import 'package:alice/common/my_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -160,7 +160,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
         ),
         ///SingleChildScrollView在主题最外层才可以滚动。
         body: ScrollConfiguration(
-            behavior: MyScrollBehavior(),
+            behavior: CustomScrollBehavior(false, false, null),
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[

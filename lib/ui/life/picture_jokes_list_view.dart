@@ -41,6 +41,35 @@ class PictureJokesListViewState extends State<PictureJokesListView> {
   RefreshController _refreshController = RefreshController(initialRefresh: false);
   Future<PictureJokeEntity> _futurePictureJokeEntity;
 
+  PictureJokeEntity data = new PictureJokeEntity();
+
+
+  List<PictureJokeEntity> _list = List();
+
+
+  /*异步网络请求图片笑话*/
+  void TestFetchPictureJokeData(int page) async {
+    final response = await http.get('https://way.jd.com/showapi/tpxh?time=2015-07-10&page=${page}&maxResult=20&showapi_sign=${Util.showApiSign}&appkey=${Util.jdWxApiKey}');
+
+    if (response.statusCode == 200) {
+      //如果服务器确实返回了200 OK响应,然后解析JSON
+      print('response.body：${response.body}');
+      print('json.decode(response.body)：${json.decode(response.body)}');
+      data = pictureJokeEntityFromJson(PictureJokeEntity(),json.decode(response.body));
+      _list.add(data);
+      print('数据1：'+data.toString());
+    } else {
+      //如果服务器没有返回200 OK响应,然后抛出一个异常。
+      throw Exception('服务器未响应成功');
+    }
+  }
+
+
+
+
+
+
+
   /*下拉刷新*/
   void _onRefresh() async{
     await Future.delayed(Duration(milliseconds: 1500));
@@ -72,6 +101,10 @@ class PictureJokesListViewState extends State<PictureJokesListView> {
   void initState() {
     super.initState();
     _futurePictureJokeEntity = fetchPictureJokeData(page);
+
+      TestFetchPictureJokeData(1);
+      //print('数据2：'+data.result.showapiResBody.contentlist[0].img);
+
   }
 
 
@@ -111,7 +144,7 @@ class PictureJokesListViewState extends State<PictureJokesListView> {
                       mainAxisSpacing: 0.0,
                       crossAxisSpacing: 0.0,
                     ),
-                    itemCount: snapshot.data.result.showapiResBody.contentlist.length,
+                    itemCount: /*snapshot.data.result.showapiResBody.contentlist.length*/data.result.showapiResBody.contentlist.length,
                     itemBuilder: (BuildContext context, int index){
                       return Container(
                         child: Card(

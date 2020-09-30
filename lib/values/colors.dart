@@ -4,6 +4,14 @@ class MyColors{
   static final Color white = Color(0xFFFFFFFF);
   static final Color black = Color(0xFF000000);
 
+  ///深灰色 黑色模式主题色    十六进制颜色码 #121212  RGB颜色值18,18,18
+  //static final Color darkGrey =  Color.fromRGBO(18, 18, 18, 1.0);
+  static final Color darkGrey =  Color(0xFF121212);
+
+  ///接近原始页面色 white12  或者 经典页面原色
+  static final Color mainBackground =  Color(0xFFF2F2F2);
+
+
   static final Color contentColor = Color(0xFFAAAAAA);
   static final Color contentBgColor = Color(0xFA303030);
 

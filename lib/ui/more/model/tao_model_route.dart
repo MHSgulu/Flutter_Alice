@@ -1,26 +1,22 @@
-import 'package:alice/ui/more/tao_model_list_paging.dart';
-import 'package:alice/ui/more/tao_model_paging.dart';
+import 'package:alice/ui/more/model/tao_model_list_paging.dart';
+import 'package:alice/ui/more/model/tao_model_paging.dart';
 import 'package:alice/values/api.dart';
 import 'package:alice/values/strings.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-
-class TaoModel extends StatefulWidget{
-
-  TaoModel({ Key key }) : super(key: key);
+class TaoModel extends StatefulWidget {
+  TaoModel({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return _TaoModelState();
   }
-
 }
 
-
-class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin{
-
+class _TaoModelState extends State<TaoModel>
+    with SingleTickerProviderStateMixin {
   var result;
 
   TabController _tabController;
@@ -46,35 +42,34 @@ class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin
     Tab(text: '其他'),
   ];
 
-
-  Future<void> fetchModelStyleData() async{
+  Future<void> fetchModelStyleData() async {
     Response response;
     Dio dio = Dio();
     //response = await dio.get("https://route.showapi.com/126-1?showapi_appid=136754&showapi_sign=4b0c074ea24f4360a5f21905acab9b81");
     //print(response.data.toString());
     /// 请求参数也可以通过对象传递，上面的代码等同于：
-    response = await dio.get(Api.wanWeiBaseUrl + Api.taoModelStyle, queryParameters: {"showapi_appid": Util.wShowApiId, "showapi_sign": Util.wShowApiSign});
+    response = await dio.get(Api.wanWeiBaseUrl + Api.taoModelStyle,
+        queryParameters: {
+          "showapi_appid": Util.wShowApiId,
+          "showapi_sign": Util.wShowApiSign
+        });
     print(response.data);
 
     var allTypeList = List();
     allTypeList = response.data['showapi_res_body']['allTypeList'];
     print(allTypeList);
+
     ///循环取所有数据
     allTypeList.forEach((e) {
       print(e);
     });
-
-
   }
-
 
   @override
   void initState() {
     super.initState();
     //fetchModelStyleData();
     _tabController = TabController(vsync: this, length: styleTabs.length);
-
-
   }
 
   @override
@@ -83,7 +78,6 @@ class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,11 +85,14 @@ class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin
         backgroundColor: Colors.white,
         brightness: Brightness.light,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back,color: Colors.black,),
-            onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.pop(context),
         ),
         title: Image.asset(
-            'assets/images/img_tao_girl.png',
+          'assets/images/img_tao_girl.png',
           height: 45,
         ),
         centerTitle: true,
@@ -118,61 +115,60 @@ class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin
         controller: _tabController,
         //physics: BouncingScrollPhysics(),
         children: styleTabs.map((Tab tab) {
-          if(tab.text=='欧美'){
+          if (tab.text == '欧美') {
             return TaoModelPaging(style: '欧美');
           }
-          if(tab.text=='韩版'){
+          if (tab.text == '韩版') {
             return TaoModelPaging(style: '韩版');
           }
-          if(tab.text=='日系'){
+          if (tab.text == '日系') {
             return TaoModelPaging(style: '日系');
           }
-          if(tab.text=='英伦'){
+          if (tab.text == '英伦') {
             return TaoModelPaging(style: '英伦');
           }
-          if(tab.text=='OL风'){
+          if (tab.text == 'OL风') {
             return TaoModelPaging(style: 'OL风');
           }
-          if(tab.text=='学院'){
+          if (tab.text == '学院') {
             return TaoModelPaging(style: '学院');
           }
-          if(tab.text=='淑女'){
+          if (tab.text == '淑女') {
             return TaoModelPaging(style: '淑女');
           }
-          if(tab.text=='性感'){
+          if (tab.text == '性感') {
             return TaoModelPaging(style: '性感');
           }
-          if(tab.text=='复古'){
+          if (tab.text == '复古') {
             return TaoModelPaging(style: '复古');
           }
-          if(tab.text=='街头'){
+          if (tab.text == '街头') {
             return TaoModelPaging(style: '街头');
           }
-          if(tab.text=='休闲'){
+          if (tab.text == '休闲') {
             return TaoModelPaging(style: '休闲');
           }
-          if(tab.text=='民族'){
+          if (tab.text == '民族') {
             return TaoModelPaging(style: '民族');
           }
-          if(tab.text=='甜美'){
+          if (tab.text == '甜美') {
             return TaoModelPaging(style: '甜美');
           }
-          if(tab.text=='运动'){
+          if (tab.text == '运动') {
             return TaoModelPaging(style: '运动');
           }
-          if(tab.text=='可爱'){
+          if (tab.text == '可爱') {
             return TaoModelPaging(style: '可爱');
           }
-          if(tab.text=='大码'){
+          if (tab.text == '大码') {
             return TaoModelPaging(style: '大码');
           }
-          if(tab.text=='中老年'){
+          if (tab.text == '中老年') {
             return TaoModelPaging(style: '中老年');
           }
-          if(tab.text=='其他'){
+          if (tab.text == '其他') {
             return TaoModelPaging(style: '其他');
-          }
-          else{
+          } else {
             return Center(
               child: Text('当前tab错误'),
             );
@@ -181,5 +177,4 @@ class _TaoModelState extends State<TaoModel> with SingleTickerProviderStateMixin
       ),
     );
   }
-
 }

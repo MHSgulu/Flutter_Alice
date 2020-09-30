@@ -1,14 +1,17 @@
 import 'package:alice/values/api.dart';
-import 'package:alice/values/strings.dart';
 import 'package:dio/dio.dart';
 
 
 class DioUtil{
 
   static Dio _wwDio;
+  static Dio _qykDio;
+  static Dio _jdWxDio;
 
   BaseOptions _sampleOptions;
   BaseOptions _wwOptions;
+  BaseOptions _qykOptions;
+  BaseOptions _jdWxOptions;
 
   factory DioUtil.getInstance() => _instance;
 
@@ -50,6 +53,26 @@ class DioUtil{
       sendTimeout: 5000,
     );
     _wwDio = Dio(_wwOptions);
+
+    ///青云客 Api
+    _qykOptions = BaseOptions(
+      baseUrl: Api.qingYunKeBaseUrl,
+      connectTimeout: 6000,
+      receiveTimeout: 5000,
+      sendTimeout: 5000,
+    );
+    _qykDio = Dio(_qykOptions);
+
+    ///京东万象 Api
+    _jdWxOptions = BaseOptions(
+      baseUrl: Api.jdWanXiangBaseUrl,
+      connectTimeout: 6000,
+      receiveTimeout: 5000,
+      sendTimeout: 5000,
+    );
+    _jdWxDio = Dio(_jdWxOptions);
+
+
    /* _wwDio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async{
         print(options);
@@ -69,7 +92,6 @@ class DioUtil{
   }
 
 
-
   ///得到的dio实例 测试通过
   //var s1 = DioUtil.getInstance().createWwDio();
   //    var s2 = DioUtil.getInstance().createWwDio();
@@ -80,14 +102,13 @@ class DioUtil{
     return _wwDio;
   }
 
+  Dio createQykDio() {
+    return _qykDio;
+  }
 
-
-
-
-
-
-
-
+  Dio createJdWxkDio() {
+    return _jdWxDio;
+  }
 
 
 }

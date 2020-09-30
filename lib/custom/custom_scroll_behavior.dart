@@ -28,8 +28,7 @@ class CustomScrollBehavior extends ScrollBehavior {
   ///
   /// 例如，在Android上，此方法使用[GlowingOverscrollIndicator]包装给定的小部件，以在用户使用时提供视觉反馈过度滚动
   @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
     //构造参数可选时无数据，必填时有数据
     /*print('数据点位: isShowLeading：' + isShowLeading.toString());
     print('数据点位: isShowTrailing：' + isShowTrailing.toString());
@@ -41,8 +40,7 @@ class CustomScrollBehavior extends ScrollBehavior {
         return child;
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
-
-        ///视觉指示滚动视图已过度滚动。
+        /// 视觉指示滚动视图已过度滚动。 创建视觉指示，表明滚动视图已过度滚动。
         ///
         /// [GlowingOverscrollIndicator]监听[ScrollNotification]，以控制过度滚动指示。
         /// 这些通知通常由[ScrollView]（例如[ListView]或[GridView]）生成。
@@ -53,8 +51,6 @@ class CustomScrollBehavior extends ScrollBehavior {
         ///由[ScrollBehavior.buildViewportChrome]在通常使用这种过度滚动指示的平台（例如Android）上自动创建。
         ///
         ///在[MaterialApp]中，边缘发光颜色为[ThemeData.accentColor]。
-
-        /// 创建视觉指示，表明滚动视图已过度滚动。
         ///
         /// 为了使此小部件显示过度滚动指示，请使用[child]小部件必须包含一个生成[ScrollNotification]的小部件，
         /// 例如[ListView]或[GridView]。
@@ -63,22 +59,28 @@ class CustomScrollBehavior extends ScrollBehavior {
         return GlowingOverscrollIndicator(
           child: child,
           axisDirection: axisDirection,
-
           ///是否在负滚动偏移量的侧面显示过度滚动光晕。
           ///对于垂直向下的视口，这是顶部。
           ///默认为true。
           ///有关视口另一侧的相应控件，请参见[showTrailing]。
           showLeading: isShowLeading ?? true,
-
           ///是否以正的滚动偏移量在侧面显示过度滚动光晕。
           ///对于垂直向下的视口，这是底部。
           ///默认为true。
           ///请参见[showLeading]，以获取视口另一侧的相应控件。
           showTrailing: isShowTrailing ?? true,
-          color: color ?? Colors.white,
-
           ///发光的颜色。 Alpha通道将被忽略(忽略颜色的透明度)。
+          color: color ?? Colors.white,
         );
+      case TargetPlatform.linux:
+        // TODO: Handle this case.
+        break;
+      case TargetPlatform.macOS:
+        // TODO: Handle this case.
+        break;
+      case TargetPlatform.windows:
+        // TODO: Handle this case.
+        break;
     }
     return null;
   }

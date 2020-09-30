@@ -1,4 +1,4 @@
-import 'package:alice/common/custom_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';

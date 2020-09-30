@@ -3,38 +3,33 @@ import 'package:flutter/material.dart';
 import 'search_news_screen.dart';
 import 'tab_news_list.dart';
 
-
-class FirstBottomNavigationBarItemView extends StatefulWidget{
+class FirstBottomNavigationBarItemView extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return FirstBottomNavigationBarItemViewState();
-  }
-
+  State<StatefulWidget> createState() => FirstBottomNavigationBarItemViewState();
 }
 
-class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationBarItemView> with SingleTickerProviderStateMixin{
+class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationBarItemView> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
-   List<Tab> newsTabs = <Tab>[
-     Tab(text: '头条'),
-     Tab(text: '新闻'),
-     Tab(text: '国内'),
-     Tab(text: '国际'),
-     Tab(text: '政治'),
-     Tab(text: '财经'),
-     Tab(text: '体育'),
-     Tab(text: '娱乐'),
-     Tab(text: '军事'),
-     Tab(text: '教育'),
-     Tab(text: '科技'),
-     Tab(text: 'NBA'),
-     Tab(text: '股票'),
-     Tab(text: '星座'),
-     Tab(text: '女性'),
-     Tab(text: '健康'),
-     Tab(text: '育儿'),
+  List<Tab> newsTabs = <Tab>[
+    Tab(text: '头条'),
+    Tab(text: '新闻'),
+    Tab(text: '国内'),
+    Tab(text: '国际'),
+    Tab(text: '政治'),
+    Tab(text: '财经'),
+    Tab(text: '体育'),
+    Tab(text: '娱乐'),
+    Tab(text: '军事'),
+    Tab(text: '教育'),
+    Tab(text: '科技'),
+    Tab(text: 'NBA'),
+    Tab(text: '股票'),
+    Tab(text: '星座'),
+    Tab(text: '女性'),
+    Tab(text: '健康'),
+    Tab(text: '育儿'),
   ];
-
 
   @override
   void initState() {
@@ -47,7 +42,6 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
     _tabController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,17 +67,20 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(left: 10),
-                child: Icon(Icons.search,color: Colors.grey[600]),
+                child: Icon(Icons.search, color: Colors.grey[600]),
               ),
               Container(
                 margin: EdgeInsets.only(left: 10),
-                child:GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen()));
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchNewsScreen()));
                   },
                   child: Text(
                     '点击此处搜索你想了解的新闻',
-                    style: TextStyle(color: Colors.grey[600], fontSize:14.0),
+                    style: TextStyle(color: Colors.grey[600], fontSize: 14.0),
                   ),
                 ),
               ),
@@ -92,12 +89,15 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
         ),
         actions: <Widget>[
           IconButton(
-            color: Colors.white, ///如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
+            color: Colors.white,
+
+            ///如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
             icon: Icon(Icons.assessment),
-            onPressed: (){
+            onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HotWordClassification()),
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HotWordClassification()),
               );
             },
           )
@@ -123,14 +123,12 @@ class FirstBottomNavigationBarItemViewState extends State<FirstBottomNavigationB
       body: TabBarView(
         controller: _tabController,
         children: [
-          for(final tab in newsTabs)
-            TabNewsList(channelName: tab.text),
+          for (final tab in newsTabs) TabNewsList(channelName: tab.text),
         ],
       ),
     );
   }
 }
-
 
 ///返回一个新的lazy[Iterable]，其中的元素是通过按迭代顺序对该“Iterable”的每个元素调用“f”而创建的。
 //此方法返回映射元素的视图。只要返回的[Iterable]没有被迭代，所提供的函数[f]就不会被调用。

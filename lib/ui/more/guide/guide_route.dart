@@ -1,4 +1,4 @@
-import 'package:alice/common/custom_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/other/zego/zego_main.dart';
 import 'package:flutter/material.dart';
 

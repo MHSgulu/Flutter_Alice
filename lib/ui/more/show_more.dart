@@ -1,12 +1,12 @@
-import 'package:alice/common/custom_scroll_behavior.dart';
-import 'package:alice/ui/more/bing_wallpaper.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/ui/more/bing/bing_wallpaper.dart';
 import 'package:alice/ui/more/chat_robot_screen.dart';
 import 'package:alice/ui/more/english_quotations.dart';
 import 'package:alice/ui/more/guide/guide_example_route.dart';
 import 'package:alice/ui/more/guide/guide_route.dart';
 import 'package:alice/ui/more/joke/life_interest_chart.dart';
 import 'package:alice/ui/more/query_mobile_phon_number_home.dart';
-import 'package:alice/ui/more/tao_model_route.dart';
+import 'package:alice/ui/more/model/tao_model_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

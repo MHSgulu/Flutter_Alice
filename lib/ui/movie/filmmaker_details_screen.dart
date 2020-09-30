@@ -14,6 +14,18 @@ import 'dart:convert';
 import 'filmmaker_works_screen.dart';
 import 'movie_details_screen.dart';
 
+///     SliverChildDelegate     SliverChildBuilderDelegate
+/// 为孩子们提供切片的委托。
+//许多银条懒散地构造它们的盒子代以避免产生更多
+//
+//在[视口]中可见的子级。
+//
+//他们使用[SliverChildDelegate]接收子代，而不是显式的[List]。
+//
+//子类[SliverChildDelegate]是不常见的。相反，考虑使用一个现有的子类，这些子类为构建器回调或显式子列表提供适配器。
+//
+//在布局列表时，可视子元素、状态和呈现对象将基于现有的小部件（例如在[SliveChildListDelegate]）或延迟提供的小部件（例如在[SliveChildBuilderDelegate]的情况下）惰性地创建。
+
 
 
 /*网络请求异步操作 根据影人id请求影人信息*/
@@ -30,8 +42,6 @@ Future<FilmMakerEntity> fetchFilmMakerDetailsData(String movieId) async {
   }
 }
 
-
-
 /*网络请求异步操作 根据影人id请求影人全部照片*/
 Future<FilmMakerAlbumEntity> fetchFilmMakerAlbumData(String id) async {
   final response = await http.get(
@@ -46,8 +56,6 @@ Future<FilmMakerAlbumEntity> fetchFilmMakerAlbumData(String id) async {
   }
 
 }
-
-
 
 /*网络请求异步操作 根据电影id请求影人全部作品*/
 Future<FilmMakerWorkEntity> fetchFilmMakerWorksData(String id) async {
@@ -89,7 +97,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
     _futureFilmMakerAlbumEntity = fetchFilmMakerAlbumData(widget.id);
     _futureFilmMakerWorkEntity = fetchFilmMakerWorksData(widget.id);
 
-    print(widget.id);
+    print('数据点位： 影人ID：' + widget.id);
   }
 
   @override
@@ -99,6 +107,21 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
         future: futureFilmMakerEntity,
         builder: (context,snapshot) {
           if (snapshot.hasData) {
+            /**
+             * [SliverList]，这是一个显示线性子列表的小条。
+
+                [SliveFixedExtentList]，这是一个更有效的小条，它显示沿滚动轴具有相同范围的子项的线性列表。
+
+                [SliveGrid]，这是一个显示二维子数组的小条。
+
+                [SilverPadding]，这是一种在另一条周围添加空白的条子。
+
+                [SliverAppBar]，这是一个显示标题的小条，可以在滚动视图滚动时展开和浮动。
+
+                [ScrollNotification]和[NotificationListener]，可用于监视滚动位置，而无需使用[ScrollController]。
+
+                [IndexedSemantics]，它允许用滚动公告的索引来注释子列表
+             */
             return CustomScrollView(
               //physics: BouncingScrollPhysics(),
               slivers: <Widget>[
@@ -107,12 +130,12 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                 SliverAppBar(
                   backgroundColor: Colors.black54,
                   floating: false,   ///默认false
-                  pinned: true,  ///应用程序栏是否应该在用户滚动时变为可见 默认false
-                  snap: false,   ///应用程序栏是否应在滚动视图开始时保持可见。 默认false  主流true
+                  pinned: true,  ///应用程序栏是否应该在用户滚动时变为可见 默认false 当用户滚动时，应用程序栏仍然可以扩展和收缩，但它将保持可见，而不是被滚动到视图之外。
+                  snap: false,   ///应用程序栏是否应在滚动视图开始时保持可见。 默认false
                   brightness: Brightness.dark,
                   expandedHeight: 250.0,  ///可滚动视图的高度
                   ///应用程序栏完全展开时的大小。
-                  ///创建灵活的空格键。 创建灵活的空格键。
+                  ///创建灵活的空格键。
                   flexibleSpace: FlexibleSpaceBar(
                     title: Text(snapshot.data.name, style: TextStyle(color: Colors.white)),
                     ///展开时柔性空格键的主要内容。通常是一个[文本]小部件。
@@ -138,6 +161,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                 ///个人
                 SliverPadding(
                   padding: EdgeInsets.all(16.0),
+                  ///[SliverToBoxAdapter]是基本的条状结构，它创建了一个返回到通常的基于框的小部件之一的桥
                   sliver: SliverToBoxAdapter(
                     child: Container(
                       child: Column(
@@ -404,4 +428,5 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
       ),
     );
   }
+
 }

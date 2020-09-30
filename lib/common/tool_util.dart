@@ -12,12 +12,12 @@ class ToolUtil{
     }else if(url == null){
       Fluttertoast.showToast(msg: '链接地址为空');
     }else {
-      Fluttertoast.showToast(msg: '无法启动网页');
+      Fluttertoast.showToast(msg: '无法启动该网页链接');
     }
   }
 
   ///存儲文本到剪切板
-  static void getClipboard(String content){
+  static void setTextToClipboard(String content){
     Clipboard.setData(ClipboardData(text: content));
   }
 

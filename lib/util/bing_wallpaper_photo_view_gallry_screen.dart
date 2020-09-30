@@ -51,7 +51,7 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
                     );
                   },
                   itemCount: widget.imageList.length,
-                  loadingChild: Container(),
+                  //loadingBuilder: Container(),
                   backgroundDecoration: null,
                   pageController: widget.controller,
                   enableRotation: false,

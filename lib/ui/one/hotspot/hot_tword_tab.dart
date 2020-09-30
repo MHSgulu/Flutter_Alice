@@ -1,4 +1,4 @@
-import 'package:alice/common/custom_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/ui/one/hotspot/hot_word_list.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,10 @@ class HotWordTabState extends State<HotWordTab> {
             ),
             onPressed: () => Navigator.pop(context),
           ),
-          title: Text(widget.title,style: TextStyle(color: Colors.black, fontSize: 17),),
+          title: Text(
+            widget.title,
+            style: TextStyle(color: Colors.black, fontSize: 17),
+          ),
           centerTitle: true,
           elevation: 0.5,
           bottom: PreferredSize(
@@ -63,13 +66,15 @@ class HotWordTabState extends State<HotWordTab> {
           ),
         ),
         body: ScrollConfiguration(
-            behavior: CustomScrollBehavior(false, false, null),
-            child: TabBarView(
-              children: [
-                for (final id in typeId)
-                  HotWordList(id: id,),
-              ],
-            ),
+          behavior: CustomScrollBehavior(false, false, null),
+          child: TabBarView(
+            children: [
+              for (final id in typeId)
+                HotWordList(
+                  id: id,
+                ),
+            ],
+          ),
         ),
       ),
     );

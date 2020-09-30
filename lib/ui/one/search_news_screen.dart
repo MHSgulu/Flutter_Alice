@@ -1,5 +1,6 @@
-import 'package:alice/ui/news/search_news_list_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'search_news_list_screen.dart';
 
 
 

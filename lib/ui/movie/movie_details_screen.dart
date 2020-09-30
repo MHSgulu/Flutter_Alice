@@ -1,4 +1,4 @@
-import 'package:alice/common/my_scroll_behavior.dart';
+import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
 import 'package:alice/model/short_film_review_entity.dart';
@@ -77,14 +77,10 @@ bool isCommentTextOverflow(String text, double maxWidth) {
 
 /*网络请求异步操作 根据电影id请求电影详情*/
 Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
-  final response = await http.get(
-      'http://api.douban.com/v2/movie/subject/$movieId?apikey=0b2bdeda43b5688921839c8ecb20399b');
-
+  final response = await http.get('http://api.douban.com/v2/movie/subject/$movieId?apikey=0b2bdeda43b5688921839c8ecb20399b');
   if (response.statusCode == 200) {
-    //如果服务器确实返回了200 OK响应,然后解析JSON
     return moiveDetailsEntityFromJson(MoiveDetailsEntity(), json.decode(response.body));
   } else {
-    //如果服务器没有返回200 OK响应,然后抛出一个异常。
     throw Exception('服务器未响应成功');
   }
 }
@@ -92,14 +88,10 @@ Future<MoiveDetailsEntity> fetchMovieDetailsData(String movieId) async {
 
 /*网络请求异步操作 根据电影id请求电影短评*/
 Future<ShortFilmReviewEntity> fetchMovieShortReviewData(String movieId) async {
-  final response = await http.get(
-      'https://api.douban.com/v2/movie/subject/$movieId/comments?apikey=0b2bdeda43b5688921839c8ecb20399b');
-
+  final response = await http.get('https://api.douban.com/v2/movie/subject/$movieId/comments?apikey=0b2bdeda43b5688921839c8ecb20399b');
   if (response.statusCode == 200) {
-    //如果服务器确实返回了200 OK响应,然后解析JSON
     return shortFilmReviewEntityFromJson(ShortFilmReviewEntity(), json.decode(response.body));
   } else {
-    //如果服务器没有返回200 OK响应,然后抛出一个异常。
     throw Exception('服务器未响应成功');
   }
 }
@@ -136,7 +128,6 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
   int openIndex;
 
   PaletteGenerator generator;
-
 
   Future<void> fetchMainColorPicture() async {
     generator = await PaletteGenerator.fromImageProvider(
@@ -183,7 +174,7 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ScrollConfiguration(
-                behavior: MyScrollBehavior(),
+                behavior: CustomScrollBehavior(true, true, dynamicBackgroundColor == null ? MyColors.movieDetailsBackgroundColor : dynamicBackgroundColor),
                 child: SingleChildScrollView(
                   child: Container(
                     color: dynamicBackgroundColor == null ? MyColors.movieDetailsBackgroundColor : dynamicBackgroundColor,
@@ -928,9 +919,9 @@ class MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                           child: Image.network(
                                             ///先判断 是否把导演图片数据取完，在判断是否有演员图片，再取出演员图片数据
                                             snapshot.data.directors.length - index > 0
-                                                ?  snapshot.data.directors[index].avatars.small
+                                                ?  snapshot.data.directors[index].avatars == null ?  'https://img1.doubanio.com/f/movie/ca527386eb8c4e325611e22dfcb04cc116d6b423/pics/movie/celebrity-default-small.png' :  snapshot.data.directors[index].avatars.small
                                                 :  snapshot.data.casts[index-snapshot.data.directors.length].avatars == null
-                                                ? 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587698979260&di=f640134e030eb7b7d8f208069f5896f6&imgtype=0&src=http%3A%2F%2Fpic2.cxtuku.com%2F00%2F05%2F13%2Fb845ec14e524.jpg'
+                                                ? 'https://img1.doubanio.com/f/movie/ca527386eb8c4e325611e22dfcb04cc116d6b423/pics/movie/celebrity-default-small.png'
                                                 : snapshot.data.casts[index-snapshot.data.directors.length].avatars.small,
                                             width: 80,
                                             fit: BoxFit.fitHeight,

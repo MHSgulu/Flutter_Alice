@@ -4,14 +4,14 @@ import 'package:photo_view/photo_view.dart';
 class PhotoViewSimpleScreen extends StatelessWidget{
   const PhotoViewSimpleScreen({
     this.imageProvider,//图片
-    this.loadingChild,//加载时的widget
+    this.loadingBuilder,//加载时的widget
     this.backgroundDecoration,//背景修饰
     this.minScale,//最小缩放倍数
     this.maxScale,//最大缩放倍数
     this.heroTag,//hero动画tagid
   });
   final ImageProvider imageProvider;
-  final Widget loadingChild;
+  final LoadingBuilder loadingBuilder;
   final Decoration backgroundDecoration;
   final dynamic minScale;
   final dynamic maxScale;
@@ -33,7 +33,7 @@ class PhotoViewSimpleScreen extends StatelessWidget{
               right: 0,
               child: PhotoView(
                 imageProvider: imageProvider,
-                loadingChild: loadingChild,
+                loadingBuilder: loadingBuilder,
                 backgroundDecoration: backgroundDecoration,
                 minScale: minScale,
                 maxScale: maxScale,

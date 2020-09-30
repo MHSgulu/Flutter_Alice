@@ -1,5 +1,5 @@
 import 'package:alice/http/dio_util.dart';
-import 'package:alice/ui/more/tao_model_details_route.dart';
+import 'package:alice/ui/more/model/tao_model_details_route.dart';
 import 'package:alice/values/api.dart';
 import 'package:alice/values/strings.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -9,9 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-
 ///第三版   请求列表分页数据  目前 实际项目可以运用  解决思路 和android原生类似 结合第三方上拉加载进行页数判断，列表持续的添加数据。
-
 
 ///错误场景描述  [ERROR:flutter/lib/ui/ui_dart_state.cc(157)] Unhandled Exception: setState() called after dispose(): _TaoModelListState#a53a7(lifecycle state: defunct, not mounted)
 ///如果对不再出现在窗口小部件树中的窗口小部件（例如，其父窗口小部件不再包括其内部版本中的窗口小部件）的状态对象调用setState（），则会发生此错误。当代码从计时器或动画回调调用setState（）时，可能会发生此错误。
@@ -24,13 +22,13 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 /// 在框架调用[dispose]之前，[State]对象保持挂载状态，在此之后框架将不再要求[State对象[build]。
 ///除非[mounted]为true，否则调用[setState]是错误的。
 
-
 ///要在Flutter中定义（继承）一个Widget，则它的属性必须都是final的。final意味着属性必须在构造函数中就被初始化完成，不接受提前定义，也不接受更改。
 ///所以，在生命周期中动态的改变Widget对象的属性是不可能的，必须使用框架的build方法来为构造函数动态指定参数，从而达到改变组件属性的功能
 
-class TaoModelPaging extends StatefulWidget{
+class TaoModelPaging extends StatefulWidget {
   /// 如果style属性不是final的，编译器会报出警告
   final String style;
+
   /// 这个构造方法很长，但是主要你写了final属性，编译器就会帮我们自动生成
   const TaoModelPaging({Key key, this.style}) : super(key: key);
 
@@ -38,12 +36,9 @@ class TaoModelPaging extends StatefulWidget{
   State<StatefulWidget> createState() {
     return _TaoModelListState();
   }
-
 }
 
-
 class _TaoModelListState extends State<TaoModelPaging> {
-
   RefreshController _refreshController;
   int _page = 1;
   int _currentPage;
@@ -56,19 +51,18 @@ class _TaoModelListState extends State<TaoModelPaging> {
   List<List<dynamic>> modelImgList = List();
 
   /*下拉刷新*/
-  void _onRefresh() async{
+  void _onRefresh() async {
     await Future.delayed(Duration(milliseconds: 1500));
     _refreshController.refreshCompleted();
   }
 
   /*上拉加载*/
-  void _onLoading() async{
+  void _onLoading() async {
     await Future.delayed(Duration(milliseconds: 1500));
-    if(_currentPage < _allPages){
+    if (_currentPage < _allPages) {
       fetchModelListData(widget.style);
       _refreshController.loadComplete();
-    }
-    else{
+    } else {
       _refreshController.loadNoData();
     }
   }
@@ -78,8 +72,8 @@ class _TaoModelListState extends State<TaoModelPaging> {
     response = await DioUtil.getInstance().createWwDio().get(
       Api.taoModelList,
       queryParameters: {
-        "showapi_appid": Util.wShowApiId,
-        "showapi_sign": Util.wShowApiSign,
+        "showapi_appid": Util.wShowTestAppId,
+        "showapi_sign": Util.wShowTestApiSign,
         "type": style,
         "page": '$_page',
       },
@@ -94,7 +88,7 @@ class _TaoModelListState extends State<TaoModelPaging> {
     var contentList = List();
     contentList = response.data['showapi_res_body']['pagebean']['contentlist'];
     //print(contentList);
-    if(mounted){
+    if (mounted) {
       setState(() {
         ///循环取所有数据
         contentList.forEach((e) {
@@ -107,8 +101,6 @@ class _TaoModelListState extends State<TaoModelPaging> {
       });
     }
   }
-
-
 
   @override
   void initState() {
@@ -125,12 +117,10 @@ class _TaoModelListState extends State<TaoModelPaging> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  SmartRefresher(
+      body: SmartRefresher(
         controller: _refreshController,
         onRefresh: _onRefresh,
         onLoading: _onLoading,
@@ -151,18 +141,20 @@ class _TaoModelListState extends State<TaoModelPaging> {
           noDataText: '不要再滑了，我也是有底线的哦',
           idleIcon: const Icon(Icons.done, color: Colors.grey),
         ),
-        child: modelAvatarUrlList.length == 0 ?  Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 3,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.deepOrangeAccent[100]),
-          ),
-        ) : _getGridView(),
+        child: modelAvatarUrlList.length == 0
+            ? Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 3,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.deepOrangeAccent[100]),
+                ),
+              )
+            : _getGridView(),
       ),
     );
   }
 
-
-  Widget _getGridView(){
+  Widget _getGridView() {
     return GridView.builder(
         physics: BouncingScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -170,15 +162,18 @@ class _TaoModelListState extends State<TaoModelPaging> {
           childAspectRatio: 1,
         ),
         itemCount: modelAvatarUrlList?.length ?? 0,
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => TaoModelDetails(
-                modelName: modelNameList[index],
-                modelCover: modelAvatarUrlList[index],
-                modelLink: modelLinkList[index],
-                modelImg: modelImgList[index],
-              )));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TaoModelDetails(
+                            modelName: modelNameList[index],
+                            modelCover: modelAvatarUrlList[index],
+                            modelLink: modelLinkList[index],
+                            modelImg: modelImgList[index],
+                          )));
             },
             child: Card(
               shape: RoundedRectangleBorder(
@@ -188,12 +183,13 @@ class _TaoModelListState extends State<TaoModelPaging> {
               elevation: 1.0,
               child: Container(
                 child: CachedNetworkImage(
-                  imageUrl:  modelAvatarUrlList[index],
+                  imageUrl: modelAvatarUrlList[index],
                   fit: BoxFit.cover,
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.redAccent[100]),
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.redAccent[100]),
                     ),
                   ),
                   errorWidget: (context, url, error) => Icon(Icons.error),
@@ -201,18 +197,6 @@ class _TaoModelListState extends State<TaoModelPaging> {
               ),
             ),
           );
-        }
-    );
-
+        });
   }
-
-
-
-
-
 }
-
-
-
-
-

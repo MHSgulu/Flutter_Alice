@@ -1,21 +1,11 @@
+import 'package:alice/common/tool_util.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher.dart';
-
 import 'movie_details_screen.dart';
 
-
-/*打开手机自带浏览器启动url网址*/
-void _launchWebUrl(String url) async {
-  if(await canLaunch(url)) {
-    await launch(url);
-  }else{
-    throw '无法启动该网页';
-  }
-}
 
 class IsShowingUpListScreen extends StatefulWidget {
 
@@ -167,7 +157,7 @@ class IsShowingUpListScreenState extends State<IsShowingUpListScreen> {
                                 padding: EdgeInsets.only(top: 48),
                                 child: GestureDetector(
                                   onTap: (){
-                                    _launchWebUrl(snapshot.data.subjects[index].alt);
+                                    ToolUtil.launchWebUrl(snapshot.data.subjects[index].alt);
                                   },
                                   child: Icon(Icons.stars, color: Colors.orangeAccent),
                                 ),

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:zego_express_engine/zego_express_engine.dart';
+import 'package:zego_permission/zego_permission.dart';
 
 import 'play_stream_page.dart';
 import 'publish_stream_page.dart';
@@ -58,21 +59,21 @@ class _LoginRoomPageState extends State<LoginRoomPage> {
       // 发布流需要权限
       // 登录房间前检查权限
 
-      //Authorization authorization = await checkAuthorization();
+      Authorization authorization = await checkAuthorization();
 
       //如果permission对象为null，则表示在当前操作系统（如Android 6.0或更低版本的系统）下不需要动态检查权限
-      /*if (authorization == null) {
+      if (authorization == null) {
         _loginRoom();
         return;
-      }*/
+      }
 
-      /*if (!authorization.camera || !authorization.microphone) {
+      if (!authorization.camera || !authorization.microphone) {
         // 不允许授权，弹出窗口提示用户打开权限
         showSettingsLink();
       } else {
         // 授权完成，允许登录空间
         _loginRoom();
-      }*/
+      }
 
     } else {
       // 播放流不需要申请许可
@@ -112,7 +113,7 @@ class _LoginRoomPageState extends State<LoginRoomPage> {
   }
 
   // 申请权限
-  /*Future<Authorization> checkAuthorization() async {
+  Future<Authorization> checkAuthorization() async {
     List<Permission> statusList = await ZegoPermission.getPermissions(
         <PermissionType>[PermissionType.Camera, PermissionType.MicroPhone]);
 
@@ -143,7 +144,7 @@ class _LoginRoomPageState extends State<LoginRoomPage> {
     }
 
     return Authorization(camReqResult, micReqResult);
-  }*/
+  }
 
   void showSettingsLink() {
     showDialog(context: context, builder: (BuildContext context) {
@@ -155,7 +156,7 @@ class _LoginRoomPageState extends State<LoginRoomPage> {
             child: Text('Settings'),
             onPressed: () {
               Navigator.of(context).pop();
-              //ZegoPermission.openAppSettings();
+              ZegoPermission.openAppSettings();
             },
           ),
           FlatButton(
