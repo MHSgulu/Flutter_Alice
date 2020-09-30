@@ -12,13 +12,11 @@ description: A new Flutter application. #应用或包的描述、简介
 # 在iOS中，build name用作CFBundleShortVersionString，build number用作CFBundleVersion。
 # 有关iOS版本控制的详细信息，请访问
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-
-
 version: 1.0.0  # 应用或包的版本号 说明：版本号 x.y.z+m 其中 m 是构建版本，可以使用 --build-name/--build-number 构建参数覆盖，
 
 
 environment: # 应用或包的开发环境 flutter的SDK版本在此区间 这个会影响到下面引用的插件依赖库
-  sdk: ">=2.6.0 <3.0.0"  # Dart sdk版本号，多人开发中建议明确一个固定版本 当前版本 2.9.2
+  sdk: ">=2.7.0 <3.0.0"  # Dart sdk版本号，多人开发中建议明确一个固定版本 当前版本 2.9.2
 
 
 # pub依赖  已整体更新到当前日期（2020-9-26）的最新版本（fluttertoast、chewie暂未更新到最新版本） （flutter_html ^ 1.0.0内部依赖了flutter_svg ^ 0.17.4或^ 0.18.0）
@@ -99,6 +97,12 @@ dependencies:
 
   # Flutter插件，可在Android和iOS上提供WebView小部件。
   webview_flutter: ^0.3.24
+
+  # Flutter小部件，可无限滚动文本。提供许多自定义，包括自定义滚动方向，持续时间，曲线以及每轮后的暂停。
+  marquee: ^1.6.1
+
+  # 用于创建徽章的包。徽章可用于任何小部件的附加标记，例如，显示购物车中的许多物品。
+  badges: ^1.1.3
 
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0

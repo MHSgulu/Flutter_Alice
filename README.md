@@ -1,6 +1,6 @@
 # alice
 
-学习Flutter的练手入门个人作品
+基于Flutter框架开发的个人作品
 
 ## Getting Started
 
