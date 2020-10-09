@@ -1,4 +1,3 @@
-import 'package:alice/ui/example/rive/slider/house_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -6,6 +5,8 @@ import 'dart:ui';
 
 import 'package:flutter/rendering.dart';
 import 'package:flare_flutter/flare_actor.dart';
+
+import 'house_controller.dart';
 
 
 void main() {

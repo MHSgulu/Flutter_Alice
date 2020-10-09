@@ -1,4 +1,4 @@
-import 'package:alice/ui/example/rive/button/buttons_row.dart';
+import 'package:alice/ui/example/rive/flr/button/buttons_row.dart';
 import 'package:flutter/material.dart';
 
 Color twoDGrey = Color.fromRGBO(238, 238, 238, 1);

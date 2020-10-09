@@ -32,7 +32,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String _title = 'Alcie';
+  static const String _title = 'Alice';
 
   //  这个小部件是应用程序的根。
   @override
@@ -47,7 +47,8 @@ class MyApp extends StatelessWidget {
           /// light  颜色是浅色的，需要深色文本颜色来实现可读的对比。
           /// 例如，颜色可能是亮白色，需要黑色文本.
           //brightness: Brightness.light,
-          primarySwatch: Colors.blue),
+          primarySwatch: Colors.blue,
+      ),
       home: WillPopScopeHome(),
     );
   }
