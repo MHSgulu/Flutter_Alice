@@ -51,7 +51,7 @@ class _ExampleRivePageState extends State<ExampleRivePage> with SingleTickerProv
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rive 动画',style: TextStyle(fontSize: 17),),
+        title: Text('Rive 2 动画',style: TextStyle(fontSize: 17),),
       ),
       body: Center(
         child: _riveArtboard == null

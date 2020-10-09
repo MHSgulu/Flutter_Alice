@@ -6,10 +6,11 @@ import 'package:alice/ui/example/example_google_fonts.dart';
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
 import 'package:alice/ui/example/example_palette.dart';
-import 'package:alice/ui/example/example_rive.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/rive/example_rive.dart';
 import 'package:alice/ui/example/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
+import 'package:alice/ui/example/rive/reload/example_space_reload.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:flutter/material.dart';
 
@@ -37,11 +38,26 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleSpaceReloadPage()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('rive 1(flare)  卡通版太空主题下拉刷新 '),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleRivePage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('rive 交互动画 示例'),
+                      title: Text('rive 2 动画 示例'),
                     ),
                   ),
                 ),
