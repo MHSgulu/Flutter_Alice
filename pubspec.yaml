@@ -104,6 +104,9 @@ dependencies:
   # 用于创建徽章的包。徽章可用于任何小部件的附加标记，例如，显示购物车中的许多物品。
   badges: ^1.1.3
 
+  # Rive 2 Flutter运行时。该软件包提供了运行时功能，可用于播放并与https://rive.app上可用的Rive编辑器构建的动画进行交互
+  rive: ^0.6.2
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
@@ -141,6 +144,7 @@ flutter: # 说明：版本号 x.y.z+m 其中 m 是构建版本，可以使用 --
   assets:
     - assets/images/
     - assets/icons/
+    - assets/animations/
     - resources/images/
     - resources/images/2.0x/
     - resources/images/3.0x/
