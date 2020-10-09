@@ -13,6 +13,7 @@ import 'package:alice/ui/example/plugin_get_battery.dart';
 import 'package:alice/ui/example/rive/button/example_like_button.dart';
 import 'package:alice/ui/example/rive/example_fab.dart';
 import 'package:alice/ui/example/rive/example_penguin.dart';
+import 'package:alice/ui/example/rive/example_switch.dart';
 import 'package:alice/ui/example/rive/reload/example_space_reload.dart';
 import 'package:alice/ui/example/rive/slider/example_slider.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
@@ -42,11 +43,11 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleHeartButton()));
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleSwitchPage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Rive 1(Flare)  checkbox 复选框动画'),
+                      title: Text('Rive 1(Flare)  switch 开关按钮动画'),
                     ),
                   ),
                 ),
