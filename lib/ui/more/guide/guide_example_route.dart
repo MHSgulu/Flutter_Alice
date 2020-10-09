@@ -11,6 +11,7 @@ import 'package:alice/ui/example/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
 import 'package:alice/ui/example/rive/example_fab.dart';
+import 'package:alice/ui/example/rive/example_penguin.dart';
 import 'package:alice/ui/example/rive/reload/example_space_reload.dart';
 import 'package:alice/ui/example/rive/slider/example_slider.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
@@ -40,11 +41,26 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleRockPenguinPage()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Rive 1(Flare)  摇滚企鹅动画 '),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleFabPage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Rive 1(Flare)  FAB按钮动画 '),
+                      title: Text('Rive 1(Flare)  动画(是否抗锯齿的显示差异) '),
                     ),
                   ),
                 ),
