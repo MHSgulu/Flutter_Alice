@@ -57,10 +57,12 @@ class _PageState extends State<Page> with SingleTickerProviderStateMixin {
         _currentDemoSchedule.cancel();
       }
       _currentDemoSchedule = Timer(const Duration(seconds: 2), () {
-        setState(() {
-          /// 在此计时器结束时重新启动演示。
-          _houseController.isDemoMode = true;
-        });
+        if(mounted){
+          setState(() {
+            /// 在此计时器结束时重新启动演示。
+            _houseController.isDemoMode = true;
+          });
+        }
       });
     }
   }
