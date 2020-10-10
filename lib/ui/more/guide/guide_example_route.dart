@@ -16,6 +16,7 @@ import 'package:alice/ui/example/rive/flr/example_switch.dart';
 import 'package:alice/ui/example/rive/flr/reload/example_space_reload.dart';
 import 'package:alice/ui/example/rive/flr/slider/example_slider.dart';
 import 'package:alice/ui/example/rive/riv/example_rive.dart';
+import 'package:alice/ui/example/rive/riv/example_truck.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,7 @@ class GuideExampleRoute extends StatelessWidget{
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Rive 1(Flare)  switch 开关按钮动画'),
+                      title: Text('Rive 1(Flare)  switch 笑脸开关按钮动画'),
                     ),
                   ),
                 ),
@@ -133,11 +134,26 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => MyRiveAnimation()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Rive 2  混合动画'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleRivePage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Rive 2 动画 示例'),
+                      title: Text('Rive 2 简单动画'),
                     ),
                   ),
                 ),
