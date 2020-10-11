@@ -1,17 +1,14 @@
-import 'package:alice/ui/life/gif_picture_jokes_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class ThirdBottomNavigationBarItemView extends StatefulWidget {
-  
   @override
-  State<StatefulWidget> createState() => ThirdBottomNavigationBarItemViewState();
-
+  State<StatefulWidget> createState() =>
+      ThirdBottomNavigationBarItemViewState();
 }
 
-class ThirdBottomNavigationBarItemViewState extends State<ThirdBottomNavigationBarItemView> {
-  
+class ThirdBottomNavigationBarItemViewState
+    extends State<ThirdBottomNavigationBarItemView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,5 +22,4 @@ class ThirdBottomNavigationBarItemViewState extends State<ThirdBottomNavigationB
       ),
     );
   }
-
 }

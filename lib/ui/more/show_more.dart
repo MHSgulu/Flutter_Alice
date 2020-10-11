@@ -1,4 +1,5 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/ui/more/Setting.dart';
 import 'package:alice/ui/more/bing/bing_wallpaper.dart';
 import 'package:alice/ui/more/chat_robot_screen.dart';
 import 'package:alice/ui/more/english_quotations.dart';
@@ -184,6 +185,26 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
                         height: 24,
                       ),
                       title: Text('复杂业务的Flutter插件'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
+                    },
+                    splashColor: Colors.cyan[50],
+                    child: ListTile(
+                      leading: Image.asset(
+                        'assets/icons/icon_setting.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      title: Text('设置'),
                     ),
                   ),
                 ),

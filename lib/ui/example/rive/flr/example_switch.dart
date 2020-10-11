@@ -58,7 +58,10 @@ class SmileySwitch extends StatelessWidget {
         child: Container(
             width: 200,
             height: 100,
-            child: FlareActor("assets/animations/smiley_switch.flr",
-                snapToEnd: snapToEnd, animation: isOn ? "On" : "Off")));
+            child: FlareActor(
+              "assets/animations/smiley_switch.flr",
+              snapToEnd: snapToEnd,
+              animation: isOn ? "On" : "Off",
+            )));
   }
 }
