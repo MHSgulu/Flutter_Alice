@@ -66,7 +66,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         AssetImage('assets/icons/icon_news.png'),
       ),
       activeIcon: Icon(Icons.library_books /*book*/ /*collections_bookmark*/),
-      title: Text('新闻'),
+      label: '新闻',
       //backgroundColor: Colors.blueAccent[200],
     ),
     BottomNavigationBarItem(
@@ -74,14 +74,14 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         AssetImage('assets/icons/icon_movie.png'),
       ),
       activeIcon: Icon(Icons.video_library /*movie_filter*/ /*library_music*/),
-      title: Text('电影'),
+      label: '电影',
       //backgroundColor: Colors.teal[400],
     ),
     BottomNavigationBarItem(
       icon: ImageIcon(
         AssetImage('assets/icons/icon_picture.png'),
       ),
-      title: Text('待定'),
+      label: '待定',
       activeIcon: Icon(Icons.collections /*perm_media*/),
       // backgroundColor: Colors.deepOrangeAccent[100],
     ),
@@ -90,7 +90,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         AssetImage('assets/icons/icon_more.png'),
       ),
       activeIcon: Icon(Icons.library_add /*widgets*/),
-      title: Text('更多'),
+      label: '更多',
       //backgroundColor: Colors.cyan[200],
     ),
   ];
