@@ -110,6 +110,9 @@ dependencies:
   # Rive 2 Flutter运行时。该软件包提供了运行时功能，可用于播放并与https://rive.app上可用的Rive编辑器构建的动画进行交互
   rive: ^0.6.2
 
+  # Flutter  状态管理
+  provider: ^4.3.2+2
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
