@@ -6,12 +6,14 @@ import 'package:alice/ui/example/example_google_fonts.dart';
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
 import 'package:alice/ui/example/example_palette.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/provider/example_provider_counter.dart';
 import 'package:alice/ui/example/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:alice/ui/more/guide/guide_rive.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class GuideExampleRoute extends StatelessWidget{
@@ -30,6 +32,34 @@ class GuideExampleRoute extends StatelessWidget{
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        // 为应用程序内的所有小部件提供模型。
+                        // 我们使用ChangeNotifierProvider是因为这是在模型更改时重建小部件的简单方法。
+                        // 我们也可以只使用Provider，但随后我们必须听听Counter
+                        //
+                        // 阅读提供者的文档以了解所有可用的提供者。
+                        return ChangeNotifierProvider(
+                          // 在构建器中初始化模型。 这样，Provider可以拥有Counter的生命周期，确保在不再需要时调用`dispose`。
+                          create: (context) {
+                            return Counter();
+                          },
+                          child: ProviderCounterPage(),
+                        );
+                      }));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('基于provider实现的计数器'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
