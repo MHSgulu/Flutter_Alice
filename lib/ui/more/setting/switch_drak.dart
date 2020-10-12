@@ -1,5 +1,6 @@
 import 'package:alice/provider/theme_mode.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_cache_builder.dart';
 import 'package:flare_flutter/provider/asset_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,25 +20,46 @@ class SwitchDarkState extends State<SwitchDark> {
   String animationName = 'day_idle';
 
   //切换Switch
-  void switchAnimation() {
-    if (mounted) {
-      setState(() {
-        //正在执行动画 不允许点击
-        isAllowOnTap = false;
-        if (isDark) {
-          Fluttertoast.showToast(msg: '切换到白天模式');
-          animationName = 'switch_day';
-          Provider.of<AppThemeMode>(context, listen: false)
-              .switchThemeMode(false);
-        } else {
-          Fluttertoast.showToast(msg: '切换到黑夜模式');
-          animationName = 'switch_night';
-          Provider.of<AppThemeMode>(context, listen: false)
-              .switchThemeMode(true);
-        }
-        isDark = !isDark;
-      });
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        children: [
+          Container(
+            width: 10,
+          ),
+          Text('昼夜模式'),
+          Expanded(child: Container()),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+            width: 100,
+            height: 50,
+            //color: Colors.black,
+            child: FlareCacheBuilder(
+              [asset],
+              builder: (BuildContext context, bool isWarm) {
+                return !isWarm
+                    ? Center(
+                        child: Text(
+                        "正在加载动画...",
+                        style: TextStyle(fontSize: 12),
+                      ))
+                    : GestureDetector(
+                        onTap: isAllowOnTap ? switchAnimation : null,
+                        child: FlareActor.asset(
+                          asset,
+                          //要播放的动画的名称。
+                          animation: animationName,
+                          //[animation]完成时调用回调。 如果[animation]正在循环，则永远不会调用此回调。
+                          callback: replaceAnimation,
+                        ),
+                      );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   //更换Switch动画
@@ -58,34 +80,24 @@ class SwitchDarkState extends State<SwitchDark> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        children: [
-          Container(
-            width: 10,
-          ),
-          Text('昼夜模式'),
-          Expanded(child: Container()),
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-            width: 100,
-            height: 50,
-            //color: Colors.black,
-            child: GestureDetector(
-              onTap: isAllowOnTap ? switchAnimation : null,
-              child: FlareActor.asset(
-                asset,
-                //要播放的动画的名称。
-                animation: animationName,
-                //[animation]完成时调用回调。 如果[animation]正在循环，则永远不会调用此回调。
-                callback: replaceAnimation,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  void switchAnimation() {
+    if (mounted) {
+      setState(() {
+        //正在执行动画 不允许点击
+        isAllowOnTap = false;
+        if (isDark) {
+          Fluttertoast.showToast(msg: '切换到白天模式');
+          animationName = 'switch_day';
+          Provider.of<AppThemeMode>(context, listen: false)
+              .switchThemeMode(false);
+        } else {
+          Fluttertoast.showToast(msg: '切换到黑夜模式');
+          animationName = 'switch_night';
+          Provider.of<AppThemeMode>(context, listen: false)
+              .switchThemeMode(true);
+        }
+        isDark = !isDark;
+      });
+    }
   }
 }
