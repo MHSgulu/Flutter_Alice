@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 /// 最简单的模型，只有一个字段。
 ///
 /// [ChangeNotifier] is a class in `flutter:foundation`.
@@ -14,7 +13,6 @@ class Counter with ChangeNotifier {
     notifyListeners();
   }
 }
-
 
 class ProviderCounterPage extends StatelessWidget {
   @override
@@ -40,7 +38,7 @@ class ProviderCounterPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // 您可以在有权访问上下文的任何地方访问提供程序。
+          // 您可以在有权访问上下文的任何地方访问providers 程序。
           // 一种方法是使用Provider<Counter>.of（context）
           //
           // provider包还定义了上下文本身的扩展方法。

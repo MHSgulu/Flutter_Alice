@@ -1,9 +1,11 @@
+import 'package:alice/provider/theme_mode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
-import 'home.dart';
+import 'ui/home.dart';
 
 ///从Dart 2开始，new关键字是可选的
 
@@ -37,19 +39,24 @@ class MyApp extends StatelessWidget {
   //  这个小部件是应用程序的根。
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, //去掉DuBug模式下 右上角的标志
-      title: _title,
-      theme: ThemeData(
-        //这是应用程序的主题。
-        /// dark   颜色是深色的，需要一个浅色的文本颜色来实现可读的对比。
-        /// 例如，颜色可能是深灰色，需要白色文本。
-        /// light  颜色是浅色的，需要深色文本颜色来实现可读的对比。
-        /// 例如，颜色可能是亮白色，需要黑色文本.
-        brightness: Brightness.light,
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => AppThemeMode(),
+      child: Consumer<AppThemeMode>(
+        builder: (context, theme, child) => MaterialApp(
+          debugShowCheckedModeBanner: false, //去掉DuBug模式下 右上角的标志
+          title: _title,
+          theme: ThemeData(
+            //这是应用程序的主题。
+            /// dark   颜色是深色的，需要一个浅色的文本颜色来实现可读的对比。
+            /// 例如，颜色可能是深灰色，需要白色文本。
+            /// light  颜色是浅色的，需要深色文本颜色来实现可读的对比。
+            /// 例如，颜色可能是亮白色，需要黑色文本.
+            brightness: theme.isDark ? Brightness.dark : Brightness.light,
+            primarySwatch: Colors.blue,
+          ),
+          home: WillPopScopeHome(),
+        ),
       ),
-      home: WillPopScopeHome(),
     );
   }
 }

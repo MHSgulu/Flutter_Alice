@@ -1,9 +1,10 @@
-import 'package:alice/common/global.dart';
+import 'package:alice/provider/theme_mode.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/provider/asset_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
 class SwitchDark extends StatefulWidget {
   @override
@@ -11,7 +12,8 @@ class SwitchDark extends StatefulWidget {
 }
 
 class SwitchDarkState extends State<SwitchDark> {
-  final asset = AssetFlare(bundle: rootBundle, name: "assets/animations/dark_switch.flr");
+  final asset =
+      AssetFlare(bundle: rootBundle, name: "assets/animations/dark_switch.flr");
   bool isAllowOnTap = true; //是否允许点击
   bool isDark = false; //是否黑夜模式
   String animationName = 'day_idle';
@@ -20,16 +22,18 @@ class SwitchDarkState extends State<SwitchDark> {
   void switchAnimation() {
     if (mounted) {
       setState(() {
-        ///正在执行动画 不允许点击
+        //正在执行动画 不允许点击
         isAllowOnTap = false;
         if (isDark) {
           Fluttertoast.showToast(msg: '切换到白天模式');
           animationName = 'switch_day';
-          Global.isDark = false;
+          Provider.of<AppThemeMode>(context, listen: false)
+              .switchThemeMode(false);
         } else {
           Fluttertoast.showToast(msg: '切换到黑夜模式');
           animationName = 'switch_night';
-          Global.isDark = true;
+          Provider.of<AppThemeMode>(context, listen: false)
+              .switchThemeMode(true);
         }
         isDark = !isDark;
       });
@@ -39,7 +43,7 @@ class SwitchDarkState extends State<SwitchDark> {
   //更换Switch动画
   void replaceAnimation(String name) {
     Future.delayed(Duration(milliseconds: 1500), () {
-      print('延时1.5秒更换动画');
+      //print('延时1.5秒更换动画');
       if (mounted) {
         setState(() {
           if (name == 'switch_night') {
@@ -47,8 +51,7 @@ class SwitchDarkState extends State<SwitchDark> {
           } else {
             animationName = 'day_idle';
           }
-
-          ///执行动画完毕 可以点击
+          //执行动画完毕 可以点击
           isAllowOnTap = true;
         });
       }
@@ -74,8 +77,10 @@ class SwitchDarkState extends State<SwitchDark> {
               onTap: isAllowOnTap ? switchAnimation : null,
               child: FlareActor.asset(
                 asset,
-                animation: animationName, ///要播放的动画的名称。
-                callback: replaceAnimation, ///[animation]完成时调用回调。 如果[animation]正在循环，则永远不会调用此回调。
+                //要播放的动画的名称。
+                animation: animationName,
+                //[animation]完成时调用回调。 如果[animation]正在循环，则永远不会调用此回调。
+                callback: replaceAnimation,
               ),
             ),
           ),
