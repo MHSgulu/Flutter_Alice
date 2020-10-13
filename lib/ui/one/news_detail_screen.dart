@@ -34,7 +34,7 @@ class NewsDetailScreen extends StatelessWidget {
         elevation: 1,
       ),
       body: ScrollConfiguration(
-          behavior: CustomScrollBehavior(false, false, null),
+          behavior: CustomScrollBehavior(),
           child: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.all(16.0),

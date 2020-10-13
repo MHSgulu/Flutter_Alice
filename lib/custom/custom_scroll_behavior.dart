@@ -17,7 +17,7 @@ class CustomScrollBehavior extends ScrollBehavior {
   final bool isShowTrailing;
   final Color color;
 
-  CustomScrollBehavior(this.isShowLeading, this.isShowTrailing, this.color);
+  CustomScrollBehavior({this.isShowLeading, this.isShowTrailing, this.color});
 
   /// 应实现其滚动物理的平台。
   ///
@@ -63,12 +63,12 @@ class CustomScrollBehavior extends ScrollBehavior {
           ///对于垂直向下的视口，这是顶部。
           ///默认为true。
           ///有关视口另一侧的相应控件，请参见[showTrailing]。
-          showLeading: isShowLeading ?? true,
+          showLeading: isShowLeading ?? false,
           ///是否以正的滚动偏移量在侧面显示过度滚动光晕。
           ///对于垂直向下的视口，这是底部。
           ///默认为true。
           ///请参见[showLeading]，以获取视口另一侧的相应控件。
-          showTrailing: isShowTrailing ?? true,
+          showTrailing: isShowTrailing ?? false,
           ///发光的颜色。 Alpha通道将被忽略(忽略颜色的透明度)。
           color: color ?? Colors.white,
         );

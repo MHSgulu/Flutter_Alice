@@ -26,7 +26,7 @@ class GuideExampleRoute extends StatelessWidget{
         backgroundColor: Colors.brown[300],
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(true, true, Colors.brown[300]),
+        behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.brown[300]),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),

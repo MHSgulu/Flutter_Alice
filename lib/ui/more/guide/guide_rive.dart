@@ -23,7 +23,7 @@ class GuideRiveRoute extends StatelessWidget{
         backgroundColor: Colors.deepOrangeAccent[100],
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(true, true, Colors.deepOrangeAccent[100]),
+        behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.deepOrangeAccent[100]),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),

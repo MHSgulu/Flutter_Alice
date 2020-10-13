@@ -66,7 +66,7 @@ class HotWordTabState extends State<HotWordTab> {
           ),
         ),
         body: ScrollConfiguration(
-          behavior: CustomScrollBehavior(false, false, null),
+          behavior: CustomScrollBehavior(),
           child: TabBarView(
             children: [
               for (final id in typeId)

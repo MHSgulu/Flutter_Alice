@@ -25,7 +25,7 @@ class FourthBottomNavigationBarItemView extends StatelessWidget {
       //通过默认构造函数构建的ListView没有应用基于Sliver的懒加载模型。实际上通过此方式创建的ListView和使用SingleChildScrollView+Column的方式没有本质的区别
       //Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(true, true, Colors.cyan[300]),
+        behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.cyan[300]),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),
