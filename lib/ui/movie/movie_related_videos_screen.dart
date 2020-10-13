@@ -160,7 +160,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
         ),
         ///SingleChildScrollView在主题最外层才可以滚动。
         body: ScrollConfiguration(
-            behavior: CustomScrollBehavior(false, false, null),
+            behavior: CustomScrollBehavior(),
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
