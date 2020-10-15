@@ -30,7 +30,7 @@ class WillPopScopeHomeState extends State<WillPopScopeHome> {
               DateTime.now().difference(_lastClickTime) >
                   Duration(seconds: 1)) {
             ///返回[Duration]，其中包含[this]和[other]之间的差异。这种差异是以秒和秒的分数来衡量的。
-            Fluttertoast.showToast(msg: '连点两次返回键即可退出');
+            Fluttertoast.showToast(msg: '再点一次即可退出');
             _lastClickTime = DateTime.now();
             print('数据点位： 在首页范围内上一次点击系统返回键的时间：$_lastClickTime');
             return false;
