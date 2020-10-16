@@ -11,6 +11,9 @@ import 'package:alice/ui/example/chart/fl_chart_line_sample_4.dart';
 import 'package:alice/ui/example/chart/fl_chart_line_sample_5.dart';
 import 'package:alice/ui/example/chart/fl_chart_line_sample_6.dart';
 import 'package:alice/ui/example/chart/fl_chart_line_sample_7.dart';
+import 'package:alice/ui/example/chart/fl_chart_pie_sample_1.dart';
+import 'package:alice/ui/example/chart/fl_chart_pie_sample_2.dart';
+import 'package:alice/ui/example/chart/fl_chart_pie_sample_3.dart';
 import 'package:flutter/material.dart';
 
 class GuideChartRoute extends StatefulWidget {
@@ -32,6 +35,9 @@ class GuideChartRouteState extends State<GuideChartRoute> {
     'fl_chart 折线图 示例5',
     'fl_chart 折线图 示例6',
     'fl_chart 折线图 示例7',
+    'fl_chart 饼状图 示例1',
+    'fl_chart 饼状图 示例2',
+    'fl_chart 饼状图 示例3',
   ];
 
   void jumpToRoute(int index) {
@@ -83,6 +89,18 @@ class GuideChartRouteState extends State<GuideChartRoute> {
       case 11:
         Navigator.push(
             context, MaterialPageRoute(builder: (_) => LineChartSample7()));
+        break;
+      case 12:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => PieChartSample1()));
+        break;
+      case 13:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => PieChartSample2()));
+        break;
+      case 14:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => PieChartSample3()));
         break;
     }
   }
