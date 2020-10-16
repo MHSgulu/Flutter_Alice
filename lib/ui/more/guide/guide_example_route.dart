@@ -1,16 +1,17 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/ui/example/example_badge.dart';
-import 'package:alice/ui/example/example_device_info.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_device_info.dart';
 import 'package:alice/ui/example/example_font_awesome.dart';
-import 'package:alice/ui/example/example_google_fonts.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_google_fonts.dart';
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
-import 'package:alice/ui/example/example_palette.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_palette.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/provider/example_provider_counter.dart';
-import 'package:alice/ui/example/example_webView.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
+import 'package:alice/ui/more/guide/guide_chart.dart';
 import 'package:alice/ui/more/guide/guide_rive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,21 @@ class GuideExampleRoute extends StatelessWidget{
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => GuideChartRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Flutter 图表'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
