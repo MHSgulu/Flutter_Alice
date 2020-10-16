@@ -16,17 +16,23 @@ class SwitchDarkState extends State<SwitchDark> {
   final asset =
       AssetFlare(bundle: rootBundle, name: "assets/animations/dark_switch.flr");
   bool isAllowOnTap = true; //是否允许点击
-  bool isDark = false; //是否黑夜模式
+  bool isDark; //是否黑夜模式
   String animationName = 'day_idle';
 
-  //切换Switch
+  @override
+  void initState() {
+    isDark = AppThemeMode.isDark;
+    animationName = isDark ? 'night_idle' : 'day_idle';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Row(
         children: [
           Container(
-            width: 10,
+            width: 16,
           ),
           Text('昼夜模式'),
           Expanded(child: Container()),
@@ -57,6 +63,7 @@ class SwitchDarkState extends State<SwitchDark> {
               },
             ),
           ),
+          Container(width: 8),
         ],
       ),
     );
@@ -80,6 +87,7 @@ class SwitchDarkState extends State<SwitchDark> {
     });
   }
 
+   //切换Switch
   void switchAnimation() {
     if (mounted) {
       setState(() {

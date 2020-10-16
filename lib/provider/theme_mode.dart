@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
-class AppThemeMode extends ChangeNotifier{
-  bool isDark = false;
+class AppThemeMode extends ChangeNotifier {
+  static bool isDark = false;
 
   void switchThemeMode(bool value) {
     isDark = value;
     notifyListeners();
   }
-
 }
