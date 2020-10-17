@@ -2,7 +2,6 @@ import 'package:alice/http/http_util.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/ui/one/hotspot/hot_tword_tab.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
