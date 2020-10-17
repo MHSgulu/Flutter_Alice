@@ -7,6 +7,8 @@ import 'package:alice/model/movie_stills_entity.dart';
 import 'package:alice/generated/json/movie_stills_entity_helper.dart';
 import 'package:alice/model/film_maker_work_entity.dart';
 import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
+import 'package:alice/model/hot_word_type_entity.dart';
+import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/model/moive_details_entity.dart';
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
@@ -25,18 +27,18 @@ import 'package:alice/model/news_entity.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/model/written_jokes_entity.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
-import 'package:alice/model/movie_entity.dart';
-import 'package:alice/generated/json/movie_entity_helper.dart';
+import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
+import 'package:alice/model/movie_entity.dart';
+import 'package:alice/generated/json/movie_entity_helper.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
-import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -71,7 +73,12 @@ class JsonConvert<T> {
 			return filmMakerWorkWorksSubjectCastsAvatarsFromJson(data as FilmMakerWorkWorksSubjectCastsAvatars, json) as T;			case FilmMakerWorkWorksSubjectDirector:
 			return filmMakerWorkWorksSubjectDirectorFromJson(data as FilmMakerWorkWorksSubjectDirector, json) as T;			case FilmMakerWorkWorksSubjectDirectorsAvatars:
 			return filmMakerWorkWorksSubjectDirectorsAvatarsFromJson(data as FilmMakerWorkWorksSubjectDirectorsAvatars, json) as T;			case FilmMakerWorkWorksSubjectImages:
-			return filmMakerWorkWorksSubjectImagesFromJson(data as FilmMakerWorkWorksSubjectImages, json) as T;			case MoiveDetailsEntity:
+			return filmMakerWorkWorksSubjectImagesFromJson(data as FilmMakerWorkWorksSubjectImages, json) as T;			case HotWordTypeEntity:
+			return hotWordTypeEntityFromJson(data as HotWordTypeEntity, json) as T;			case HotWordTypeResult:
+			return hotWordTypeResultFromJson(data as HotWordTypeResult, json) as T;			case HotWordTypeResultShowapiResBody:
+			return hotWordTypeResultShowapiResBodyFromJson(data as HotWordTypeResultShowapiResBody, json) as T;			case HotWordTypeResultShowapiResBodyList:
+			return hotWordTypeResultShowapiResBodyListFromJson(data as HotWordTypeResultShowapiResBodyList, json) as T;			case HotWordTypeResultShowapiResBodyListChildList:
+			return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;			case MoiveDetailsEntity:
 			return moiveDetailsEntityFromJson(data as MoiveDetailsEntity, json) as T;			case MoiveDetailsRating:
 			return moiveDetailsRatingFromJson(data as MoiveDetailsRating, json) as T;			case MoiveDetailsRatingDetails:
 			return moiveDetailsRatingDetailsFromJson(data as MoiveDetailsRatingDetails, json) as T;			case MoiveDetailsVideo:
@@ -150,16 +157,11 @@ class JsonConvert<T> {
 			return writtenJokesEntityFromJson(data as WrittenJokesEntity, json) as T;			case WrittenJokesResult:
 			return writtenJokesResultFromJson(data as WrittenJokesResult, json) as T;			case WrittenJokesResultShowapiResBody:
 			return writtenJokesResultShowapiResBodyFromJson(data as WrittenJokesResultShowapiResBody, json) as T;			case WrittenJokesResultShowapiResBodyContentlist:
-			return writtenJokesResultShowapiResBodyContentlistFromJson(data as WrittenJokesResultShowapiResBodyContentlist, json) as T;			case MovieEntity:
-			return movieEntityFromJson(data as MovieEntity, json) as T;			case MovieSubject:
-			return movieSubjectFromJson(data as MovieSubject, json) as T;			case MovieSubjectsRating:
-			return movieSubjectsRatingFromJson(data as MovieSubjectsRating, json) as T;			case MovieSubjectsRatingDetails:
-			return movieSubjectsRatingDetailsFromJson(data as MovieSubjectsRatingDetails, json) as T;			case MovieSubjectsCast:
-			return movieSubjectsCastFromJson(data as MovieSubjectsCast, json) as T;			case MovieSubjectsCastsAvatars:
-			return movieSubjectsCastsAvatarsFromJson(data as MovieSubjectsCastsAvatars, json) as T;			case MovieSubjectsDirector:
-			return movieSubjectsDirectorFromJson(data as MovieSubjectsDirector, json) as T;			case MovieSubjectsDirectorsAvatars:
-			return movieSubjectsDirectorsAvatarsFromJson(data as MovieSubjectsDirectorsAvatars, json) as T;			case MovieSubjectsImages:
-			return movieSubjectsImagesFromJson(data as MovieSubjectsImages, json) as T;			case QuotationEntity:
+			return writtenJokesResultShowapiResBodyContentlistFromJson(data as WrittenJokesResultShowapiResBodyContentlist, json) as T;			case MtimeHotMovieEntity:
+			return mtimeHotMovieEntityFromJson(data as MtimeHotMovieEntity, json) as T;			case MtimeHotMovieM:
+			return mtimeHotMovieMFromJson(data as MtimeHotMovieM, json) as T;			case MtimeHotMovieMsVersion:
+			return mtimeHotMovieMsVersionFromJson(data as MtimeHotMovieMsVersion, json) as T;			case MtimeHotMoviePromo:
+			return mtimeHotMoviePromoFromJson(data as MtimeHotMoviePromo, json) as T;			case QuotationEntity:
 			return quotationEntityFromJson(data as QuotationEntity, json) as T;			case QuotationShowapiResBody:
 			return quotationShowapiResBodyFromJson(data as QuotationShowapiResBody, json) as T;			case QuotationShowapiResBodyData:
 			return quotationShowapiResBodyDataFromJson(data as QuotationShowapiResBodyData, json) as T;			case GifPictureJokesEntity:
@@ -170,15 +172,19 @@ class JsonConvert<T> {
 			return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;			case PictureJokeResult:
 			return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case MobiePhoneEntity:
+			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case MovieEntity:
+			return movieEntityFromJson(data as MovieEntity, json) as T;			case MovieSubject:
+			return movieSubjectFromJson(data as MovieSubject, json) as T;			case MovieSubjectsRating:
+			return movieSubjectsRatingFromJson(data as MovieSubjectsRating, json) as T;			case MovieSubjectsRatingDetails:
+			return movieSubjectsRatingDetailsFromJson(data as MovieSubjectsRatingDetails, json) as T;			case MovieSubjectsCast:
+			return movieSubjectsCastFromJson(data as MovieSubjectsCast, json) as T;			case MovieSubjectsCastsAvatars:
+			return movieSubjectsCastsAvatarsFromJson(data as MovieSubjectsCastsAvatars, json) as T;			case MovieSubjectsDirector:
+			return movieSubjectsDirectorFromJson(data as MovieSubjectsDirector, json) as T;			case MovieSubjectsDirectorsAvatars:
+			return movieSubjectsDirectorsAvatarsFromJson(data as MovieSubjectsDirectorsAvatars, json) as T;			case MovieSubjectsImages:
+			return movieSubjectsImagesFromJson(data as MovieSubjectsImages, json) as T;			case MobiePhoneEntity:
 			return mobiePhoneEntityFromJson(data as MobiePhoneEntity, json) as T;			case MobiePhoneResult:
 			return mobiePhoneResultFromJson(data as MobiePhoneResult, json) as T;			case MobiePhoneResultResult:
-			return mobiePhoneResultResultFromJson(data as MobiePhoneResultResult, json) as T;			case HotWordTypeEntity:
-			return hotWordTypeEntityFromJson(data as HotWordTypeEntity, json) as T;			case HotWordTypeResult:
-			return hotWordTypeResultFromJson(data as HotWordTypeResult, json) as T;			case HotWordTypeResultShowapiResBody:
-			return hotWordTypeResultShowapiResBodyFromJson(data as HotWordTypeResultShowapiResBody, json) as T;			case HotWordTypeResultShowapiResBodyList:
-			return hotWordTypeResultShowapiResBodyListFromJson(data as HotWordTypeResultShowapiResBodyList, json) as T;			case HotWordTypeResultShowapiResBodyListChildList:
-			return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;    }
+			return mobiePhoneResultResultFromJson(data as MobiePhoneResultResult, json) as T;    }
     return data as T;
   }
 
@@ -206,7 +212,12 @@ class JsonConvert<T> {
 			return filmMakerWorkWorksSubjectCastsAvatarsToJson(data as FilmMakerWorkWorksSubjectCastsAvatars);			case FilmMakerWorkWorksSubjectDirector:
 			return filmMakerWorkWorksSubjectDirectorToJson(data as FilmMakerWorkWorksSubjectDirector);			case FilmMakerWorkWorksSubjectDirectorsAvatars:
 			return filmMakerWorkWorksSubjectDirectorsAvatarsToJson(data as FilmMakerWorkWorksSubjectDirectorsAvatars);			case FilmMakerWorkWorksSubjectImages:
-			return filmMakerWorkWorksSubjectImagesToJson(data as FilmMakerWorkWorksSubjectImages);			case MoiveDetailsEntity:
+			return filmMakerWorkWorksSubjectImagesToJson(data as FilmMakerWorkWorksSubjectImages);			case HotWordTypeEntity:
+			return hotWordTypeEntityToJson(data as HotWordTypeEntity);			case HotWordTypeResult:
+			return hotWordTypeResultToJson(data as HotWordTypeResult);			case HotWordTypeResultShowapiResBody:
+			return hotWordTypeResultShowapiResBodyToJson(data as HotWordTypeResultShowapiResBody);			case HotWordTypeResultShowapiResBodyList:
+			return hotWordTypeResultShowapiResBodyListToJson(data as HotWordTypeResultShowapiResBodyList);			case HotWordTypeResultShowapiResBodyListChildList:
+			return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);			case MoiveDetailsEntity:
 			return moiveDetailsEntityToJson(data as MoiveDetailsEntity);			case MoiveDetailsRating:
 			return moiveDetailsRatingToJson(data as MoiveDetailsRating);			case MoiveDetailsRatingDetails:
 			return moiveDetailsRatingDetailsToJson(data as MoiveDetailsRatingDetails);			case MoiveDetailsVideo:
@@ -285,16 +296,11 @@ class JsonConvert<T> {
 			return writtenJokesEntityToJson(data as WrittenJokesEntity);			case WrittenJokesResult:
 			return writtenJokesResultToJson(data as WrittenJokesResult);			case WrittenJokesResultShowapiResBody:
 			return writtenJokesResultShowapiResBodyToJson(data as WrittenJokesResultShowapiResBody);			case WrittenJokesResultShowapiResBodyContentlist:
-			return writtenJokesResultShowapiResBodyContentlistToJson(data as WrittenJokesResultShowapiResBodyContentlist);			case MovieEntity:
-			return movieEntityToJson(data as MovieEntity);			case MovieSubject:
-			return movieSubjectToJson(data as MovieSubject);			case MovieSubjectsRating:
-			return movieSubjectsRatingToJson(data as MovieSubjectsRating);			case MovieSubjectsRatingDetails:
-			return movieSubjectsRatingDetailsToJson(data as MovieSubjectsRatingDetails);			case MovieSubjectsCast:
-			return movieSubjectsCastToJson(data as MovieSubjectsCast);			case MovieSubjectsCastsAvatars:
-			return movieSubjectsCastsAvatarsToJson(data as MovieSubjectsCastsAvatars);			case MovieSubjectsDirector:
-			return movieSubjectsDirectorToJson(data as MovieSubjectsDirector);			case MovieSubjectsDirectorsAvatars:
-			return movieSubjectsDirectorsAvatarsToJson(data as MovieSubjectsDirectorsAvatars);			case MovieSubjectsImages:
-			return movieSubjectsImagesToJson(data as MovieSubjectsImages);			case QuotationEntity:
+			return writtenJokesResultShowapiResBodyContentlistToJson(data as WrittenJokesResultShowapiResBodyContentlist);			case MtimeHotMovieEntity:
+			return mtimeHotMovieEntityToJson(data as MtimeHotMovieEntity);			case MtimeHotMovieM:
+			return mtimeHotMovieMToJson(data as MtimeHotMovieM);			case MtimeHotMovieMsVersion:
+			return mtimeHotMovieMsVersionToJson(data as MtimeHotMovieMsVersion);			case MtimeHotMoviePromo:
+			return mtimeHotMoviePromoToJson(data as MtimeHotMoviePromo);			case QuotationEntity:
 			return quotationEntityToJson(data as QuotationEntity);			case QuotationShowapiResBody:
 			return quotationShowapiResBodyToJson(data as QuotationShowapiResBody);			case QuotationShowapiResBodyData:
 			return quotationShowapiResBodyDataToJson(data as QuotationShowapiResBodyData);			case GifPictureJokesEntity:
@@ -305,15 +311,19 @@ class JsonConvert<T> {
 			return pictureJokeEntityToJson(data as PictureJokeEntity);			case PictureJokeResult:
 			return pictureJokeResultToJson(data as PictureJokeResult);			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case MobiePhoneEntity:
+			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case MovieEntity:
+			return movieEntityToJson(data as MovieEntity);			case MovieSubject:
+			return movieSubjectToJson(data as MovieSubject);			case MovieSubjectsRating:
+			return movieSubjectsRatingToJson(data as MovieSubjectsRating);			case MovieSubjectsRatingDetails:
+			return movieSubjectsRatingDetailsToJson(data as MovieSubjectsRatingDetails);			case MovieSubjectsCast:
+			return movieSubjectsCastToJson(data as MovieSubjectsCast);			case MovieSubjectsCastsAvatars:
+			return movieSubjectsCastsAvatarsToJson(data as MovieSubjectsCastsAvatars);			case MovieSubjectsDirector:
+			return movieSubjectsDirectorToJson(data as MovieSubjectsDirector);			case MovieSubjectsDirectorsAvatars:
+			return movieSubjectsDirectorsAvatarsToJson(data as MovieSubjectsDirectorsAvatars);			case MovieSubjectsImages:
+			return movieSubjectsImagesToJson(data as MovieSubjectsImages);			case MobiePhoneEntity:
 			return mobiePhoneEntityToJson(data as MobiePhoneEntity);			case MobiePhoneResult:
 			return mobiePhoneResultToJson(data as MobiePhoneResult);			case MobiePhoneResultResult:
-			return mobiePhoneResultResultToJson(data as MobiePhoneResultResult);			case HotWordTypeEntity:
-			return hotWordTypeEntityToJson(data as HotWordTypeEntity);			case HotWordTypeResult:
-			return hotWordTypeResultToJson(data as HotWordTypeResult);			case HotWordTypeResultShowapiResBody:
-			return hotWordTypeResultShowapiResBodyToJson(data as HotWordTypeResultShowapiResBody);			case HotWordTypeResultShowapiResBodyList:
-			return hotWordTypeResultShowapiResBodyListToJson(data as HotWordTypeResultShowapiResBodyList);			case HotWordTypeResultShowapiResBodyListChildList:
-			return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);    }
+			return mobiePhoneResultResultToJson(data as MobiePhoneResultResult);    }
     return data as T;
   }
   //Go back to a single instance by type
@@ -341,7 +351,12 @@ class JsonConvert<T> {
 			return FilmMakerWorkWorksSubjectCastsAvatars().fromJson(json);			case 'FilmMakerWorkWorksSubjectDirector':
 			return FilmMakerWorkWorksSubjectDirector().fromJson(json);			case 'FilmMakerWorkWorksSubjectDirectorsAvatars':
 			return FilmMakerWorkWorksSubjectDirectorsAvatars().fromJson(json);			case 'FilmMakerWorkWorksSubjectImages':
-			return FilmMakerWorkWorksSubjectImages().fromJson(json);			case 'MoiveDetailsEntity':
+			return FilmMakerWorkWorksSubjectImages().fromJson(json);			case 'HotWordTypeEntity':
+			return HotWordTypeEntity().fromJson(json);			case 'HotWordTypeResult':
+			return HotWordTypeResult().fromJson(json);			case 'HotWordTypeResultShowapiResBody':
+			return HotWordTypeResultShowapiResBody().fromJson(json);			case 'HotWordTypeResultShowapiResBodyList':
+			return HotWordTypeResultShowapiResBodyList().fromJson(json);			case 'HotWordTypeResultShowapiResBodyListChildList':
+			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);			case 'MoiveDetailsEntity':
 			return MoiveDetailsEntity().fromJson(json);			case 'MoiveDetailsRating':
 			return MoiveDetailsRating().fromJson(json);			case 'MoiveDetailsRatingDetails':
 			return MoiveDetailsRatingDetails().fromJson(json);			case 'MoiveDetailsVideo':
@@ -420,16 +435,11 @@ class JsonConvert<T> {
 			return WrittenJokesEntity().fromJson(json);			case 'WrittenJokesResult':
 			return WrittenJokesResult().fromJson(json);			case 'WrittenJokesResultShowapiResBody':
 			return WrittenJokesResultShowapiResBody().fromJson(json);			case 'WrittenJokesResultShowapiResBodyContentlist':
-			return WrittenJokesResultShowapiResBodyContentlist().fromJson(json);			case 'MovieEntity':
-			return MovieEntity().fromJson(json);			case 'MovieSubject':
-			return MovieSubject().fromJson(json);			case 'MovieSubjectsRating':
-			return MovieSubjectsRating().fromJson(json);			case 'MovieSubjectsRatingDetails':
-			return MovieSubjectsRatingDetails().fromJson(json);			case 'MovieSubjectsCast':
-			return MovieSubjectsCast().fromJson(json);			case 'MovieSubjectsCastsAvatars':
-			return MovieSubjectsCastsAvatars().fromJson(json);			case 'MovieSubjectsDirector':
-			return MovieSubjectsDirector().fromJson(json);			case 'MovieSubjectsDirectorsAvatars':
-			return MovieSubjectsDirectorsAvatars().fromJson(json);			case 'MovieSubjectsImages':
-			return MovieSubjectsImages().fromJson(json);			case 'QuotationEntity':
+			return WrittenJokesResultShowapiResBodyContentlist().fromJson(json);			case 'MtimeHotMovieEntity':
+			return MtimeHotMovieEntity().fromJson(json);			case 'MtimeHotMovieM':
+			return MtimeHotMovieM().fromJson(json);			case 'MtimeHotMovieMsVersion':
+			return MtimeHotMovieMsVersion().fromJson(json);			case 'MtimeHotMoviePromo':
+			return MtimeHotMoviePromo().fromJson(json);			case 'QuotationEntity':
 			return QuotationEntity().fromJson(json);			case 'QuotationShowapiResBody':
 			return QuotationShowapiResBody().fromJson(json);			case 'QuotationShowapiResBodyData':
 			return QuotationShowapiResBodyData().fromJson(json);			case 'GifPictureJokesEntity':
@@ -440,15 +450,19 @@ class JsonConvert<T> {
 			return PictureJokeEntity().fromJson(json);			case 'PictureJokeResult':
 			return PictureJokeResult().fromJson(json);			case 'PictureJokeResultShowapiResBody':
 			return PictureJokeResultShowapiResBody().fromJson(json);			case 'PictureJokeResultShowapiResBodyContentlist':
-			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'MobiePhoneEntity':
+			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'MovieEntity':
+			return MovieEntity().fromJson(json);			case 'MovieSubject':
+			return MovieSubject().fromJson(json);			case 'MovieSubjectsRating':
+			return MovieSubjectsRating().fromJson(json);			case 'MovieSubjectsRatingDetails':
+			return MovieSubjectsRatingDetails().fromJson(json);			case 'MovieSubjectsCast':
+			return MovieSubjectsCast().fromJson(json);			case 'MovieSubjectsCastsAvatars':
+			return MovieSubjectsCastsAvatars().fromJson(json);			case 'MovieSubjectsDirector':
+			return MovieSubjectsDirector().fromJson(json);			case 'MovieSubjectsDirectorsAvatars':
+			return MovieSubjectsDirectorsAvatars().fromJson(json);			case 'MovieSubjectsImages':
+			return MovieSubjectsImages().fromJson(json);			case 'MobiePhoneEntity':
 			return MobiePhoneEntity().fromJson(json);			case 'MobiePhoneResult':
 			return MobiePhoneResult().fromJson(json);			case 'MobiePhoneResultResult':
-			return MobiePhoneResultResult().fromJson(json);			case 'HotWordTypeEntity':
-			return HotWordTypeEntity().fromJson(json);			case 'HotWordTypeResult':
-			return HotWordTypeResult().fromJson(json);			case 'HotWordTypeResultShowapiResBody':
-			return HotWordTypeResultShowapiResBody().fromJson(json);			case 'HotWordTypeResultShowapiResBodyList':
-			return HotWordTypeResultShowapiResBodyList().fromJson(json);			case 'HotWordTypeResultShowapiResBodyListChildList':
-			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);    }
+			return MobiePhoneResultResult().fromJson(json);    }
     return null;
   }
 
@@ -477,7 +491,12 @@ class JsonConvert<T> {
 			return List<FilmMakerWorkWorksSubjectCastsAvatars>();			case 'FilmMakerWorkWorksSubjectDirector':
 			return List<FilmMakerWorkWorksSubjectDirector>();			case 'FilmMakerWorkWorksSubjectDirectorsAvatars':
 			return List<FilmMakerWorkWorksSubjectDirectorsAvatars>();			case 'FilmMakerWorkWorksSubjectImages':
-			return List<FilmMakerWorkWorksSubjectImages>();			case 'MoiveDetailsEntity':
+			return List<FilmMakerWorkWorksSubjectImages>();			case 'HotWordTypeEntity':
+			return List<HotWordTypeEntity>();			case 'HotWordTypeResult':
+			return List<HotWordTypeResult>();			case 'HotWordTypeResultShowapiResBody':
+			return List<HotWordTypeResultShowapiResBody>();			case 'HotWordTypeResultShowapiResBodyList':
+			return List<HotWordTypeResultShowapiResBodyList>();			case 'HotWordTypeResultShowapiResBodyListChildList':
+			return List<HotWordTypeResultShowapiResBodyListChildList>();			case 'MoiveDetailsEntity':
 			return List<MoiveDetailsEntity>();			case 'MoiveDetailsRating':
 			return List<MoiveDetailsRating>();			case 'MoiveDetailsRatingDetails':
 			return List<MoiveDetailsRatingDetails>();			case 'MoiveDetailsVideo':
@@ -556,16 +575,11 @@ class JsonConvert<T> {
 			return List<WrittenJokesEntity>();			case 'WrittenJokesResult':
 			return List<WrittenJokesResult>();			case 'WrittenJokesResultShowapiResBody':
 			return List<WrittenJokesResultShowapiResBody>();			case 'WrittenJokesResultShowapiResBodyContentlist':
-			return List<WrittenJokesResultShowapiResBodyContentlist>();			case 'MovieEntity':
-			return List<MovieEntity>();			case 'MovieSubject':
-			return List<MovieSubject>();			case 'MovieSubjectsRating':
-			return List<MovieSubjectsRating>();			case 'MovieSubjectsRatingDetails':
-			return List<MovieSubjectsRatingDetails>();			case 'MovieSubjectsCast':
-			return List<MovieSubjectsCast>();			case 'MovieSubjectsCastsAvatars':
-			return List<MovieSubjectsCastsAvatars>();			case 'MovieSubjectsDirector':
-			return List<MovieSubjectsDirector>();			case 'MovieSubjectsDirectorsAvatars':
-			return List<MovieSubjectsDirectorsAvatars>();			case 'MovieSubjectsImages':
-			return List<MovieSubjectsImages>();			case 'QuotationEntity':
+			return List<WrittenJokesResultShowapiResBodyContentlist>();			case 'MtimeHotMovieEntity':
+			return List<MtimeHotMovieEntity>();			case 'MtimeHotMovieM':
+			return List<MtimeHotMovieM>();			case 'MtimeHotMovieMsVersion':
+			return List<MtimeHotMovieMsVersion>();			case 'MtimeHotMoviePromo':
+			return List<MtimeHotMoviePromo>();			case 'QuotationEntity':
 			return List<QuotationEntity>();			case 'QuotationShowapiResBody':
 			return List<QuotationShowapiResBody>();			case 'QuotationShowapiResBodyData':
 			return List<QuotationShowapiResBodyData>();			case 'GifPictureJokesEntity':
@@ -576,15 +590,19 @@ class JsonConvert<T> {
 			return List<PictureJokeEntity>();			case 'PictureJokeResult':
 			return List<PictureJokeResult>();			case 'PictureJokeResultShowapiResBody':
 			return List<PictureJokeResultShowapiResBody>();			case 'PictureJokeResultShowapiResBodyContentlist':
-			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'MobiePhoneEntity':
+			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'MovieEntity':
+			return List<MovieEntity>();			case 'MovieSubject':
+			return List<MovieSubject>();			case 'MovieSubjectsRating':
+			return List<MovieSubjectsRating>();			case 'MovieSubjectsRatingDetails':
+			return List<MovieSubjectsRatingDetails>();			case 'MovieSubjectsCast':
+			return List<MovieSubjectsCast>();			case 'MovieSubjectsCastsAvatars':
+			return List<MovieSubjectsCastsAvatars>();			case 'MovieSubjectsDirector':
+			return List<MovieSubjectsDirector>();			case 'MovieSubjectsDirectorsAvatars':
+			return List<MovieSubjectsDirectorsAvatars>();			case 'MovieSubjectsImages':
+			return List<MovieSubjectsImages>();			case 'MobiePhoneEntity':
 			return List<MobiePhoneEntity>();			case 'MobiePhoneResult':
 			return List<MobiePhoneResult>();			case 'MobiePhoneResultResult':
-			return List<MobiePhoneResultResult>();			case 'HotWordTypeEntity':
-			return List<HotWordTypeEntity>();			case 'HotWordTypeResult':
-			return List<HotWordTypeResult>();			case 'HotWordTypeResultShowapiResBody':
-			return List<HotWordTypeResultShowapiResBody>();			case 'HotWordTypeResultShowapiResBodyList':
-			return List<HotWordTypeResultShowapiResBodyList>();			case 'HotWordTypeResultShowapiResBodyListChildList':
-			return List<HotWordTypeResultShowapiResBodyListChildList>();    }
+			return List<MobiePhoneResultResult>();    }
     return null;
   }
 

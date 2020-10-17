@@ -1,6 +1,6 @@
 import 'package:alice/ui/life/third_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/more/show_page.dart';
-import 'package:alice/ui/movie/second_bottom_navigationbar_itemview.dart';
+import 'package:alice/ui/movie/movie_home.dart';
 import 'package:alice/ui/one/first_bottom_navigationbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
   List<Widget> _widgetOptions = <Widget>[
     FirstBottomNavigationBarItemView(),
-    SecondBottomNavigationBarItemView(),
+    MovieHomePage(),
     ThirdBottomNavigationBarItemView(),
     ShowMorePage(),
   ];
