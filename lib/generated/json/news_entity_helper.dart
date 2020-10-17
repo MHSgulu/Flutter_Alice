@@ -1,4 +1,5 @@
 import 'package:alice/model/news_entity.dart';
+import 'package:alice/generated/json/base/json_filed.dart';
 
 newsEntityFromJson(NewsEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {

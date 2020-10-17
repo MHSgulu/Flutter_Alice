@@ -1,4 +1,5 @@
 import 'package:alice/model/movie_entity.dart';
+import 'package:alice/generated/json/base/json_filed.dart';
 
 movieEntityFromJson(MovieEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {

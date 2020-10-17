@@ -1,4 +1,5 @@
 import 'package:alice/model/film_maker_entity.dart';
+import 'package:alice/generated/json/base/json_filed.dart';
 
 filmMakerEntityFromJson(FilmMakerEntity data, Map<String, dynamic> json) {
 	if (json['website'] != null) {

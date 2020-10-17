@@ -1,4 +1,5 @@
 import 'package:alice/model/short_film_review_entity.dart';
+import 'package:alice/generated/json/base/json_filed.dart';
 
 shortFilmReviewEntityFromJson(ShortFilmReviewEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {

@@ -1,4 +1,5 @@
 import 'package:alice/model/moive_details_entity.dart';
+import 'package:alice/generated/json/base/json_filed.dart';
 
 moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 	if (json['rating'] != null) {
