@@ -116,6 +116,9 @@ dependencies:
   # 强大的Flutter图表库，当前支持折线图，条形图和饼图。
   fl_chart: ^0.12.0
 
+  # 一个简单但可完全自定义的Flutter等级栏。
+  flutter_rating_bar: ^3.0.1+1
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
