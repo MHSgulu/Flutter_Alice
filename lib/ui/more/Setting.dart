@@ -1,6 +1,5 @@
 import 'package:alice/ui/more/setting/switch_cupertino.dart';
 import 'package:alice/ui/more/setting/switch_drak.dart';
-import 'package:alice/ui/more/setting/switch_icon.dart';
 import 'package:alice/ui/more/setting/switch_material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +40,7 @@ class SettingPage extends StatelessWidget {
               SwitchDark(),
               SwitchMaterialTheme(),
               SwitchCupertinoTheme(),
-              SwitchIconStyle(),
+              //SwitchIconStyle(),
             ],
           ),
         ),

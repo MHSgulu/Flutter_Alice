@@ -112,7 +112,8 @@ class _CupertinoRefreshControlDemoState
         alignment: Alignment.center,
         animation: "idle",
         fit: BoxFit.cover,
-        controller: this);
+        controller: this,
+    );
   }
 
   @override

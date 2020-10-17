@@ -30,18 +30,6 @@ class ShowMorePageState extends State<ShowMorePage> {
     'assets/icons/icon_setting.png',
   ];
 
-  List<String> mbeIconList = [
-    'assets/icons/mbe/icon_mbe_1.png',
-    'assets/icons/mbe/icon_mbe_2.png',
-    'assets/icons/mbe/icon_mbe_3.png',
-    'assets/icons/mbe/icon_mbe_4.png',
-    'assets/icons/mbe/icon_mbe_5.png',
-    'assets/icons/mbe/icon_mbe_6.png',
-    'assets/icons/mbe/icon_mbe_7.png',
-    'assets/icons/mbe/icon_mbe_8.png',
-    'assets/icons/mbe/icon_mbe_9.png',
-  ];
-
   List<String> mbeBigIconList = [
     'assets/icons/mbe/icon_mbe_big_1.png',
     'assets/icons/mbe/icon_mbe_big_2.png',
