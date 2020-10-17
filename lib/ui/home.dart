@@ -1,5 +1,5 @@
 import 'package:alice/ui/life/third_bottom_navigationbar_itemview.dart';
-import 'package:alice/ui/more/show_more.dart';
+import 'package:alice/ui/more/show_more_new.dart';
 import 'package:alice/ui/movie/second_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/one/first_bottom_navigationbar.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,7 +57,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     FirstBottomNavigationBarItemView(),
     SecondBottomNavigationBarItemView(),
     ThirdBottomNavigationBarItemView(),
-    FourthBottomNavigationBarItemView(),
+    ShowMorePage(),
   ];
 
   List<BottomNavigationBarItem> _bottomNavigationBarItemList = [
@@ -127,7 +127,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
             .elementAt(_currentIndex), /*_widgetOptions[_currentIndex],*/
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
 
         ///The [showUnselectedLabels] argument defaults
@@ -135,7 +135,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         ///if [type] is[BottomNavigationBarType.shifting]. `false`
         //showUnselectedLabels: true,
         selectedItemColor: _getSelectedItemColor(),
-        unselectedItemColor: Colors.black38,
+        //unselectedItemColor: Colors.black38,
         selectedFontSize: 12,
         unselectedFontSize: 12,
 
