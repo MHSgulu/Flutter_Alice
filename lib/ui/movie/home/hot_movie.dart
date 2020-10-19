@@ -57,14 +57,17 @@ class _HotMovieViewState extends State<HotMovieView> {
                 GridView.builder(
                   padding: EdgeInsets.fromLTRB(8, 4, 8, 8),
                   shrinkWrap: true, //是否根据子组件的总长度来设置列表的长度，默认值为false
-                  physics: NeverScrollableScrollPhysics(),  //解决可互动组件的嵌套滑动冲突 禁止滚动 交给最外层滑动
+                  physics:
+                      NeverScrollableScrollPhysics(), //解决可互动组件的嵌套滑动冲突 禁止滚动 交给最外层滑动
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 0.55,
                     mainAxisSpacing: 0,
                     crossAxisSpacing: 0,
                   ),
-                  itemCount: snapshot.data.ms.length > 12 ? 12 : snapshot.data.ms.length,
+                  itemCount: snapshot.data.ms.length > 12
+                      ? 12
+                      : snapshot.data.ms.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       child: Column(
@@ -96,7 +99,9 @@ class _HotMovieViewState extends State<HotMovieView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RatingBarIndicator(
-                                rating: snapshot.data.ms[index].r > 0 ? snapshot.data.ms[index].r / 2.0 : 0,
+                                rating: snapshot.data.ms[index].r > 0
+                                    ? snapshot.data.ms[index].r / 2.0
+                                    : 0,
                                 itemSize: 15,
                                 itemBuilder: (context, index) {
                                   return Icon(
@@ -105,8 +110,15 @@ class _HotMovieViewState extends State<HotMovieView> {
                                   );
                                 },
                               ),
-                              Container(width: 6,),
-                              Text(snapshot.data.ms[index].r > 0 ? snapshot.data.ms[index].r.toString() : '',style: TextStyle(fontSize: 12),),
+                              Container(
+                                width: 6,
+                              ),
+                              Text(
+                                snapshot.data.ms[index].r > 0
+                                    ? snapshot.data.ms[index].r.toString()
+                                    : '',
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ],
                           ),
                         ],
