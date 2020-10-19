@@ -1,5 +1,4 @@
 import 'package:alice/model/written_jokes_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 writtenJokesEntityFromJson(WrittenJokesEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {

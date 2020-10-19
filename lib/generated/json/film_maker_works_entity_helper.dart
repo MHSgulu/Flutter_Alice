@@ -1,5 +1,4 @@
 import 'package:alice/model/film_maker_works_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 filmMakerWorksEntityFromJson(FilmMakerWorksEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
