@@ -7,11 +7,17 @@ class Api{
   static final String chatRobot = '/api.php'; //青云客 请求基址尾部
   static final String mTimeMovieBaseUrl = 'https://api-m.mtime.cn'; //时光网 请求基址
 
-  static final String taoModelStyle = '/126-1'; //万维易源  查询淘女郎模特风格
-  static final String taoModelList = '/126-2'; //万维易源  根据风格查询淘女郎模特列表
-  static final String hotWordType = '/showapi/rdType'; //京东万象 热点词分类
-  static final String hotWordList= '/showapi/rcInfo'; //京东万象 热点词排行
-  static final String mTimeHotMovie = '/Showtime/LocationMovies.api'; //时光网API 正在热映
+  //万维易源
+  static final String taoModelStyle = '/126-1'; //查询淘女郎模特风格
+  static final String taoModelList = '/126-2'; //根据风格查询淘女郎模特列表
+
+  //京东万象
+  static final String hotWordType = '/showapi/rdType'; //热点词分类
+  static final String hotWordList= '/showapi/rcInfo'; //热点词排行
+  static final String newsList= '/jisuapi/get'; //按照频道名称获取新闻列表
+
+  //时光网API
+  static final String mTimeHotMovie = '/Showtime/LocationMovies.api'; //正在热映
 
   //万维易源  查询英文励志语录
   static final String englishQuotation = 'https://route.showapi.com/1211-1?showapi_appid=136754&showapi_sign=4b0c074ea24f4360a5f21905acab9b81&count=10';

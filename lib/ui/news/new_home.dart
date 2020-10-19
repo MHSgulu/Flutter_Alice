@@ -50,15 +50,11 @@ class NewsHomePageState extends State<NewsHomePage>
       appBar: AppBar(
         backgroundColor: Colors.blueAccent[200],
         title: Container(
-          //width: ,
           height: 35.0,
           decoration: ShapeDecoration(
-            //此处颜色若不设置，会被同化成AppBar背景色
-            color: Colors.white,
+            color: Colors.white, //此处颜色若不设置，会被同化成AppBar背景色
             shape: StadiumBorder(
-              //默认情况下，边框为1.0逻辑像素宽和纯黑。
               side: BorderSide(
-                //框边颜色
                 color: Colors.white,
                 width: 1.0,
               ),
@@ -91,9 +87,7 @@ class NewsHomePageState extends State<NewsHomePage>
         actions: <Widget>[
           IconButton(
             color: Colors.white,
-
-            ///如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
-            icon: Icon(Icons.assessment),
+            icon: Icon(Icons.assessment), //如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
             onPressed: () {
               Navigator.push(
                 context,
@@ -103,6 +97,7 @@ class NewsHomePageState extends State<NewsHomePage>
             },
           )
         ],
+        elevation: 1,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(48.0),
           child: Material(

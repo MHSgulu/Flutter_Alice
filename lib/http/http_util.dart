@@ -1,11 +1,13 @@
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
+import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
 import 'package:alice/http/dio_util.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/values/api.dart';
@@ -76,6 +78,25 @@ class HttpUtil {
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
       return mtimeHotMovieEntityFromJson(MtimeHotMovieEntity(), jsonDecode(response.toString()));
+    } else {
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///按照频道名称获取新闻列表
+  static Future<NewsEntity> fetchNewsListData(String channelName) async {
+    Response response = await DioUtil.getInstance().createJdWxkDio().get(
+      Api.newsList,
+      queryParameters: {
+        'channel': channelName,
+        'num': 40,
+        'start': 0,
+        "appkey": Util.jdWxApiKey,
+      },
+    );
+    if (response.statusCode == 200) {
+      //print('数据点位： ${response.data}');
+      return newsEntityFromJson(NewsEntity(), jsonDecode(response.toString()));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
