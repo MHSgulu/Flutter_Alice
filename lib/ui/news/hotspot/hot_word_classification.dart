@@ -1,9 +1,10 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/ui/one/hotspot/hot_tword_tab.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+import 'hot_tword_tab.dart';
 
 class HotWordClassification extends StatefulWidget {
   @override
@@ -95,8 +96,10 @@ class HotWordClassificationState extends State<HotWordClassification> {
                       context,
                       MaterialPageRoute(
                           builder: (_) => HotWordTab(
-                                title: snapshot.data.result.showapiResBody.xList[index].name,
-                                childList: snapshot.data.result.showapiResBody.xList[index].childList,
+                                title: snapshot.data.result.showapiResBody
+                                    .xList[index].name,
+                                childList: snapshot.data.result.showapiResBody
+                                    .xList[index].childList,
                               )));
                 },
                 child: Card(

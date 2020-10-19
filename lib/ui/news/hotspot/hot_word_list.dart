@@ -1,8 +1,9 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
-import 'package:alice/ui/one/search_news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../search_news_screen.dart';
 
 class HotWordList extends StatefulWidget {
   final String id;
@@ -29,14 +30,13 @@ class HotWordListState extends State<HotWordList>
 
   //重新加载
   void reload() {
-    if(mounted){
+    if (mounted) {
       setState(() {
         print('当前页面重新加载： 热点词汇ID:${widget.id}');
         _futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,17 @@ class HotWordListState extends State<HotWordList>
                 padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen(keyword: snapshot.data.result.showapiResBody.xList[index].name)));
-                    Clipboard.setData(ClipboardData(text: snapshot.data.result.showapiResBody.xList[index].name)); ///存儲文本到剪切板
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchNewsScreen(
+                                keyword: snapshot.data.result.showapiResBody
+                                    .xList[index].name)));
+                    Clipboard.setData(ClipboardData(
+                        text: snapshot
+                            .data.result.showapiResBody.xList[index].name));
+
+                    ///存儲文本到剪切板
                   },
                   child: Row(
                     children: <Widget>[
@@ -88,15 +97,22 @@ class HotWordListState extends State<HotWordList>
                         child: Container(),
                       ),
                       Container(
-                        child: Image.asset('assets/icons/icon_flames.png',width: 20,height: 20,),
+                        child: Image.asset(
+                          'assets/icons/icon_flames.png',
+                          width: 20,
+                          height: 20,
+                        ),
                       ),
                       Container(
                         padding: EdgeInsets.only(right: 40),
-                        child: Text(snapshot.data.result.showapiResBody.xList[index].level),
+                        child: Text(snapshot
+                            .data.result.showapiResBody.xList[index].level),
                       ),
                       Container(
                         padding: EdgeInsets.only(right: 8.0),
-                        child: snapshot.data.result.showapiResBody.xList[index].trend == 'rise'
+                        child: snapshot.data.result.showapiResBody.xList[index]
+                                    .trend ==
+                                'rise'
                             ? Icon(Icons.arrow_upward,
                                 color: Colors.redAccent, size: 22)
                             : Icon(Icons.arrow_downward,
@@ -113,13 +129,20 @@ class HotWordListState extends State<HotWordList>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("${snapshot.error}"),
-              Container(height: 20,),
+              Container(
+                height: 20,
+              ),
               RaisedButton(
                 onPressed: () => reload(),
                 child: Text('刷新'),
               ),
-              Container(height: 10,),
-              Text('如若点击多次没反应，请尝试重新进入',style: TextStyle(color: Colors.black38,fontSize: 12),),
+              Container(
+                height: 10,
+              ),
+              Text(
+                '如若点击多次没反应，请尝试重新进入',
+                style: TextStyle(color: Colors.black38, fontSize: 12),
+              ),
             ],
           );
         }

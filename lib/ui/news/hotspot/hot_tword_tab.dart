@@ -1,7 +1,9 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/ui/one/hotspot/hot_word_list.dart';
+
 import 'package:flutter/material.dart';
+
+import 'hot_word_list.dart';
 
 class HotWordTab extends StatefulWidget {
   final String title;

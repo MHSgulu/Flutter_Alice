@@ -1,10 +1,11 @@
 import 'package:alice/ui/life/third_bottom_navigationbar_itemview.dart';
 import 'package:alice/ui/more/show_page.dart';
 import 'package:alice/ui/movie/movie_home.dart';
-import 'package:alice/ui/one/first_bottom_navigationbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'news/new_home.dart';
 
 
 class WillPopScopeHome extends StatefulWidget {
@@ -20,7 +21,7 @@ class WillPopScopeHomeState extends State<WillPopScopeHome> {
     ///创建一个小部件，该小部件注册一个回调，以回调用户的否决尝试，以关闭封闭的[ModalRoute]。
     /// [child]参数不能为null。
     return WillPopScope(
-        child: HomeScreenWidget(),
+        child: HomePage(),
 
         ///由用户调用否决权尝试以关闭封闭的[ModalRoute]。
         ///如果回调返回的Future解析为false，则不会弹出封闭路由。
@@ -41,20 +42,18 @@ class WillPopScopeHomeState extends State<WillPopScopeHome> {
   }
 }
 
-class HomeScreenWidget extends StatefulWidget {
-  //Widget子类中的字段是始终标记为“final”。
-
+class HomePage extends StatefulWidget {
   @override
-  _HomeScreenWidgetState createState() => _HomeScreenWidgetState();
+  _HomePageState createState() => _HomePageState();
 }
 
 ///这个小部件是应用程序的主页。它是有状态的，这意味着它有一个状态对象（定义如下），其中包含影响其外观的字段。
 ///这个类是状态的配置。它保存父程序提供的值，并由状态的build方法使用。小部件子类中的字段总是标记为“final”。
-class _HomeScreenWidgetState extends State<HomeScreenWidget> {
+class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    FirstBottomNavigationBarItemView(),
+    NewsHomePage(),
     MovieHomePage(),
     ThirdBottomNavigationBarItemView(),
     ShowMorePage(),
