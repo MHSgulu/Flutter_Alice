@@ -44,6 +44,6 @@ class MyColors{
   static const Color _kBackgroundColor = Color(0xffa0a0a0);
   static const Color _kSelectionRectangleBackground = Color(0x15000000);
 
-  static const Color movieDetailsBackgroundColor = Color(0xff4e6164);
+  static const Color movieDetailsBackgroundColor = Color(0xFF121212);
 
 }

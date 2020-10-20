@@ -1,7 +1,6 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/ui/movie/home/hot_movie.dart';
 import 'package:alice/ui/movie/home/movie_carousel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MovieHomePage extends StatelessWidget {
@@ -44,6 +43,7 @@ class MovieHomePage extends StatelessWidget {
             onPressed: () {},
           )
         ],
+        elevation: 1,
       ),
       body: ScrollConfiguration(
         behavior: CustomScrollBehavior(),

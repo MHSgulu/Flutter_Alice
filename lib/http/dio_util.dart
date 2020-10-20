@@ -8,12 +8,14 @@ class DioUtil{
   static Dio _qykDio;
   static Dio _jdWxDio;
   static Dio _mTimeMovieDio;
+  static Dio _mTimeMovieDio2;
 
   BaseOptions _sampleOptions;
   BaseOptions _wwOptions;
   BaseOptions _qykOptions;
   BaseOptions _jdWxOptions;
   BaseOptions _mTimeMovieOptions;
+  BaseOptions _mTimeMovieOptions2;
 
   factory DioUtil.getInstance() => _instance;
 
@@ -83,6 +85,14 @@ class DioUtil{
     );
     _mTimeMovieDio = Dio(_mTimeMovieOptions);
 
+    ///时光网 Api 2
+    _mTimeMovieOptions2 = BaseOptions(
+      baseUrl: Api.mTimeMovieBaseUrl2,
+      connectTimeout: 6000,
+      receiveTimeout: 5000,
+      sendTimeout: 5000,
+    );
+    _mTimeMovieDio2 = Dio(_mTimeMovieOptions2);
 
    /* _wwDio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async{
@@ -123,6 +133,10 @@ class DioUtil{
 
   Dio createTimeMovieDio() {
     return _mTimeMovieDio;
+  }
+
+  Dio createTimeMovieDio2() {
+    return _mTimeMovieDio2;
   }
 
 
