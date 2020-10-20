@@ -47,7 +47,7 @@ class _FilmMakerWorksScreen extends State<FilmMakerWorksScreen>{
                   onTap: (){
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.arrow_back, color: Colors.black),
+                  child: Icon(Icons.arrow_back_rounded, color: Colors.black),
                 ),
                 title: Text('全部作品(${snapshot.data.total})',style: TextStyle(color: Colors.black)),
               ),

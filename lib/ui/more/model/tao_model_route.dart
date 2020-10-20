@@ -86,7 +86,7 @@ class _TaoModelState extends State<TaoModel>
         brightness: Brightness.light,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_rounded,
             color: Colors.black,
           ),
           onPressed: () => Navigator.pop(context),

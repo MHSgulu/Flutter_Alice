@@ -103,7 +103,7 @@ class ChatRobotScreenState extends State<ChatRobotScreen> {
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_rounded,
             color: Colors.black,
           ),
         ),

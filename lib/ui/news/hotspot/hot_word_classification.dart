@@ -63,7 +63,7 @@ class HotWordClassificationState extends State<HotWordClassification> {
         brightness: Brightness.light,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_rounded,
             color: Colors.black,
           ),
           onPressed: () => Navigator.pop(context),
@@ -73,7 +73,7 @@ class HotWordClassificationState extends State<HotWordClassification> {
           style: TextStyle(color: Colors.black, fontSize: 17),
         ),
         centerTitle: true,
-        //elevation: 1,
+        elevation: 1,
       ),
       body: hotWordTypeList(),
     );

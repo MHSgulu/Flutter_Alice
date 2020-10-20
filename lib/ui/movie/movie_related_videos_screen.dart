@@ -142,7 +142,7 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
             onTap: (){
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back),
+            child: Icon(Icons.arrow_back_rounded),
           ),
           title: Text('电影预告片',style: TextStyle(fontSize: 16)),
           backgroundColor: Colors.black,

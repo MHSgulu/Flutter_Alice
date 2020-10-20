@@ -148,7 +148,7 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                     //collapseMode: CollapseMode.pin,  ///滚动时的折叠效果。默认为[CollapseMode.parallax]。
                   ),
                   leading: IconButton(
-                      icon: Icon(Icons.arrow_back, color: Colors.white),
+                      icon: Icon(Icons.arrow_back_rounded, color: Colors.white),
                       onPressed: () {
                         Navigator.pop(context);
                       }),
