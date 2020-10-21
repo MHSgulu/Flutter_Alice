@@ -94,7 +94,7 @@ class SwitchDarkState extends State<SwitchDark> {
         //正在执行动画 不允许点击
         isAllowOnTap = false;
         if (isDark) {
-          Fluttertoast.showToast(msg: '切换到白天模式');
+          Fluttertoast.showToast(msg: '切换到白昼模式');
           animationName = 'switch_day';
           Provider.of<AppThemeMode>(context, listen: false)
               .switchThemeMode(false);

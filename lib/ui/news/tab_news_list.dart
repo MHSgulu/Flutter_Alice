@@ -1,10 +1,11 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/news_entity.dart';
+import 'package:alice/ui/news/news_detail.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'news_detail_screen.dart';
+
 
 class TabNewsList extends StatefulWidget {
   final String channelName;
@@ -39,7 +40,7 @@ class _NewsListState extends State<TabNewsList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NewsDetailScreen(
+                      builder: (context) => NewsDetailPage(
                         title: snapshot.data.result.result.xList[index].title,
                         src: snapshot.data.result.result.xList[index].src,
                         time: snapshot.data.result.result.xList[index].time,
@@ -90,15 +91,13 @@ class _NewsListState extends State<TabNewsList> {
                             Container(
                               child: Text(
                                   snapshot.data.result.result.xList[index].time,
-                                  style: TextStyle(
-                                      color: Colors.black54, fontSize: 12.0)),
+                                  style: TextStyle(fontSize: 11)),
                             ),
                             Expanded(
                               child: Container(),
                             ),
                             Text(snapshot.data.result.result.xList[index].src,
-                                style: TextStyle(
-                                    color: Colors.black54, fontSize: 12.0)),
+                                style: TextStyle(fontSize: 11)),
                           ],
                         ),
                       ),
