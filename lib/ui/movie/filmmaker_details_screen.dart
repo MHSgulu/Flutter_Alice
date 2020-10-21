@@ -12,7 +12,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'filmmaker_works_screen.dart';
-import 'movie_details_screen.dart';
 
 ///     SliverChildDelegate     SliverChildBuilderDelegate
 /// 为孩子们提供切片的委托。
@@ -280,9 +279,9 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
                                               borderRadius: BorderRadiusDirectional.circular(4.0)),
                                           child: GestureDetector(
                                             onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(
+                                              /*Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(
                                                   movieId: snapshot.data.works[index].subject.id, imgUrl: snapshot.data.works[index].subject.images.small,
-                                              )));
+                                              )));*/
                                             },
                                             child: Image.network(
                                               snapshot.data.works[index].subject.images.small,

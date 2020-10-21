@@ -1,5 +1,7 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/ui/movie/movie_details.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -10,6 +12,10 @@ class HotMovieView extends StatefulWidget {
 
 class _HotMovieViewState extends State<HotMovieView> {
   Future<MtimeHotMovieEntity> _future;
+
+  void jumpToMovieDetails(String movieId, String imgUrl) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => MovieDetailsPage(movieId: movieId, imgUrl: imgUrl)));
+  }
 
   @override
   void initState() {
@@ -69,25 +75,35 @@ class _HotMovieViewState extends State<HotMovieView> {
                       ? 12
                       : snapshot.data.ms.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
+                    return GestureDetector(
+                      onTap: () => jumpToMovieDetails(
+                          snapshot.data.ms[index].id.toString(),
+                          snapshot.data.ms[index].img),
                       child: Column(
                         children: <Widget>[
                           Card(
-                            elevation: 2.0,
                             clipBehavior: Clip.antiAlias,
                             shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadiusDirectional.circular(4)),
-                            child: GestureDetector(
-                              onTap: () {
-                                //Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.subjects[index].id, imgUrl: snapshot.data.subjects[index].images.small)));
-                              },
-                              child: Image.network(
-                                snapshot.data.ms[index].img,
-                                //以下两行代码 暂时解决 图片高度不一致的问题 可能会出现不适配的为 比如在手机长度比较小 不是主流机型长宽比的那种
-                                fit: BoxFit.fitHeight,
+                              borderRadius: BorderRadiusDirectional.circular(4),
+                            ),
+                            child: CachedNetworkImage(
+                              imageUrl:  snapshot.data.ms[index].img,
+                              imageBuilder: (context, imageProvider) => Container(
                                 height: 150,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
+                              placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.teal[300]),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             ),
                           ),
                           Text(
@@ -131,9 +147,7 @@ class _HotMovieViewState extends State<HotMovieView> {
           );
         } else if (snapshot.hasError) {
           return Center(
-            child: Center(
-              child: Text("${snapshot.error}"),
-            ),
+            child: Text("${snapshot.error}"),
           );
         }
         return Center(

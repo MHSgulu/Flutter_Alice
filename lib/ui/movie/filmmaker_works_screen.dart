@@ -1,7 +1,4 @@
 import 'package:alice/model/film_maker_work_entity.dart';
-import 'package:alice/model/film_maker_works_entity.dart';
-import 'package:alice/ui/movie/movie_details_screen.dart';
-import 'package:alice/ui/movie/movie_stars_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +56,7 @@ class _FilmMakerWorksScreen extends State<FilmMakerWorksScreen>{
                 itemBuilder: (BuildContext context, int index){
                   return GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.works[index].subject.id, imgUrl: snapshot.data.works[index].subject.images.small)));
+                      //Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsScreen(movieId: snapshot.data.works[index].subject.id, imgUrl: snapshot.data.works[index].subject.images.small)));
                     },
                     child: Container(
                       padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
@@ -95,29 +92,6 @@ class _FilmMakerWorksScreen extends State<FilmMakerWorksScreen>{
                                       //softWrap: true,
                                       maxLines: 2,  //文字显示最大行数
                                       overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 2.0),
-                                    child: Row(
-                                      children: <Widget>[
-                                        snapshot.data.works[index].subject.rating.average >= 9.5 && snapshot.data.works[index].subject.rating.average <= 10 ? FiveStarsScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 8.5 && snapshot.data.works[index].subject.rating.average <= 9.4 ? FourStarsHalfScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 7.5 && snapshot.data.works[index].subject.rating.average <= 8.4 ? FourStarsScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 6.5 && snapshot.data.works[index].subject.rating.average <= 7.4 ? ThreeStarsHalfScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 5.5 && snapshot.data.works[index].subject.rating.average <= 6.4 ? ThreeStarsScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 4.5 && snapshot.data.works[index].subject.rating.average <= 5.4 ? TwoStarsHalfScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 3.5 && snapshot.data.works[index].subject.rating.average <= 4.4 ? TwoStarsScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 2.5 && snapshot.data.works[index].subject.rating.average <= 3.4 ? OneStarsHalfScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 1.5 && snapshot.data.works[index].subject.rating.average <= 2.4 ? OneStarsScore()
-                                            : snapshot.data.works[index].subject.rating.average >= 0.5 && snapshot.data.works[index].subject.rating.average <= 1.4 ? HalfStarsScore()
-                                            : Text('尚未上映', style: TextStyle(color: Colors.black54,fontSize: 13.0))
-                                        ,
-                                        snapshot.data.works[index].subject.rating.average == 0 ? Container() : Container(
-                                          padding: EdgeInsets.only(left: 4.0),
-                                          child: Text('${snapshot.data.works[index].subject.rating.average}', style: TextStyle(fontSize: 12, color: Colors.black54)),
-                                        ),
-                                      ],
                                     ),
                                   ),
                                   Container(

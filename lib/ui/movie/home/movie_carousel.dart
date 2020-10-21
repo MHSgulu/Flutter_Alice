@@ -40,7 +40,6 @@ class _MovieCarouselViewState extends State<MovieCarouselView> {
                 borderRadius: BorderRadiusDirectional.circular(4.0),
               ),
               clipBehavior: Clip.antiAlias,
-              elevation: 2.0,
               child: Image.network(bannerImgUrl[index],fit: BoxFit.cover),
             );
           },

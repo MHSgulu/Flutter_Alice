@@ -1,11 +1,11 @@
 import 'package:alice/generated/json/search_news_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
+import 'package:alice/ui/news/news_detail.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import 'news_detail_screen.dart';
 
 
 
@@ -71,7 +71,7 @@ class SearchNewsListScreenState extends State<SearchNewsListScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => NewsDetailScreen(
+                                  builder: (context) => NewsDetailPage(
                                     title: snapshot.data.result.result.xList[index].title,
                                     src: snapshot.data.result.result.xList[index].src,
                                     time: snapshot.data.result.result.xList[index].time,
