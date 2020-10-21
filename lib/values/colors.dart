@@ -8,6 +8,9 @@ class MyColors{
   //static final Color darkGrey =  Color.fromRGBO(18, 18, 18, 1.0);
   static final Color darkGrey =  Color(0xFF121212);
 
+  //默认AppBar深夜模式下的背景色
+  static final Color appBarDarkColor =  Color(0xFF212121);
+
   ///接近原始页面色 white12  或者 经典页面原色
   static final Color mainBackground =  Color(0xFFF2F2F2);
 
@@ -38,11 +41,6 @@ class MyColors{
   static final Color meTextColor = Color(0xFF85682F);
   static final Color meRedTextColor = Color(0xFFFF7634);
   static final Color paginationColor = Color(0xFFD8D8D8);
-
-
-
-  static const Color _kBackgroundColor = Color(0xffa0a0a0);
-  static const Color _kSelectionRectangleBackground = Color(0x15000000);
 
   static const Color movieDetailsBackgroundColor = Color(0xFF121212);
 

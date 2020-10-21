@@ -1,9 +1,10 @@
+
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/more/setting/switch_cupertino.dart';
 import 'package:alice/ui/more/setting/switch_drak.dart';
 import 'package:alice/ui/more/setting/switch_material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SettingPage extends StatelessWidget {
@@ -11,27 +12,9 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Scaffold(
-        appBar: AppBar(
-          brightness: Brightness.light,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context, 'refresh');
-            },
-          ),
-          title: Text(
-            '设置',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
-          ),
-          centerTitle: true,
-          elevation: 1,
+        appBar: MyAppBar(
+          label: '设置',
+          onPressedBack: ()=> Navigator.pop(context, 'refresh'),
         ),
         body: SingleChildScrollView(
           child: Column(

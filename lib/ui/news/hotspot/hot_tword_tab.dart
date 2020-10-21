@@ -1,7 +1,10 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
+import 'package:alice/provider/theme_mode.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'hot_word_list.dart';
 
@@ -35,33 +38,24 @@ class HotWordTabState extends State<HotWordTab> {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          brightness: Brightness.light,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.black,
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: Text(
-            widget.title,
-            style: TextStyle(color: Colors.black, fontSize: 17),
-          ),
-          centerTitle: true,
-          elevation: 0.5,
+        appBar: MyAppBar(
+          label: widget.title,
+          onPressedBack: () => Navigator.pop(context),
           bottom: PreferredSize(
             child: Container(
               height: 40,
-              color: Colors.white,
-              child: TabBar(
-                tabs: myTabs,
-                isScrollable: true,
-                indicatorColor: Colors.black54,
-                indicatorSize: TabBarIndicatorSize.label,
-                labelColor: Colors.black87,
-                unselectedLabelColor: Colors.black45,
+              child: ChangeNotifierProvider(
+                create: (context) => AppThemeMode(),
+                child: Consumer<AppThemeMode>(
+                  builder: (context, theme, child) => TabBar(
+                    tabs: myTabs,
+                    isScrollable: true,
+                    indicatorColor: AppThemeMode.isDark ? Colors.white70 : Colors.black54,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    labelColor: AppThemeMode.isDark ? Colors.white : Colors.black87,
+                    unselectedLabelColor: AppThemeMode.isDark ? Colors.white54 : Colors.black45,
+                  ),
+                ),
               ),
             ),
             preferredSize: Size.fromHeight(35),

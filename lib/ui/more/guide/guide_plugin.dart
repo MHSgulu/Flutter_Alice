@@ -1,19 +1,19 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/other/zego/zego_main.dart';
 import 'package:flutter/material.dart';
 
-
-class GuideRoute extends StatelessWidget{
+class GuidePlugin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('各大SDK服务商提供'),
-        backgroundColor: Colors.blueGrey,
+      appBar: MyAppBar(
+        label: 'Flutter 插件/包',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.blueGrey),
+        behavior: CustomScrollBehavior(
+            isShowLeading: true, isShowTrailing: true, color: Colors.blueGrey),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),
@@ -26,7 +26,10 @@ class GuideRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ZegoLiveHomePage()));
                     },
                     splashColor: Colors.blueGrey[100],
                     child: ListTile(
@@ -46,7 +49,7 @@ class GuideRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                       //Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
+                      //Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
                     },
                     splashColor: Colors.blueGrey[100],
                     child: ListTile(
@@ -106,5 +109,4 @@ class GuideRoute extends StatelessWidget{
       ),
     );
   }
-
 }

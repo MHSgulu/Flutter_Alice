@@ -1,4 +1,5 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/example/example_badge.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_device_info.dart';
 import 'package:alice/ui/example/example_font_awesome.dart';
@@ -16,18 +17,19 @@ import 'package:alice/ui/more/guide/guide_rive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-class GuideExampleRoute extends StatelessWidget{
+class GuideExampleRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('示例代码'),
-        backgroundColor: Colors.brown[300],
+      appBar: MyAppBar(
+        label: '示例样品',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.brown[300]),
+        behavior: CustomScrollBehavior(
+            isShowLeading: true,
+            isShowTrailing: true,
+            color: Colors.brown[300]),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),
@@ -40,7 +42,8 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => GuideChartRoute()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GuideChartRoute()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -83,7 +86,8 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => GuideRiveRoute()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GuideRiveRoute()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -98,7 +102,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleBadgePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => ExampleBadgePage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -113,7 +120,8 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleMarquee()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ExampleMarquee()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -128,7 +136,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => FontAwesomeGalleryHome()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => FontAwesomeGalleryHome()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -143,7 +154,8 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleFontsPage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GoogleFontsPage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -158,7 +170,8 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => HtmlExamplePage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => HtmlExamplePage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -173,11 +186,15 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ImageColors(
-                        title: '调色板示例',
-                        image: NetworkImage('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=179292083,506023000&fm=26&gp=0.jpg'),
-                        imageSize: Size(256.0, 170.0),
-                      )));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ImageColors(
+                                    title: '调色板示例',
+                                    image: NetworkImage(
+                                        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=179292083,506023000&fm=26&gp=0.jpg'),
+                                    imageSize: Size(256.0, 170.0),
+                                  )));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -192,7 +209,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewExample()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewExample()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -207,7 +227,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => TestStaggeredGrid()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TestStaggeredGrid()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -222,7 +245,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => DeviceInfo()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DeviceInfo()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -252,7 +278,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetBattery()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PluginGetBattery()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -267,7 +296,10 @@ class GuideExampleRoute extends StatelessWidget{
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetVersion()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PluginGetVersion()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
@@ -282,5 +314,4 @@ class GuideExampleRoute extends StatelessWidget{
       ),
     );
   }
-
 }

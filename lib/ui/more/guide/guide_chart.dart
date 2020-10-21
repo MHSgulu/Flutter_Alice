@@ -1,4 +1,5 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/example/chart/fl_chart_bar_sample_1.dart';
 import 'package:alice/ui/example/chart/fl_chart_bar_sample_2.dart';
 import 'package:alice/ui/example/chart/fl_chart_bar_sample_3.dart';
@@ -108,10 +109,9 @@ class GuideChartRouteState extends State<GuideChartRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('图表示例'),
-        backgroundColor: Colors.blueGrey[400],
+      appBar: MyAppBar(
+        label: '图表样品',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
         behavior: CustomScrollBehavior(

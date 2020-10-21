@@ -1,3 +1,4 @@
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -58,22 +59,9 @@ class HotWordClassificationState extends State<HotWordClassification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        brightness: Brightness.light,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          '热点词分类',
-          style: TextStyle(color: Colors.black, fontSize: 17),
-        ),
-        centerTitle: true,
-        elevation: 1,
+      appBar: MyAppBar(
+        label: '热点词分类',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: hotWordTypeList(),
     );

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/http/dio_util.dart';
 import 'package:alice/library/bubble.dart';
 import 'package:alice/model/chat_message.dart';
@@ -9,12 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class ChatRobotScreen extends StatefulWidget {
+class ChatRobotList extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => ChatRobotScreenState();
+  State<StatefulWidget> createState() => ChatRobotListState();
 }
 
-class ChatRobotScreenState extends State<ChatRobotScreen> {
+class ChatRobotListState extends State<ChatRobotList> {
   ScrollController _scrollController;
   TextEditingController _controller;
 
@@ -96,21 +97,9 @@ class ChatRobotScreenState extends State<ChatRobotScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        brightness: Brightness.light,
-        elevation: 0.5,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-          ),
-        ),
-        title: Text(
-          '菲菲',
-          style: TextStyle(color: Colors.black, fontSize: 17),
-        ),
+      appBar: MyAppBar(
+        label: '菲菲',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: chatListView(),
       bottomSheet: bottomChatInputBox(),

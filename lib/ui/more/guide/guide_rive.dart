@@ -1,4 +1,5 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/example/rive/flr/button/example_like_button.dart';
 import 'package:alice/ui/example/rive/flr/example_fab.dart';
 import 'package:alice/ui/example/rive/flr/example_flower.dart';
@@ -17,10 +18,9 @@ class GuideRiveRoute extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('动画示例'),
-        backgroundColor: Colors.deepOrangeAccent[100],
+      appBar: MyAppBar(
+        label: '动画样品',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
         behavior: CustomScrollBehavior(isShowLeading: true,isShowTrailing: true,color: Colors.deepOrangeAccent[100]),

@@ -1,15 +1,16 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
+import 'package:alice/custom/my_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-class NewsDetailScreen extends StatelessWidget {
+class NewsDetailPage extends StatelessWidget {
   final String title;
   final String src;
   final String time;
   final String content;
 
-  NewsDetailScreen(
+  NewsDetailPage(
       {Key key,
       @required this.title,
       @required this.src,
@@ -20,18 +21,9 @@ class NewsDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        brightness: Brightness.light,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text('新闻详情',style: TextStyle(color: Colors.black, fontSize: 17),),
-        elevation: 1,
+      appBar: MyAppBar(
+        label: '新闻详情',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
           behavior: CustomScrollBehavior(),
