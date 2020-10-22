@@ -122,6 +122,9 @@ dependencies:
   # 干净，简约，易于协作的Flutter富文本编辑器。
   zefyr: ^0.12.0
 
+  # Flutter插件，用于从Android和iOS图像库中选择图像，并使用相机拍摄新照片。
+  image_picker: ^0.6.7+12
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
