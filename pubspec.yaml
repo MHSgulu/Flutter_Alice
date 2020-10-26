@@ -55,7 +55,7 @@ dependencies:
   json_annotation: ^3.1.0
 
   # Flutter插件，用于在Android和iOS上启动URL。支持Web，电话，SMS和电子邮件方案(Flutter插件，用于在移动平台中启动URL。支持iOS，Android，Web，Windows，macOS和Linux。)
-  url_launcher: ^5.7.2
+  url_launcher: ^5.7.8
 
   # Photo View提供了一个手势敏感的可缩放小部件。Photo View主要用于显示交互图像和SVG等其他内容。
   # Flutter一个简单的可缩放图像/内容小部件。PhotoView使图像能够通过用户的手势（例如捏，旋转和拖动）进行缩放和平移。
@@ -75,7 +75,7 @@ dependencies:
   pull_to_refresh: ^1.6.2
 
   # Flutter小部件，将静态HTML和CSS呈现为Flutter小部件
-  flutter_html: ^1.0.0
+  flutter_html: ^1.0.2
 
   # 最好的拍打器（轮播），具有多种布局，无限循环。与Android和iOS兼容。
   flutter_swiper: ^1.1.6

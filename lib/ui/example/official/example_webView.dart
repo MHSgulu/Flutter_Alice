@@ -41,7 +41,9 @@ class _WebViewExampleState extends State<WebViewExample> {
       body: Builder(builder: (BuildContext context) {
         return WebView(
           initialUrl: 'https://www.baidu.com/',
-          javascriptMode: JavascriptMode.unrestricted,
+          ///是否启用Javascript执行。
+          javascriptMode: JavascriptMode.unrestricted, ///JavaScript执行不受限制。
+          ///如果不创建，则在创建Web视图后调用null。
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
           },
@@ -64,6 +66,9 @@ class _WebViewExampleState extends State<WebViewExample> {
           onPageFinished: (String url) {
             print('点位-页面加载完成: $url');
           },
+          ///一个布尔值，指示水平滑动手势是否会触发后退列表导航。
+          ///这仅适用于iOS。
+          ///默认情况下，“ gestureNavigationEnabled”为false。
           gestureNavigationEnabled: true,
         );
       }),
@@ -151,32 +156,32 @@ class SampleMenu extends StatelessWidget {
           itemBuilder: (BuildContext context) => <PopupMenuItem<MenuOptions>>[
             PopupMenuItem<MenuOptions>(
               value: MenuOptions.showUserAgent,
-              child: const Text('Show user agent'),
+              child: const Text('显示用户代理'),
               enabled: controller.hasData,
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.listCookies,
-              child: Text('List cookies'),
+              child: Text('列出Cookie'),
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.clearCookies,
-              child: Text('Clear cookies'),
+              child: Text('清除Cookies'),
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.addToCache,
-              child: Text('Add to cache'),
+              child: Text('添加到缓存'),
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.listCache,
-              child: Text('List cache'),
+              child: Text('列出缓存'),
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.clearCache,
-              child: Text('Clear cache'),
+              child: Text('清除缓存'),
             ),
             const PopupMenuItem<MenuOptions>(
               value: MenuOptions.navigationDelegate,
-              child: Text('Navigation Delegate example'),
+              child: Text('导航代表示例'),
             ),
           ],
         );
