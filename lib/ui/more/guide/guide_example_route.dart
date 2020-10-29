@@ -6,6 +6,7 @@ import 'package:alice/ui/example/example_font_awesome.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_google_fonts.dart';
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
+import 'package:alice/ui/example/picker/example_city_picker.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_palette.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/provider/example_provider_counter.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_webView.dart';
@@ -36,6 +37,22 @@ class GuideExampleRoute extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ExampleCityPicker()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('城市选择器'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
