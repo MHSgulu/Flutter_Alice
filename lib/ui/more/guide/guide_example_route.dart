@@ -7,6 +7,7 @@ import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_google_fo
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
 import 'package:alice/ui/example/example_permission.dart';
+import 'package:alice/ui/example/official/example_image_picker.dart';
 import 'package:alice/ui/example/picker/example_city_picker.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_palette.dart';
 import 'file:///E:/Alice_flutter/alice/lib/ui/example/provider/example_provider_counter.dart';
@@ -38,6 +39,22 @@ class GuideExampleRoute extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ExampleImagePicker()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('image_picker 示例'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
