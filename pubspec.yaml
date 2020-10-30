@@ -131,6 +131,9 @@ dependencies:
   # 一款受chrome devtools启发的HSV（HSB）/ HSL拾色器，以及用于您的flutter应用程序的材质拾色器
   flutter_colorpicker: ^0.3.4
 
+  # Flutter的权限插件。此插件提供了跨平台（iOS，Android）API来请求和检查权限。
+  permission_handler: ^5.0.1+1
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
