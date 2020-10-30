@@ -316,7 +316,8 @@ class _ShowCityPickerState extends State<ShowCityPicker> {
                     itemExtent: customerItemExtent,
                     cancelWidget: customerButtons ? Text('cancle') : null,
                     confirmWidget: customerButtons ? Text('confirm') : null,
-                    itemBuilder: this.getItemBuilder());
+                    itemBuilder: this.getItemBuilder(),
+                );
                 if (tempResult == null) {
                   return;
                 }

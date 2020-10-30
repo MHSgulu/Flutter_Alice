@@ -25,19 +25,7 @@ Future<MobiePhoneEntity> query(String phone) async {
 }
 
 
-
 class QueryMobilePhoneNumberHomeView extends StatefulWidget {
-  QueryMobilePhoneNumberHomeView({Key key}) : super(key: key);
-
-  /*@override
-  State<StatefulWidget> createState() {
-    return QueryMobilePhoneNumberHomeViewState();
-  }*/
-
-  /*@override
-  QueryMobilePhoneNumberHomeViewState createState() {
-    return QueryMobilePhoneNumberHomeViewState();
-  }*/
 
   @override
   QueryMobilePhoneNumberHomeViewState createState() => QueryMobilePhoneNumberHomeViewState();
