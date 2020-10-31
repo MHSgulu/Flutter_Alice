@@ -134,6 +134,9 @@ dependencies:
   # Flutter的权限插件。此插件提供了跨平台（iOS，Android）API来请求和检查权限。
   permission_handler: ^5.0.1+1
 
+  # 使用本机代码（objc kotlin）压缩图像，速度更快。这个程式库可以在android / ios上运作
+  flutter_image_compress: ^0.7.0
+
   # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_express_engine: ^1.15.0
 
