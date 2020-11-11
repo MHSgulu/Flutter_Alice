@@ -27,27 +27,6 @@ class HotWordClassificationState extends State<HotWordClassification> {
     'https://icweiliimg9.pstatp.com/weili/l/400605386644914228.webp',
   ];
 
-  /*HotWordTypeEntity _hotWordTypeEntity = HotWordTypeEntity();
-
-  void fetchData() async {
-    Response response = await DioUtil.getInstance().createJdWxkDio().get(
-      Api.hotWordType,
-      queryParameters: {
-        "appkey": Util.jdWxApiKey,
-      },
-    );
-    print('数据点位：' + response.toString());
-    _hotWordTypeEntity = hotWordTypeEntityFromJson(
-        HotWordTypeEntity(), jsonDecode(response.toString()));
-    if (_hotWordTypeEntity.code == '10000' ||
-        _hotWordTypeEntity.msg == '查询成功') {
-      Fluttertoast.showToast(msg: '！！');
-      print('数据点位： ${_hotWordTypeEntity.result.showapiResBody.xList[0].name}');
-    } else {
-      Fluttertoast.showToast(msg: '${_hotWordTypeEntity.msg}');
-    }
-  }*/
-
   Future<HotWordTypeEntity> _futureHotWordTypeEntity;
 
   @override

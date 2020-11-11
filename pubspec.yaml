@@ -34,7 +34,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
 
   # 一种在Flutter应用程序中包含fonts.google.com中的字体的软件包。
-  # (google_fontsFlutter 的软件包可让您轻松地在Flutter应用中使用fonts.google.com中的977种字体（及其变体）)
+  # (google_fonts Flutter 的软件包可让您轻松地在Flutter应用中使用fonts.google.com中的977种字体（及其变体）)
   google_fonts: ^1.1.0
 
   # 用于Flutter的SVG渲染和窗口小部件库，允许绘制和显示可缩放矢量图形1.1文件。

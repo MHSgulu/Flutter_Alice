@@ -1,28 +1,26 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/example/example_badge.dart';
-import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_device_info.dart';
-import 'package:alice/ui/example/example_font_awesome.dart';
-import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_google_fonts.dart';
 import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
 import 'package:alice/ui/example/example_permission.dart';
 import 'package:alice/ui/example/example_picture_compression.dart';
-import 'package:alice/ui/example/official/example_image_picker.dart';
-import 'package:alice/ui/example/official/example_package_info.dart';
+import 'package:alice/ui/example/official/example_google_fonts.dart';
 import 'package:alice/ui/example/picker/example_city_picker.dart';
-import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_palette.dart';
-import 'file:///E:/Alice_flutter/alice/lib/ui/example/provider/example_provider_counter.dart';
-import 'file:///E:/Alice_flutter/alice/lib/ui/example/official/example_webView.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
 import 'package:alice/ui/example/plugin_get_battery.dart';
+import 'package:alice/ui/example/provider/example_provider_counter.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:alice/ui/example/zefyr/example_zefyr.dart';
 import 'package:alice/ui/more/guide/guide_chart.dart';
+import 'package:alice/ui/more/guide/guide_community_package.dart';
+import 'package:alice/ui/more/guide/guide_official_package.dart';
+import 'package:alice/ui/more/guide/guide_official_plugin.dart';
 import 'package:alice/ui/more/guide/guide_official_widget.dart';
 import 'package:alice/ui/more/guide/guide_rive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 class GuideExampleRoute extends StatelessWidget {
   @override
@@ -66,11 +64,43 @@ class GuideExampleRoute extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => ExamplePackageInfo()));
+                          MaterialPageRoute(builder: (_) => GuideOfficialPluginRoute()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('package_info 示例'),
+                      title: Text('Flutter团队维护的插件目录'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GuideOfficialPackageRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Flutter团队维护的软件包目录'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GuideCommunityPackageRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Flutter社区的软件包目录'),
                     ),
                   ),
                 ),
@@ -87,22 +117,6 @@ class GuideExampleRoute extends StatelessWidget {
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('flutter_image_compress 示例'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => ExampleImagePicker()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('image_picker 示例'),
                     ),
                   ),
                 ),
@@ -255,30 +269,13 @@ class GuideExampleRoute extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => FontAwesomeGalleryHome()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('font_awesome_flutter 示例'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => GoogleFontsPage()));
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('google_fonts 示例'),
+                      title: Text('google_fonts'),
+                      subtitle: Text('google_fontsFlutter的软件包可让您轻松地在Flutter应用中使用fonts.google.com中的977种字体（及其变体)'),
                     ),
                   ),
                 ),
@@ -294,48 +291,7 @@ class GuideExampleRoute extends StatelessWidget {
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('flutter_html(将静态HTML和CSS呈现为Flutter小部件)'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ImageColors(
-                                    title: '调色板示例',
-                                    image: NetworkImage(
-                                        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=179292083,506023000&fm=26&gp=0.jpg'),
-                                    imageSize: Size(256.0, 170.0),
-                                  )));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('Palette 调色板'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WebViewExample()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('WebView'),
+                      title: Text('flutter_html'),
                     ),
                   ),
                 ),
@@ -357,39 +313,6 @@ class GuideExampleRoute extends StatelessWidget {
                     ),
                   ),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DeviceInfo()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('获取设备信息'),
-                    ),
-                  ),
-                ),
-                /*Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => TestPlugScreen()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('插件——内嵌方式-获取手机安卓系统版本'),
-                    ),
-                  ),
-                ),*/
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),

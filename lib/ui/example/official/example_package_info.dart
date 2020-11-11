@@ -42,7 +42,7 @@ class _MyHomePageState extends State<ExamplePackageInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('示例'),
+        title: Text('package_info 示例'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
