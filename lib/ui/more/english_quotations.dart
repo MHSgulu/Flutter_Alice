@@ -1,6 +1,7 @@
-import 'package:alice/common/tool_util.dart';
+
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/quotation_entity.dart';
+import 'package:alice/util/tool_util.dart';
 import 'package:alice/values/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

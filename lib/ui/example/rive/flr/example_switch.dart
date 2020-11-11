@@ -23,12 +23,8 @@ class _ExampleSwitchPageState extends State<ExampleSwitchPage> {
                   //返回一个新的map，其中此map的所有项都由给定的[f]函数转换。
                   .map((i, isOn) {
                     //用[键]和[值]创建一个条目。 *
-                    return MapEntry(
-                        i,
-                        SmileySwitch(isOn,
-                            snapToEnd: _snapToEnd,
-                            onToggle: () => setState(
-                                  () {
+                    return MapEntry(i,
+                        SmileySwitch(isOn, snapToEnd: _snapToEnd, onToggle: () => setState(() {
                                     _snapToEnd = false;
                                     options[i] = !isOn;
                                   },

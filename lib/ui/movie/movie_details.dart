@@ -1,7 +1,8 @@
-import 'package:alice/common/tool_util.dart';
+
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
+import 'package:alice/util/tool_util.dart';
 import 'package:alice/values/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

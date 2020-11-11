@@ -19,6 +19,7 @@ import 'package:alice/ui/example/plugin_get_battery.dart';
 import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:alice/ui/example/zefyr/example_zefyr.dart';
 import 'package:alice/ui/more/guide/guide_chart.dart';
+import 'package:alice/ui/more/guide/guide_official_widget.dart';
 import 'package:alice/ui/more/guide/guide_rive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,22 @@ class GuideExampleRoute extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => GuideOfficialWidgetRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Widget 目录'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
