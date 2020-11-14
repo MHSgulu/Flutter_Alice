@@ -10,12 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class BingWallpaperView extends StatefulWidget {
-  BingWallpaperView({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return BingWallpaperViewState();
-  }
+  State<StatefulWidget> createState() => BingWallpaperViewState();
 }
 
 class BingWallpaperViewState extends State<BingWallpaperView> {
@@ -61,80 +58,76 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
         future: futureBingWallpaper,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Column(
-              children: <Widget>[
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4.0),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  elevation: 2.0,
-                  child: Container(
-                    //margin: EdgeInsets.all(5.0),
-                    child: Stack(
-                      alignment: Alignment.bottomLeft,
-                      children: <Widget>[
-                        GestureDetector(
-                          child: FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: Util.bingUrl + snapshot.data.images[0].url,
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PhotoViewSimpleScreen(
-                                        imageProvider: NetworkImage(
-                                            Util.bingUrl +
-                                                snapshot.data.images[0].url),
+            return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+              clipBehavior: Clip.antiAlias,
+              elevation: 2.0,
+              child: Container(
+                //margin: EdgeInsets.all(5.0),
+                child: Stack(
+                  alignment: Alignment.bottomLeft,
+                  children: <Widget>[
+                    GestureDetector(
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: Util.bingUrl + snapshot.data.images[0].url,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PhotoViewSimpleScreen(
+                                imageProvider: NetworkImage(
+                                    Util.bingUrl +
+                                        snapshot.data.images[0].url),
 
-                                        ///必须设为double类型
-                                        minScale: 0.2,
+                                ///必须设为double类型
+                                minScale: 0.2,
 
-                                        ///定义允许图像采用的最小大小，它与原始图像大小成比例
-                                        maxScale: 0.5,
+                                ///定义允许图像采用的最小大小，它与原始图像大小成比例
+                                maxScale: 0.5,
 
-                                        ///定义允许图像采用的最大大小，它与原始图像大小成比例。
-                                        heroTag: 'simple',
-                                      )),
-                            );
-                          },
-                        ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Container(
-                            margin: EdgeInsets.all(2.0),
-                            child: Text(snapshot.data.images[0].startdate,
-                                style: TextStyle(
-                                    color: Colors.white70, fontSize: 10.0)),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            ToolUtil.launchWebUrl(
-                                snapshot.data.images[0].copyrightlink);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
-                            child: Text(
-                              snapshot.data.images[0].copyright,
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 12.0,
-                                fontStyle:
-                                    FontStyle.italic, //文字样式（italic斜体，normal正常体）
-                                //decoration: TextDecoration.underline,  //文字装饰线（none没有线，lineThrough删除线，overline上划线，underline下划线）
-                                //decorationColor: Colors.lightBlue[400],  //文字装饰线颜色
-                                //decorationStyle: TextDecorationStyle.solid,  //文字装饰线风格（[dashed,dotted]虚线，double两根线，solid一根实线，wavy波浪线）
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                                ///定义允许图像采用的最大大小，它与原始图像大小成比例。
+                                heroTag: 'simple',
+                              )),
+                        );
+                      },
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        margin: EdgeInsets.all(2.0),
+                        child: Text(snapshot.data.images[0].startdate,
+                            style: TextStyle(
+                                color: Colors.white70, fontSize: 10.0)),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        ToolUtil.launchWebUrl(
+                            snapshot.data.images[0].copyrightlink);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(8, 0, 8, 16),
+                        child: Text(
+                          snapshot.data.images[0].copyright,
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 12.0,
+                            fontStyle:
+                            FontStyle.italic, //文字样式（italic斜体，normal正常体）
+                            //decoration: TextDecoration.underline,  //文字装饰线（none没有线，lineThrough删除线，overline上划线，underline下划线）
+                            //decorationColor: Colors.lightBlue[400],  //文字装饰线颜色
+                            //decorationStyle: TextDecorationStyle.solid,  //文字装饰线风格（[dashed,dotted]虚线，double两根线，solid一根实线，wavy波浪线）
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             );
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
@@ -154,12 +147,9 @@ class BingWallpaperViewState extends State<BingWallpaperView> {
 }
 
 class BingWallpaperListView extends StatefulWidget {
-  BingWallpaperListView({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return BingWallpaperListViewState();
-  }
+  State<StatefulWidget> createState() => BingWallpaperListViewState();
 }
 
 class BingWallpaperListViewState extends State<BingWallpaperListView> {

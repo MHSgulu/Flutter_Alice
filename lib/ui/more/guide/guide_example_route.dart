@@ -5,6 +5,7 @@ import 'package:alice/ui/example/example_html.dart';
 import 'package:alice/ui/example/example_marquee.dart';
 import 'package:alice/ui/example/example_permission.dart';
 import 'package:alice/ui/example/example_picture_compression.dart';
+import 'package:alice/ui/example/localization/example_localization.dart';
 import 'package:alice/ui/example/official/example_google_fonts.dart';
 import 'package:alice/ui/example/picker/example_city_picker.dart';
 import 'package:alice/ui/example/plugin_get_android_version.dart';
@@ -14,6 +15,7 @@ import 'package:alice/ui/example/test_staggered_grid.dart';
 import 'package:alice/ui/example/zefyr/example_zefyr.dart';
 import 'package:alice/ui/more/guide/guide_chart.dart';
 import 'package:alice/ui/more/guide/guide_community_package.dart';
+import 'package:alice/ui/more/guide/guide_official_dart_package.dart';
 import 'package:alice/ui/more/guide/guide_official_package.dart';
 import 'package:alice/ui/more/guide/guide_official_plugin.dart';
 import 'package:alice/ui/more/guide/guide_official_widget.dart';
@@ -101,6 +103,21 @@ class GuideExampleRoute extends StatelessWidget {
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Flutter社区的软件包目录'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => GuideDartTeamOfficialPackageRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Dart团队发布的官方软件包'),
                     ),
                   ),
                 ),

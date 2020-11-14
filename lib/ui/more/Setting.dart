@@ -1,5 +1,6 @@
 
 import 'package:alice/custom/my_appbar.dart';
+import 'package:alice/ui/more/setting/multi_language.dart';
 import 'package:alice/ui/more/setting/switch_cupertino.dart';
 import 'package:alice/ui/more/setting/switch_drak.dart';
 import 'package:alice/ui/more/setting/switch_material.dart';
@@ -23,7 +24,24 @@ class SettingPage extends StatelessWidget {
               SwitchDark(),
               SwitchMaterialTheme(),
               SwitchCupertinoTheme(),
-              //SwitchIconStyle(),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MultiLanguage()));
+                },
+                child: Card(
+                  child: Container(
+                    height: 50,
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    child: Row(
+                      children: [
+                        Text('国际化支持'),
+                        Expanded(child: Container()),
+                        Icon(Icons.arrow_forward_ios_rounded,size: 16,),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

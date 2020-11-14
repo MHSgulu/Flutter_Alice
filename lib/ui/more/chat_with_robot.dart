@@ -197,7 +197,7 @@ class ChatRobotListState extends State<ChatRobotList> {
               margin: EdgeInsets.fromLTRB(12, 4, 12, 4),
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               decoration: ShapeDecoration(
-                color: MyColors.mainBackground,
+                color: Colors.grey[50],
                 shape: StadiumBorder(),
               ),
               child: TextField(

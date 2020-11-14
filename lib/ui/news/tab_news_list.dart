@@ -1,5 +1,6 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/news_entity.dart';
+import 'package:alice/provider/theme_mode.dart';
 import 'package:alice/ui/news/news_detail.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -91,13 +92,13 @@ class _NewsListState extends State<TabNewsList> {
                             Container(
                               child: Text(
                                   snapshot.data.result.result.xList[index].time,
-                                  style: TextStyle(fontSize: 11)),
+                                  style: TextStyle(fontSize: 11,color: AppThemeMode.lightTextColors)),
                             ),
                             Expanded(
                               child: Container(),
                             ),
                             Text(snapshot.data.result.result.xList[index].src,
-                                style: TextStyle(fontSize: 11)),
+                                style: TextStyle(fontSize: 11,color: AppThemeMode.lightTextColors)),
                           ],
                         ),
                       ),

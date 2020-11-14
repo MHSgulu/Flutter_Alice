@@ -37,7 +37,7 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
       NetworkImage(imageUrl),
     );
     if (generator == null || generator.colors.isEmpty) {
-      dynamicBackgroundColor = MyColors.movieDetailsBackgroundColor;
+      dynamicBackgroundColor = Colors.grey[850];
     } else {
       setState(() {
         dynamicBackgroundColor = generator.dominantColor.color;

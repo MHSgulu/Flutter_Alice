@@ -23,6 +23,14 @@ environment: # 应用或包的开发环境 flutter的SDK版本在此区间 这�
 dependencies:
   flutter:
     sdk: flutter
+
+  # 国际化
+  flutter_localizations:
+    sdk: flutter
+
+  # 该软件包提供国际化和本地化功能，包括消息翻译，复数形式和性别，日期/数字格式和解析以及双向文本
+  intl: ^0.16.1
+
   # ^ 该箭头很重要 作为插件稳定版本可以把该箭头去掉，如果添加上，他会找environment 对应的开发环境下的所对应的Flutter Sdk编译的版本。
 
   # 将Cupertino图标字体添加到应用程序中。用于iOS风格图标的CupertinoIcons类。
