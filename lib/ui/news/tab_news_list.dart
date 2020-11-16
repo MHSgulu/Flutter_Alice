@@ -1,6 +1,6 @@
 import 'package:alice/http/http_util.dart';
 import 'package:alice/model/news_entity.dart';
-import 'package:alice/provider/theme_mode.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/global/theme_mode.dart';
 import 'package:alice/ui/news/news_detail.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';

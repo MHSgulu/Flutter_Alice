@@ -1,6 +1,6 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/custom/my_appbar.dart';
-import 'package:alice/other/zego/zego_main.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/other/zego/zego_main.dart';
 import 'package:flutter/material.dart';
 
 class GuidePlugin extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
 import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/provider/theme_mode.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/global/theme_mode.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

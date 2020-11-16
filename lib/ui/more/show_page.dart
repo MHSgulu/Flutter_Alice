@@ -1,5 +1,5 @@
 import 'package:alice/custom/custom_scroll_behavior.dart';
-import 'package:alice/provider/theme_mode.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/global/theme_mode.dart';
 import 'package:alice/ui/more/Setting.dart';
 import 'package:alice/ui/more/bing/bing_wallpaper.dart';
 import 'package:alice/ui/more/chat_with_robot.dart';

@@ -1,4 +1,4 @@
-import 'package:alice/provider/theme_mode.dart';
+import 'file:///E:/Alice_flutter/alice/lib/ui/global/theme_mode.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/flare_cache_builder.dart';
 import 'package:flare_flutter/provider/asset_flare.dart';
