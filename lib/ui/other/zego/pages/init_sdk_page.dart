@@ -1,5 +1,5 @@
-import 'package:alice/other/zego/config/zego_config.dart';
-import 'package:alice/other/zego/ui/zego_ui_tool.dart';
+import 'package:alice/ui/other/zego/config/zego_config.dart';
+import 'package:alice/ui/other/zego/ui/zego_ui_tool.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zego_express_engine/zego_express_engine.dart';

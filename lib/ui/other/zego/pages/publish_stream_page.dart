@@ -1,10 +1,11 @@
-import 'package:alice/other/zego/config/zego_config.dart';
+import 'package:alice/ui/other/zego/config/zego_config.dart';
+import 'package:alice/ui/other/zego/pages/publish_settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:zego_express_engine/zego_express_engine.dart';
 
-import 'publish_settings_page.dart';
+
 
 class PublishStreamPage extends StatefulWidget {
   final int screenWidthPx;
