@@ -1,4 +1,4 @@
-import 'package:alice/provider/theme_mode.dart';
+import 'package:alice/ui/global/theme_mode.dart';
 import 'package:alice/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
