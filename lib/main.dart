@@ -1,6 +1,6 @@
-import 'package:alice/ui/global/localization/LocalizationsDelegate.dart';
-import 'package:alice/ui/global/theme_mode.dart';
-import 'package:alice/ui/home.dart';
+import 'package:alice/common/global/localization/LocalizationsDelegate.dart';
+import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/routes/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
