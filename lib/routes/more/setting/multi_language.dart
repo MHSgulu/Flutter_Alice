@@ -11,7 +11,9 @@ class MultiLanguage extends StatefulWidget {
 
 class _MultiLanguageState extends State<MultiLanguage> {
   Locale myLocale;
-  int _value = 0;
+  int _value;
+  String languageCode;
+  String scriptCode;
   List<bool> options = [true, false, false, false, false];
   List<String> languageList;
   List<String> languageIconList = [
@@ -22,9 +24,9 @@ class _MultiLanguageState extends State<MultiLanguage> {
     'assets/icons/icon_language_4.png',
   ];
 
-
   @override
   void initState() {
+    initLanguage();
     super.initState();
   }
 
@@ -51,28 +53,40 @@ class _MultiLanguageState extends State<MultiLanguage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text('当前主要语言标签: ${myLocale.languageCode}'), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
+            Text(
+                '当前主要语言标签: ${myLocale.languageCode}'), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
             SizedBox(height: 8),
-            Text('当前语言环境的区域标签: ${myLocale.countryCode}'), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
+            Text(
+                '当前语言环境的区域标签: ${myLocale.countryCode}'), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
             SizedBox(height: 8),
-            Text('当前语言环境标识符: ${myLocale.toLanguageTag()}'), //返回语法上有效的Unicode BCP47语言环境标识符。
+            Text(
+                '当前语言环境标识符: ${myLocale.toLanguageTag()}'), //返回语法上有效的Unicode BCP47语言环境标识符。
             SizedBox(height: 8),
-            Text('当前语言环境: ${myLocale.toString()}'),  //返回表示语言环境的字符串。
+            Text('当前语言环境: ${myLocale.toString()}'), //返回表示语言环境的字符串。
             SizedBox(height: 20),
             Wrap(
               children: List<Widget>.generate(
                 languageList.length,
-                    (int index) {
+                (int index) {
                   return Container(
                     margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
                     child: ChoiceChip(
                       label: ListTile(
-                        title: Text(languageList[index],maxLines: 1,style: TextStyle(fontSize: 15),),
-                        trailing: Image.asset(languageIconList[index],width: 35,height: 35,),
+                        title: Text(
+                          languageList[index],
+                          maxLines: 1,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        trailing: Image.asset(
+                          languageIconList[index],
+                          width: 35,
+                          height: 35,
+                        ),
                         selected: _value == index ? true : false,
                       ),
                       selected: _value == index,
-                      onSelected: (bool selected) => switchLanguage(index,selected),
+                      onSelected: (bool selected) =>
+                          switchLanguage(index, selected),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),
                       ),
@@ -88,22 +102,50 @@ class _MultiLanguageState extends State<MultiLanguage> {
     );
   }
 
+  void initLanguage() {
+    languageCode = AppThemeMode.language;
+    scriptCode = AppThemeMode.script;
+    switch (languageCode) {
+      case 'zh':
+        if (scriptCode == 'Hans') {
+          _value = 0;
+        } else if (scriptCode == 'Hant') {
+          _value = 1;
+        }
+        break;
+      case 'en':
+        _value = 2;
+        break;
+      case 'fr':
+        _value = 3;
+        break;
+      case 'ja':
+        _value = 4;
+        break;
+    }
+  }
+
   void switchLanguage(int index, bool selected) {
     switch (index) {
       case 0:
-        Provider.of<AppThemeMode>(context, listen: false).switchLanguage('zh','Hans');
+        Provider.of<AppThemeMode>(context, listen: false)
+            .switchLanguage('zh', 'Hans');
         break;
       case 1:
-        Provider.of<AppThemeMode>(context, listen: false).switchLanguage('zh','Hant');
+        Provider.of<AppThemeMode>(context, listen: false)
+            .switchLanguage('zh', 'Hant');
         break;
       case 2:
-        Provider.of<AppThemeMode>(context, listen: false).switchLanguage('en','');
+        Provider.of<AppThemeMode>(context, listen: false)
+            .switchLanguage('en', '');
         break;
       case 3:
-        Provider.of<AppThemeMode>(context, listen: false).switchLanguage('fr','');
+        Provider.of<AppThemeMode>(context, listen: false)
+            .switchLanguage('fr', '');
         break;
       case 4:
-        Provider.of<AppThemeMode>(context, listen: false).switchLanguage('ja','');
+        Provider.of<AppThemeMode>(context, listen: false)
+            .switchLanguage('ja', '');
         break;
     }
     if (mounted) {
