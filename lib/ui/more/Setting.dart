@@ -1,4 +1,3 @@
-
 import 'package:alice/custom/my_appbar.dart';
 import 'package:alice/ui/more/setting/multi_language.dart';
 import 'package:alice/ui/more/setting/switch_cupertino.dart';
