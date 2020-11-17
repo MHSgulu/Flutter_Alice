@@ -1,4 +1,3 @@
-import 'package:alice/common/global/localization/LocalizationsDelegate.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/routes/home.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-//Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56
+import 'common/l10n/LocalizationsDelegate.dart';
+
+///Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56
 
 ///从Dart 2开始，new关键字是可选的
 
@@ -25,7 +26,12 @@ import 'package:provider/provider.dart';
 ///withName  如果路由具有指定的名称并且如果弹出路线不会产生相同的路线，即，如果路线的[willHandlePopInternally]属性为false。此函数通常与[Navigator.popntil导航器()].
 
 void main() {
-  runApp(MyApp());
+  /// 返回[WidgetsBinding]的实例，必要时创建并初始化它。 如果创建了一个，它将是一个[WidgetsFlutterBinding]。
+  /// 如果以前已经初始化过，那么它将至少实现[WidgetsBinding]。
+  /// 仅在需要在调用[runApp]之前初始化绑定的情况下，才需要调用此方法。
+  /// 在`flutter_test`框架中，[testWidgets]将绑定实例初始化为[TestWidgetsFlutterBinding]，而不是[WidgetsFlutterBinding]。
+  WidgetsFlutterBinding.ensureInitialized(); //添加此处代码是为了防止下句代码报错
+  AppThemeMode.init().then((e) => runApp(MyApp()));
   if (Platform.isAndroid) {
     /// 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
@@ -54,7 +60,7 @@ class MyApp extends StatelessWidget {
           /// [onGenerateTitle]`context`参数包括[WidgetsApp]的[Localizations]小部件，以便可以使用此回调产生本地化的标题。
           /// 此回调函数不得返回null。
           /// 每当[WidgetsApp]重建时，都会调用[onGenerateTitle]回调。
-          //onGenerateTitle: (context) => MyLocalizations.of(context).appTitle,
+          //onGenerateTitle: (context1) => MyLocalizations.of(context1).appTitle,
           ///此应用程序的默认视觉属性，例如颜色字体和形状材料小部件。
           ///也可以指定第二个[darkTheme] [ThemeData]值，该值用于提供深色的用户界面。 如果提供了[darkTheme]，则[themeMode]将控制使用哪个主题。
           ///此属性的默认值为[ThemeData.light（）]的值。

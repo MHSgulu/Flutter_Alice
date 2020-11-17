@@ -1,4 +1,4 @@
-import 'package:alice/common/global/localization/Localizations.dart';
+import 'file:///E:/Alice_flutter/alice/lib/common/l10n/Localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
