@@ -18,6 +18,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'guide_community_package.dart';
+import 'guide_cupertino_widget.dart';
+import 'guide_material_widget.dart';
 import 'guide_official_dart_package.dart';
 import 'guide_official_package.dart';
 import 'guide_official_plugin.dart';
@@ -41,6 +43,44 @@ class GuideExampleRoute extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => GuideMaterialWidgetRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Material Design Components'),
+                      subtitle: Text('物质风格组件'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => GuideCupertinoWidgetRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Cupertino Components'),
+                      subtitle: Text('库比蒂诺风格组件'),
+                    ),
+                  ),
+                ),
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(4),
