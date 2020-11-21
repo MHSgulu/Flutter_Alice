@@ -1,4 +1,5 @@
 import 'package:alice/routes/components/cupertino/cupertino_date_picker.dart';
+import 'package:alice/routes/components/cupertino/cupertino_picker.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class GuideCupertinoWidgetRoute extends StatefulWidget {
 class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
   List<String> titleList = [
     'CupertinoDatePicker(日期选择器)',
+    'CupertinoPicker(iOS样式的选择器)',
   ];
 
   @override
@@ -58,6 +60,7 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDatePickerExample()));
         break;
       case 1:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoPickerExample()));
         break;
       case 2:
         break;
