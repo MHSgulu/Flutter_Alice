@@ -53,14 +53,11 @@ class _MultiLanguageState extends State<MultiLanguage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-                '当前主要语言标签: ${myLocale.languageCode}'), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
+            Text('当前主要语言标签: ${myLocale.languageCode}'), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
             SizedBox(height: 8),
-            Text(
-                '当前语言环境的区域标签: ${myLocale.countryCode}'), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
+            Text('当前语言环境的区域标签: ${myLocale.countryCode}'), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
             SizedBox(height: 8),
-            Text(
-                '当前语言环境标识符: ${myLocale.toLanguageTag()}'), //返回语法上有效的Unicode BCP47语言环境标识符。
+            Text('当前语言环境标识符: ${myLocale.toLanguageTag()}'), //返回语法上有效的Unicode BCP47语言环境标识符。
             SizedBox(height: 8),
             Text('当前语言环境: ${myLocale.toString()}'), //返回表示语言环境的字符串。
             SizedBox(height: 20),

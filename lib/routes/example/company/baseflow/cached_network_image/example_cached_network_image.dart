@@ -6,7 +6,7 @@ import 'template/globals.dart';
 
 
 ///展示此插件功能的Flutter应用程序
-class BaseflowPluginExample extends StatelessWidget {
+class ExampleCachedNetworkImage extends StatelessWidget {
   ///要在应用程序[ThemeData]中使用的[MaterialColor]
   final MaterialColor themeMaterialColor =
   createMaterialColor(const Color.fromRGBO(48, 49, 60, 1));

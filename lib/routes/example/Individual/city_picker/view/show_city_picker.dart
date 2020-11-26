@@ -7,9 +7,10 @@
 // target:  基本用法
 //
 
-import 'package:alice/routes/example/picker/meta/province_nm.dart';
-import 'package:alice/routes/example/picker/src/attr_item_container.dart';
-import 'package:alice/routes/example/picker/src/picker.dart';
+
+import 'package:alice/routes/example/Individual/city_picker/meta/province_nm.dart';
+import 'package:alice/routes/example/Individual/city_picker/src/attr_item_container.dart';
+import 'package:alice/routes/example/Individual/city_picker/src/picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:city_pickers/city_pickers.dart';

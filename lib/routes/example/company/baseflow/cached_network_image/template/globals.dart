@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 const String pluginName = 'CachedNetworkImage';
 
 /// Returns Github URL, which is shown in the [InfoPage].
-const String githubURL =
-    'https://github.com/Baseflow/flutter_cached_network_image';
+const String githubURL = 'https://github.com/Baseflow/flutter_cached_network_image';
 
 /// Returns Baseflow URL, which is shown in the [InfoPage].
 const String baseflowURL = 'https://baseflow.com';

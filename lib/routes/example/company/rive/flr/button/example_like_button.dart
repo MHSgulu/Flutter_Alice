@@ -1,5 +1,6 @@
-import 'file:///E:/Alice_flutter/alice/lib/routes/example/rive/flr/button/buttons_row.dart';
 import 'package:flutter/material.dart';
+
+import 'buttons_row.dart';
 
 Color twoDGrey = Color.fromRGBO(238, 238, 238, 1);
 

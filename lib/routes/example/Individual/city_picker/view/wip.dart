@@ -7,7 +7,8 @@
 // tartget:  xxx
 //
 
-import 'package:alice/routes/example/picker/src/attr_item_container.dart';
+
+import 'package:alice/routes/example/Individual/city_picker/src/attr_item_container.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

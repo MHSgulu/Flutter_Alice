@@ -1,5 +1,5 @@
-import 'file:///E:/Alice_flutter/alice/lib/routes/example/localization/example_localization.dart';
-import 'file:///E:/Alice_flutter/alice/lib/routes/example/localization/intl/example_localization_intl.dart';
+import 'package:alice/routes/example/official/localization/example_localization.dart';
+import 'package:alice/routes/example/official/localization/intl/example_localization_intl.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
@@ -63,8 +63,7 @@ class GuideOfficialPackageRouteState
   void jumpToRoute(int index) {
     switch (index) {
       case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Demo()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Demo()));
         break;
       case 1:
         Navigator.push(context, MaterialPageRoute(builder: (_) => DemoIntl()));

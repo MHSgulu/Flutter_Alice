@@ -127,15 +127,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
-          title: Text('Events'),
+          label: 'Events',
           icon: Icon(Icons.event),
         ),
         BottomNavigationBarItem(
-          title: Text('Messages'),
+          label: 'Messages',
           icon: Icon(Icons.message),
         ),
         BottomNavigationBarItem(
-          title: Text('Settings'),
+          label: 'Settings',
           icon: Badge(
             shape: BadgeShape.circle,
             borderRadius: 100,

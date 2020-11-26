@@ -1,4 +1,4 @@
-import 'file:///E:/Alice_flutter/alice/lib/routes/example/example_font_awesome.dart';
+import 'package:alice/routes/example/official/example_font_awesome.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 

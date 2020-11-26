@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'full_page.dart';
@@ -23,7 +22,7 @@ class TextFieldScreen extends StatefulWidget {
 
 class _TextFieldScreenState extends State<TextFieldScreen> {
   final TextEditingController _singleTextFieldcontroller =
-  TextEditingController();
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
