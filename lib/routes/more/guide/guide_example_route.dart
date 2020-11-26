@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 
 import 'guide_community_package.dart';
 import 'guide_cupertino_widget.dart';
+import 'guide_hot_pub.dart';
 import 'guide_material_widget.dart';
 import 'guide_official_dart_package.dart';
 import 'guide_official_package.dart';
@@ -96,6 +97,24 @@ class GuideExampleRoute extends StatelessWidget {
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Widget 目录'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => GuideHotPubLibraryRoute()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('第三方热门库'),
                     ),
                   ),
                 ),
