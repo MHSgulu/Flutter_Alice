@@ -1,4 +1,5 @@
-import 'file:///E:/Alice_flutter/alice/lib/routes/other/zego/zego_main.dart';
+import 'package:alice/routes/example/plugin/baidu_map/location/example_baidu_location.dart';
+import 'package:alice/routes/other/zego/zego_main.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,7 @@ class GuidePlugin extends StatelessWidget {
         onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(
-            isShowLeading: true, isShowTrailing: true, color: Colors.blueGrey),
+        behavior: CustomScrollBehavior(),
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(8.0),
@@ -49,27 +49,7 @@ class GuidePlugin extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
-                    },
-                    splashColor: Colors.blueGrey[100],
-                    child: ListTile(
-                      leading: Image.asset(
-                        'assets/icons/icon_mesage.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                      title: Text('腾讯/极光IM'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BasicLoc()));
                     },
                     splashColor: Colors.blueGrey[100],
                     child: ListTile(
@@ -78,27 +58,7 @@ class GuidePlugin extends StatelessWidget {
                         width: 30,
                         height: 30,
                       ),
-                      title: Text('百度/高德地图'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => ZegoLiveHomePage()));
-                    },
-                    splashColor: Colors.blueGrey[100],
-                    child: ListTile(
-                      leading: Image.asset(
-                        'assets/icons/icon_notification.png',
-                        width: 30,
-                        height: 30,
-                      ),
-                      title: Text('极光推送'),
+                      title: Text('百度地图'),
                     ),
                   ),
                 ),
