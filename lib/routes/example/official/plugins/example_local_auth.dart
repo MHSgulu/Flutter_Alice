@@ -77,7 +77,12 @@ class _ExampleLocalAuthState extends State<ExampleLocalAuth> {
           goToSettingsButton: '前往设置',
           goToSettingsDescription: '您的设备上未设置指纹.转到\'Settings > Security\' 添加指纹',
         ),
-        iOSAuthStrings: IOSAuthMessages(),
+        iOSAuthStrings: IOSAuthMessages(
+          lockOut: '生物特征认证被禁用,请锁定并解锁屏幕以启用它',
+          goToSettingsButton: '前往设置',
+          goToSettingsDescription: '未在您的设备上设置生物特征认证,请在手机上启用Touch ID或Face ID',
+          cancelButton: '好',
+        ),
         ///将[sensitiveTransaction]设置为true可启用特定于平台的预防措施。
         ///例如，在面部解锁时，Android在识别出面部后会打开一个确认对话框，以确保用户打算解锁手机。
         sensitiveTransaction: true,
