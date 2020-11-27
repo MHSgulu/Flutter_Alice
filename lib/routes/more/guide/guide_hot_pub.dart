@@ -2,7 +2,8 @@ import 'package:alice/routes/example/Individual/badges/example_badge.dart';
 import 'package:alice/routes/example/Individual/city_picker/example_city_picker.dart';
 import 'package:alice/routes/example/Individual/flutter_html/example_html.dart';
 import 'package:alice/routes/example/Individual/flutter_image_compress/example_picture_compression.dart';
-import 'package:alice/routes/example/Individual/flutter_staggered_grid_view/test_staggered_grid.dart';
+import 'package:alice/routes/example/Individual/flutter_staggered_grid/test_staggered_grid.dart';
+import 'package:alice/routes/example/Individual/gesture_password/example_gesture_password.dart';
 import 'package:alice/routes/example/Individual/marquee/example_marquee.dart';
 import 'package:alice/routes/example/Individual/zefyr/example_zefyr.dart';
 import 'package:alice/routes/example/company/baseflow/cached_network_image/example_cached_network_image.dart';
@@ -31,6 +32,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'marquee',
     'flutter_html',
     'flutter_staggered_grid_view',
+    'gesture_password_widget',
   ];
 
   List<String> subTitleList = [
@@ -44,6 +46,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'Flutter小部件，可无限滚动文本。提供许多自定义设置，包括自定义滚动方向，持续时间，曲线以及每轮结束后的暂停',
     'Flutter小部件，将静态HTML和CSS呈现为Flutter小部件',
     'Flutter交错网格视图，支持多列且行大小不同',
+    'Flutter的手势解锁小部件，支持高度自定义',
   ];
 
   @override
@@ -119,7 +122,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => TestStaggeredGrid()));
         break;
       case 10:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleLocationDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => GesturePasswordWidgetDemo()));
         break;
     }
   }
