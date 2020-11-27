@@ -41,5 +41,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>NSFaceIDUsageDescription</key>
+    <string>Because of that, scientific truth.</string>
+
+
 </dict>
 </plist>
