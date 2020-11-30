@@ -472,9 +472,6 @@ class QueryMobilePhoneNumberHomeViewState extends State<QueryMobilePhoneNumberHo
             );
           }
       ),
-
-
-
     );
   }
 

@@ -7,6 +7,7 @@ import 'Setting.dart';
 import 'bing/bing_wallpaper.dart';
 import 'chat_with_robot.dart';
 import 'english_quotations.dart';
+import 'garbage/garbage_classification.dart';
 import 'guide/guide_example_route.dart';
 import 'guide/guide_plugin.dart';
 import 'joke/life_interest_chart.dart';
@@ -26,8 +27,11 @@ class ShowMorePageState extends State<ShowMorePage> {
     'assets/icons/icon_chat.png',
     'assets/icons/icon_account.png',
     'assets/icons/icon_placeholder.png',
-    'assets/icons/icon_edit.png',
+
+    'assets/icons/icon_shopping_cart.png',
+
     'assets/icons/icon_toolbox.png',
+    'assets/icons/icon_edit.png',
     'assets/icons/icon_setting.png',
   ];
 
@@ -38,8 +42,11 @@ class ShowMorePageState extends State<ShowMorePage> {
     'assets/icons/mbe/icon_mbe_big_4.png',
     'assets/icons/mbe/icon_mbe_big_5.png',
     'assets/icons/mbe/icon_mbe_big_6.png',
-    'assets/icons/mbe/icon_mbe_big_7.png',
+
+    'assets/icons/mbe/icon_mbe_big_10.png',
+
     'assets/icons/mbe/icon_mbe_big_8.png',
+    'assets/icons/mbe/icon_mbe_big_7.png',
     'assets/icons/mbe/icon_mbe_big_9.png',
   ];
 
@@ -50,60 +57,12 @@ class ShowMorePageState extends State<ShowMorePage> {
     '智能聊天机器人菲菲',
     '淘女郎模特',
     '生活趣图',
+    '垃圾分类',
+    '更多功能',
     '示例代码',
-    '复杂业务的Flutter插件',
     '设置',
   ];
 
-  void jumpToPage(int index) {
-    switch (index) {
-      case 0:
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => QueryMobilePhoneNumberHomeView()));
-        break;
-      case 1:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EnglishQuotations()));
-        break;
-      case 2:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BingWallpaperView()));
-        break;
-      case 3:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ChatRobotList()));
-        break;
-      case 4:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => TaoModel()));
-        break;
-      case 5:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => LifeInterestChartRoute()));
-        break;
-      case 6:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => GuideExampleRoute()));
-        break;
-      case 7:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => GuidePlugin()));
-        break;
-      case 8:
-        Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SettingPage()))
-            .then((value) {
-          if (value == 'refresh') {
-            if (mounted) {
-              setState(() {});
-            }
-          }
-        });
-        break;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -154,5 +113,48 @@ class ShowMorePageState extends State<ShowMorePage> {
         ),
       ),
     );
+  }
+
+  void jumpToPage(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => QueryMobilePhoneNumberHomeView()));
+        break;
+      case 1:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => EnglishQuotations()));
+        break;
+      case 2:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => BingWallpaperView()));
+        break;
+      case 3:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ChatRobotList()));
+        break;
+      case 4:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => TaoModel()));
+        break;
+      case 5:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LifeInterestChartRoute()));
+        break;
+      case 6:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => GarbageClassification()));
+        break;
+      case 7:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => GuideExampleRoute()));
+        break;
+        break;
+      case 8:
+        Navigator.push(context, MaterialPageRoute(builder: (context) => GuideExampleRoute()));
+        break;
+      case 9:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SettingPage())).then((value) {
+          if (value == 'refresh') {
+            if (mounted) {
+              setState(() {});
+            }
+          }
+        });
+        break;
+    }
   }
 }

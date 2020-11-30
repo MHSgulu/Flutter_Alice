@@ -16,6 +16,7 @@ class Api{
   static final String hotWordType = '/showapi/rdType'; //热点词分类
   static final String hotWordList= '/showapi/rcInfo'; //热点词排行
   static final String newsList= '/jisuapi/get'; //按照频道名称获取新闻列表
+  static final String garbageTextSearch= '/JDAI/garbageTextSearch'; //文本垃圾分类识别
 
   //时光网API
   static final String mTimeHotMovie = '/Showtime/LocationMovies.api'; //正在热映

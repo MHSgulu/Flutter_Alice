@@ -27,13 +27,11 @@ class WillPopScopeHomeState extends State<WillPopScopeHome> {
         ///如果回调返回的Future解析为false，则不会弹出封闭路由。
         onWillPop: () async {
           //如果用户初次点击返回键或者连续两次点击返回键间隔时间大于1秒
-          if (_lastClickTime == null ||
-              DateTime.now().difference(_lastClickTime) >
-                  Duration(seconds: 1)) {
+          if (_lastClickTime == null || DateTime.now().difference(_lastClickTime) > Duration(seconds: 1)) {
             ///返回[Duration]，其中包含[this]和[other]之间的差异。这种差异是以秒和秒的分数来衡量的。
-            Fluttertoast.showToast(msg: '再点一次即可退出');
+            Fluttertoast.showToast(msg: '再按一次退出');
             _lastClickTime = DateTime.now();
-            print('数据点位： 在首页范围内上一次点击系统返回键的时间：$_lastClickTime');
+            print('数据点位： _lastClickTime：$_lastClickTime');
             return false;
           } else {
             return true;

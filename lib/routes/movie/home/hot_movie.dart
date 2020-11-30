@@ -71,8 +71,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                     mainAxisSpacing: 0,
                     crossAxisSpacing: 0,
                   ),
-                  itemCount: snapshot.data.ms.length > 12
-                      ? 12
+                  itemCount: snapshot.data.ms.length > 9
+                      ? 9
                       : snapshot.data.ms.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(

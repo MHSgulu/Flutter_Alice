@@ -6,7 +6,6 @@ import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
-import 'file:///E:/Alice_flutter/alice/lib/common/network/dio_util.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
@@ -15,11 +14,29 @@ import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'dio_util.dart';
+
 
 class HttpUtil {
+
+  /// 解析字符串并返回生成的Json对象。
+  /// 对于在解码过程中已解析的每个对象或列表属性，都会调用一次可选的[reviver]函数。
+  /// key参数是list属性的整数列表索引，是对象属性的字符串映射键，或者是最终结果的null。
+  /// 默认的[reviver]（未提供）是身份功能。
+  /// json.decode的简写。 如果局部变量遮盖了全局[json]常量，则很有用。
+  ///jsonDecode
+
+
+  /// 解析字符串并返回生成的Json对象。
+  /// 对于在解码过程中已解析的每个对象或列表属性，都会调用一次可选的[reviver]函数。
+  /// key参数是list属性的整数列表索引，是对象属性的字符串映射键，或者是最终结果的null。
+  /// 默认的[reviver]（未提供）是身份功能。
+  ///json.decode
+
 
   ///英文励志语录
   static Future<QuotationEntity> fetchQuotationList() async {
@@ -121,6 +138,27 @@ class HttpUtil {
       return mTimeMovieDetailEntityFromJson(MTimeMovieDetailEntity(), jsonDecode(response.body));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///垃圾分类识别
+  static Future<dynamic> queryGarbageClassification(String keyWord) async {
+    Response response = await DioUtil.getInstance().createJdWxkDio().post(
+      Api.garbageTextSearch + '?appkey=' + Util.jdWxApiKey,
+      data: {
+        "cityId": 310000,
+        "text": keyWord,
+      },
+    );
+    print('数据点位: response.statusCode: ${response.statusCode}');
+    print('数据点位: response: $response');
+    print('数据点位: response.data: ${response.data}');
+    print('数据点位: response.toString(): ${response.toString()}');
+    if(response.statusCode == 200){
+      return jsonDecode(response.toString());
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      //throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
   }
 

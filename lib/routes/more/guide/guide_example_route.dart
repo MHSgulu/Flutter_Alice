@@ -16,6 +16,7 @@ import 'guide_official_dart_package.dart';
 import 'guide_official_package.dart';
 import 'guide_official_plugin.dart';
 import 'guide_official_widget.dart';
+import 'guide_plugin.dart';
 
 class GuideExampleRoute extends StatelessWidget {
   @override
@@ -106,6 +107,24 @@ class GuideExampleRoute extends StatelessWidget {
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('第三方开发者库(使用中/已了解)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => GuidePlugin()));
+                    },
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('企业级原生SDK的Flutter插件'),
                     ),
                   ),
                 ),
