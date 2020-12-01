@@ -45,7 +45,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String _title = '爱丽丝';
+  static const String _title = 'Alice';
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
           /// [onGenerateTitle]`context`参数包括[WidgetsApp]的[Localizations]小部件，以便可以使用此回调产生本地化的标题。
           /// 此回调函数不得返回null。
           /// 每当[WidgetsApp]重建时，都会调用[onGenerateTitle]回调。
-          //onGenerateTitle: (context1) => MyLocalizations.of(context1).appTitle,
+          //onGenerateTitle: (context) => MyLocalizations.of(context).appTitle,
           ///此应用程序的默认视觉属性，例如颜色字体和形状材料小部件。
           ///也可以指定第二个[darkTheme] [ThemeData]值，该值用于提供深色的用户界面。 如果提供了[darkTheme]，则[themeMode]将控制使用哪个主题。
           ///此属性的默认值为[ThemeData.light（）]的值。
