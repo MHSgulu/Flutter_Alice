@@ -1,9 +1,8 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
+import 'package:alice/routes/news/search_news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../search_news_screen.dart';
 
 
 
@@ -48,7 +47,6 @@ class HotWordListState extends State<HotWordList>
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.separated(
-            physics: BouncingScrollPhysics(),
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             itemCount: snapshot.data.result.showapiResBody.xList.length,
             separatorBuilder: (BuildContext context, int index) {
@@ -107,18 +105,26 @@ class HotWordListState extends State<HotWordList>
                       ),
                       Container(
                         padding: EdgeInsets.only(right: 40),
-                        child: Text(snapshot
-                            .data.result.showapiResBody.xList[index].level),
+                        child: Text(
+                          snapshot
+                              .data.result.showapiResBody.xList[index].level,
+                        ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 8.0),
+                        padding: EdgeInsets.only(right: 4),
                         child: snapshot.data.result.showapiResBody.xList[index]
                                     .trend ==
                                 'rise'
-                            ? Icon(Icons.arrow_upward,
-                                color: Colors.redAccent, size: 22)
-                            : Icon(Icons.arrow_downward,
-                                color: Colors.teal, size: 22),
+                            ? Icon(
+                                Icons.arrow_upward,
+                                color: Colors.redAccent,
+                                size: 20,
+                              )
+                            : Icon(
+                                Icons.arrow_downward,
+                                color: Colors.teal,
+                                size: 20,
+                              ),
                       ),
                     ],
                   ),
