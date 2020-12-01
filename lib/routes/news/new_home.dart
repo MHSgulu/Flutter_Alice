@@ -1,4 +1,8 @@
+import 'package:alice/common/const/colors.dart';
+import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/model/bingwallpaper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'hotspot/hot_word_classification.dart';
 import 'search_news_screen.dart';
 import 'tab_news_list.dart';
@@ -8,8 +12,7 @@ class NewsHomePage extends StatefulWidget {
   State<StatefulWidget> createState() => NewsHomePageState();
 }
 
-class NewsHomePageState extends State<NewsHomePage>
-    with SingleTickerProviderStateMixin {
+class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   List<Tab> newsTabs = <Tab>[
@@ -46,81 +49,84 @@ class NewsHomePageState extends State<NewsHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent[200],
-        title: Container(
-          height: 35.0,
-          decoration: ShapeDecoration(
-            color: Colors.white, //此处颜色若不设置，会被同化成AppBar背景色
-            shape: StadiumBorder(
-              side: BorderSide(
+    return ChangeNotifierProvider(
+      create: (context) => AppThemeMode(),
+      child: Consumer<AppThemeMode>(
+        builder: (context, theme, child) => Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.blueAccent[200],
+            title: Container(
+              height: 35.0,
+              decoration: ShapeDecoration(
+                color: Colors.white, //此处颜色若不设置，会被同化成AppBar背景色
+                shape: StadiumBorder(
+                  /*side: BorderSide(
+                    color: Colors.white,
+                    width: 1.0,
+                  ),*/
+                ),
+              ),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    //color: Colors.black45,
+                    padding: EdgeInsets.only(left: 4),
+                    child: Image.asset('assets/icons/icon_search_news.png'),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen()));
+                      },
+                      child: Text(
+                        '点击此处搜索你想了解的新闻',
+                        style: TextStyle(color: Colors.black45, fontSize: 14.0),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              IconButton(
                 color: Colors.white,
-                width: 1.0,
+                icon: Icon(Icons.assessment), //如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HotWordClassification()),
+                  );
+                },
+              )
+            ],
+            elevation: 1,
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(48.0),
+              child: Material(
+                color: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.white,
+                child: TabBar(
+                  isScrollable: true,
+                  indicatorColor: Colors.blueAccent[200],
+                  indicatorWeight: 2.0,
+                  indicatorPadding: EdgeInsets.zero,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelColor: Colors.blueAccent[200],
+                  unselectedLabelColor: AppThemeMode.isDark ? Colors.white54 : Colors.black54,
+                  controller: _tabController,
+                  tabs: newsTabs,
+                ),
               ),
             ),
           ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: Icon(Icons.search, color: Colors.grey[600]),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SearchNewsScreen()));
-                  },
-                  child: Text(
-                    '点击此处搜索你想了解的新闻',
-                    style: TextStyle(color: Colors.grey[600], fontSize: 14.0),
-                  ),
-                ),
-              ),
+          body: TabBarView(
+            controller: _tabController,
+            children: [
+              for (final tab in newsTabs) TabNewsList(channelName: tab.text),
             ],
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            color: Colors.white,
-            icon: Icon(Icons.assessment), //如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HotWordClassification()),
-              );
-            },
-          )
-        ],
-        elevation: 1,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
-          child: Material(
-            color: Colors.white,
-            child: TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.blueAccent[200],
-              indicatorWeight: 2.0,
-              indicatorPadding: EdgeInsets.zero,
-              indicatorSize: TabBarIndicatorSize.label,
-              labelColor: Colors.blueAccent[200],
-              unselectedLabelColor: Colors.black54,
-              controller: _tabController,
-              tabs: newsTabs,
-            ),
-          ),
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          for (final tab in newsTabs) TabNewsList(channelName: tab.text),
-        ],
       ),
     );
   }

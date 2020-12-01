@@ -105,9 +105,11 @@ class _HomePageState extends State<HomePage> {
   ///对setState的调用告诉Flutter框架在这种状态下发生了一些变化，这导致它重新运行下面的build方法，以便显示可以反映更新的值。
   ///如果我们在不调用setState（）的情况下更改了索引，则不会再次调用生成方法，因此看起来不会发生任何事情。
   void _onItemTapped(int value) {
-    setState(() {
-      _currentIndex = value;
-    });
+    if(mounted){
+      setState(() {
+        _currentIndex = value;
+      });
+    }
   }
 
   @override
@@ -120,13 +122,11 @@ class _HomePageState extends State<HomePage> {
         ///索引0表示第一个元素  (因此iterable.elementAt(0) 相当于 iterable.first)
         ///可以按迭代顺序迭代元素，忽略第一个[index]元素，然后返回下一个元素。
         ///有些iterable可能有更有效的方法来找到元素。
-        child: _widgetOptions
-            .elementAt(_currentIndex), /*_widgetOptions[_currentIndex],*/
+        child: _widgetOptions.elementAt(_currentIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         //backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-
         ///The [showUnselectedLabels] argument defaults
         ///if [type] is [BottomNavigationBarType.fixed]   `true`
         ///if [type] is[BottomNavigationBarType.shifting]. `false`
