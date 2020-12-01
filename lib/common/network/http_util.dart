@@ -2,6 +2,7 @@ import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
+import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
@@ -9,6 +10,7 @@ import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
+import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
@@ -23,11 +25,19 @@ import 'dio_util.dart';
 
 class HttpUtil {
 
+  ///async用来表示函数是异步的，定义的函数会返回一个Future对象，可以使用then方法添加回调函数。
+  ///await 后面是一个Future，表示等待该异步任务完成，异步完成后才会往下走；await必须出现在 async 函数内部。
+  ///通过async/await将一个异步流用同步的代码表示出来
+  ///其实，无论是在JavaScript还是Dart中，async/await都只是一个语法糖，编译器或解释器最终都会将其转化为一个Promise（Future）的调用链。
+  ///
+  ///async/await
+
   /// 解析字符串并返回生成的Json对象。
   /// 对于在解码过程中已解析的每个对象或列表属性，都会调用一次可选的[reviver]函数。
   /// key参数是list属性的整数列表索引，是对象属性的字符串映射键，或者是最终结果的null。
   /// 默认的[reviver]（未提供）是身份功能。
   /// json.decode的简写。 如果局部变量遮盖了全局[json]常量，则很有用。
+  ///
   ///jsonDecode
 
 
@@ -35,7 +45,52 @@ class HttpUtil {
   /// 对于在解码过程中已解析的每个对象或列表属性，都会调用一次可选的[reviver]函数。
   /// key参数是list属性的整数列表索引，是对象属性的字符串映射键，或者是最终结果的null。
   /// 默认的[reviver]（未提供）是身份功能。
+  ///
   ///json.decode
+
+  ///查询手机号码归属地
+  static Future<MobiePhoneEntity> query(String phone) async {
+    final http.Response response = await http.post(
+      'https://way.jd.com/jisuapi/query4?shouji=${phone}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
+    );
+    print('数据点位: response: $response'); ////内容无法打印 Instance of 'Response'
+    print('数据点位: response.toString(): ${response.toString()}'); //内容无法打印 Instance of 'Response'
+    ///触发此响应的（冻结）请求。
+    //POST https://way.jd.com/jisuapi/query4?shouji=17852275848&appkey=bd1ee420d53dcd93f21d338cd6bebba3
+    print('数据点位: response.request: ${response.request}');
+    //{connection: close, cache-control: max-age=0, date: Tue, 01 Dec 2020 01:30:42 GMT, content-length: 198, content-type: application/json;charset=utf-8, server: jfe, expires: Tue, 01 Dec 2020 01:30:42 GMT}
+    print('数据点位: response.headers: ${response.headers}');
+    ///响应的主体为字符串。
+    //{"code":"10000","charge":false,"msg":"查询成功","result":{"status":0,"msg":"ok","result":{"shouji":"17852275848","province":"山东","city":"临沂","company":"中国移动","areacode":"0539"}}}
+    print('数据点位: response.body: ${response.body}');
+    ///组成此响应正文的字节。
+    //[123, 34, 99, 111, 100, 101, 34, 58, 34, 49, 48, 48, 48, 48, 34, 44, 34, 99, 104, 97, 114, 103, 101, 34, 58, 102, 97, 108, 115, 101, 44, 34, 109, 115, 103, 34, 58, 34, 230, 159, 165, 232, 175, 162, 230, 136, 144, 229, 138, 159, 34, 44, 34, 114, 101, 115, 117, 108, 116, 34, 58, 123, 34, 115, 116, 97, 116, 117, 115, 34, 58, 48, 44, 34, 109, 115, 103, 34, 58, 34, 111, 107, 34, 44, 34, 114, 101, 115, 117, 108, 116, 34, 58, 123, 34, 115, 104, 111, 117, 106, 105, 34, 58, 34, 49, 55, 56, 53, 50, 50, 55, 53, 56, 52, 56, 34, 44, 34, 112, 114, 111, 118, 105, 110, 99, 101, 34, 58, 34, 229, 177, 177, 228, 184, 156, 34, 44, 34, 99, 105, 116, 121, 34, 58, 34, 228, 184, 180, 230, 178, 130, 34, 44, 34, 99, 111, 109, 112, 97, 110, 121, 34, 58, 34, 228, 184, 173, 229, 155, 189, 231, 167, 187, 229, 138, 168, 34, 44, 34, 97, 114, 101, 97, 99, 111, 100, 101, 34, 58, 34, 48, 53, 51, 57, 34, 125, 125, 125]
+    print('数据点位: response.bodyBytes: ${response.bodyBytes}');
+    ///响应主体的大小，以字节为单位。如果请求的大小事先未知，则为“ null”。
+    //198
+    print('数据点位: response.contentLength: ${response.contentLength}');
+    ///是否重新导向
+    //false
+    print('数据点位: response.isRedirect: ${response.isRedirect}');
+    ///服务器是否请求维护持久连接。
+    //false
+    print('数据点位: response.persistentConnection: ${response.persistentConnection}');
+    ///与状态代码关联的原因短语。
+    //OK
+    print('数据点位: response.reasonPhrase: ${response.reasonPhrase}');
+    ///对象的运行时类型的表示形式。
+    //Response
+    print('数据点位: response.runtimeType: ${response.runtimeType}');
+    ///此对象的哈希码。
+    //77805176
+    print('数据点位: response.hashCode: ${response.hashCode}');
+    ///此响应的HTTP状态代码。
+    if (response.statusCode == 200) {
+      return mobiePhoneEntityFromJson(MobiePhoneEntity(),json.decode(response.body));
+    } else {
+      throw Exception('服务器未响应成功');
+    }
+  }
 
 
   ///英文励志语录
@@ -150,10 +205,32 @@ class HttpUtil {
         "text": keyWord,
       },
     );
-    print('数据点位: response.statusCode: ${response.statusCode}');
+    //{"code":"10000","charge":false,"msg":"查询成功","result":{"code":"10000","charge":true,"remain":474,"remainTimes":474,"remainSeconds":-1,"msg":"查询成功,扣费","result":{"status":0,"message":"success","garbage_info":[{"cate_name":"湿垃圾","city_id":"310000","city_name":"上海市","confidence":1.0,"garbage_name":"剩菜","ps":"湿垃圾应从生产时就与其他品种垃圾分开收集。投放前尽量沥干水分，有外包装的应去除外包装投放"}]}}}
     print('数据点位: response: $response');
-    print('数据点位: response.data: ${response.data}');
-    print('数据点位: response.toString(): ${response.toString()}');
+    //{"code":"10000","charge":false,"msg":"查询成功","result":{"code":"10000","charge":true,"remain":474,"remainTimes":474,"remainSeconds":-1,"msg":"查询成功,扣费","result":{"status":0,"message":"success","garbage_info":[{"cate_name":"湿垃圾","city_id":"310000","city_name":"上海市","confidence":1.0,"garbage_name":"剩菜","ps":"湿垃圾应从生产时就与其他品种垃圾分开收集。投放前尽量沥干水分，有外包装的应去除外包装投放"}]}}}
+    print('数据点位: response.toString(): ${response.toString()}'); ///我们更关心“数据”字段。  //此方法已对response进行转String.
+    //{code: 10000, charge: false, msg: 查询成功, result: {code: 10000, charge: true, remain: 474, remainTimes: 474, remainSeconds: -1, msg: 查询成功,扣费, result: {status: 0, message: success, garbage_info: [{cate_name: 湿垃圾, city_id: 310000, city_name: 上海市, confidence: 1.0, garbage_name: 剩菜, ps: 湿垃圾应从生产时就与其他品种垃圾分开收集。投放前尽量沥干水分，有外包装的应去除外包装投放}]}}}
+    print('数据点位: response.data: ${response.data}'); ///响应体。 可能已转换，请参阅[ResponseType]。
+    //connection: close
+    //cache-control: max-age=0
+    //date: Tue, 01 Dec 2020 01:52:36 GMT
+    //content-length: 479
+    //content-type: application/json;charset=utf-8
+    //server: jfe
+    //expires: Tue, 01 Dec 2020 01:52:37 GMT
+    print('数据点位: response.headers: ${response.headers}'); ///响应头。
+    //200
+    print('数据点位: response.statusCode: ${response.statusCode}'); /// Http状态码。
+    //OK
+    print('数据点位: response.statusMessage: ${response.statusMessage}');  ///返回与状态码关联的原因短语。必须在写入正文之前设置原因短语。写入正文后设置原因短语。
+    //{}
+    print('数据点位: response.extra: ${response.extra}'); ///自定义字段，您以后可以在`then`中检索它。
+    //[]
+    print('数据点位: response.redirects: ${response.redirects}');///返回此连接已通过的一系列重定向。如果未遵循任何重定向，则该列表为空。在自动和手动重定向的情况下，[redirects]都会更新。**注意**：此字段是否可用取决于适配器的实现是否支持它。
+    //false
+    print('数据点位: response.isRedirect: ${response.isRedirect}'); ///此响应是否为重定向。**注意**：此字段是否可用取决于适配器的实现是否支持它。
+    //Unhandled Exception: Bad state: No element
+    //print('数据点位: response.realUri: ${response.realUri}'); ///返回最终的真实请求uri（也许重定向）。**注意**：此字段是否可用取决于适配器的实现是否支持它。
     if(response.statusCode == 200){
       return jsonDecode(response.toString());
     }else{
