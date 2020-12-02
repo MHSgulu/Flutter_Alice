@@ -1,20 +1,26 @@
 import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
+import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
+import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
+import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/bingwallpaper.dart';
+import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
+import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
+import 'package:alice/model/written_jokes_entity.dart';
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -196,7 +202,8 @@ class HttpUtil {
     }
   }
 
-  ///垃圾分类识别
+  ///垃圾分类识别    似乎这个接口只能Post请求(文档也标注这个细节)
+  ///https://wx.jdcloud.com/market/datas/30/13947
   static Future<dynamic> queryGarbageClassification(String keyWord) async {
     Response response = await DioUtil.getInstance().createJdWxkDio().post(
       Api.garbageTextSearch + '?appkey=' + Util.jdWxApiKey,
@@ -236,6 +243,74 @@ class HttpUtil {
     }else{
       Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
       //throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///笑话大全 动图
+  ///https://wx.jdcloud.com/market/datas/5/10914
+  ///改接口用get Http502次数颇多 改为post效果好
+  static Future<GifPictureJokesEntity> requestGifPictureList(int page) async {
+    Response response = await DioUtil.getInstance().createJdWxkDio().post(
+      Api.gifPicture,
+      queryParameters: {
+        "page": page,
+        "maxResult": 10,
+        "appkey": Util.jdWxApiKey,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return gifPictureJokesEntityFromJson(GifPictureJokesEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///笑话大全 图片笑话
+  ///https://wx.jdcloud.com/market/api/10914
+  static Future<PictureJokeEntity> requestStaticPictureList(int page) async {
+    Response response = await DioUtil.getInstance().createJdWxkDio().post(
+      Api.staticPicture,
+      queryParameters: {
+        //"time": '2015-07-10', //从该时间以来最新的笑话. 格式：yyyy-MM-dd
+        "page": page, //第几页
+        "maxResult": 10, //返回的最大结果集,用于分页
+        "appkey": Util.jdWxApiKey,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return pictureJokeEntityFromJson(PictureJokeEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+
+  ///笑话大全 文本笑话
+  ///https://wx.jdcloud.com/market/api/10914
+  static Future<WrittenJokesEntity> requestTextJokeList(int page) async {
+    Response response = await DioUtil.getInstance().createJdWxkDio().post(
+      Api.textJoke,
+      queryParameters: {
+        //"time": '2015-07-10', //从该时间以来最新的笑话. 格式：yyyy-MM-dd
+        "page": page, //第几页
+        "maxResult": 20, //每页最大记录数。其值为1至50。
+        "showapi_sign": Util.showApiSign,
+        "appkey": Util.jdWxApiKey,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return writtenJokesEntityFromJson(WrittenJokesEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
   }
 
