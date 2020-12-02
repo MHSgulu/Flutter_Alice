@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
-class PhotoViewSimpleScreen extends StatelessWidget{
-  const PhotoViewSimpleScreen({
+class PhotoViewSingle extends StatelessWidget{
+  const PhotoViewSingle({
     this.imageProvider,//图片
     this.loadingBuilder,//加载时的widget
     this.backgroundDecoration,//背景修饰
@@ -33,7 +33,13 @@ class PhotoViewSimpleScreen extends StatelessWidget{
               right: 0,
               child: PhotoView(
                 imageProvider: imageProvider,
-                loadingBuilder: loadingBuilder,
+                loadingBuilder: (context, event) => Center(
+                  child: CircularProgressIndicator(
+                    value: event == null
+                        ? 0
+                        : event.cumulativeBytesLoaded / event.expectedTotalBytes,
+                  ),
+                ),
                 backgroundDecoration: backgroundDecoration,
                 minScale: minScale,
                 maxScale: maxScale,
