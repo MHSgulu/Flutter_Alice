@@ -2,6 +2,7 @@ import 'package:alice/common/network/http_util.dart';
 import 'package:alice/common/tool_util.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -60,13 +61,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
 
   Widget themeColorsLoadingView() {
     return Scaffold(
-      body: Center(
-        child: Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal[400]),
-            strokeWidth: 3,
-          ),
-        ),
+      body: MyLoadingIndicator(
+        valueColor: Colors.teal[400],
+        strokeWidth: 3,
       ),
     );
   }
@@ -429,12 +426,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
                                       ),
                                     ),
                                   ),
-                                  placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                          dynamicBackgroundColor),
-                                    ),
+                                  placeholder: (context, url) => MyLoadingIndicator(
+                                    valueColor: dynamicBackgroundColor,
+                                    strokeWidth: 2,
                                   ),
                                   errorWidget: (context, url, error) =>
                                       Icon(Icons.error),
@@ -544,13 +538,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
                                         ],
                                       ),
                                     ),
-                                    placeholder: (context, url) => Center(
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                                dynamicBackgroundColor),
-                                      ),
+                                    placeholder: (context, url) => MyLoadingIndicator(
+                                      valueColor: dynamicBackgroundColor,
+                                      strokeWidth: 2,
                                     ),
                                     errorWidget: (context, url, error) =>
                                         Icon(Icons.error),
@@ -569,13 +559,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
                                         ),
                                       ),
                                     ),
-                                    placeholder: (context, url) => Center(
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                                dynamicBackgroundColor),
-                                      ),
+                                    placeholder: (context, url) => MyLoadingIndicator(
+                                      valueColor: dynamicBackgroundColor,
+                                      strokeWidth: 2,
                                     ),
                                     errorWidget: (context, url, error) =>
                                         Icon(Icons.error),
@@ -594,11 +580,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
             child: Text("${snapshot.error}"),
           );
         }
-        return Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal[400]),
-            strokeWidth: 3,
-          ),
+        return MyLoadingIndicator(
+          valueColor: Colors.teal[400],
+          strokeWidth: 3,
         );
       },
     );

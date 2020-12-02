@@ -1,4 +1,5 @@
 import 'package:alice/model/film_maker_work_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -132,11 +133,9 @@ class _FilmMakerWorksScreen extends State<FilmMakerWorksScreen>{
           else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 3,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.black87),
-            ),
+          return MyLoadingIndicator(
+            valueColor: Colors.black87,
+            strokeWidth: 3,
           );
         },
       ),

@@ -2,6 +2,7 @@ import 'package:alice/common/const/strings.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/common/tool_util.dart';
 import 'package:alice/model/quotation_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -102,11 +103,9 @@ class _EnglishQuotationsState extends State<EnglishQuotations>{
               child: Text("${snapshot.error}"),
             );
           }
-          return Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.cyanAccent[700]),
-              strokeWidth: 3,
-            ),
+          return MyLoadingIndicator(
+            valueColor: Colors.cyanAccent[700],
+            strokeWidth: 3,
           );
         },
       )

@@ -1,6 +1,7 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/routes/news/search_news_screen.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -154,11 +155,9 @@ class HotWordListState extends State<HotWordList>
             ],
           );
         }
-        return Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 3,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent[200]),
-          ),
+        return MyLoadingIndicator(
+          valueColor: Colors.blueAccent[200],
+          strokeWidth: 3,
         );
       },
     );

@@ -4,6 +4,7 @@ import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
 import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/model/film_maker_entity.dart';
 import 'package:alice/model/film_maker_work_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'file:///E:/Alice_flutter/alice/lib/routes/movie/filmmaker_album_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -416,11 +417,9 @@ class _FilmMakerDeatailsScreen extends State<FilmMakerDeatailsScreen> {
               child: Text("${snapshot.error}"),
             );
           }
-          return Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.black87),
-              strokeWidth: 3,  //用来画圆的线的宽度 默认4.0
-            ),
+          return MyLoadingIndicator(
+            valueColor: Colors.black87,
+            strokeWidth: 3,
           );
         },
       ),

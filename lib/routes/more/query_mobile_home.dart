@@ -1,6 +1,7 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -529,12 +530,9 @@ class QueryMobilePhoneNumberHomeState
                       child: Text("${snapshot.error}"),
                     );
                   }
-                  return Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3,
-                      valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.blueGrey[400]),
-                    ),
+                  return MyLoadingIndicator(
+                    valueColor: Colors.blueGrey[400],
+                    strokeWidth: 3,
                   );
                 },
               );

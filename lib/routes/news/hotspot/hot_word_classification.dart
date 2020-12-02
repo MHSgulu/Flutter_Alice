@@ -1,6 +1,7 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -83,8 +84,8 @@ class HotWordClassificationState extends State<HotWordClassification> {
                       children: <Widget>[
                         CachedNetworkImage(
                           imageUrl: movieCoverList[index],
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(
+                          placeholder: (context, url) => MyLoadingIndicator(
+                            valueColor: Colors.blueAccent[200],
                             strokeWidth: 2,
                           ),
                           errorWidget: (context, url, error) =>
@@ -133,11 +134,9 @@ class HotWordClassificationState extends State<HotWordClassification> {
             ),
           );
         }
-        return Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.cyanAccent[700]),
-            strokeWidth: 3,
-          ),
+        return MyLoadingIndicator(
+          valueColor: Colors.cyanAccent[700],
+          strokeWidth: 3,
         );
       },
     );

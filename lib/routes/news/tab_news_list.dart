@@ -1,6 +1,7 @@
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/news_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,12 +72,9 @@ class _NewsListState extends State<TabNewsList> {
                             ),
                           ),
                         ),
-                        placeholder: (context, url) => Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.blueAccent[200]),
-                          ),
+                        placeholder: (context, url) => MyLoadingIndicator(
+                          valueColor: Colors.blueAccent[200],
+                          strokeWidth: 3,
                         ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
@@ -117,11 +115,9 @@ class _NewsListState extends State<TabNewsList> {
             child: Text("${snapshot.error}"),
           );
         }
-        return Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 3,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent[200]),
-          ),
+        return MyLoadingIndicator(
+          valueColor: Colors.blueAccent[200],
+          strokeWidth: 3,
         );
       },
     );

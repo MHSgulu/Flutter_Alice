@@ -1,6 +1,7 @@
 import 'package:alice/generated/json/search_news_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
 import 'package:alice/routes/news/news_detail.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -131,11 +132,9 @@ class SearchNewsListScreenState extends State<SearchNewsListScreen> {
                       child: Text("${snapshot.error}"),
                     );
                   }
-                  return Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent[200]),
-                    ),
+                  return MyLoadingIndicator(
+                    valueColor: Colors.blueAccent[200],
+                    strokeWidth: 3,
                   );
                 },
               );

@@ -1,4 +1,5 @@
 import 'package:alice/model/film_maker_album_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -82,11 +83,9 @@ class _FilmMakerAlbumScreen extends State<FilmMakerAlbumScreen>{
           else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 3,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.black87),
-            ),
+          return MyLoadingIndicator(
+            valueColor: Colors.black87,
+            strokeWidth: 3,
           );
         },
       ),

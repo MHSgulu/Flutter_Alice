@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:alice/generated/json/movie_stills_entity_helper.dart';
 import 'package:alice/model/movie_stills_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -103,11 +104,9 @@ class _AllFilmStillsScreen extends State<AllFilmStillsScreen>{
           else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 3,
-              valueColor: AlwaysStoppedAnimation<Color>(dynamicBackgroundColor),
-            ),
+          return MyLoadingIndicator(
+            valueColor: dynamicBackgroundColor,
+            strokeWidth: 3,
           );
         },
       ),

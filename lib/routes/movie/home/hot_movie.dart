@@ -1,5 +1,6 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'file:///E:/Alice_flutter/alice/lib/routes/movie/movie_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -97,11 +98,9 @@ class _HotMovieViewState extends State<HotMovieView> {
                                   ),
                                 ),
                               ),
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.teal[300]),
-                                ),
+                              placeholder: (context, url) => MyLoadingIndicator(
+                                valueColor: Colors.teal[300],
+                                strokeWidth: 2,
                               ),
                               errorWidget: (context, url, error) => Icon(Icons.error),
                             ),
@@ -150,11 +149,9 @@ class _HotMovieViewState extends State<HotMovieView> {
             child: Text("${snapshot.error}"),
           );
         }
-        return Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
-            strokeWidth: 3,
-          ),
+        return MyLoadingIndicator(
+          valueColor: Colors.teal,
+          strokeWidth: 3,
         );
       },
     );
