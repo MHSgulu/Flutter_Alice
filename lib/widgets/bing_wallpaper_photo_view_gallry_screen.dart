@@ -24,9 +24,8 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     currentIndex=widget.index;
+    super.initState();
   }
 
   @override
@@ -41,11 +40,11 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
             right: 0,
             child: Container(
                 child: PhotoViewGallery.builder(
-                  scrollPhysics: const BouncingScrollPhysics(),
+                  scrollPhysics: BouncingScrollPhysics(),
                   builder: (BuildContext context, int index) {
                     return PhotoViewGalleryPageOptions(
                       imageProvider: NetworkImage(Util.bingUrl+widget.imageList[index].url),
-                      heroAttributes: widget.heroTag.isNotEmpty?PhotoViewHeroAttributes(tag: widget.heroTag):null,
+                      heroAttributes: widget.heroTag.isNotEmpty ? PhotoViewHeroAttributes(tag: widget.heroTag) : null,
                       minScale: 0.2,
                       maxScale: 0.5,
                     );
@@ -75,9 +74,7 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
             top: MediaQuery.of(context).padding.top,
             child: IconButton(
               icon: Icon(Icons.close,size: 30,color: Colors.white,),
-              onPressed: (){
-                Navigator.of(context).pop();
-              },
+              onPressed: ()=> Navigator.of(context).pop(),
             ),
           ),
         ],
