@@ -1,5 +1,6 @@
 import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
+import 'package:alice/generated/json/article_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
@@ -10,6 +11,7 @@ import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
+import 'package:alice/model/article_entity.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
@@ -313,5 +315,51 @@ class HttpUtil {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
   }
+
+  ///每日一文
+  ///https://github.com/shichunlei/-Api/blob/master/OneArticle.md
+  ///https://interface.meiriyiwen.com/article/today?dev=1
+  static Future<ArticleEntity> requestArticleOfTheDay() async {
+    Response response = await Dio().get(Api.todayArticle);
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return articleEntityFromJson(ArticleEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///随机一文
+  ///https://interface.meiriyiwen.com/article/random?dev=1
+  static Future<ArticleEntity> requestRandomArticle() async {
+    Response response = await Dio().get(Api.randomArticle);
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return articleEntityFromJson(ArticleEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///特定某天一文
+  ///url：https://interface.meiriyiwen.com/article/day?dev=1&date= + 日期
+  ///url 示例：https://interface.meiriyiwen.com/article/day?dev=1&date=20170216
+  static Future<ArticleEntity> requestArticleAccordingToTime() async {
+    Response response = await Dio().get(Api.randomArticle);
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return articleEntityFromJson(ArticleEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+
 
 }

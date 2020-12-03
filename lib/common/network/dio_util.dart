@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 class DioUtil{
 
+  static Dio _dio;
   static Dio _wwDio;
   static Dio _qykDio;
   static Dio _jdWxDio;
@@ -22,6 +23,8 @@ class DioUtil{
   static final _instance = DioUtil._init();
 
   DioUtil._init(){
+
+    _dio = Dio();
 
     _sampleOptions = BaseOptions(
       method: 'get', ///Http方法。
@@ -119,6 +122,10 @@ class DioUtil{
   //    ///检查两个引用是否指向同一对象。
   //    print(identical(s1, s2));  // true
   //    print(s1 == s2);           // true
+  Dio createDio() {
+    return _dio;
+  }
+
   Dio createWwDio() {
     return _wwDio;
   }

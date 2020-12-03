@@ -29,6 +29,8 @@ import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
+import 'package:alice/model/article_entity.dart';
+import 'package:alice/generated/json/article_entity_helper.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/model/news_entity.dart';
@@ -164,7 +166,10 @@ class JsonConvert<T> {
 			return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;			case PictureJokeResult:
 			return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case MobiePhoneEntity:
+			return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;			case ArticleEntity:
+			return articleEntityFromJson(data as ArticleEntity, json) as T;			case ArticleData:
+			return articleDataFromJson(data as ArticleData, json) as T;			case ArticleDataDate:
+			return articleDataDateFromJson(data as ArticleDataDate, json) as T;			case MobiePhoneEntity:
 			return mobiePhoneEntityFromJson(data as MobiePhoneEntity, json) as T;			case MobiePhoneResult:
 			return mobiePhoneResultFromJson(data as MobiePhoneResult, json) as T;			case MobiePhoneResultResult:
 			return mobiePhoneResultResultFromJson(data as MobiePhoneResultResult, json) as T;			case NewsEntity:
@@ -323,7 +328,10 @@ class JsonConvert<T> {
 			return pictureJokeEntityToJson(data as PictureJokeEntity);			case PictureJokeResult:
 			return pictureJokeResultToJson(data as PictureJokeResult);			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);			case PictureJokeResultShowapiResBodyContentlist:
-			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case MobiePhoneEntity:
+			return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);			case ArticleEntity:
+			return articleEntityToJson(data as ArticleEntity);			case ArticleData:
+			return articleDataToJson(data as ArticleData);			case ArticleDataDate:
+			return articleDataDateToJson(data as ArticleDataDate);			case MobiePhoneEntity:
 			return mobiePhoneEntityToJson(data as MobiePhoneEntity);			case MobiePhoneResult:
 			return mobiePhoneResultToJson(data as MobiePhoneResult);			case MobiePhoneResultResult:
 			return mobiePhoneResultResultToJson(data as MobiePhoneResultResult);			case NewsEntity:
@@ -482,7 +490,10 @@ class JsonConvert<T> {
 			return PictureJokeEntity().fromJson(json);			case 'PictureJokeResult':
 			return PictureJokeResult().fromJson(json);			case 'PictureJokeResultShowapiResBody':
 			return PictureJokeResultShowapiResBody().fromJson(json);			case 'PictureJokeResultShowapiResBodyContentlist':
-			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'MobiePhoneEntity':
+			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);			case 'ArticleEntity':
+			return ArticleEntity().fromJson(json);			case 'ArticleData':
+			return ArticleData().fromJson(json);			case 'ArticleDataDate':
+			return ArticleDataDate().fromJson(json);			case 'MobiePhoneEntity':
 			return MobiePhoneEntity().fromJson(json);			case 'MobiePhoneResult':
 			return MobiePhoneResult().fromJson(json);			case 'MobiePhoneResultResult':
 			return MobiePhoneResultResult().fromJson(json);			case 'NewsEntity':
@@ -642,7 +653,10 @@ class JsonConvert<T> {
 			return List<PictureJokeEntity>();			case 'PictureJokeResult':
 			return List<PictureJokeResult>();			case 'PictureJokeResultShowapiResBody':
 			return List<PictureJokeResultShowapiResBody>();			case 'PictureJokeResultShowapiResBodyContentlist':
-			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'MobiePhoneEntity':
+			return List<PictureJokeResultShowapiResBodyContentlist>();			case 'ArticleEntity':
+			return List<ArticleEntity>();			case 'ArticleData':
+			return List<ArticleData>();			case 'ArticleDataDate':
+			return List<ArticleDataDate>();			case 'MobiePhoneEntity':
 			return List<MobiePhoneEntity>();			case 'MobiePhoneResult':
 			return List<MobiePhoneResult>();			case 'MobiePhoneResultResult':
 			return List<MobiePhoneResultResult>();			case 'NewsEntity':

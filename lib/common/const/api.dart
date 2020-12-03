@@ -30,6 +30,9 @@ class Api{
   //必应壁纸
   static final String bingWallPaper = 'https://cn.bing.com/HPImageArchive.aspx?format=js&n=1';
 
+  //https://meiriyiwen.com/
+  static final String todayArticle = 'https://interface.meiriyiwen.com/article/today?dev=1'; //每日一文
+  static final String randomArticle = 'https://interface.meiriyiwen.com/article/random?dev=1'; //随机一文
 
 
 }
