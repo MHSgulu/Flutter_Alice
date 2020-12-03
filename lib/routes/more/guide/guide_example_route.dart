@@ -1,5 +1,4 @@
 import 'package:alice/routes/example/company/dash_overflow/provider/example_provider_counter.dart';
-import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/routes/example/plugin_get_android_version.dart';
 import 'package:alice/routes/example/plugin_get_battery.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -179,7 +178,7 @@ class GuideExampleRoute extends StatelessWidget {
                     },
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('基于provider实现的计数器'),
+                      title: Text('provider'),
                     ),
                   ),
                 ),

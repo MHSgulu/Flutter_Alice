@@ -19,7 +19,7 @@ class ProviderCounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Demo Home Page'),
+        title: Text('基于provider实现的计数器'),
       ),
       body: Center(
         child: Column(
