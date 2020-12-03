@@ -50,13 +50,10 @@ class HotWordTabState extends State<HotWordTab> {
                   builder: (context, theme, child) => TabBar(
                     tabs: myTabs,
                     isScrollable: true,
-                    indicatorColor:
-                        AppThemeMode.isDark ? Colors.white70 : Colors.black54,
+                    indicatorColor: AppThemeMode.isDark ? Colors.white70 : Colors.black54,
                     indicatorSize: TabBarIndicatorSize.label,
-                    labelColor:
-                        AppThemeMode.isDark ? Colors.white : Colors.black87,
-                    unselectedLabelColor:
-                        AppThemeMode.isDark ? Colors.white54 : Colors.black45,
+                    labelColor: AppThemeMode.isDark ? Colors.white : Colors.black87,
+                    unselectedLabelColor: AppThemeMode.isDark ? Colors.white54 : Colors.black45,
                   ),
                 ),
               ),

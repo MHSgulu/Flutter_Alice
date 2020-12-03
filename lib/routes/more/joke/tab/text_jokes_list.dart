@@ -13,17 +13,13 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 //           curve: Curves.decelerate);
 
 
-//在非空[future]完成之前将用于创建提供的快照的数据。
-//
-// 如果将来因错误而结束，则不管[initialData]如何，提供给[builder]的[AsyncSnapshot]中的数据都将为空。
-// （错误本身将在[AsyncSnapshot.error]中可用，并且[AsyncSnapshot.hasError]为true。）
-
 class TextJokeList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => TextJokeListState();
 }
 
-class TextJokeListState extends State<TextJokeList> with AutomaticKeepAliveClientMixin{
+class TextJokeListState extends State<TextJokeList>
+    with AutomaticKeepAliveClientMixin {
   WrittenJokesEntity entity;
   List<WrittenJokesResultShowapiResBodyContentlist> dataList = List();
   RefreshController _refreshController;
@@ -35,33 +31,36 @@ class TextJokeListState extends State<TextJokeList> with AutomaticKeepAliveClien
     super.initState();
   }
 
-  void fetchData(int page) async{
+  void fetchData(int page) async {
     var result = await HttpUtil.requestTextJokeList(page);
-    if(result is Exception){
+    if (result is Exception) {
       Fluttertoast.showToast(msg: 'error');
       Exception exception = result as Exception;
       Fluttertoast.showToast(msg: '异常: $exception');
-    }else{
+    } else {
       entity = result;
-      if(entity.code == '10000'){
-        if(entity.result.showapiResCode == 0){
-          if(entity.result.showapiResBody.retCode == 0){
-            if(mounted){
+      if (entity.code == '10000') {
+        if (entity.result.showapiResCode == 0) {
+          if (entity.result.showapiResBody.retCode == 0) {
+            if (mounted) {
               setState(() {
-                if(entity.result.showapiResBody.currentPage == 1){
+                if (entity.result.showapiResBody.currentPage == 1) {
                   dataList = entity.result.showapiResBody.contentlist;
-                }else{
+                } else {
                   dataList.addAll(entity.result.showapiResBody.contentlist);
                 }
               });
             }
-          }else{
-            Fluttertoast.showToast(msg: 'retCode: ${entity.result.showapiResBody.retCode}');
+          } else {
+            Fluttertoast.showToast(
+                msg: 'retCode: ${entity.result.showapiResBody.retCode}');
           }
-        }else{
-          Fluttertoast.showToast(msg: 'showapiResCode: ${entity.result.showapiResCode} showapiResError: ${entity.result.showapiResError}');
+        } else {
+          Fluttertoast.showToast(
+              msg:
+                  'showapiResCode: ${entity.result.showapiResCode} showapiResError: ${entity.result.showapiResError}');
         }
-      }else{
+      } else {
         Fluttertoast.showToast(msg: 'code: ${entity.code} msg: ${entity.msg}');
       }
     }
@@ -101,15 +100,23 @@ class TextJokeListState extends State<TextJokeList> with AutomaticKeepAliveClien
         itemCount: dataList.length,
         itemBuilder: (context, index) => Card(
           child: ListTile(
-            title: Text('${dataList[index].title}',style: TextStyle(fontSize: 15),),
-            subtitle: Text('${dataList[index].ct.substring(0,10)}',style: TextStyle(fontSize: 12),),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (_) => TextJokesDetails(),
-                settings: RouteSettings(
-                  arguments: dataList[index].text,
-                ),
-              ));
+            title: Text(
+              '${dataList[index].title}',
+              style: TextStyle(fontSize: 15),
+            ),
+            subtitle: Text(
+              '${dataList[index].ct.substring(0, 10)}',
+              style: TextStyle(fontSize: 12),
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => TextJokesDetails(),
+                    settings: RouteSettings(
+                      arguments: dataList[index].text,
+                    ),
+                  ));
             },
           ),
         ),
@@ -117,14 +124,14 @@ class TextJokeListState extends State<TextJokeList> with AutomaticKeepAliveClien
     );
   }
 
-  void _onLoading() async{
+  void _onLoading() async {
     await Future.delayed(Duration(milliseconds: 1500));
-    if(entity.result.showapiResBody.currentPage < entity.result.showapiResBody.allPages){
+    if (entity.result.showapiResBody.currentPage <
+        entity.result.showapiResBody.allPages) {
       fetchData(entity.result.showapiResBody.currentPage + 1);
       _refreshController.loadComplete();
-    }else{
+    } else {
       _refreshController.loadNoData();
     }
   }
-
 }

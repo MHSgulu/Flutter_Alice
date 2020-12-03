@@ -88,8 +88,7 @@ class HotWordClassificationState extends State<HotWordClassification> {
                             valueColor: Colors.blueAccent[200],
                             strokeWidth: 2,
                           ),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
                         Container(
                           width: 50,

@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class QueryMobilePhoneNumberHome extends StatefulWidget {
+class QueryMobileHome extends StatefulWidget {
   @override
-  QueryMobilePhoneNumberHomeState createState() =>
-      QueryMobilePhoneNumberHomeState();
+  QueryMobileHomeState createState() =>
+      QueryMobileHomeState();
 }
 
-class QueryMobilePhoneNumberHomeState
-    extends State<QueryMobilePhoneNumberHome> {
+class QueryMobileHomeState
+    extends State<QueryMobileHome> {
   TextEditingController _controller;
   Future<MobiePhoneEntity> _futureMobilePhoneEntity;
 

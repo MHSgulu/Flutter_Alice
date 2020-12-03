@@ -3,7 +3,7 @@ import 'package:alice/common/network/http_util.dart';
 import 'package:alice/common/tool_util.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:alice/widgets/photo_view_single_screen.dart';
+import 'package:alice/widgets/photo_view_single.dart';
 import 'package:flutter/material.dart';
 
 import 'package:transparent_image/transparent_image.dart';
@@ -73,7 +73,7 @@ class BingWallpaperRouteState extends State<BingWallpaperRoute> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PhotoViewSimpleScreen(
+                              builder: (context) => PhotoViewSingle(
                                     imageProvider: NetworkImage(Util.bingUrl + snapshot.data.images[0].url),
                                     minScale: 0.2, //必须设为double类型
                                     maxScale: 0.5, //定义允许图像采用的最小大小，它与原始图像大小成比例

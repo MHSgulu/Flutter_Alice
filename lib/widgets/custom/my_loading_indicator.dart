@@ -47,9 +47,9 @@ class _MyLoadingIndicatorState extends State<MyLoadingIndicator> {
               ///如果不为空，则此进度指示器的值。
               ///值0.0表示没有进度，而值1.0表示进度已完成。
               ///如果为null，则此进度指示器不确定，这意味着该指示器显示预定的动画，该动画不指示正在执行多少实际进度。
-              //value: 0.0,
+              //value: 0.0, //如果 value 为 null 或空，则显示一个动画，否则显示一个定值。Progress 的值只能设置 0 ~ 1.0，如果大于 1，则表示已经结束。
               ///进度指示器背景颜色。默认情况下，当前主题为[ThemeData.backgroundColor]。
-              //backgroundColor: widget.valueColor ?? ThemeData.backgroundColor,
+              //backgroundColor: widget.valueColor ?? ThemeData.backgroundColor, //补齐画圆的线的颜色 形成完整的圆
               ///进度指示器的颜色为动画值。
               ///要指定恒定的颜色，请使用：AlwaysStoppedAnimation <Color>（color）`。
               ///如果为null，则进度指示器将使用当前主题的[ThemeData.accentColor]呈现。
