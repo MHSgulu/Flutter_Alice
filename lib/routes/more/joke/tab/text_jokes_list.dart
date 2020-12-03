@@ -6,13 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-/// scrollController 通过 animateTo 方法滚动到某个具体高度
-//       _scrollController.animateTo(
-//           0.0, //顶部
-//           duration: Duration(milliseconds: 500),
-//           curve: Curves.decelerate);
-
-
 class TextJokeList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => TextJokeListState();
