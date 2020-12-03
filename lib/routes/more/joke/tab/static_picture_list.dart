@@ -28,9 +28,8 @@ class _StaticPictureListState extends State<StaticPictureList> with AutomaticKee
   void fetchData(int page) async {
     var result = await HttpUtil.requestStaticPictureList(page);
     if (result is Exception) {
-      Fluttertoast.showToast(msg: 'error');
       Exception exception = result as Exception;
-      Fluttertoast.showToast(msg: '异常: $exception');
+      Fluttertoast.showToast(msg: 'error: $exception');
     } else {
       entity = result;
       if (entity.code == '10000') {

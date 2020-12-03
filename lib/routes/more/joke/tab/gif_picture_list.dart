@@ -28,9 +28,8 @@ class _GifPictureListState extends State<GifPictureList> with AutomaticKeepAlive
   void fetchData(int page) async {
     var result = await HttpUtil.requestGifPictureList(page);
     if (result is Exception) {
-      Fluttertoast.showToast(msg: 'error');
       Exception exception = result as Exception;
-      Fluttertoast.showToast(msg: '异常: $exception');
+      Fluttertoast.showToast(msg: 'error: $exception');
     } else {
       entity = result;
       if (entity.code == '10000') {
