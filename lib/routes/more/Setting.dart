@@ -24,9 +24,7 @@ class SettingPage extends StatelessWidget {
               SwitchMaterialTheme(),
               SwitchCupertinoTheme(),
               GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MultiLanguage()));
-                },
+                onTap: ()=> Navigator.pushNamed(context, '/multiLanguage'),
                 child: Card(
                   child: Container(
                     height: 50,

@@ -2,21 +2,10 @@ import 'package:alice/routes/example/company/dash_overflow/provider/example_prov
 import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/routes/example/plugin_get_android_version.dart';
 import 'package:alice/routes/example/plugin_get_battery.dart';
-import 'package:alice/routes/more/guide/guide_rive.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'guide_community_package.dart';
-import 'guide_cupertino_widget.dart';
-import 'guide_hot_pub.dart';
-import 'guide_material_widget.dart';
-import 'guide_official_dart_package.dart';
-import 'guide_official_package.dart';
-import 'guide_official_plugin.dart';
-import 'guide_official_widget.dart';
-import 'guide_plugin.dart';
 
 class GuideExampleRoute extends StatelessWidget {
   @override
@@ -42,12 +31,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideMaterialWidgetRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideMaterialWidgetRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Material Design Components'),
@@ -61,12 +45,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideCupertinoWidgetRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideCupertinoWidgetRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Cupertino Components'),
@@ -80,12 +59,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideOfficialWidgetRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideOfficialWidgetRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Widget 目录'),
@@ -98,12 +72,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideHotPubLibraryRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideHotPubLibraryRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('第三方开发者库(使用中/已了解)'),
@@ -116,12 +85,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuidePlugin()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guidePlugin'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('企业级原生SDK的Flutter插件'),
@@ -134,12 +98,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideOfficialPluginRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideOfficialPluginRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Flutter团队维护的插件目录'),
@@ -152,12 +111,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideOfficialPackageRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideOfficialPackageRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Flutter团队维护的软件包目录'),
@@ -170,12 +124,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => GuideCommunityPackageRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideCommunityPackageRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Flutter社区的软件包目录'),
@@ -188,16 +137,23 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) =>
-                                  GuideDartTeamOfficialPackageRoute()));
-                    },
+                    onTap: () => Navigator.pushNamed(context, '/guideDartTeamOfficialPackageRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('Dart团队发布的官方软件包'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(context, '/guideRiveRoute'),
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Rive 动画'),
                     ),
                   ),
                 ),
@@ -216,9 +172,7 @@ class GuideExampleRoute extends StatelessWidget {
                         // 阅读提供者的文档以了解所有可用的提供者。
                         return ChangeNotifierProvider(
                           // 在构建器中初始化模型。 这样，Provider可以拥有Counter的生命周期，确保在不再需要时调用`dispose`。
-                          create: (context) {
-                            return Counter();
-                          },
+                          create: (context) => Counter(),
                           child: ProviderCounterPage(),
                         );
                       }));
@@ -235,44 +189,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => GuideRiveRoute()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('Rive 动画'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => GoogleFontsPage()));
-                    },
-                    splashColor: Colors.brown[100],
-                    child: ListTile(
-                      title: Text('google_fonts'),
-                    ),
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PluginGetBattery()));
-                    },
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetBattery())),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('通道通信——获取手机电量'),
@@ -285,12 +202,7 @@ class GuideExampleRoute extends StatelessWidget {
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PluginGetVersion()));
-                    },
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetVersion())),
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('通道通信——获取手机安卓系统版本'),

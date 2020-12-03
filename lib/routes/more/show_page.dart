@@ -4,17 +4,6 @@ import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'Setting.dart';
-import 'bing/bing_wallpaper_list.dart';
-import 'chat_with_robot.dart';
-import 'english_quotations.dart';
-import 'garbage/garbage_classification.dart';
-import 'guide/guide_example_route.dart';
-import 'joke/life_interest_chart.dart';
-import 'model/tao_model_route.dart';
-import 'query_mobile_home.dart';
-import 'recipes/recipes_route.dart';
-
 
 class ShowMorePage extends StatefulWidget {
   @override
@@ -64,7 +53,6 @@ class ShowMorePageState extends State<ShowMorePage> {
     '设置',
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -73,8 +61,13 @@ class ShowMorePageState extends State<ShowMorePage> {
         builder: (context, theme, child) => Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('展示',style: TextStyle(fontSize: 18),),
-            backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.cyan[300],
+            title: Text(
+              '展示',
+              style: TextStyle(fontSize: 18),
+            ),
+            backgroundColor: AppThemeMode.isDark
+                ? MyColors.appBarDarkColor
+                : Colors.cyan[300],
             elevation: 1,
           ),
           body: ScrollConfiguration(
@@ -124,39 +117,37 @@ class ShowMorePageState extends State<ShowMorePage> {
   void jumpToPage(int index) {
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => QueryMobilePhoneNumberHome()));
+        Navigator.pushNamed(context, '/queryMobileHome');
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => EnglishQuotations()));
+        Navigator.pushNamed(context, '/englishQuotations');
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BingWallpaperList()));
+        Navigator.pushNamed(context, '/bingWallpaperList');
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ChatRobotList()));
+        Navigator.pushNamed(context, '/chatRobotList');
         break;
       case 4:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TaoModel()));
+        Navigator.pushNamed(context, '/taoModel');
         break;
       case 5:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LifeInterestChartRoute()));
+        Navigator.pushNamed(context, '/lifeInterestPictureRoute');
         break;
       case 6:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RecipesRoute()));
+        Navigator.pushNamed(context, '/recipesRoute');
         break;
       case 7:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GarbageClassification()));
+        Navigator.pushNamed(context, '/garbageClassification');
         break;
       case 8:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GuideExampleRoute()));
-        break;
+        Navigator.pushNamed(context, '/guideExampleRoute');
         break;
       case 9:
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GuideExampleRoute()));
+        Navigator.pushNamed(context, '/guideExampleRoute');
         break;
       case 10:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SettingPage())).then((value) {
+        Navigator.pushNamed(context, '/settingPage').then((value) {
           if (value == 'refresh') {
             if (mounted) {
               setState(() {});

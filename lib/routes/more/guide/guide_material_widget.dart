@@ -1,5 +1,6 @@
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_time_pickers.dart';
+import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
@@ -14,6 +15,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
   List<String> titleList = [
     'Date pickers(日期选择器)',
     'Time pickers(时间选择器)',
+    'google_fonts(谷歌字体)',
   ];
 
   @override
@@ -63,6 +65,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialTimePickers()));
         break;
       case 2:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleFontsPage()));
         break;
     }
   }
