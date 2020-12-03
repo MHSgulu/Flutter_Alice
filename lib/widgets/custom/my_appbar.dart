@@ -7,12 +7,14 @@ import 'package:provider/provider.dart';
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String label;
   final VoidCallback onPressedBack;
+  final List<Widget> actions;
   final PreferredSizeWidget bottom;
 
   const MyAppBar({
     Key key,
     @required this.label,
     @required this.onPressedBack,
+    this.actions,
     this.bottom,
   }) : super(key: key);
 
@@ -32,8 +34,7 @@ class _MyAppBarState extends State<MyAppBar> {
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
         builder: (context, theme, child) => AppBar(
-          backgroundColor:
-              AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.white,
+          backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.white,
           brightness: AppThemeMode.isDark ? Brightness.dark : Brightness.light,
           leading: IconButton(
             icon: Icon(
@@ -49,10 +50,15 @@ class _MyAppBarState extends State<MyAppBar> {
               fontSize: 18,
             ),
           ),
+          //在[title]小部件之后连续显示的小部件。
+          //通常，这些小部件是表示常用操作的[IconButton]。
+          //对于不太常见的操作，请考虑将[PopupMenuButton]作为最后一个动作。
+          //[actions]成为此小部件构建的[NavigationToolbar]的尾随组件。
+          //每个动作的高度不得超过[toolbarHeight]。
+          actions: widget.actions ?? [],
           centerTitle: true,
           elevation: 1,
-          bottom: widget.bottom ??
-              PreferredSize(
+          bottom: widget.bottom ?? PreferredSize(
                 child: Container(),
                 preferredSize: Size.fromHeight(0),
               ),

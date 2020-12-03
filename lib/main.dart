@@ -26,6 +26,8 @@ import 'routes/more/guide/guide_plugin.dart';
 import 'routes/more/guide/guide_rive.dart';
 import 'routes/more/joke/life_interest_picture.dart';
 import 'routes/more/model/tao_model_route.dart';
+import 'routes/more/more/article/article_of_the_day.dart';
+import 'routes/more/more/more_features_route.dart';
 import 'routes/more/query_mobile_home.dart';
 import 'routes/more/recipes/recipes_route.dart';
 import 'routes/more/setting/multi_language.dart';
@@ -120,6 +122,7 @@ class MyApp extends StatelessWidget {
               '/lifeInterestPictureRoute': (context) => LifeInterestPictureRoute(),
               '/recipesRoute': (context) => RecipesRoute(),
               '/garbageClassification': (context) => GarbageClassification(),
+              '/moreFeaturesListRoute': (context) => MoreFeaturesListRoute(),
               '/guideExampleRoute': (context) => GuideExampleRoute(),
               '/settingPage': (context) => SettingPage(),
               //设置页面
@@ -135,6 +138,8 @@ class MyApp extends StatelessWidget {
               '/guideCommunityPackageRoute': (context) => GuideCommunityPackageRoute(),
               '/guideDartTeamOfficialPackageRoute': (context) => GuideDartTeamOfficialPackageRoute(),
               '/guideRiveRoute': (context) => GuideRiveRoute(),
+              //更多功能页面
+              '/articleOfTheDayRoute': (context) => ArticleOfTheDayRoute(),
             },
             // 如果非null，则调用此回调函数以生成应用的标题字符串，否则使用[title]。
             // [onGenerateTitle]`context`参数包括[WidgetsApp]的[Localizations]小部件，以便可以使用此回调产生本地化的标题。

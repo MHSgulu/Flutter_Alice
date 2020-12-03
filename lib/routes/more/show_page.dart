@@ -16,7 +16,7 @@ class ShowMorePageState extends State<ShowMorePage> {
     'assets/icons/icon_record.png',
     'assets/icons/icon_camera.png',
     'assets/icons/icon_chat.png',
-    'assets/icons/icon_account.png',
+    //'assets/icons/icon_account.png',
     'assets/icons/icon_placeholder.png',
     'assets/icons/icon_food.png',
     'assets/icons/icon_shopping_cart.png',
@@ -30,7 +30,7 @@ class ShowMorePageState extends State<ShowMorePage> {
     'assets/icons/mbe/icon_mbe_big_2.png',
     'assets/icons/mbe/icon_mbe_big_3.png',
     'assets/icons/mbe/icon_mbe_big_4.png',
-    'assets/icons/mbe/icon_mbe_big_5.png',
+    //'assets/icons/mbe/icon_mbe_big_5.png',
     'assets/icons/mbe/icon_mbe_big_6.png',
     'assets/icons/mbe/icon_mbe_big_11.png',
     'assets/icons/mbe/icon_mbe_big_10.png',
@@ -44,7 +44,7 @@ class ShowMorePageState extends State<ShowMorePage> {
     '英文励志语录',
     '必应壁纸',
     '智能聊天机器人菲菲',
-    '淘女郎模特',
+    //'淘女郎模特',
     '生活趣图',
     '菜谱大全',
     '垃圾分类',
@@ -128,25 +128,25 @@ class ShowMorePageState extends State<ShowMorePage> {
       case 3:
         Navigator.pushNamed(context, '/chatRobotList');
         break;
-      case 4:
+      /*case 4:
         Navigator.pushNamed(context, '/taoModel');
-        break;
-      case 5:
+        break;*/
+      case 4:
         Navigator.pushNamed(context, '/lifeInterestPictureRoute');
         break;
-      case 6:
+      case 5:
         Navigator.pushNamed(context, '/recipesRoute');
         break;
-      case 7:
+      case 6:
         Navigator.pushNamed(context, '/garbageClassification');
+        break;
+      case 7:
+        Navigator.pushNamed(context, '/moreFeaturesListRoute');
         break;
       case 8:
         Navigator.pushNamed(context, '/guideExampleRoute');
         break;
       case 9:
-        Navigator.pushNamed(context, '/guideExampleRoute');
-        break;
-      case 10:
         Navigator.pushNamed(context, '/settingPage').then((value) {
           if (value == 'refresh') {
             if (mounted) {
