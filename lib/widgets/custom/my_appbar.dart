@@ -9,6 +9,8 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final VoidCallback onPressedBack;
   final List<Widget> actions;
   final PreferredSizeWidget bottom;
+  final double elevation;
+  final Color backgroundColor;
 
   const MyAppBar({
     Key key,
@@ -16,6 +18,8 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
     @required this.onPressedBack,
     this.actions,
     this.bottom,
+    this.elevation,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -34,19 +38,19 @@ class _MyAppBarState extends State<MyAppBar> {
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
         builder: (context, theme, child) => AppBar(
-          backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.white,
-          brightness: AppThemeMode.isDark ? Brightness.dark : Brightness.light,
+          backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : widget.backgroundColor ?? Colors.white,
+          brightness: AppThemeMode.isDark ? Brightness.dark : widget.backgroundColor == null ? Brightness.light : Brightness.dark,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: AppThemeMode.isDark ? Colors.white : Colors.black,
+              color: AppThemeMode.isDark ? Colors.white : widget.backgroundColor == null ? Colors.black : Colors.white,
             ),
             onPressed: widget.onPressedBack,
           ),
           title: Text(
             widget.label,
             style: TextStyle(
-              color: AppThemeMode.isDark ? Colors.white : Colors.black,
+              color: AppThemeMode.isDark ? Colors.white : widget.backgroundColor == null ? Colors.black : Colors.white,
               fontSize: 18,
             ),
           ),
@@ -57,7 +61,7 @@ class _MyAppBarState extends State<MyAppBar> {
           //每个动作的高度不得超过[toolbarHeight]。
           actions: widget.actions ?? [],
           centerTitle: true,
-          elevation: 1,
+          elevation: widget.elevation ?? 1,
           bottom: widget.bottom ?? PreferredSize(
                 child: Container(),
                 preferredSize: Size.fromHeight(0),
