@@ -1,8 +1,10 @@
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/l10n/LocalizationsDelegate.dart';
 import 'package:alice/routes/home.dart';
+import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper_list.dart';
+import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper.dart';
+import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper_list.dart';
 import 'package:flutter/material.dart';
-
 import 'package:alice/routes/more/Setting.dart';
 import 'package:alice/routes/more/chat_with_robot.dart';
 import 'package:alice/routes/more/bing/bing_wallpaper_list.dart';
@@ -24,8 +26,6 @@ import 'package:alice/routes/more/model/tao_model_route.dart';
 import 'package:alice/routes/more/more/article/article_of_the_day.dart';
 import 'package:alice/routes/more/more/more_features_route.dart';
 import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper.dart';
-import 'package:alice/routes/more/more/wallpaper/phone_wallpaper.dart';
-import 'package:alice/routes/more/more/wallpaper/phone_wallpaper_list.dart';
 import 'package:alice/routes/more/query_mobile_home.dart';
 import 'package:alice/routes/more/recipes/recipes_route.dart';
 import 'package:alice/routes/more/setting/multi_language.dart';
@@ -105,6 +105,7 @@ class MyApp extends StatelessWidget {
     '/phoneWallpaperRoute': (context) => PhoneWallpaperRoute(), //手机壁纸类别
     '/phoneWallpaperList': (context) => PhoneWallpaperList(), //手机壁纸列表
     '/computerWallpaperRoute': (context) => ComputerWallpaperRoute(), //电脑壁纸类别
+    '/computerWallpaperList': (context) => ComputerWallpaperList(), //电脑壁纸列表
   };
 
   @override
