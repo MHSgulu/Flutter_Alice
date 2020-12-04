@@ -67,7 +67,8 @@ class _MoreFeaturesListRouteState extends State<MoreFeaturesListRoute> {
           children: [
             InkWell(
               onTap: (){
-                Fluttertoast.showToast(msg: 'gdgd');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/phoneWallpaperRoute');
               },
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
@@ -82,7 +83,8 @@ class _MoreFeaturesListRouteState extends State<MoreFeaturesListRoute> {
             ),
             InkWell(
               onTap: (){
-                Fluttertoast.showToast(msg: 'gdgd');
+                Navigator.pop(context); //先退出对话框，再进行导航
+                Navigator.pushNamed(context, '/phoneWallpaperRoute');
               },
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
@@ -91,21 +93,6 @@ class _MoreFeaturesListRouteState extends State<MoreFeaturesListRoute> {
                     Image.asset('assets/icons/icon_computer.png',width: 30,),
                     SizedBox(width: 16),
                     Text('电脑壁纸'),
-                  ],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: (){
-                Fluttertoast.showToast(msg: 'gdgd');
-              },
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
-                child: Row(
-                  children: [
-                    Image.asset('assets/icons/icon_little_bird.png',width: 30,),
-                    SizedBox(width: 16),
-                    Text('小鸟壁纸'),
                   ],
                 ),
               ),

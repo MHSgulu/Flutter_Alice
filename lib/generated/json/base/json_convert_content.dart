@@ -17,6 +17,8 @@ import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/model/garbage_c_a_i_entity.dart';
 import 'package:alice/generated/json/garbage_c_a_i_entity_helper.dart';
+import 'package:alice/model/wallpaper_category_entity.dart';
+import 'package:alice/generated/json/wallpaper_category_entity_helper.dart';
 import 'package:alice/model/written_jokes_entity.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/film_maker_works_entity.dart';
@@ -27,6 +29,8 @@ import 'package:alice/model/film_maker_work_entity.dart';
 import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
+import 'package:alice/model/wallpaper_entity.dart';
+import 'package:alice/generated/json/wallpaper_entity_helper.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/model/article_entity.dart';
@@ -124,7 +128,10 @@ class JsonConvert<T> {
 			return garbageCAIEntityFromJson(data as GarbageCAIEntity, json) as T;			case GarbageCAIResult:
 			return garbageCAIResultFromJson(data as GarbageCAIResult, json) as T;			case GarbageCAIResultResult:
 			return garbageCAIResultResultFromJson(data as GarbageCAIResultResult, json) as T;			case GarbageCAIResultResultGarbageInfo:
-			return garbageCAIResultResultGarbageInfoFromJson(data as GarbageCAIResultResultGarbageInfo, json) as T;			case WrittenJokesEntity:
+			return garbageCAIResultResultGarbageInfoFromJson(data as GarbageCAIResultResultGarbageInfo, json) as T;			case WallpaperCategoryEntity:
+			return wallpaperCategoryEntityFromJson(data as WallpaperCategoryEntity, json) as T;			case WallpaperCategoryRes:
+			return wallpaperCategoryResFromJson(data as WallpaperCategoryRes, json) as T;			case WallpaperCategoryResCategory:
+			return wallpaperCategoryResCategoryFromJson(data as WallpaperCategoryResCategory, json) as T;			case WrittenJokesEntity:
 			return writtenJokesEntityFromJson(data as WrittenJokesEntity, json) as T;			case WrittenJokesResult:
 			return writtenJokesResultFromJson(data as WrittenJokesResult, json) as T;			case WrittenJokesResultShowapiResBody:
 			return writtenJokesResultShowapiResBodyFromJson(data as WrittenJokesResultShowapiResBody, json) as T;			case WrittenJokesResultShowapiResBodyContentlist:
@@ -162,7 +169,10 @@ class JsonConvert<T> {
 			return hotWordTypeResultFromJson(data as HotWordTypeResult, json) as T;			case HotWordTypeResultShowapiResBody:
 			return hotWordTypeResultShowapiResBodyFromJson(data as HotWordTypeResultShowapiResBody, json) as T;			case HotWordTypeResultShowapiResBodyList:
 			return hotWordTypeResultShowapiResBodyListFromJson(data as HotWordTypeResultShowapiResBodyList, json) as T;			case HotWordTypeResultShowapiResBodyListChildList:
-			return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;			case PictureJokeEntity:
+			return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;			case WallpaperEntity:
+			return wallpaperEntityFromJson(data as WallpaperEntity, json) as T;			case WallpaperRes:
+			return wallpaperResFromJson(data as WallpaperRes, json) as T;			case WallpaperResVertical:
+			return wallpaperResVerticalFromJson(data as WallpaperResVertical, json) as T;			case PictureJokeEntity:
 			return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;			case PictureJokeResult:
 			return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;			case PictureJokeResultShowapiResBodyContentlist:
@@ -286,7 +296,10 @@ class JsonConvert<T> {
 			return garbageCAIEntityToJson(data as GarbageCAIEntity);			case GarbageCAIResult:
 			return garbageCAIResultToJson(data as GarbageCAIResult);			case GarbageCAIResultResult:
 			return garbageCAIResultResultToJson(data as GarbageCAIResultResult);			case GarbageCAIResultResultGarbageInfo:
-			return garbageCAIResultResultGarbageInfoToJson(data as GarbageCAIResultResultGarbageInfo);			case WrittenJokesEntity:
+			return garbageCAIResultResultGarbageInfoToJson(data as GarbageCAIResultResultGarbageInfo);			case WallpaperCategoryEntity:
+			return wallpaperCategoryEntityToJson(data as WallpaperCategoryEntity);			case WallpaperCategoryRes:
+			return wallpaperCategoryResToJson(data as WallpaperCategoryRes);			case WallpaperCategoryResCategory:
+			return wallpaperCategoryResCategoryToJson(data as WallpaperCategoryResCategory);			case WrittenJokesEntity:
 			return writtenJokesEntityToJson(data as WrittenJokesEntity);			case WrittenJokesResult:
 			return writtenJokesResultToJson(data as WrittenJokesResult);			case WrittenJokesResultShowapiResBody:
 			return writtenJokesResultShowapiResBodyToJson(data as WrittenJokesResultShowapiResBody);			case WrittenJokesResultShowapiResBodyContentlist:
@@ -324,7 +337,10 @@ class JsonConvert<T> {
 			return hotWordTypeResultToJson(data as HotWordTypeResult);			case HotWordTypeResultShowapiResBody:
 			return hotWordTypeResultShowapiResBodyToJson(data as HotWordTypeResultShowapiResBody);			case HotWordTypeResultShowapiResBodyList:
 			return hotWordTypeResultShowapiResBodyListToJson(data as HotWordTypeResultShowapiResBodyList);			case HotWordTypeResultShowapiResBodyListChildList:
-			return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);			case PictureJokeEntity:
+			return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);			case WallpaperEntity:
+			return wallpaperEntityToJson(data as WallpaperEntity);			case WallpaperRes:
+			return wallpaperResToJson(data as WallpaperRes);			case WallpaperResVertical:
+			return wallpaperResVerticalToJson(data as WallpaperResVertical);			case PictureJokeEntity:
 			return pictureJokeEntityToJson(data as PictureJokeEntity);			case PictureJokeResult:
 			return pictureJokeResultToJson(data as PictureJokeResult);			case PictureJokeResultShowapiResBody:
 			return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);			case PictureJokeResultShowapiResBodyContentlist:
@@ -448,7 +464,10 @@ class JsonConvert<T> {
 			return GarbageCAIEntity().fromJson(json);			case 'GarbageCAIResult':
 			return GarbageCAIResult().fromJson(json);			case 'GarbageCAIResultResult':
 			return GarbageCAIResultResult().fromJson(json);			case 'GarbageCAIResultResultGarbageInfo':
-			return GarbageCAIResultResultGarbageInfo().fromJson(json);			case 'WrittenJokesEntity':
+			return GarbageCAIResultResultGarbageInfo().fromJson(json);			case 'WallpaperCategoryEntity':
+			return WallpaperCategoryEntity().fromJson(json);			case 'WallpaperCategoryRes':
+			return WallpaperCategoryRes().fromJson(json);			case 'WallpaperCategoryResCategory':
+			return WallpaperCategoryResCategory().fromJson(json);			case 'WrittenJokesEntity':
 			return WrittenJokesEntity().fromJson(json);			case 'WrittenJokesResult':
 			return WrittenJokesResult().fromJson(json);			case 'WrittenJokesResultShowapiResBody':
 			return WrittenJokesResultShowapiResBody().fromJson(json);			case 'WrittenJokesResultShowapiResBodyContentlist':
@@ -486,7 +505,10 @@ class JsonConvert<T> {
 			return HotWordTypeResult().fromJson(json);			case 'HotWordTypeResultShowapiResBody':
 			return HotWordTypeResultShowapiResBody().fromJson(json);			case 'HotWordTypeResultShowapiResBodyList':
 			return HotWordTypeResultShowapiResBodyList().fromJson(json);			case 'HotWordTypeResultShowapiResBodyListChildList':
-			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);			case 'PictureJokeEntity':
+			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);			case 'WallpaperEntity':
+			return WallpaperEntity().fromJson(json);			case 'WallpaperRes':
+			return WallpaperRes().fromJson(json);			case 'WallpaperResVertical':
+			return WallpaperResVertical().fromJson(json);			case 'PictureJokeEntity':
 			return PictureJokeEntity().fromJson(json);			case 'PictureJokeResult':
 			return PictureJokeResult().fromJson(json);			case 'PictureJokeResultShowapiResBody':
 			return PictureJokeResultShowapiResBody().fromJson(json);			case 'PictureJokeResultShowapiResBodyContentlist':
@@ -611,7 +633,10 @@ class JsonConvert<T> {
 			return List<GarbageCAIEntity>();			case 'GarbageCAIResult':
 			return List<GarbageCAIResult>();			case 'GarbageCAIResultResult':
 			return List<GarbageCAIResultResult>();			case 'GarbageCAIResultResultGarbageInfo':
-			return List<GarbageCAIResultResultGarbageInfo>();			case 'WrittenJokesEntity':
+			return List<GarbageCAIResultResultGarbageInfo>();			case 'WallpaperCategoryEntity':
+			return List<WallpaperCategoryEntity>();			case 'WallpaperCategoryRes':
+			return List<WallpaperCategoryRes>();			case 'WallpaperCategoryResCategory':
+			return List<WallpaperCategoryResCategory>();			case 'WrittenJokesEntity':
 			return List<WrittenJokesEntity>();			case 'WrittenJokesResult':
 			return List<WrittenJokesResult>();			case 'WrittenJokesResultShowapiResBody':
 			return List<WrittenJokesResultShowapiResBody>();			case 'WrittenJokesResultShowapiResBodyContentlist':
@@ -649,7 +674,10 @@ class JsonConvert<T> {
 			return List<HotWordTypeResult>();			case 'HotWordTypeResultShowapiResBody':
 			return List<HotWordTypeResultShowapiResBody>();			case 'HotWordTypeResultShowapiResBodyList':
 			return List<HotWordTypeResultShowapiResBodyList>();			case 'HotWordTypeResultShowapiResBodyListChildList':
-			return List<HotWordTypeResultShowapiResBodyListChildList>();			case 'PictureJokeEntity':
+			return List<HotWordTypeResultShowapiResBodyListChildList>();			case 'WallpaperEntity':
+			return List<WallpaperEntity>();			case 'WallpaperRes':
+			return List<WallpaperRes>();			case 'WallpaperResVertical':
+			return List<WallpaperResVertical>();			case 'PictureJokeEntity':
 			return List<PictureJokeEntity>();			case 'PictureJokeResult':
 			return List<PictureJokeResult>();			case 'PictureJokeResultShowapiResBody':
 			return List<PictureJokeResultShowapiResBody>();			case 'PictureJokeResultShowapiResBodyContentlist':

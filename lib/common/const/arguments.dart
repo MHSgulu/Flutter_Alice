@@ -1,0 +1,17 @@
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
+}
+
+class WallpaperListScreenArguments {
+  final String name;
+  final String id;
+  final int count;
+
+  WallpaperListScreenArguments(this.name, this.id, this.count);
+
+}
+
+

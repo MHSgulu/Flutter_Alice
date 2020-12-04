@@ -30,9 +30,14 @@ class Api{
   //必应壁纸
   static final String bingWallPaper = 'https://cn.bing.com/HPImageArchive.aspx?format=js&n=1';
 
-  //https://meiriyiwen.com/
+  //每日一文  https://meiriyiwen.com/
   static final String todayArticle = 'https://interface.meiriyiwen.com/article/today?dev=1'; //每日一文
   static final String randomArticle = 'https://interface.meiriyiwen.com/article/random?dev=1'; //随机一文
 
+  //壁纸
+  static final String phoneWallpaperCategory = 'http://service.picasso.adesk.com/v1/vertical/category'; //获取手机壁纸类别
+  static final String computerWallpaperCategory = 'http://service.picasso.adesk.com/v1/wallpaper/category'; //获取电脑壁纸类别
+  static final String phoneWallpaperList = 'http://service.picasso.adesk.com/v1/vertical/category/'; //根据类别获取手机壁纸
+  static final String computerWallpaperList = 'http://service.picasso.adesk.com/v1/wallpaper/category/'; //根据类别获取电脑壁纸
 
 }

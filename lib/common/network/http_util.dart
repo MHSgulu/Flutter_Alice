@@ -10,6 +10,8 @@ import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
+import 'package:alice/generated/json/wallpaper_category_entity_helper.dart';
+import 'package:alice/generated/json/wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/article_entity.dart';
 import 'package:alice/model/bingwallpaper.dart';
@@ -22,6 +24,8 @@ import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
+import 'package:alice/model/wallpaper_category_entity.dart';
+import 'package:alice/model/wallpaper_entity.dart';
 import 'package:alice/model/written_jokes_entity.dart';
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -354,6 +358,90 @@ class HttpUtil {
     if(response.statusCode == 200){
       var json = jsonDecode(response.toString());
       return articleEntityFromJson(ArticleEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///获取手机壁纸类别
+  ///url：http://service.picasso.adesk.com/v1/vertical/category
+  static Future<WallpaperCategoryEntity> requestPhoneWallpaperCategory() async {
+    Response response = await Dio().get(Api.phoneWallpaperCategory);
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return wallpaperCategoryEntityFromJson(WallpaperCategoryEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///根据类别获取手机壁纸
+  ///url：url：http://service.picasso.adesk.com/v1/vertical/category/ + 类别ID
+  ///url 示例：http://service.picasso.adesk.com/v1/vertical/category/4e4d610cdf714d2966000003/vertical?limit=30&adult=false&first=1&order=new
+  //拼接参数：
+  // limit：返回数量
+  // adult：布尔值，暂时未知
+  // first：数字，如1
+  // skip：略过数量
+  // order：值 hot为favs， new
+  static Future<WallpaperEntity> requestPhoneWallpaperList(String id,int num,String order) async {
+    Response response = await Dio().get(
+      Api.phoneWallpaperList + id + '/vertical?',
+      queryParameters: {
+        'limit': 10,
+        'adult': false,
+        'first': 1,
+        'skip': num,
+        'order': order,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return wallpaperEntityFromJson(WallpaperEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///获取电脑壁纸类别
+  ///url：http://service.picasso.adesk.com/v1/wallpaper/category
+  static Future<WallpaperCategoryEntity> requestComputerWallpaperCategory() async {
+    Response response = await Dio().get(Api.computerWallpaperCategory);
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return wallpaperCategoryEntityFromJson(WallpaperCategoryEntity(),json);
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  //根据类别获取电脑壁纸
+  //url：url：http://service.picasso.adesk.com/v1/wallpaper/category/+ 类别ID +/wallpaper
+  //url 示例：http://service.picasso.adesk.com/v1/wallpaper/category/4e4d610cdf714d2966000003/wallpaper?limit=30&adult=false&first=1&order=new
+  //拼接参数与解析与手机壁纸接口类似
+  ///目前此接口 请求 无数据 废弃使用
+  static Future<WallpaperEntity> requestComputerWallpaperList(String id,int num,String order) async {
+    Response response = await Dio().get(
+      Api.computerWallpaperList + id + '/wallpaper?',
+      queryParameters: {
+        'limit': 10,
+        'adult': false,
+        'first': 1,
+        'skip': num,
+        'order': order,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return wallpaperEntityFromJson(WallpaperEntity(),json);
     }else{
       Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
