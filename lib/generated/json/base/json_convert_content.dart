@@ -7,6 +7,8 @@ import 'package:alice/model/film_maker_entity.dart';
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
 import 'package:alice/model/movie_stills_entity.dart';
 import 'package:alice/generated/json/movie_stills_entity_helper.dart';
+import 'package:alice/model/bird_wallpaper_category_entity.dart';
+import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
 import 'package:alice/generated/json/search_news_entity_helper.dart';
 import 'package:alice/model/moive_details_entity.dart';
@@ -47,6 +49,8 @@ import 'package:alice/model/m_time_movie_detail_entity.dart';
 import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
+import 'package:alice/model/bird_wallpaper_entity.dart';
+import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/generated/json/movie_entity_helper.dart';
 
@@ -83,7 +87,9 @@ class JsonConvert<T> {
 			return movieStillsSubjectCastsAvatarsFromJson(data as MovieStillsSubjectCastsAvatars, json) as T;			case MovieStillsSubjectDirector:
 			return movieStillsSubjectDirectorFromJson(data as MovieStillsSubjectDirector, json) as T;			case MovieStillsSubjectDirectorsAvatars:
 			return movieStillsSubjectDirectorsAvatarsFromJson(data as MovieStillsSubjectDirectorsAvatars, json) as T;			case MovieStillsSubjectImages:
-			return movieStillsSubjectImagesFromJson(data as MovieStillsSubjectImages, json) as T;			case SearchNewsEntity:
+			return movieStillsSubjectImagesFromJson(data as MovieStillsSubjectImages, json) as T;			case BirdWallpaperCategoryEntity:
+			return birdWallpaperCategoryEntityFromJson(data as BirdWallpaperCategoryEntity, json) as T;			case BirdWallpaperCategoryData:
+			return birdWallpaperCategoryDataFromJson(data as BirdWallpaperCategoryData, json) as T;			case SearchNewsEntity:
 			return searchNewsEntityFromJson(data as SearchNewsEntity, json) as T;			case SearchNewsResult:
 			return searchNewsResultFromJson(data as SearchNewsResult, json) as T;			case SearchNewsResultResult:
 			return searchNewsResultResultFromJson(data as SearchNewsResultResult, json) as T;			case SearchNewsResultResultList:
@@ -214,7 +220,9 @@ class JsonConvert<T> {
 			return mtimeHotMovieEntityFromJson(data as MtimeHotMovieEntity, json) as T;			case MtimeHotMovieM:
 			return mtimeHotMovieMFromJson(data as MtimeHotMovieM, json) as T;			case MtimeHotMovieMsVersion:
 			return mtimeHotMovieMsVersionFromJson(data as MtimeHotMovieMsVersion, json) as T;			case MtimeHotMoviePromo:
-			return mtimeHotMoviePromoFromJson(data as MtimeHotMoviePromo, json) as T;			case MovieEntity:
+			return mtimeHotMoviePromoFromJson(data as MtimeHotMoviePromo, json) as T;			case BirdWallpaperEntity:
+			return birdWallpaperEntityFromJson(data as BirdWallpaperEntity, json) as T;			case BirdWallpaperData:
+			return birdWallpaperDataFromJson(data as BirdWallpaperData, json) as T;			case MovieEntity:
 			return movieEntityFromJson(data as MovieEntity, json) as T;			case MovieSubject:
 			return movieSubjectFromJson(data as MovieSubject, json) as T;			case MovieSubjectsRating:
 			return movieSubjectsRatingFromJson(data as MovieSubjectsRating, json) as T;			case MovieSubjectsRatingDetails:
@@ -251,7 +259,9 @@ class JsonConvert<T> {
 			return movieStillsSubjectCastsAvatarsToJson(data as MovieStillsSubjectCastsAvatars);			case MovieStillsSubjectDirector:
 			return movieStillsSubjectDirectorToJson(data as MovieStillsSubjectDirector);			case MovieStillsSubjectDirectorsAvatars:
 			return movieStillsSubjectDirectorsAvatarsToJson(data as MovieStillsSubjectDirectorsAvatars);			case MovieStillsSubjectImages:
-			return movieStillsSubjectImagesToJson(data as MovieStillsSubjectImages);			case SearchNewsEntity:
+			return movieStillsSubjectImagesToJson(data as MovieStillsSubjectImages);			case BirdWallpaperCategoryEntity:
+			return birdWallpaperCategoryEntityToJson(data as BirdWallpaperCategoryEntity);			case BirdWallpaperCategoryData:
+			return birdWallpaperCategoryDataToJson(data as BirdWallpaperCategoryData);			case SearchNewsEntity:
 			return searchNewsEntityToJson(data as SearchNewsEntity);			case SearchNewsResult:
 			return searchNewsResultToJson(data as SearchNewsResult);			case SearchNewsResultResult:
 			return searchNewsResultResultToJson(data as SearchNewsResultResult);			case SearchNewsResultResultList:
@@ -382,7 +392,9 @@ class JsonConvert<T> {
 			return mtimeHotMovieEntityToJson(data as MtimeHotMovieEntity);			case MtimeHotMovieM:
 			return mtimeHotMovieMToJson(data as MtimeHotMovieM);			case MtimeHotMovieMsVersion:
 			return mtimeHotMovieMsVersionToJson(data as MtimeHotMovieMsVersion);			case MtimeHotMoviePromo:
-			return mtimeHotMoviePromoToJson(data as MtimeHotMoviePromo);			case MovieEntity:
+			return mtimeHotMoviePromoToJson(data as MtimeHotMoviePromo);			case BirdWallpaperEntity:
+			return birdWallpaperEntityToJson(data as BirdWallpaperEntity);			case BirdWallpaperData:
+			return birdWallpaperDataToJson(data as BirdWallpaperData);			case MovieEntity:
 			return movieEntityToJson(data as MovieEntity);			case MovieSubject:
 			return movieSubjectToJson(data as MovieSubject);			case MovieSubjectsRating:
 			return movieSubjectsRatingToJson(data as MovieSubjectsRating);			case MovieSubjectsRatingDetails:
@@ -419,7 +431,9 @@ class JsonConvert<T> {
 			return MovieStillsSubjectCastsAvatars().fromJson(json);			case 'MovieStillsSubjectDirector':
 			return MovieStillsSubjectDirector().fromJson(json);			case 'MovieStillsSubjectDirectorsAvatars':
 			return MovieStillsSubjectDirectorsAvatars().fromJson(json);			case 'MovieStillsSubjectImages':
-			return MovieStillsSubjectImages().fromJson(json);			case 'SearchNewsEntity':
+			return MovieStillsSubjectImages().fromJson(json);			case 'BirdWallpaperCategoryEntity':
+			return BirdWallpaperCategoryEntity().fromJson(json);			case 'BirdWallpaperCategoryData':
+			return BirdWallpaperCategoryData().fromJson(json);			case 'SearchNewsEntity':
 			return SearchNewsEntity().fromJson(json);			case 'SearchNewsResult':
 			return SearchNewsResult().fromJson(json);			case 'SearchNewsResultResult':
 			return SearchNewsResultResult().fromJson(json);			case 'SearchNewsResultResultList':
@@ -550,7 +564,9 @@ class JsonConvert<T> {
 			return MtimeHotMovieEntity().fromJson(json);			case 'MtimeHotMovieM':
 			return MtimeHotMovieM().fromJson(json);			case 'MtimeHotMovieMsVersion':
 			return MtimeHotMovieMsVersion().fromJson(json);			case 'MtimeHotMoviePromo':
-			return MtimeHotMoviePromo().fromJson(json);			case 'MovieEntity':
+			return MtimeHotMoviePromo().fromJson(json);			case 'BirdWallpaperEntity':
+			return BirdWallpaperEntity().fromJson(json);			case 'BirdWallpaperData':
+			return BirdWallpaperData().fromJson(json);			case 'MovieEntity':
 			return MovieEntity().fromJson(json);			case 'MovieSubject':
 			return MovieSubject().fromJson(json);			case 'MovieSubjectsRating':
 			return MovieSubjectsRating().fromJson(json);			case 'MovieSubjectsRatingDetails':
@@ -588,7 +604,9 @@ class JsonConvert<T> {
 			return List<MovieStillsSubjectCastsAvatars>();			case 'MovieStillsSubjectDirector':
 			return List<MovieStillsSubjectDirector>();			case 'MovieStillsSubjectDirectorsAvatars':
 			return List<MovieStillsSubjectDirectorsAvatars>();			case 'MovieStillsSubjectImages':
-			return List<MovieStillsSubjectImages>();			case 'SearchNewsEntity':
+			return List<MovieStillsSubjectImages>();			case 'BirdWallpaperCategoryEntity':
+			return List<BirdWallpaperCategoryEntity>();			case 'BirdWallpaperCategoryData':
+			return List<BirdWallpaperCategoryData>();			case 'SearchNewsEntity':
 			return List<SearchNewsEntity>();			case 'SearchNewsResult':
 			return List<SearchNewsResult>();			case 'SearchNewsResultResult':
 			return List<SearchNewsResultResult>();			case 'SearchNewsResultResultList':
@@ -719,7 +737,9 @@ class JsonConvert<T> {
 			return List<MtimeHotMovieEntity>();			case 'MtimeHotMovieM':
 			return List<MtimeHotMovieM>();			case 'MtimeHotMovieMsVersion':
 			return List<MtimeHotMovieMsVersion>();			case 'MtimeHotMoviePromo':
-			return List<MtimeHotMoviePromo>();			case 'MovieEntity':
+			return List<MtimeHotMoviePromo>();			case 'BirdWallpaperEntity':
+			return List<BirdWallpaperEntity>();			case 'BirdWallpaperData':
+			return List<BirdWallpaperData>();			case 'MovieEntity':
 			return List<MovieEntity>();			case 'MovieSubject':
 			return List<MovieSubject>();			case 'MovieSubjectsRating':
 			return List<MovieSubjectsRating>();			case 'MovieSubjectsRatingDetails':

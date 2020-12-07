@@ -1,6 +1,6 @@
 import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/model/wallpaper_entity.dart';
+import 'package:alice/model/bird_wallpaper_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:alice/widgets/photo_view_single.dart';
@@ -16,11 +16,11 @@ class ComputerWallpaperList extends StatefulWidget {
 }
 
 class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
-  WallpaperListScreenArguments args;
-  WallpaperEntity entity;
-  List<WallpaperResVertical> dataList = List();
+  BirdWallpaperListScreenArguments args;
+  BirdWallpaperEntity entity;
+  List<BirdWallpaperData> dataList = List();
   RefreshController _refreshController;
-  int num = 0;
+  int start = 0;
 
   @override
   void initState() {
@@ -31,29 +31,33 @@ class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    fetchData(num);
+    fetchData(start);
     super.didChangeDependencies();
   }
 
-  void fetchData(int num) async {
-    var result = await HttpUtil.requestComputerWallpaperList(args.id, num, 'hot');
+  void fetchData(int start) async {
+    var result = await HttpUtil.requestComputerWallpaperList(
+      args.id,
+      start,
+    );
     if (result is Exception) {
       Exception exception = result as Exception;
       Fluttertoast.showToast(msg: 'error: $exception');
     } else {
       entity = result;
-      if (entity.code == 0 && entity.msg == 'success') {
+      if (entity.errno == '0' && entity.errmsg == '正常') {
         if (mounted) {
           setState(() {
-            if (num == 0) {
-              dataList = entity.res.vertical;
+            if (start == 0) {
+              dataList = entity.data;
             } else {
-              dataList.addAll(entity.res.vertical);
+              dataList.addAll(entity.data);
             }
           });
         }
       } else {
-        Fluttertoast.showToast(msg: 'code: ${entity.code}  msg: ${entity.msg}');
+        Fluttertoast.showToast(
+            msg: 'code: ${entity.errno}  msg: ${entity.errmsg}');
       }
     }
   }
@@ -62,7 +66,7 @@ class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: '${args.name}壁纸(${args.count})',
+        label: '${args.name}壁纸${dataList.isEmpty ? '' : '(${entity.total})'}',
         onPressedBack: () => Navigator.pop(context),
       ),
       body: dataList.isEmpty ? MyLoadingIndicator() : wallpaperListView(),
@@ -89,56 +93,97 @@ class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
         idleText: '加载完成',
         idleIcon: const Icon(Icons.done, color: Colors.grey),
       ),
-      child: StaggeredGridView.countBuilder(
-        //mainAxisSpacing: 4.0,
-        //crossAxisSpacing: 4.0,
-        crossAxisCount: 4,
-        itemCount: dataList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PhotoViewSingle(
-                    img: '${dataList[index].img}',
-                    heroTag: '$index',
-                  ),
+      child: pictureListView(),
+    );
+  }
+
+  /*Widget staggeredListView() {
+    return StaggeredGridView.countBuilder(
+      crossAxisCount: 4,
+      itemCount: dataList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhotoViewSingle(
+                  img: '${dataList[index].url}',
+                  heroTag: '$index',
                 ),
-              );
-            },
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
               ),
-              clipBehavior: Clip.antiAlias,
-              child: Hero(
-                tag: '$index',
-                child: CachedNetworkImage(
-                  imageUrl: '${dataList[index].thumb}',
-                  placeholder: (context, url) => MyLoadingIndicator(
-                    //valueColor: Colors.blueAccent[200],
-                    strokeWidth: 2,
-                  ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+            );
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Hero(
+              tag: '$index',
+              child: CachedNetworkImage(
+                imageUrl: '${dataList[index].url}',
+                placeholder: (context, url) => MyLoadingIndicator(
+                  //valueColor: Colors.blueAccent[200],
+                  strokeWidth: 2,
                 ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
-          );
-        },
-        staggeredTileBuilder: (int index) {
-          return StaggeredTile.fit(2);
-        },
-      ),
+          ),
+        );
+      },
+      staggeredTileBuilder: (int index) {
+        return StaggeredTile.fit(2);
+      },
+    );
+  }*/
+
+  Widget pictureListView() {
+    return ListView.builder(
+      //itemExtent: 230,
+      itemCount: dataList.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhotoViewSingle(
+                  img: '${dataList[index].url}',
+                  heroTag: '$index',
+                ),
+              ),
+            );
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Hero(
+              tag: '$index',
+              child: CachedNetworkImage(
+                imageUrl: '${dataList[index].url}',
+                placeholder: (context, url) => MyLoadingIndicator(
+                  //valueColor: Colors.blueAccent[200],
+                  strokeWidth: 2,
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
   void _onLoading() async {
     await Future.delayed(Duration(milliseconds: 1500));
-    if (num < args.count) {
-      num = num + 10;
-      print('数据点位: 当前略过数量: $num 即代表跳过最初的$num张 从${num + 1}张开始，请求10张壁纸');
-      fetchData(num);
+    if (start < int.parse(entity.total)) {
+      start = start + 10;
+      print('数据点位: 当前分页: $start 即 从${start + 1}张开始，请求10张壁纸');
+      fetchData(start);
       _refreshController.loadComplete();
     } else {
       _refreshController.loadNoData();

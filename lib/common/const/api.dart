@@ -36,8 +36,8 @@ class Api{
 
   //壁纸
   static final String phoneWallpaperCategory = 'http://service.picasso.adesk.com/v1/vertical/category'; //获取手机壁纸类别
-  static final String computerWallpaperCategory = 'http://service.picasso.adesk.com/v1/wallpaper/category'; //获取电脑壁纸类别
+  static final String computerWallpaperCategory = 'http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2&from=360chrome'; //获取电脑壁纸类别(小鸟壁纸)
   static final String phoneWallpaperList = 'http://service.picasso.adesk.com/v1/vertical/category/'; //根据类别获取手机壁纸
-  static final String computerWallpaperList = 'http://service.picasso.adesk.com/v1/wallpaper/category/'; //根据类别获取电脑壁纸
+  static final String computerWallpaperList = 'http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory'; //根据类别获取电脑壁纸
 
 }

@@ -1,9 +1,8 @@
 import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/model/wallpaper_category_entity.dart';
+import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,8 +13,8 @@ class ComputerWallpaperRoute extends StatefulWidget {
 }
 
 class _ComputerWallpaperRouteState extends State<ComputerWallpaperRoute> {
-  WallpaperCategoryEntity entity;
-  List<WallpaperCategoryResCategory> dataList = List();
+  BirdWallpaperCategoryEntity entity;
+  List<BirdWallpaperCategoryData> dataList = List();
 
   @override
   void initState() {
@@ -29,8 +28,19 @@ class _ComputerWallpaperRouteState extends State<ComputerWallpaperRoute> {
       appBar: MyAppBar(
         label: '电脑壁纸类别',
         onPressedBack: () => Navigator.pop(context),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/wallpaperPopularSearches');
+              },
+              child: Text(
+                '搜索',
+                style: TextStyle(fontSize: 13),
+              ))
+        ],
       ),
-      body: dataList.isEmpty ? MyLoadingIndicator() : wallpaperCategoryListView(),
+      body:
+          dataList.isEmpty ? MyLoadingIndicator() : wallpaperCategoryListView(),
     );
   }
 
@@ -41,50 +51,32 @@ class _ComputerWallpaperRouteState extends State<ComputerWallpaperRoute> {
       crossAxisCount: 4,
       itemCount: dataList.length,
       itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          onTap: () => Navigator.pushNamed(
-            context,
-            '/computerWallpaperList',
-            arguments: WallpaperListScreenArguments(
-              dataList[index].name,
-              dataList[index].id,
-              dataList[index].count,
-            ),
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
           ),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Stack(
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                CachedNetworkImage(
-                  imageUrl: '${dataList[index].cover}',
-                  placeholder: (context, url) => MyLoadingIndicator(
-                    //valueColor: Colors.blueAccent[200],
-                    strokeWidth: 2,
-                  ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/computerWallpaperList',
+                arguments: BirdWallpaperListScreenArguments(
+                  dataList[index].name,
+                  dataList[index].id,
                 ),
-                Container(
-                  height: 35,
-                  color: Colors.black26,
-                  child: Center(
-                    child: Text(
-                      '${dataList[index].name}',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
+              );
+            },
+            child: Container(
+              height: 50,
+              child: Center(
+                child: Text('${dataList[index].name}'),
+              ),
             ),
           ),
         );
       },
-      staggeredTileBuilder: (int index) {
-        return StaggeredTile.fit(2);
-      },
+      staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
     );
   }
 
@@ -95,14 +87,15 @@ class _ComputerWallpaperRouteState extends State<ComputerWallpaperRoute> {
       Fluttertoast.showToast(msg: 'error: $exception');
     } else {
       entity = result;
-      if (entity.code == 0 && entity.msg == 'success') {
+      if (entity.errno == '0' && entity.errmsg == '正常') {
         if (mounted) {
           setState(() {
-            dataList = entity.res.category;
+            dataList = entity.data;
           });
         }
       } else {
-        Fluttertoast.showToast(msg: 'code: ${entity.code}  msg: ${entity.msg}');
+        Fluttertoast.showToast(
+            msg: 'code: ${entity.errno}  msg: ${entity.errmsg}');
       }
     }
   }

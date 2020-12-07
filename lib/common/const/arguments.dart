@@ -15,3 +15,10 @@ class WallpaperListScreenArguments {
 }
 
 
+class BirdWallpaperListScreenArguments {
+  final String name;
+  final String id;
+
+  BirdWallpaperListScreenArguments(this.name, this.id);
+
+}

@@ -1,6 +1,8 @@
 import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
 import 'package:alice/generated/json/article_entity_helper.dart';
+import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart';
+import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
@@ -15,6 +17,8 @@ import 'package:alice/generated/json/wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/article_entity.dart';
 import 'package:alice/model/bingwallpaper.dart';
+import 'package:alice/model/bird_wallpaper_category_entity.dart';
+import 'package:alice/model/bird_wallpaper_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
@@ -409,39 +413,42 @@ class HttpUtil {
   }
 
   ///获取电脑壁纸类别
-  ///url：http://service.picasso.adesk.com/v1/wallpaper/category
-  static Future<WallpaperCategoryEntity> requestComputerWallpaperCategory() async {
+  ///url：http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2
+  ///url 示例：http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2&from=360chrome
+  static Future<BirdWallpaperCategoryEntity> requestComputerWallpaperCategory() async {
     Response response = await Dio().get(Api.computerWallpaperCategory);
     print('数据点位: response: $response');
     if(response.statusCode == 200){
       var json = jsonDecode(response.toString());
-      return wallpaperCategoryEntityFromJson(WallpaperCategoryEntity(),json);
+      return birdWallpaperCategoryEntityFromJson(BirdWallpaperCategoryEntity(),json);
     }else{
       Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
   }
 
-  //根据类别获取电脑壁纸
-  //url：url：http://service.picasso.adesk.com/v1/wallpaper/category/+ 类别ID +/wallpaper
-  //url 示例：http://service.picasso.adesk.com/v1/wallpaper/category/4e4d610cdf714d2966000003/wallpaper?limit=30&adult=false&first=1&order=new
-  //拼接参数与解析与手机壁纸接口类似
-  ///目前此接口 请求 无数据 废弃使用
-  static Future<WallpaperEntity> requestComputerWallpaperList(String id,int num,String order) async {
+  ///根据类别获取电脑壁纸
+  ///url：http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory
+  // 其他拼接参数：
+  // cid：类别id,类别已知：
+  // start：从第几幅图开始(用于分页)
+  // count：返回的数量
+  // from：固定值: 360chrome
+  // url 示例：http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid=9&start=0&count=10&from=360chrome
+  static Future<BirdWallpaperEntity> requestComputerWallpaperList(String id,int start) async {
     Response response = await Dio().get(
-      Api.computerWallpaperList + id + '/wallpaper?',
+      Api.computerWallpaperList,
       queryParameters: {
-        'limit': 10,
-        'adult': false,
-        'first': 1,
-        'skip': num,
-        'order': order,
+        'cid': id,
+        'start': start,
+        'count': 10,
+        'from': '360chrome',
       },
     );
     print('数据点位: response: $response');
     if(response.statusCode == 200){
       var json = jsonDecode(response.toString());
-      return wallpaperEntityFromJson(WallpaperEntity(),json);
+      return birdWallpaperEntityFromJson(BirdWallpaperEntity(),json);
     }else{
       Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');

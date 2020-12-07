@@ -84,7 +84,7 @@ class _MoreFeaturesListRouteState extends State<MoreFeaturesListRoute> {
             InkWell(
               onTap: (){
                 Navigator.pop(context); //先退出对话框，再进行导航
-                Navigator.pushNamed(context, '/phoneWallpaperRoute');
+                Navigator.pushNamed(context, '/computerWallpaperRoute');
               },
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
