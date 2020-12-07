@@ -1,34 +1,8 @@
+import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/l10n/LocalizationsDelegate.dart';
 import 'package:alice/routes/home.dart';
-import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper_list.dart';
-import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper.dart';
-import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper_list.dart';
 import 'package:flutter/material.dart';
-import 'package:alice/routes/more/Setting.dart';
-import 'package:alice/routes/more/chat_with_robot.dart';
-import 'package:alice/routes/more/bing/bing_wallpaper_list.dart';
-import 'package:alice/routes/more/english_quotations.dart';
-import 'package:alice/routes/more/garbage/garbage_classification.dart';
-import 'package:alice/routes/more/guide/guide_community_package.dart';
-import 'package:alice/routes/more/guide/guide_cupertino_widget.dart';
-import 'package:alice/routes/more/guide/guide_example_route.dart';
-import 'package:alice/routes/more/guide/guide_hot_pub.dart';
-import 'package:alice/routes/more/guide/guide_material_widget.dart';
-import 'package:alice/routes/more/guide/guide_official_dart_package.dart';
-import 'package:alice/routes/more/guide/guide_official_package.dart';
-import 'package:alice/routes/more/guide/guide_official_plugin.dart';
-import 'package:alice/routes/more/guide/guide_official_widget.dart';
-import 'package:alice/routes/more/guide/guide_plugin.dart';
-import 'package:alice/routes/more/guide/guide_rive.dart';
-import 'package:alice/routes/more/joke/life_interest_picture.dart';
-import 'package:alice/routes/more/model/tao_model_route.dart';
-import 'package:alice/routes/more/more/article/article_of_the_day.dart';
-import 'package:alice/routes/more/more/more_features_route.dart';
-import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper.dart';
-import 'package:alice/routes/more/query_mobile_home.dart';
-import 'package:alice/routes/more/recipes/recipes_route.dart';
-import 'package:alice/routes/more/setting/multi_language.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -73,41 +47,6 @@ import 'package:provider/provider.dart';
 class MyApp extends StatelessWidget {
   static const String _title = 'Alice';
 
-  Map<String, WidgetBuilder> _routes = {
-    //功能模块
-    '/queryMobileHome': (context) => QueryMobileHome(),
-    '/englishQuotations': (context) => EnglishQuotations(),
-    '/bingWallpaperList': (context) => BingWallpaperList(),
-    '/chatRobotList': (context) => ChatRobotList(),
-    '/taoModel': (context) => TaoModel(),
-    '/lifeInterestPictureRoute': (context) => LifeInterestPictureRoute(),
-    '/recipesRoute': (context) => RecipesRoute(),
-    '/garbageClassification': (context) => GarbageClassification(),
-    '/moreFeaturesListRoute': (context) => MoreFeaturesListRoute(),
-    '/guideExampleRoute': (context) => GuideExampleRoute(),
-    '/settingPage': (context) => SettingPage(),
-    //设置页面
-    '/multiLanguage': (context) => MultiLanguage(),
-    //示例页面
-    '/guideMaterialWidgetRoute': (context) => GuideMaterialWidgetRoute(),
-    '/guideCupertinoWidgetRoute': (context) => GuideCupertinoWidgetRoute(),
-    '/guideOfficialWidgetRoute': (context) => GuideOfficialWidgetRoute(),
-    '/guideHotPubLibraryRoute': (context) => GuideHotPubLibraryRoute(),
-    '/guidePlugin': (context) => GuidePlugin(),
-    '/guideOfficialPluginRoute': (context) => GuideOfficialPluginRoute(),
-    '/guideOfficialPackageRoute': (context) => GuideOfficialPackageRoute(),
-    '/guideCommunityPackageRoute': (context) => GuideCommunityPackageRoute(),
-    '/guideDartTeamOfficialPackageRoute': (context) =>
-        GuideDartTeamOfficialPackageRoute(),
-    '/guideRiveRoute': (context) => GuideRiveRoute(),
-    //更多功能页面
-    '/articleOfTheDayRoute': (context) => ArticleOfTheDayRoute(),
-    '/phoneWallpaperRoute': (context) => PhoneWallpaperRoute(), //手机壁纸类别
-    '/phoneWallpaperList': (context) => PhoneWallpaperList(), //手机壁纸列表
-    '/computerWallpaperRoute': (context) => ComputerWallpaperRoute(), //电脑壁纸类别
-    '/computerWallpaperList': (context) => ComputerWallpaperList(), //电脑壁纸列表
-  };
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -128,7 +67,7 @@ class MyApp extends StatelessWidget {
             // 当使用[Navigator.pushNamed]推送命名的路线时，将在此地图中查找路线名称。
             // 如果存在该名称，则使用关联的[WidgetBuilder]构造一个[MaterialPageRoute]，
             // 该[MaterialPageRoute]执行适当的过渡（包括[Hero]动画）到新路线。
-            routes: _routes,
+            routes: routes,
             // 如果非null，则调用此回调函数以生成应用的标题字符串，否则使用[title]。
             // [onGenerateTitle]`context`参数包括[WidgetsApp]的[Localizations]小部件，以便可以使用此回调产生本地化的标题。
             // 此回调函数不得返回null。
