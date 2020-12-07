@@ -4,6 +4,7 @@ import 'package:alice/routes/example/Individual/flutter_html/example_html.dart';
 import 'package:alice/routes/example/Individual/flutter_image_compress/example_picture_compression.dart';
 import 'package:alice/routes/example/Individual/flutter_staggered_grid/test_staggered_grid.dart';
 import 'package:alice/routes/example/Individual/gesture_password/example_gesture_password.dart';
+import 'package:alice/routes/example/Individual/image_gallery_saver/image_gallery_saver.dart';
 import 'package:alice/routes/example/Individual/marquee/example_marquee.dart';
 import 'package:alice/routes/example/Individual/zefyr/example_zefyr.dart';
 import 'package:alice/routes/example/company/baseflow/cached_network_image/example_cached_network_image.dart';
@@ -33,6 +34,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'flutter_html',
     'flutter_staggered_grid_view',
     'gesture_password_widget',
+    'image_gallery_saver',
   ];
 
   List<String> subTitleList = [
@@ -47,6 +49,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'Flutter小部件，将静态HTML和CSS呈现为Flutter小部件',
     'Flutter交错网格视图，支持多列且行大小不同',
     'Flutter的手势解锁小部件，支持高度自定义',
+    '一个新的flutter插件项目，用于将图像保存到图库',
   ];
 
   @override
@@ -123,6 +126,9 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
         break;
       case 10:
         Navigator.push(context, MaterialPageRoute(builder: (_) => GesturePasswordWidgetDemo()));
+        break;
+      case 11:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleImageGallerySaver()));
         break;
     }
   }
