@@ -5,7 +5,6 @@ import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:alice/widgets/photo_view_single.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -130,7 +129,7 @@ class _PhoneWallpaperListState extends State<PhoneWallpaperList> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => PhotoViewSingle(
-                    imageProvider: NetworkImage('${dataList[index].img}'),
+                    img: '${dataList[index].img}',
                     heroTag: '$index',
                   ),
                 ),

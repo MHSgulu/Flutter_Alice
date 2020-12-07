@@ -101,7 +101,7 @@ class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => PhotoViewSingle(
-                    imageProvider: NetworkImage('${dataList[index].img}'),
+                    img: '${dataList[index].img}',
                     heroTag: '$index',
                   ),
                 ),

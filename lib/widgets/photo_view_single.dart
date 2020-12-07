@@ -1,16 +1,22 @@
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_view/photo_view.dart';
 
-class PhotoViewSingle extends StatelessWidget{
+class PhotoViewSingle extends StatelessWidget {
   const PhotoViewSingle({
-    this.imageProvider,//图片
-    this.loadingBuilder,//加载时的widget
-    this.backgroundDecoration,//背景修饰
-    this.minScale,//最小缩放倍数
-    this.maxScale,//最大缩放倍数
-    this.heroTag,//hero动画tagid
+    this.img, //图片
+    this.loadingBuilder, //加载时的widget
+    this.backgroundDecoration, //背景修饰
+    this.minScale, //最小缩放倍数
+    this.maxScale, //最大缩放倍数
+    this.heroTag, //hero动画tagid
   });
-  final ImageProvider imageProvider;
+  final String img;
   final LoadingBuilder loadingBuilder;
   final Decoration backgroundDecoration;
   final dynamic minScale;
@@ -32,35 +38,91 @@ class PhotoViewSingle extends StatelessWidget{
               bottom: 0,
               right: 0,
               child: PhotoView(
-                imageProvider: imageProvider,
+                imageProvider: NetworkImage(img),
                 loadingBuilder: (context, event) => Center(
                   child: CircularProgressIndicator(
                     value: event == null
                         ? 0
-                        : event.cumulativeBytesLoaded / event.expectedTotalBytes,
+                        : event.cumulativeBytesLoaded /
+                            event.expectedTotalBytes,
                   ),
                 ),
                 backgroundDecoration: backgroundDecoration,
                 minScale: minScale,
                 maxScale: maxScale,
                 heroAttributes: PhotoViewHeroAttributes(tag: heroTag),
-                enableRotation: false,  ///启用旋转手势支持的标志
+                enableRotation: false,
+
+                ///启用旋转手势支持的标志
               ),
             ),
-            Positioned(//右上角关闭按钮
+            Positioned(
+              //右上角关闭按钮
               right: 10,
               top: MediaQuery.of(context).padding.top,
               child: IconButton(
-                icon: Icon(Icons.close,size: 30,color: Colors.white,),
-                onPressed: (){
-                  Navigator.of(context).pop();
+                icon: Icon(
+                  Icons.close_rounded,
+                  size: 30,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+            Positioned(
+              //右下角下载按钮
+              right: 10,
+              bottom: MediaQuery.of(context).padding.bottom,
+              child: IconButton(
+                icon: Icon(
+                  Icons.download_rounded,
+                  size: 30,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  checkPermissions();
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
+  void checkPermissions() async {
+    var status = await Permission.storage.status;
+    //如果之前从未申请过许可。
+    if (status.isUndetermined) {
+      Permission.storage.request();
+    } else if (status.isGranted) {
+      //如果用户授予对请求的功能的访问权。
+      downloadPicture();
+    } else if (status.isDenied) {
+      //如果用户拒绝访问请求的功能。
+      Permission.storage.request();
+      Fluttertoast.showToast(msg: '我们需要您授权该权限，才能下载该图片保存到手机图库中');
+    } else if (status.isRestricted || status.isPermanentlyDenied) {
+      //如果操作系统拒绝访问请求的功能。用户无法更改此应用的状态，可能是由于家长等活动限制
+      //如果用户拒绝访问请求的功能，并选择不再显示对此权限的请求。用户仍可以更改设置中的权限状态。
+      openAppSettings();
+      Fluttertoast.showToast(msg: '访问权限受到限制或永久拒绝，请前往设置界面手动打开读写手机存储权限');
+    }
+  }
+
+  void downloadPicture() async{
+    var time = DateTime.now().millisecondsSinceEpoch;
+
+    var response = await Dio().get(
+      img,
+      options: Options(responseType: ResponseType.bytes),
+    );
+    final result = await ImageGallerySaver.saveImage(
+      Uint8List.fromList(response.data),
+      quality: 100,
+      name: "picture_$time",
+    );
+    print('数据点位： 图片地址： $result');
+    Fluttertoast.showToast(msg: '图片已保存到相册中');
+  }
 }
