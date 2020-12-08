@@ -1,5 +1,6 @@
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
+import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_time_pickers.dart';
 import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -18,6 +19,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Date pickers(日期选择器)',
     'Time pickers(时间选择器)',
     'Dialog(对话框)',
+    'Slider(滑杆)',
   ];
 
   @override
@@ -71,6 +73,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 3:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDialog()));
+        break;
+      case 4:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSlider()));
         break;
     }
   }
