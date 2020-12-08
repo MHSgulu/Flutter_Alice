@@ -14,10 +14,8 @@ class _MaterialTimePickersState extends State<MaterialTimePickers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: '材料设计时间选择器',
-        onPressedBack: () {
-          Navigator.pop(context);
-        },
+        label: '时间选择器',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

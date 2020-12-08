@@ -8,8 +8,8 @@ class MyColors{
   //static final Color darkGrey =  Color.fromRGBO(18, 18, 18, 1.0);
   static final Color darkGrey =  Color(0xFF121212);
 
-  ///默认AppBar深夜模式下的背景色
-  static final Color appBarDarkColor =  Color(0xFF212121);
+  ///默认AppBar深夜模式下的背景色  Colors.grey[900]
+  static final Color appBarDarkColor =  /*Color(0xFF212121)*/Colors.grey[900];
 
   ///初始 页面背景色
   static final Color scaffoldBackgroundLightColor = Colors.grey[850];

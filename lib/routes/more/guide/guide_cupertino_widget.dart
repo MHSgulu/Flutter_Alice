@@ -1,5 +1,7 @@
 import 'package:alice/routes/components/cupertino/cupertino_date_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertino_picker.dart';
+import 'package:alice/routes/components/cupertino/cupertinol_button.dart';
+import 'package:alice/routes/components/cupertino/cupertinol_dialog.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +14,10 @@ class GuideCupertinoWidgetRoute extends StatefulWidget {
 
 class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
   List<String> titleList = [
+    'CupertinoButton(按钮)',
     'CupertinoDatePicker(日期选择器)',
-    'CupertinoPicker(iOS样式的选择器)',
+    'CupertinoPicker(选择器)',
+    'CupertinoDialog(对话框)',
   ];
 
   @override
@@ -57,12 +61,16 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
   void jumpToRoute(int index) {
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDatePickerExample()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoButtonRoute()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoPickerExample()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDatePickerExample()));
         break;
       case 2:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoPickerExample()));
+        break;
+      case 3:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDialogRoute()));
         break;
     }
   }

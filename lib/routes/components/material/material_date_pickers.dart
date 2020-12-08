@@ -12,10 +12,8 @@ class _MaterialDatePickersState extends State<MaterialDatePickers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: '材料设计日期选择器',
-        onPressedBack: () {
-          Navigator.pop(context);
-        },
+        label: '日期选择器',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
