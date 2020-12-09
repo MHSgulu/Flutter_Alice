@@ -1,3 +1,5 @@
+import 'package:alice/routes/components/material/material_bottom_sheet.dart';
+import 'package:alice/routes/components/material/material_button.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
@@ -16,9 +18,11 @@ class GuideMaterialWidgetRoute extends StatefulWidget {
 class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
   List<String> titleList = [
     'google_fonts(谷歌字体)',
+    'Button(按钮)',
     'Date pickers(日期选择器)',
     'Time pickers(时间选择器)',
     'Dialog(对话框)',
+    'BottomSheet(底页)',
     'Slider(滑杆)',
   ];
 
@@ -66,15 +70,21 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleFontsPage()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialTimePickers()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialButtonRoute()));
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDatePickers()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialTimePickers()));
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDialog()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDatePickers()));
         break;
       case 4:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDialog()));
+        break;
+      case 5:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBottomSheet()));
+        break;
+      case 6:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSlider()));
         break;
     }
