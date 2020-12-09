@@ -33,7 +33,7 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: 'CupertinoAlertDialog',
+        label: '提醒对话框',
         onPressedBack: () => Navigator.pop(context),
       ),
       body: Column(
@@ -41,29 +41,59 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
         children: [
           Center(
             child: CupertinoButton.filled(
-              child: Text('提醒',style: TextStyle(fontSize: 14),),
+              child: Text(
+                '提醒',
+                style: TextStyle(fontSize: 14),
+              ),
               onPressed: () => show0(),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Center(
             child: CupertinoButton.filled(
-              child: Text('带标题的提醒',style: TextStyle(fontSize: 14),),
+              child: Text(
+                '带标题的提醒',
+                style: TextStyle(fontSize: 14),
+              ),
               onPressed: () => show1(),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Center(
             child: CupertinoButton.filled(
-              child: Text('带有按钮的提醒',style: TextStyle(fontSize: 14),),
+              child: Text(
+                '带有按钮的提醒',
+                style: TextStyle(fontSize: 14),
+              ),
               onPressed: () => show2(),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Center(
             child: CupertinoButton.filled(
-              child: Text('仅限提醒按钮',style: TextStyle(fontSize: 14),),
+              child: Text(
+                '仅限提醒按钮',
+                style: TextStyle(fontSize: 14),
+              ),
               onPressed: () => show3(),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Center(
+            child: CupertinoButton.filled(
+              child: Text(
+                '操作表',
+                style: TextStyle(fontSize: 14),
+              ),
+              onPressed: () => show4(),
             ),
           ),
         ],
@@ -74,16 +104,21 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
   void show0() {
     showCupertinoDialog(
       context: context,
-      builder: (context){
+      builder: (context) {
         return CupertinoAlertDialog(
           title: Text('要舍弃草稿么？'),
           actions: [
+            ///为iOS样式的对话框创建一个动作。
+            ///通常在[CupertinoAlertDialog]中使用的按钮。
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
-              child: Text('舍弃',style: TextStyle(color: Colors.redAccent),),
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                '舍弃',
+                style: TextStyle(color: Colors.redAccent),
+              ),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('取消'),
             ),
           ],
@@ -95,17 +130,17 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
   void show1() {
     showCupertinoDialog(
       context: context,
-      builder: (context){
+      builder: (context) {
         return CupertinoAlertDialog(
           title: Text('是否允许“地图”在您使用该应用时获取您的位置信息'),
           content: Text('您当前所在的位置将显示在地图上，并用于提供路线、附近位置的搜索结果和预计的行程时间。'),
           actions: [
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('不允许'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('允许'),
             ),
           ],
@@ -117,30 +152,33 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
   void show2() {
     showCupertinoDialog(
       context: context,
-      builder: (context){
+      builder: (context) {
         return CupertinoAlertDialog(
           title: Text('选择最心爱的甜点'),
           content: Text('请从下面的列表中选择您最喜爱的甜点类型。系统将根据您的选择自定义您所在地区的推荐餐厅列表。'),
           actions: [
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('奶酪蛋糕'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('提拉米苏'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('苹果派'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('巧克力布朗尼'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
-              child: Text('取消',style: TextStyle(color: Colors.redAccent),),
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                '取消',
+                style: TextStyle(color: Colors.redAccent),
+              ),
             ),
           ],
         );
@@ -151,28 +189,31 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
   void show3() {
     showCupertinoDialog(
       context: context,
-      builder: (context){
+      builder: (context) {
         return CupertinoAlertDialog(
           actions: [
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('奶酪蛋糕'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('提拉米苏'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('苹果派'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: Text('巧克力布朗尼'),
             ),
             CupertinoDialogAction(
-              onPressed: ()=> Navigator.pop(context),
-              child: Text('取消',style: TextStyle(color: Colors.redAccent),),
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                '取消',
+                style: TextStyle(color: Colors.redAccent),
+              ),
             ),
           ],
         );
@@ -180,4 +221,53 @@ class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
     );
   }
 
+  void show4() {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) {
+        ///一个iOS样式的操作表。
+        ///
+        ///操作表是一种特定的警报样式，它向用户显示与当前上下文相关的两个或多个选项。
+        ///动作表可以具有标题，附加消息和动作列表。
+        ///标题显示在消息上方，动作显示在该内容下方。
+        ///
+        ///此操作表将其标题和消息设置样式，以匹配标准的iOS操作表标题和消息文本样式。
+        ///
+        ///要显示类似于标准iOS操作表按钮的操作按钮，请为此操作表提供的[actions]提供[CupertinoActionSheetAction]。
+        ///
+        ///要包含与其他按钮分开的iOS样式的取消按钮，请为此操作表提供[cancelButton]的[CupertinoActionSheetAction]。
+        ///
+        ///通常，操作表作为子窗口小部件传递给[showCupertinoModalPopup]，后者通过从屏幕底部向上滑动来显示该操作表。
+        ///
+        /// 也可以看看：
+        ///
+        /// * [CupertinoActionSheetAction]，这是iOS样式的操作表按钮。
+        /// * <https://developer.apple.com/design/human-interface-guidelines/ios/views/action-sheets/>
+        return CupertinoActionSheet(
+          title: Text('选择最喜爱的甜点'),
+          message: Text('请从下面的列表中选择您最喜爱的甜点类型。系统将根据您的选择自定义您所在地区的推荐餐厅列表。'),
+          actions: [
+            ///通常在[CupertinoActionSheet]中使用的按钮。
+            ///为iOS样式的操作表创建操作。
+            CupertinoActionSheetAction(
+              onPressed: () => Navigator.pop(context),
+              child: Text('奶酪蛋糕'),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () => Navigator.pop(context),
+              child: Text('提拉米苏'),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () => Navigator.pop(context),
+              child: Text('苹果派'),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            onPressed: () => Navigator.pop(context),
+            child: Text('取消'),
+          ),
+        );
+      },
+    );
+  }
 }

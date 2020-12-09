@@ -18,7 +18,7 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
     'CupertinoButton(按钮)',
     'CupertinoDatePicker(日期选择器)',
     'CupertinoPicker(选择器)',
-    'CupertinoDialog(对话框)',
+    'Cupertino(提醒对话框)',
     'CupertinoSlider(滑杆)',
   ];
 
