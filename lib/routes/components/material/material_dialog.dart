@@ -43,25 +43,25 @@ class _MaterialDialogState extends State<MaterialDialog> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show1(),
               child: Text('AlertDialog(警报对话框)'),
             ),
           ),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show2(),
               child: Text('SimpleDialog(简单对话框)'),
             ),
           ),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show3(),
               child: Text('ConfirmationDialog(确认对话框)'),
             ),
           ),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show4(),
               child: Text('Full-screenDialog(全屏对话框)'),
             ),

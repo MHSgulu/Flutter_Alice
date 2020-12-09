@@ -21,7 +21,7 @@ class _MaterialTimePickersState extends State<MaterialTimePickers> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show1(),
               child: Text('showTimePicker'),
             ),
@@ -29,7 +29,7 @@ class _MaterialTimePickersState extends State<MaterialTimePickers> {
           Text('显示一个与initialTime当前时间相等的对话框'),
           SizedBox(height: 20,),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show2(),
               child: Text('showTimePicker'),
             ),
@@ -37,7 +37,7 @@ class _MaterialTimePickersState extends State<MaterialTimePickers> {
           Text('显示一个对话框，其文本方向被重写为TextDirection.rtl。'),
           SizedBox(height: 20,),
           Center(
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () => show3(),
               child: Text('showTimePicker'),
             ),
