@@ -170,10 +170,27 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
         });
   }
 
+  ///这是一个示例小部件，它显示具有25个[ListTile]的[ListView]。
+  ///它开始时占据了[Scaffold]主体的一半，并且可以被拖曳至支架的整个高度或降至支架高度的25％。
+  ///达到最大高度后，列表内容将向上或向下滚动，直到它们再次到达列表的顶部，并且用户将工作表向下拖动。
   void show3() {
     showModalBottomSheet<void>(
       context: context,
       builder: (context) {
+        /// [Scrollable]的容器，它通过调整可滚动对象的大小直到达到限制，然后滚动来响应拖动手势。
+        ///
+        ///此小部件可以沿其之间的垂直轴拖动[minChildSize]（默认为0.25）和[maxChildSize]（默认为1.0）。
+        ///这些大小是父容器高度的百分比。
+        ///
+        ///当用户沿水平轴拖动时，小部件会协调builder所返回的小部件的大小和滚动。
+        ///
+        ///小部件最初将以其initialChildSize显示
+        ///默认为“ 0.5”，表示其父代的高度的一半。
+        ///只要构建器创建使用提供的[ScrollController]的小部件，拖动将在minChildSize和maxChildSize范围（作为父容器高度的百分比）之间起作用。
+        ///如果[ScrollableWidgetBuilder]创建的小部件未使用提供的[ScrollController]，则工作表将保持为initialChildSize。
+        ///
+        ///默认情况下，小部件将扩展其非占用区域以填充父级中的可用空间。
+        ///如果不希望这样做，例如由于父级希望基于其占用的空间来定位工作表，因此[expand]属性可以设置为false。
         return DraggableScrollableSheet(
           //initialChildSize: 1.0,
           builder: (context, scrollController) {
