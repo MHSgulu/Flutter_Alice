@@ -1,5 +1,6 @@
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/routes/my_app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
@@ -21,6 +22,15 @@ void main() {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 
     ///顶部状态栏的颜色。仅支持Android M及更高版本中。
+  }
+  // 为桌面设置平台替代以避免异常 See https://flutter.cn/desktop#target-platform-override for more info.
+  if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
+    /// kIsWeb
+    ///如果将应用程序编译为在Web上运行，则为true的常量。
+    ///
+    ///此实现利用了JavaScript不支持整数的事实。 在这种环境下，Dart的double和int由相同类型的对象支持。
+    ///因此，双数“ 0.0”等于整数“ 0”。 对于在AOT或VM上运行的Dart代码，情况并非如此。
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 }
 

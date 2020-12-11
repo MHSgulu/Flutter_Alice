@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/official/plugins/example_connectivity.dart';
 import 'package:alice/routes/example/official/plugins/example_device_info.dart';
 import 'package:alice/routes/example/official/plugins/example_image_picker.dart';
 import 'package:alice/routes/example/official/plugins/example_local_auth.dart';
@@ -20,6 +21,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'webview_flutter',
     'device_info',
     'local_auth',
+    'connectivity',
   ];
 
   List<String> subTitleList = [
@@ -28,6 +30,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'Flutter插件，可在Android和iOS上提供WebView小部件',
     'Flutter插件可提供有关设备（制造商，型号等）以及运行该应用程序的Android或iOS版本的详细信息',
     '适用于Android和iOS设备身份验证传感器的Flutter插件，例如指纹读取器和Touch ID',
+    'Flutter插件，用于发现Android和iOS上的网络（WiFi和移动/蜂窝）连接状态。',
   ];
 
   @override
@@ -87,13 +90,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleLocalAuth()));
         break;
       case 5:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => LineChartSample1()));
-        break;
-      case 6:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => LineChartSample2()));
-        break;
-      case 7:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => LineChartSample3()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ConnectivityDemo()));
         break;
     }
   }

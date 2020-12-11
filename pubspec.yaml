@@ -66,6 +66,7 @@ dependencies:
   local_auth: ^0.6.3+4  #适用于Android和iOS设备身份验证传感器的Flutter插件，例如指纹读取器和Touch ID
   gesture_password_widget: ^1.0.5  #Flutter的手势解锁小部件，支持高度自定义
   image_gallery_saver: ^1.6.7  # Flutter插件，用于将图像保存到图库，
+  connectivity: ^2.0.2  # Flutter插件，用于发现Android和iOS上的网络（WiFi和移动/蜂窝）连接状态。
   flutter_bmflocation: ^1.0.3  #Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
   zego_express_engine: ^1.15.0 # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_permission: # 即构Flutter工具插件，包含检查（摄像头、麦克风、相册）权限、授权（摄像头、麦克风、相册）操作、跳转设置页等功能。
