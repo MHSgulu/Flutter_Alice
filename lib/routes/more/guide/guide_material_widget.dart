@@ -5,6 +5,7 @@ import 'package:alice/routes/components/material/material_chip.dart';
 import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
+import 'package:alice/routes/components/material/material_drawer.dart';
 import 'package:alice/routes/components/material/material_select.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_snackbar.dart';
@@ -34,6 +35,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     '选择控件(单选、复选、开关)',
     'Chip(芯片)',
     'SnackBar',
+    'Drawer(抽屉)',
   ];
 
   @override
@@ -111,6 +113,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 11:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSnackDemo()));
+        break;
+      case 12:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => NavigationDrawerDemo()));
         break;
     }
   }
