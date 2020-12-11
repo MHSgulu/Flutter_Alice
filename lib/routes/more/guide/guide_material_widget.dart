@@ -1,6 +1,7 @@
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
 import 'package:alice/routes/components/material/material_button.dart';
+import 'package:alice/routes/components/material/material_chip.dart';
 import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
@@ -30,15 +31,16 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Banner(标语)',
     'Data tables(数据表)',
     '选择控件(单选、复选、开关)',
+    'Chip(芯片)',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: 'material widget',
-        onPressedBack: () => Navigator.pop(context),
-      ),
+      label: 'material widget',
+      onPressedBack: () => Navigator.pop(context),
+    ),
       body: ScrollConfiguration(
         behavior: CustomScrollBehavior(
             isShowLeading: true,
@@ -101,6 +103,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 9:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSelect()));
+        break;
+      case 10:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialChip()));
         break;
     }
   }
