@@ -4,6 +4,7 @@ import 'package:alice/routes/components/material/material_button.dart';
 import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
+import 'package:alice/routes/components/material/material_select.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_time_pickers.dart';
 import 'package:alice/routes/example/official/example_google_fonts.dart';
@@ -28,6 +29,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Slider(滑杆)',
     'Banner(标语)',
     'Data tables(数据表)',
+    '选择控件(单选、复选、开关)',
   ];
 
   @override
@@ -96,6 +98,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 8:
         Navigator.push(context, MaterialPageRoute(builder: (_) => DataTableDemo()));
+        break;
+      case 9:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSelect()));
         break;
     }
   }
