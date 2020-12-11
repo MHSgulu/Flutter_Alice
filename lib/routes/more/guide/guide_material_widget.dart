@@ -1,6 +1,7 @@
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
 import 'package:alice/routes/components/material/material_button.dart';
+import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
@@ -26,6 +27,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'BottomSheet(底页)',
     'Slider(滑杆)',
     'Banner(标语)',
+    'Data tables(数据表)',
   ];
 
   @override
@@ -91,6 +93,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 7:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBannerRoute()));
+        break;
+      case 8:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => DataTableDemo()));
         break;
     }
   }
