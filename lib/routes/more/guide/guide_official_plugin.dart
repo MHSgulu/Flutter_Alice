@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/official/plugins/example_battery.dart';
 import 'package:alice/routes/example/official/plugins/example_connectivity.dart';
 import 'package:alice/routes/example/official/plugins/example_device_info.dart';
 import 'package:alice/routes/example/official/plugins/example_image_picker.dart';
@@ -22,6 +23,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'device_info',
     'local_auth',
     'connectivity',
+    'battery',
   ];
 
   List<String> subTitleList = [
@@ -31,6 +33,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'Flutter插件可提供有关设备（制造商，型号等）以及运行该应用程序的Android或iOS版本的详细信息',
     '适用于Android和iOS设备身份验证传感器的Flutter插件，例如指纹读取器和Touch ID',
     'Flutter插件，用于发现Android和iOS上的网络（WiFi和移动/蜂窝）连接状态。',
+    'Flutter插件，用于在Android和iOS上访问有关电池状态（充满，充电，放电）的信息。',
   ];
 
   @override
@@ -91,6 +94,9 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
         break;
       case 5:
         Navigator.push(context, MaterialPageRoute(builder: (_) => ConnectivityDemo()));
+        break;
+      case 6:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => BatteryDemo()));
         break;
     }
   }
