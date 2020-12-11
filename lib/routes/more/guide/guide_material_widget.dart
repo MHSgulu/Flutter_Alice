@@ -6,6 +6,7 @@ import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
 import 'package:alice/routes/components/material/material_drawer.dart';
+import 'package:alice/routes/components/material/material_menu.dart';
 import 'package:alice/routes/components/material/material_select.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_snackbar.dart';
@@ -36,6 +37,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Chip(芯片)',
     'SnackBar',
     'Drawer(抽屉)',
+    'Menu(菜单)',
   ];
 
   @override
@@ -116,6 +118,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 12:
         Navigator.push(context, MaterialPageRoute(builder: (_) => NavigationDrawerDemo()));
+        break;
+      case 13:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MenuDemo()));
         break;
     }
   }
