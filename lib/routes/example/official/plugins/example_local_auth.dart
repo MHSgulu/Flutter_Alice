@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/auth_strings.dart';
@@ -109,8 +110,9 @@ class _ExampleLocalAuthState extends State<ExampleLocalAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('local_auth'),
+      appBar: MyAppBar(
+        label: 'local_auth',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ConstrainedBox(
           constraints: const BoxConstraints.expand(),

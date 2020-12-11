@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -193,8 +194,9 @@ class _MyHomePageState extends State<ExampleImagePicker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Image Picker 示例'),
+      appBar: MyAppBar(
+        label: 'Image Picker ',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: Center(
         child: !kIsWeb && defaultTargetPlatform == TargetPlatform.android

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'dart:io';
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:device_info/device_info.dart';
@@ -103,9 +104,9 @@ class _DeviceInfoState extends State<DeviceInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            Platform.isAndroid ? 'Android Device Info' : 'iOS Device Info'),
+      appBar: MyAppBar(
+        label: Platform.isAndroid ? 'Android Device Info' : 'iOS Device Info',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: ListView(
         children: _deviceData.keys.map((String property) {

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 
@@ -41,8 +42,9 @@ class _MyHomePageState extends State<ExamplePackageInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('package_info 示例'),
+      appBar: MyAppBar(
+        label: 'package_info ',
+        onPressedBack: () => Navigator.pop(context),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
