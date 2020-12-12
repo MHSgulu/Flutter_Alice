@@ -1,10 +1,11 @@
 import 'package:alice/routes/components/cupertino/cupertino_context_menu.dart';
-import 'package:alice/routes/components/cupertino/cupertino_date_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertino_navigationbar.dart';
 import 'package:alice/routes/components/cupertino/cupertino_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertino_refresh.dart';
 import 'package:alice/routes/components/cupertino/cupertino_segmented.dart';
 import 'package:alice/routes/components/cupertino/cupertino_switch.dart';
+import 'package:alice/routes/components/cupertino/cupertino_tabbar.dart';
+import 'package:alice/routes/components/cupertino/cupertino_textfield.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_activity_indicator.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_button.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_dialog.dart';
@@ -31,6 +32,8 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
     'Cupertino(分段控件)',
     'CupertinoSlider(滑块)',
     'CupertinoSwitch(开关)',
+    'CupertinoTabBar(标签页栏)',
+    'CupertinoTextField(文本字段)',
   ];
 
   @override
@@ -102,6 +105,12 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         break;
       case 9:
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoSwitchDemo()));
+        break;
+      case 10:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoTabBarDemo()));
+        break;
+      case 11:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoTextFieldDemo()));
         break;
     }
   }
