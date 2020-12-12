@@ -1,9 +1,10 @@
 import 'package:alice/routes/components/material/demo/demo_bottomappbar.dart';
+import 'package:alice/routes/components/material/demo/demo_colors.dart';
+import 'package:alice/routes/components/material/demo/demo_typesetting.dart';
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
 import 'package:alice/routes/components/material/material_button.dart';
 import 'package:alice/routes/components/material/material_chip.dart';
-import 'package:alice/routes/components/material/material_colors.dart';
 import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
@@ -13,7 +14,6 @@ import 'package:alice/routes/components/material/material_select.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_snackbar.dart';
 import 'package:alice/routes/components/material/material_time_pickers.dart';
-import 'package:alice/routes/components/material/material_typesetting.dart';
 import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -44,6 +44,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Drawer(抽屉)',
     'Menu(菜单)',
     'BottomAppBar(底部应用栏)',
+    'TextField(文本字段)',
   ];
 
   @override
@@ -135,6 +136,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => MenuDemo()));
         break;
       case 16:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => BottomAppBarDemo()));
+        break;
+      case 17:
         Navigator.push(context, MaterialPageRoute(builder: (_) => BottomAppBarDemo()));
         break;
     }
