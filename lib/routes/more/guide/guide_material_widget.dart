@@ -1,3 +1,4 @@
+import 'package:alice/routes/components/material/demo/demo_bottomappbar.dart';
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
 import 'package:alice/routes/components/material/material_button.dart';
@@ -42,6 +43,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'SnackBar',
     'Drawer(抽屉)',
     'Menu(菜单)',
+    'BottomAppBar(底部应用栏)',
   ];
 
   @override
@@ -131,6 +133,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 15:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MenuDemo()));
+        break;
+      case 16:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => BottomAppBarDemo()));
         break;
     }
   }
