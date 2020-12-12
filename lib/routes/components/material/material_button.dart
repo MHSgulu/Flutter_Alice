@@ -10,6 +10,7 @@ class MaterialButtonRoute extends StatefulWidget {
 class _MaterialButtonRouteState extends State<MaterialButtonRoute> {
   final isSelected = <bool>[false, false, false];
   var isIconSelected = false;
+  bool isShowFB = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,24 @@ class _MaterialButtonRouteState extends State<MaterialButtonRoute> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('悬浮操作按钮'),
+            SizedBox(height: 10),
+            FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  isShowFB = ! isShowFB;
+                });
+              },
+              tooltip: '创建',
+            ),
+            SizedBox(height: 20),
+            isShowFB ? FloatingActionButton.extended(
+              icon: const Icon(Icons.add),
+              label: Text('创建',),
+              onPressed: () {},
+            ) : Container(),
+            SizedBox(height: 20),
             Text('切换按钮'),
             SizedBox(height: 10),
             ToggleButtons(
