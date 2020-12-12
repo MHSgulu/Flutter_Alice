@@ -1,4 +1,6 @@
+import 'package:alice/routes/components/cupertino/cupertino_context_menu.dart';
 import 'package:alice/routes/components/cupertino/cupertino_date_picker.dart';
+import 'package:alice/routes/components/cupertino/cupertino_navigationbar.dart';
 import 'package:alice/routes/components/cupertino/cupertino_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_activity_indicator.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_button.dart';
@@ -17,10 +19,12 @@ class GuideCupertinoWidgetRoute extends StatefulWidget {
 class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
   List<String> titleList = [
     'CupertinoActivityIndicator(活动指示器)',
-    'CupertinoButton(按钮)',
-    'CupertinoDatePicker(日期选择器)',
-    'CupertinoPicker(选择器)',
     'Cupertino(提醒对话框)',
+    'CupertinoButton(按钮)',
+    'CupertinoContextMenu(上下文菜单)',
+    'CupertinoNavigationBar(导航栏)',
+    'CupertinoPicker(选择器)',
+    'CupertinoDatePicker(日期选择器)',
     'CupertinoSlider(滑杆)',
   ];
 
@@ -68,18 +72,24 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoProgressIndicatorDemo()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoButtonRoute()));
-        break;
-      case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDatePickerExample()));
-        break;
-      case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoPickerExample()));
-        break;
-      case 4:
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDialogRoute()));
         break;
+      case 2:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoButtonRoute()));
+        break;
+      case 3:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoContextMenuDemo()));
+        break;
+      case 4:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoNavigationBarDemo()));
+        break;
       case 5:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoPickerExample()));
+        break;
+      case 6:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDatePickerExample()));
+        break;
+      case 7:
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoSliderDemo()));
         break;
     }
