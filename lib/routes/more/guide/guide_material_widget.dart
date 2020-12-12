@@ -1,5 +1,6 @@
 import 'package:alice/routes/components/material/demo/demo_bottomappbar.dart';
 import 'package:alice/routes/components/material/demo/demo_colors.dart';
+import 'package:alice/routes/components/material/demo/demo_textfield.dart';
 import 'package:alice/routes/components/material/demo/demo_typesetting.dart';
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
@@ -139,7 +140,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => BottomAppBarDemo()));
         break;
       case 17:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => BottomAppBarDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => TextFieldDemo()));
         break;
     }
   }
