@@ -2,6 +2,7 @@ import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
 import 'package:alice/routes/components/material/material_button.dart';
 import 'package:alice/routes/components/material/material_chip.dart';
+import 'package:alice/routes/components/material/material_colors.dart';
 import 'package:alice/routes/components/material/material_data_tables.dart';
 import 'package:alice/routes/components/material/material_date_pickers.dart';
 import 'package:alice/routes/components/material/material_dialog.dart';
@@ -11,6 +12,7 @@ import 'package:alice/routes/components/material/material_select.dart';
 import 'package:alice/routes/components/material/material_slider.dart';
 import 'package:alice/routes/components/material/material_snackbar.dart';
 import 'package:alice/routes/components/material/material_time_pickers.dart';
+import 'package:alice/routes/components/material/material_typesetting.dart';
 import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -25,6 +27,8 @@ class GuideMaterialWidgetRoute extends StatefulWidget {
 class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
   List<String> titleList = [
     'google_fonts(谷歌字体)',
+    'MD中各种字体排版样式的定义',
+    'MD调色板的颜色和色样数量',
     'Button(按钮)',
     'Date pickers(日期选择器)',
     'Time pickers(时间选择器)',
@@ -84,42 +88,48 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => GoogleFontsPage()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialButtonRoute()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => TypographyDemo()));
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialTimePickers()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ColorsDemo()));
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDatePickers()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialButtonRoute()));
         break;
       case 4:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDialog()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialTimePickers()));
         break;
       case 5:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBottomSheet()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDatePickers()));
         break;
       case 6:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSlider()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialDialog()));
         break;
       case 7:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBannerRoute()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBottomSheet()));
         break;
       case 8:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => DataTableDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSlider()));
         break;
       case 9:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSelect()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialBannerRoute()));
         break;
       case 10:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialChip()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => DataTableDemo()));
         break;
       case 11:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSnackDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSelect()));
         break;
       case 12:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => NavigationDrawerDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialChip()));
         break;
       case 13:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MaterialSnackDemo()));
+        break;
+      case 14:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => NavigationDrawerDemo()));
+        break;
+      case 15:
         Navigator.push(context, MaterialPageRoute(builder: (_) => MenuDemo()));
         break;
     }
