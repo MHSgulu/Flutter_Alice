@@ -35,7 +35,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'Dialog(对话框)',
     'BottomSheet(底页)',
     'Slider(滑杆)',
-    'Banner(标语)',
+    'Banner(横幅)',
     'Data tables(数据表)',
     '选择控件(单选、复选、开关)',
     'Chip(芯片)',
