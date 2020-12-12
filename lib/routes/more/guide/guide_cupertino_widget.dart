@@ -3,6 +3,8 @@ import 'package:alice/routes/components/cupertino/cupertino_date_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertino_navigationbar.dart';
 import 'package:alice/routes/components/cupertino/cupertino_picker.dart';
 import 'package:alice/routes/components/cupertino/cupertino_refresh.dart';
+import 'package:alice/routes/components/cupertino/cupertino_segmented.dart';
+import 'package:alice/routes/components/cupertino/cupertino_switch.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_activity_indicator.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_button.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_dialog.dart';
@@ -27,7 +29,8 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
     'CupertinoPicker(选择器)',
     'CupertinoSliverRefreshControl(下拉刷新)',
     'Cupertino(分段控件)',
-    'CupertinoSlider(滑快)',
+    'CupertinoSlider(滑块)',
+    'CupertinoSwitch(开关)',
   ];
 
   @override
@@ -92,10 +95,13 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoRefreshControlDemo()));
         break;
       case 7:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoRefreshControlDemo()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoSegmentedControlDemo()));
         break;
       case 8:
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoSliderDemo()));
+        break;
+      case 9:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoSwitchDemo()));
         break;
     }
   }
