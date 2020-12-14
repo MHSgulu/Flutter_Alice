@@ -1,4 +1,4 @@
-import 'file:///E:/Alice_flutter/alice/lib/routes/example/official/example_palette.dart';
+import 'package:alice/routes/example/official/example_palette.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
@@ -12,10 +12,12 @@ class GuideOfficialPackageRoute extends StatefulWidget {
 class GuideOfficialPackageRouteState extends State<GuideOfficialPackageRoute> {
   List<String> titleList = [
     'palette_generator',
+    '动态效果',
   ];
 
   List<String> subTitleList = [
     'Flutter软件包，用于从图像中提取突出的颜色，通常用于查找用户界面的颜色',
+    '精美的预制动画，可以轻松集成到任何Flutter应用程序中',
   ];
 
   @override
@@ -70,19 +72,10 @@ class GuideOfficialPackageRouteState extends State<GuideOfficialPackageRoute> {
                     )));
         break;
       case 1:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleImagePicker()));
+        Navigator.pushNamed(context, '/guideDynamicEffectRoute');
         break;
       case 2:
         //Navigator.push(context, MaterialPageRoute(builder: (_) => WebViewExample()));
-        break;
-      case 3:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => DeviceInfo()));
-        break;
-      case 4:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => BarChartSample5()));
-        break;
-      case 5:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => LineChartSample1()));
         break;
     }
   }

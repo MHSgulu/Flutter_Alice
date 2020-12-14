@@ -2,6 +2,8 @@ name: alice  #应用包名称
 description: A new Flutter application. #应用或包的描述、简介
 
 
+publish_to: 'none' # 如果您希望发布到pub.dev，请删除此行
+
 # 下面定义应用程序的版本和内部版本号。
 # 版本号是由点分隔的三个数字，如1.2.43
 # 后跟一个可选的内部版本号，由+分隔。
@@ -68,7 +70,8 @@ dependencies:
   image_gallery_saver: ^1.6.7  # Flutter插件，用于将图像保存到图库，
   connectivity: ^2.0.2  # Flutter插件，用于发现Android和iOS上的网络（WiFi和移动/蜂窝）连接状态。
   battery: ^1.0.7  # Flutter插件，用于在Android和iOS上访问有关电池状态（充满，充电，放电）的信息。
-  flutter_bmflocation: ^1.0.3  #Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
+  animations: ^1.1.2  # 精美的预制动画，可以轻松集成到任何Flutter应用程序中
+  flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
   zego_express_engine: ^1.15.0 # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_permission: # 即构Flutter工具插件，包含检查（摄像头、麦克风、相册）权限、授权（摄像头、麦克风、相册）操作、跳转设置页等功能。
     git:
