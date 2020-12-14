@@ -1,3 +1,4 @@
+import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper_list.dart';
@@ -47,6 +48,7 @@ Map<String, WidgetBuilder> routes = {
   //示例页面
   '/guideMaterialWidgetRoute': (context) => GuideMaterialWidgetRoute(),
   '/guideCupertinoWidgetRoute': (context) => GuideCupertinoWidgetRoute(),
+  '/guideDynamicEffectRoute': (context) => GuideDynamicEffectRoute(),
   '/guideOfficialWidgetRoute': (context) => GuideOfficialWidgetRoute(),
   '/guideHotPubLibraryRoute': (context) => GuideHotPubLibraryRoute(),
   '/guidePlugin': (context) => GuidePlugin(),
