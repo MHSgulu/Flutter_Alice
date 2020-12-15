@@ -28,18 +28,18 @@ dependencies:
     sdk: flutter
   flutter_localizations:   # 国际化
     sdk: flutter
-  intl: ^0.16.1 # 该软件包提供国际化和本地化功能，包括消息翻译，复数形式和性别，日期/数字格式和解析以及双向文本
-  cupertino_icons: ^1.0.0 # 将Cupertino图标字体添加到应用程序中。用于iOS风格图标的CupertinoIcons类。对于1.0.0及更高版本（仅在Flutter SDK 1.22+版上可用）
-  font_awesome_flutter: ^8.8.1 # font_awesome_flutter 以Flutter Icons的形式提供。提供1500个其他图标供您的应用程序使用。
-  google_fonts: ^1.1.0 # 一种在Flutter应用程序中包含fonts.google.com中的字体的软件包。
+  intl: ^0.16.1  # 该软件包提供国际化和本地化功能，包括消息翻译，复数形式和性别，日期/数字格式和解析以及双向文本
+  cupertino_icons: ^1.0.0  # 将Cupertino图标字体添加到应用程序中。用于iOS风格图标的CupertinoIcons类。对于1.0.0及更高版本（仅在Flutter SDK 1.22+版上可用）
+  font_awesome_flutter: ^8.8.1  # font_awesome_flutter 以Flutter Icons的形式提供。提供1500个其他图标供您的应用程序使用。
+  google_fonts: ^1.1.0  # 一种在Flutter应用程序中包含fonts.google.com中的字体的软件包。
   # flutter_svg: ^0.19.0   # 用于Flutter的SVG渲染和窗口小部件库，允许绘制和显示可缩放矢量图形1.1文件
-  device_info: '>=0.4.2+8 <2.0.0' # Flutter插件提供有关设备（制造商，型号等）以及运行该应用程序的Android或iOS版本的详细信息
-  http: ^0.12.2 # 可组合的，多平台的，基于Future的API，用于HTTP请求。( 该软件包包含一组高级功能和类，可轻松使用HTTP资源。它是多平台的，并且支持移动设备，台式机和浏览器。)
-  dio: ^3.0.10 # Dart的功能强大的Http客户端，它支持拦截器，FormData，请求取消，文件下载，超时等。
-  json_annotation: ^3.1.0 # 通过`json_serializable`包支持JSON代码生成的类和辅助函数。
-  url_launcher: ^5.7.8 # Flutter插件，用于在Android和iOS上启动URL。支持Web，电话，SMS和电子邮件方案(Flutter插件，用于在移动平台中启动URL。支持iOS，Android，Web，Windows，macOS和Linux。)
-  photo_view: ^0.10.2 # Photo View提供了一个手势敏感的可缩放小部件。Photo View主要用于显示交互图像和SVG等其他内容。
-  transparent_image: ^1.0.0 # Dart代码中的透明图像，表示为Uint8List。
+  device_info: '>=0.4.2+8 <2.0.0'  # Flutter插件提供有关设备（制造商，型号等）以及运行该应用程序的Android或iOS版本的详细信息
+  http: ^0.12.2  # 可组合的，多平台的，基于Future的API，用于HTTP请求。( 该软件包包含一组高级功能和类，可轻松使用HTTP资源。它是多平台的，并且支持移动设备，台式机和浏览器。)
+  dio: ^3.0.10  # Dart的功能强大的Http客户端，它支持拦截器，FormData，请求取消，文件下载，超时等。
+  json_annotation: ^3.1.0  # 通过`json_serializable`包支持JSON代码生成的类和辅助函数。
+  url_launcher: ^5.7.8  # Flutter插件，用于在Android和iOS上启动URL。支持Web，电话，SMS和电子邮件方案(Flutter插件，用于在移动平台中启动URL。支持iOS，Android，Web，Windows，macOS和Linux。)
+  photo_view: ^0.10.2  # Photo View提供了一个手势敏感的可缩放小部件。Photo View主要用于显示交互图像和SVG等其他内容。
+  transparent_image: ^1.0.0  # Dart代码中的透明图像，表示为Uint8List。
   cached_network_image: ^2.3.3  # Flutter库可加载和缓存网络图像。也可以与占位符和错误小部件一起使用
   fluttertoast: ^7.0.4 # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
   pull_to_refresh: ^1.6.2 # 提供给Flutter滚动组件的小部件可下拉刷新并上拉负载。
@@ -49,7 +49,7 @@ dependencies:
   chewie: ^0.9.10 # Flutter的视频播放器，带有Cupertino和Material播放控件
   video_player: '>=0.10.12+5 <2.0.0'  # Flutter插件，用于与Android，iOS和Web上的其他Flutter小部件一起显示嵌入式视频。
   shared_preferences: '>=0.5.12 <2.0.0'  # Flutter插件，用于读写简单的键值对。包装iOS上的NSUserDefaults和Android上的SharedPreferences。
-  flutter_staggered_grid_view: ^0.3.2 # Flutter交错网格视图。
+  flutter_staggered_grid_view: ^0.3.2  # Flutter交错网格视图。
   webview_flutter: ^0.3.24 # Flutter插件，可在Android和iOS上提供WebView小部件。
   marquee: ^1.6.1 # Flutter小部件，可无限滚动文本。提供许多自定义，包括自定义滚动方向，持续时间，曲线以及每轮后的暂停。
   badges: ^1.1.3 # 用于创建徽章的包。徽章可用于任何小部件的附加标记，例如，显示购物车中的许多物品。

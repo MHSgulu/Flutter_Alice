@@ -40,24 +40,26 @@ class _MenuDemoState extends State<MenuDemo> {
               Fluttertoast.showToast(msg: '${_selection.toString()}');
             });
           },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
-            const PopupMenuItem<WhyFarther>(
-              value: WhyFarther.harder,
-              child: Text('Working a lot harder'),
-            ),
-            const PopupMenuItem<WhyFarther>(
-              value: WhyFarther.smarter,
-              child: Text('Being a lot smarter'),
-            ),
-            const PopupMenuItem<WhyFarther>(
-              value: WhyFarther.selfStarter,
-              child: Text('Being a self-starter'),
-            ),
-            const PopupMenuItem<WhyFarther>(
-              value: WhyFarther.tradingCharter,
-              child: Text('Placed in charge of trading charter'),
-            ),
-          ],
+          itemBuilder: (BuildContext context) {
+            return <PopupMenuEntry<WhyFarther>>[
+              const PopupMenuItem<WhyFarther>(
+                value: WhyFarther.harder,
+                child: Text('Working a lot harder'),
+              ),
+              const PopupMenuItem<WhyFarther>(
+                value: WhyFarther.smarter,
+                child: Text('Being a lot smarter'),
+              ),
+              const PopupMenuItem<WhyFarther>(
+                value: WhyFarther.selfStarter,
+                child: Text('Being a self-starter'),
+              ),
+              const PopupMenuItem<WhyFarther>(
+                value: WhyFarther.tradingCharter,
+                child: Text('Placed in charge of trading charter'),
+              ),
+            ];
+          },
         ),
       ),
     );
