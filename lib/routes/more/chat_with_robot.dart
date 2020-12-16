@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:alice/common/const/api.dart';
-import 'file:///E:/Alice_flutter/alice/lib/widgets/custom/my_appbar.dart';
-import 'file:///E:/Alice_flutter/alice/lib/common/network/dio_util.dart';
-import 'file:///E:/Alice_flutter/alice/lib/widgets/library/bubble.dart';
+import 'package:alice/common/network/dio_util.dart';
 import 'package:alice/model/chat_message.dart';
+import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/library/bubble.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -95,7 +95,7 @@ class ChatRobotListState extends State<ChatRobotList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       appBar: MyAppBar(
         label: '菲菲',
         onPressedBack: () => Navigator.pop(context),
@@ -188,6 +188,7 @@ class ChatRobotListState extends State<ChatRobotList> {
   Widget bottomChatInputBox() {
     return Container(
       //color: Colors.lightBlueAccent,
+      height: 56,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -212,13 +213,9 @@ class ChatRobotListState extends State<ChatRobotList> {
           ),
           Padding(
             padding: EdgeInsets.only(right: 12),
-            child: SizedBox(
-              width: 60,
-              height: 32,
-              child: RaisedButton(
-                onPressed: isSendMsg ? null : () => sendMsg(),
-                child: Text('发送'),
-              ),
+            child: ElevatedButton(
+              onPressed: isSendMsg ? null : () => sendMsg(),
+              child: Text('发送'),
             ),
           ),
         ],
