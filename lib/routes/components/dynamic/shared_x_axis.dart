@@ -41,7 +41,7 @@ class _SharedXAxisTransitionDemoState extends State<SharedXAxisTransitionDemo> {
           children: [
             Expanded(
               child: PageTransitionSwitcher(
-                duration: const Duration(milliseconds: 300),
+                duration: Duration(milliseconds: 500),
                 reverse: !_isLoggedIn,
                 transitionBuilder: (
                     child,

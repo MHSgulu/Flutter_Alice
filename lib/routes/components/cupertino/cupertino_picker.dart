@@ -1,6 +1,7 @@
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class CupertinoPickerDemo extends StatefulWidget {
@@ -13,13 +14,13 @@ class CupertinoPickerDemo extends StatefulWidget {
 class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
   Duration timer = const Duration();
 
-  // Value that is shown in the date picker in date mode.
+  // 在日期模式下日期选择器中显示的值。
   DateTime date = DateTime.now();
 
-  // Value that is shown in the date picker in time mode.
+  // 在时间模式下日期选择器中显示的值。
   DateTime time = DateTime.now();
 
-  // Value that is shown in the date picker in dateAndTime mode.
+  // 在dateAndTime模式下的日期选择器中显示的值。
   DateTime dateTime = DateTime.now();
 
   void _showDemoPicker({
@@ -45,8 +46,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           context: context,
           child: _BottomPicker(
             child: CupertinoDatePicker(
-              backgroundColor:
-                  CupertinoColors.systemBackground.resolveFrom(context),
+              backgroundColor: CupertinoColors.systemBackground.resolveFrom(context),
               mode: CupertinoDatePickerMode.date,
               initialDateTime: date,
               onDateTimeChanged: (newDateTime) {
@@ -174,11 +174,98 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
             _buildTimePicker(context),
             _buildDateAndTimePicker(context),
             _buildCountdownTimerPicker(context),
+            const SizedBox(height: 60),
+            Center(
+              child: Column(
+                children: [
+                  CupertinoButton(
+                    child: Text('CupertinoDatePicker'),
+                    onPressed: () => showBottom(),
+                  ),
+                  Center(
+                    child: CupertinoButton(
+                      child: Text('CupertinoPicker'),
+                      onPressed: () => showPicker(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
+  void showBottom() {
+    /**
+        显示从屏幕底部向上滑动的模态iOS样式弹出窗口。
+        这样的弹出窗口是菜单或对话框的替代，并阻止用户与应用程序的其余部分进行交互。
+        该context参数用于在导航器中查找弹出窗口。仅在调用该方法时使用。在关闭弹出窗口之前，可以将其相应的窗口小部件安全地从树中删除。
+        该useRootNavigator参数用于确定是否将弹出窗口推到离给定距离最近或最远的导航器context。这是false默认。
+        该自semanticsDismissible变量用于确定模式障碍的语义是否包括在语义树中。
+        该builder参数通常会构建CupertinoActionSheet小部件。小部件下方的内容通过ModalBarrier变暗。
+        由构建的窗口小部件builder与showCupertinoModalPopup最初调用的位置不共享上下文 。
+        如果窗口小部件需要动态更新，请使用 StatefulBuilder或自定义的StatefulWidget。
+        返回一个Future，解析为关闭弹出窗口时传递给Navigator.pop的值 。
+     */
+    showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: 200,
+            /// iOS风格的日期选择器小部件。
+            ///
+            /// [CupertinoDatePickerMode]中列出了日期选择器的几种模式。
+            ///
+            ///该类将其子级显示为连续的列。 它的子级顺序基于国际化。
+            ///
+            ///日期模式下的选择器示例：
+            ///
+            /// *美国英语：`| 七月| 13 | 2012 |`
+            /// *越南语：`| 13 | Tháng7 | 2012 |`
+            ///
+            ///可以与[showCupertinoModalPopup]一起使用，以在屏幕底部模态显示选取器。
+            ///
+            ///自行调整大小为其父级，如果未指定全屏宽度，则可能无法正确呈现。 内容文本显示为[CupertinoTextThemeData.dateTimePickerTextStyle]。
+            ///
+            /// 也可以看看：
+            ///
+            /// * [CupertinoTimerPicker]，实现iOS风格的计时器选择器的类。
+            /// * [CupertinoPicker]，实现与内容无关的微调UI的类。
+            child: CupertinoDatePicker(
+              onDateTimeChanged: (value) {
+                Fluttertoast.showToast(msg: '$value');
+              },
+              backgroundColor: Colors.white,
+            ),
+          );
+        });
+  }
+
+  /// CupertinoPicker，该类实现与内容无关的Spinner UI。
+  void showPicker() {
+    showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: 200,
+            child: CupertinoPicker(
+              itemExtent: 50.0,
+              onSelectedItemChanged: (value) {
+                Fluttertoast.showToast(msg: '$value');
+              },
+              children: [
+                Text('马什么梅？'),
+                Text('什么冬梅？'),
+                Text('马东什么？'),
+              ],
+              backgroundColor: Colors.white,
+            ),
+          );
+        });
+  }
+
 }
 
 class _BottomPicker extends StatelessWidget {

@@ -103,6 +103,9 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate, // 为 widgets 库定义了默认的文本排列方向，由左到右或者由右到左
               GlobalCupertinoLocalizations.delegate,
             ],
+            //此回调仅考虑默认语言环境，这是首选语言环境列表中的第一个语言环境。
+            //与[localeResolutionCallback]相比，最好设置[localeListResolutionCallback]，因为它提供了完整的首选语言环境列表。
+            //该算法应该能够处理空的语言环境，这表明Flutter尚未从平台接收到语言环境信息。
             localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) => locale,
             supportedLocales: [
               const Locale('en', ''), // 英文，无国家/地区代码

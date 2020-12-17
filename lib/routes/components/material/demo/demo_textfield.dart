@@ -317,3 +317,46 @@ class _UsNumberTextInputFormatter extends TextInputFormatter {
     );
   }
 }
+
+
+/// isDense
+/// [InputDecorator.child]是否为密集形式的一部分（即使用较少的垂直空间）。
+/// 默认为false。
+
+
+/// contentPadding
+///输入装饰容器的填充。
+///
+///装饰的容器是如果[filled]为真且按照[border]边界填充的区域。
+///它是[icon]附近且包含[helperText]，[errorText]和[counterText]的小部件上方的区域
+///
+///默认情况下，“ contentPadding”反映[isDense]和[border]的类型。
+///
+///如果[isCollapsed]为true，则contentPadding为[EdgeInsets.zero]。
+///
+/// 如果[border]的`isOutline`属性为false，并且[filled]为true
+/// 当[isDense]为true时`contentPadding`为EdgeInsets.fromLTRB(12, 8, 12, 8)
+/// 当[isDense]为 false时`contentPadding`为EdgeInsets.fromLTRB(12, 12, 12, 12)
+///
+///如果[border]的`isOutline`属性为false，并且[filled]为false
+///当[isDense]为true时，contentPadding为EdgeInsets.fromLTRB（0，8，0，8）
+///当[isDense]为false时，contentPadding为EdgeInsets.fromLTRB（0，12，0，12）
+
+/// 如果[border]的`isOutline`属性为true，
+/// 当[isDense]为true时 contentPadding为`EdgeInsets.fromLTRB(12, 20, 12, 12)，
+/// 当[isDense]为false时 contentPadding为`EdgeInsets.fromLTRB(12, 24, 12, 16)，
+
+
+/// {@template flutter.material.textfield.onTap}
+///要求每个不同的拍子，但双击的第二个拍子除外。
+///
+///文本字段会构建一个[GestureDetector]来处理输入事件，例如轻击，触发焦点请求，移动插入符号，调整选择等。
+///通过用竞争的GestureDetector包装文本字段来处理其中一些事件是有问题的。
+///
+///要无条件处理轻敲，而又不干扰文本字段的内部手势检测器，请提供此回调。
+///
+///如果创建的文本字段为[enabled]为false，则不会识别点击。
+///
+///要在文本字段获得焦点或失去焦点时得到通知，请提供[focusNode]并为其添加侦听器。
+///
+///要在不与文本字段的内部手势检测器竞争的情况下侦听任意指针事件，请使用[Listener]。
