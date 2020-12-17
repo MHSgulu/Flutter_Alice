@@ -1,4 +1,4 @@
-import 'package:alice/routes/example/official/example_palette.dart';
+import 'package:alice/routes/example/official/package/example_palette.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 

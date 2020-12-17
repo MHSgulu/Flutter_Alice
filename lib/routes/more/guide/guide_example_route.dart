@@ -139,7 +139,7 @@ class GuideExampleRoute extends StatelessWidget {
                     onTap: () => Navigator.pushNamed(context, '/guideDartTeamOfficialPackageRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Dart团队发布的官方软件包'),
+                      title: Text('Dart团队发布的软件包'),
                     ),
                   ),
                 ),
