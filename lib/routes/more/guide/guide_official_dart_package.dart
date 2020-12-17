@@ -1,5 +1,5 @@
-import 'package:alice/routes/example/official/localization/example_localization.dart';
-import 'package:alice/routes/example/official/localization/intl/example_localization_intl.dart';
+import 'package:alice/routes/example/official/package/localization/example_localization.dart';
+import 'package:alice/routes/example/official/package/localization/intl/example_localization_intl.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
@@ -14,12 +14,14 @@ class GuideOfficialPackageRouteState
     extends State<GuideDartTeamOfficialPackageRoute> {
   List<String> titleList = [
     '不使用 intl包',
-    'intl ',
+    'intl',
+    'web_socket_channel',
   ];
 
   List<String> subTitleList = [
     'app 本地化资源的替代方法  不使用 intl包 它所有的翻译放在每个语言的映射当中。',
     '该软件包提供国际化和本地化功能，包括消息翻译，复数形式和性别，日期/数字格式和解析以及双向文本',
+    'WebSocket的StreamChannel包装器。提供跨平台的WebSocketChannel API，该API的跨平台实现可通过基础StreamChannel进行通信',
   ];
 
   @override
