@@ -38,6 +38,7 @@ class _MyAppBarState extends State<MyAppBar> {
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
         builder: (context, theme, child) => AppBar(
+          //如果指定了昼夜主题，使用昼夜主题色，如果指定了背景色，采用背景色。
           backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : widget.backgroundColor ?? Colors.white,
           brightness: AppThemeMode.isDark ? Brightness.dark : widget.backgroundColor == null ? Brightness.light : Brightness.dark,
           leading: IconButton(
