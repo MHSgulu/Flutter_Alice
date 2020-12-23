@@ -1,6 +1,6 @@
 import 'package:alice/common/const/strings.dart';
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/common/tool_util.dart';
+import 'package:alice/common/util/tool_util.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
