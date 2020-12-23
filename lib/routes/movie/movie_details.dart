@@ -1,5 +1,5 @@
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/common/tool_util.dart';
+import 'package:alice/common/util/tool_util.dart';
 import 'package:alice/model/m_time_movie_detail_entity.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';

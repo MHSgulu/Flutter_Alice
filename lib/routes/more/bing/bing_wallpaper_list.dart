@@ -1,6 +1,6 @@
 import 'package:alice/common/const/strings.dart';
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/common/tool_util.dart';
+import 'package:alice/common/util/tool_util.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/widgets/bing_wallpaper_photo_view_gallry_screen.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
