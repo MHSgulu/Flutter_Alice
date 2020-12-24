@@ -38,7 +38,7 @@ class _PhoneWallpaperListState extends State<PhoneWallpaperList> {
   /// 一些子类确实重写了此方法，因为当它们的依赖项发生变化时，
   /// 它们需要做一些昂贵的工作（例如，网络获取），并且对于每个构建而言，所做的工作都太昂贵了。
 
-  ///个人总结: 当国际化或者取参数等时，需要context参数及重写此方法 initState()不支持获取context参数。
+  ///个人总结: 当国际化或者路由取参数等等，需要context参数及重写此方法 initState()不支持获取context参数时，使用此方法。
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;

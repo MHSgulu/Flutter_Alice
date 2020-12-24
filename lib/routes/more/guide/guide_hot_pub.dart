@@ -1,14 +1,14 @@
-import 'package:alice/routes/example/Individual/badges/example_badge.dart';
-import 'package:alice/routes/example/Individual/city_picker/example_city_picker.dart';
-import 'package:alice/routes/example/Individual/flutter_html/example_html.dart';
-import 'package:alice/routes/example/Individual/flutter_image_compress/example_picture_compression.dart';
-import 'package:alice/routes/example/Individual/flutter_staggered_grid/test_staggered_grid.dart';
-import 'package:alice/routes/example/Individual/gesture_password/example_gesture_password.dart';
-import 'package:alice/routes/example/Individual/image_gallery_saver/image_gallery_saver.dart';
-import 'package:alice/routes/example/Individual/marquee/example_marquee.dart';
-import 'package:alice/routes/example/Individual/zefyr/example_zefyr.dart';
 import 'package:alice/routes/example/company/baseflow/cached_network_image/example_cached_network_image.dart';
 import 'package:alice/routes/example/company/baseflow/permission_handler/example_permission.dart';
+import 'package:alice/routes/example/individual/badges/example_badge.dart';
+import 'package:alice/routes/example/individual/city_picker/example_city_picker.dart';
+import 'package:alice/routes/example/individual/flutter_html/example_html.dart';
+import 'package:alice/routes/example/individual/flutter_image_compress/example_picture_compression.dart';
+import 'package:alice/routes/example/individual/flutter_staggered_grid/test_staggered_grid.dart';
+import 'package:alice/routes/example/individual/gesture_password/example_gesture_password.dart';
+import 'package:alice/routes/example/individual/image_gallery_saver/image_gallery_saver.dart';
+import 'package:alice/routes/example/individual/marquee/example_marquee.dart';
+import 'package:alice/routes/example/individual/zefyr/example_zefyr.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 

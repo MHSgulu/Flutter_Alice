@@ -11,7 +11,7 @@ class GuideExampleRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: '示例样品',
+        label: '示例代码',
         onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
@@ -88,6 +88,19 @@ class GuideExampleRoute extends StatelessWidget {
                     splashColor: Colors.brown[100],
                     child: ListTile(
                       title: Text('企业级原生SDK的Flutter插件'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(context, '/guideFlutterFavoriteRoute'),
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('Flutter Favorite 项目'),
                     ),
                   ),
                 ),

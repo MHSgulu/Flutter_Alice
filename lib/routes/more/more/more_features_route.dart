@@ -1,8 +1,6 @@
-import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class MoreFeaturesListRoute extends StatefulWidget {
   @override
