@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
-import 'package:alice/common/const/resource.dart';
+import 'package:alice/routes/example/individual/flutter_image_compress/resource.dart';
 import 'package:alice/widgets/library/time_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
