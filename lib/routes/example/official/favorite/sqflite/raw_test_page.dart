@@ -12,14 +12,17 @@ import 'test_page.dart';
 /// 原始测试页。
 class RawTestPage extends TestPage {
   RawTestPage() : super('原始测试页') {
-    test('Simple', () async {
+    test('简单', () async {
       // await Sqflite.devSetDebugModeOn(true);
 
       var path = await initDeleteDb('raw_simple.db');
       var db = await openDatabase(path);
       try {
         await db.execute('CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT)');
-        expect(await db.rawInsert('INSERT INTO Test (name) VALUES (?)', ['test']), 1);
+        expect(
+            await db.rawInsert('INSERT INTO Test (name) VALUES (?)', ['test']),
+            1,
+        );
 
         var result = await db.query('Test');
         var expected = [
@@ -31,10 +34,10 @@ class RawTestPage extends TestPage {
       }
     });
 
-    test('Sqlite version', () async {
+    test('SQLite版本', () async {
       var db = await openDatabase(inMemoryDatabasePath);
       var results = await db.rawQuery('select sqlite_version()');
-      print('sqlite version: ${results.first.values.first}');
+      print('SQLite版本: ${results.first.values.first}');
       await db.close();
     });
 
@@ -403,10 +406,10 @@ class RawTestPage extends TestPage {
       // open the database
       var database = await openDatabase(path, version: 1,
           onCreate: (Database db, int version) async {
-            // When creating the db, create the table
-            await db.execute(
-                'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
-          });
+        // When creating the db, create the table
+        await db.execute(
+            'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
+      });
 
       // Insert some records in a transaction
       await database.transaction((txn) async {

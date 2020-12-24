@@ -58,17 +58,16 @@ class SharedZAxisTransitionDemo extends StatelessWidget {
 
   Route _createSettingsRoute() {
     return PageRouteBuilder<void>(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-      const _SettingsPage(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return SharedAxisTransition(
+      pageBuilder: (context, animation, secondaryAnimation) => const _SettingsPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) => SharedAxisTransition(
           fillColor: Colors.transparent,
           transitionType: SharedAxisTransitionType.scaled,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
           child: child,
-        );
-      },
+        ),
+      transitionDuration: Duration(milliseconds: 300),
+      reverseTransitionDuration: Duration(milliseconds: 300),
     );
   }
 }

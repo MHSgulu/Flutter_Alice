@@ -455,6 +455,28 @@ class HttpUtil {
     }
   }
 
+  ///获取 智能聊天机器人 消息
+  ///完整请求URL示例： http://api.qingyunke.com/api.php?key=free&appid=0&msg=你好
+  ///返回结果中{br}表示换行，请自行替换成需要的代码。
+  ///☆ 为保证接口稳定，调用频率请控制在200次/10分钟内，我们正在努力提供更稳定的服务
+  static Future<dynamic> requestChatMessage(String msg) async {
+    Response response = await DioUtil.getInstance().createQykDio().get(
+      Api.chatRobot,
+      queryParameters: {
+        "key": 'free',
+        "appid": 0,
+        "msg": msg,
+      },
+    );
+    print('数据点位: response: $response');
+    if(response.statusCode == 200){
+      var json = jsonDecode(response.toString());
+      return json;
+    }else{
+      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
 
 
 }

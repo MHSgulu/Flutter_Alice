@@ -1,4 +1,8 @@
+import 'package:alice/routes/more/chat/chat_settings.dart';
+import 'package:alice/routes/more/chat/chat_with_robot.dart';
+import 'package:alice/routes/more/chat/settings/set_chat_background.dart';
 import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
+import 'package:alice/routes/more/guide/guide_flutter_favorite.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alice/routes/more/more/wallpaper/computer/computer_wallpaper_list.dart';
@@ -6,7 +10,6 @@ import 'package:alice/routes/more/more/wallpaper/computer/popular_searches.dart'
 import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper.dart';
 import 'package:alice/routes/more/more/wallpaper/phone/phone_wallpaper_list.dart';
 import 'package:alice/routes/more/Setting.dart';
-import 'package:alice/routes/more/chat_with_robot.dart';
 import 'package:alice/routes/more/bing/bing_wallpaper_list.dart';
 import 'package:alice/routes/more/english_quotations.dart';
 import 'package:alice/routes/more/garbage/garbage_classification.dart';
@@ -35,7 +38,9 @@ Map<String, WidgetBuilder> routes = {
   '/queryMobileHome': (context) => QueryMobileHome(),
   '/englishQuotations': (context) => EnglishQuotations(),
   '/bingWallpaperList': (context) => BingWallpaperList(),
-  '/chatRobotList': (context) => ChatRobotList(),
+  '/chatRobotList': (context) => ChatRobotList(), //聊天页面
+  '/chatSettingsRoute': (context) => ChatSettingsRoute(), //聊天设置页面
+  '/setChatBackgroundRoute': (context) => SetChatBackgroundRoute(), //设置聊天背景页面
   '/taoModel': (context) => TaoModel(),
   '/lifeInterestPictureRoute': (context) => LifeInterestPictureRoute(),
   '/recipesRoute': (context) => RecipesRoute(),
@@ -52,6 +57,7 @@ Map<String, WidgetBuilder> routes = {
   '/guideOfficialWidgetRoute': (context) => GuideOfficialWidgetRoute(),
   '/guideHotPubLibraryRoute': (context) => GuideHotPubLibraryRoute(),
   '/guidePlugin': (context) => GuidePlugin(),
+  '/guideFlutterFavoriteRoute': (context) => GuideFlutterFavoriteRoute(),
   '/guideOfficialPluginRoute': (context) => GuideOfficialPluginRoute(),
   '/guideOfficialPackageRoute': (context) => GuideOfficialPackageRoute(),
   '/guideCommunityPackageRoute': (context) => GuideCommunityPackageRoute(),
