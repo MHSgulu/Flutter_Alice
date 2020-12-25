@@ -5,14 +5,14 @@ class SharedPreferencesUtil {
   static final _instance = SharedPreferencesUtil._init();
   SharedPreferencesUtil._init();
 
-  ///登录时存储 账号数据
+  //登录时存储 账号数据
   Future<void> saveAccountInfo(String token,String account,String password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('account', account);
     await prefs.setString('password', password);
   }
 
-  ///退出登录时清除数据用户数据
+  //退出登录时清除数据用户数据
   Future<void> clear() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('account', '');
@@ -38,7 +38,7 @@ class SharedPreferencesUtil {
     await prefs.setBool('isSaveChat', value);
   }
 
-  ///保存聊天历史
+  ///存储 聊天历史
   Future<void> saveChatHistory(List<String> value1,List<String> value2) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     ///将字符串[value]的列表保存到后台的持久存储中。
@@ -50,6 +50,24 @@ class SharedPreferencesUtil {
     var result2 = await prefs.remove('chatContentList');
     print('数据点位: result1: $result1');
     print('数据点位: result1: $result2');
+  }
+
+  ///存储 聊天背景图
+  Future<void> saveChatBackgroundImage(String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('chat_background_image_path', value);
+  }
+
+  ///取数据 聊天背景图
+  Future<String> fetchChatBackgroundImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('chat_background_image_path');
+  }
+
+  ///存储 是否开启聊天背景图
+  Future<void> saveIsTurnOnChatBackground(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isTurnOnChatBackground', value);
   }
 
 }

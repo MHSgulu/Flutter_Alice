@@ -8,6 +8,7 @@ class AppThemeMode extends ChangeNotifier {
   static String language; //语言环境的主要语言子标签
   static String script; //语言变体
   static bool isSaveChat; //是否保存聊天历史
+  static bool isTurnOnChatBackground; //是否开启聊天背景
 
   static Color lightTextColors = Colors.black54; //浅色系文本 适用于副标题
 
@@ -18,6 +19,7 @@ class AppThemeMode extends ChangeNotifier {
     language = prefs.getString("languageCode") ?? 'zh';
     script = prefs.getString("scriptCode") ?? 'Hans';
     isSaveChat = prefs.getBool("isSaveChat") ?? true;
+    isTurnOnChatBackground = prefs.getBool("isTurnOnChatBackground") ?? false;
 
     if (isDark) {
       ///黑夜模式下的颜色值
@@ -30,6 +32,7 @@ class AppThemeMode extends ChangeNotifier {
     print('数据点位: 初始化语言环境: $language');
     print('数据点位: 初始化语言变体: $script');
     print('数据点位: 初始化时是否保存聊天历史: $isSaveChat');
+    print('数据点位: 初始化时是否开启聊天背景: $isTurnOnChatBackground');
   }
 
   void switchThemeMode(bool value) {
@@ -61,5 +64,13 @@ class AppThemeMode extends ChangeNotifier {
     SharedPreferencesUtil.getInstance().saveIsSaveChat(isSaveChat);
     notifyListeners();
   }
+
+  void switchChatBackground(bool value) {
+    isTurnOnChatBackground = value;
+    print('数据点位: 是否开启聊天背景: $isTurnOnChatBackground');
+    SharedPreferencesUtil.getInstance().saveIsTurnOnChatBackground(isTurnOnChatBackground);
+    notifyListeners();
+  }
+
 
 }

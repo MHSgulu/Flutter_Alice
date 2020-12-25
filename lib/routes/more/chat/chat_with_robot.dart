@@ -1,14 +1,19 @@
+import 'dart:io';
+
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/common/util/data_base_util.dart';
+import 'package:alice/common/util/sp_util.dart';
 import 'package:alice/model/chat_message.dart';
 import 'package:alice/routes/more/chat/chat_settings.dart';
+import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/library/bubble.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Message {
@@ -27,7 +32,9 @@ class ChatRobotListState extends State<ChatRobotList> {
   TextEditingController _controller;
   List<Message> messageList = List();
   ChatMessage chatMessage;
-  Database db; //数据库
+  Database db;
+  String chatBgImagePath;
+  bool isOnlyReady = false;
 
   @override
   void initState() {
@@ -37,6 +44,7 @@ class ChatRobotListState extends State<ChatRobotList> {
       //当前需要获取聊天历史
       getChatHistory();
     }
+    getChatBackgroundImage();
     super.initState();
   }
 
@@ -54,114 +62,134 @@ class ChatRobotListState extends State<ChatRobotList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(
-        label: '菲菲',
-        onPressedBack: () => Navigator.pop(context),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/icons/icon_chat_setting.png',
-              width: 24,
+      appBar: isOnlyReady
+          ? PreferredSize(
+              child: SafeArea(
+                child: Container(),
+              ),
+              preferredSize: Size.fromHeight(0),
+            )
+          : MyAppBar(
+              label: '菲菲',
+              onPressedBack: () => Navigator.pop(context),
+              actions: [
+                IconButton(
+                  icon: Image.asset(
+                    'assets/icons/icon_chat_setting.png',
+                    width: 24,
+                  ),
+                  onPressed: () => jumpToPage(),
+                ),
+              ],
             ),
-            onPressed: () {
-              //Navigator.pushNamed(context, '/chatSettingsRoute');
-              Navigator.push(context, _createSettingsRoute());
-            },
-          ),
-        ],
-      ),
       body: chatListView(),
-      bottomSheet: bottomChatInputBox(),
+      bottomSheet: isOnlyReady ? Container(height: 0) : bottomChatInputBox(),
     );
   }
 
   Widget chatListView() {
-    return Container(
-      /*decoration: BoxDecoration(
-          //color: Colors.white,
-          image: DecorationImage(
-            image: NetworkImage('http://img5.adesk.com/5f63688531f613332b304d0c?imageMogr2/thumbnail/!720x1280r/gravity/Center/crop/720x1280'),
-            fit: BoxFit.fill,
+    return ChangeNotifierProvider(
+      create: (context) => AppThemeMode(),
+      child: Consumer<AppThemeMode>(
+        builder: (context, theme, child) => Container(
+          decoration: AppThemeMode.isTurnOnChatBackground
+              ? chatBgImagePath == null
+                  ? BoxDecoration()
+                  : BoxDecoration(
+                      image: DecorationImage(
+                        image: FileImage(File(chatBgImagePath)),
+                        fit: BoxFit.cover,
+                        //加载[image]时发出的错误的可选错误回调。
+                        onError: (dynamic exception, StackTrace stackTrace) {
+                          print('数据点位: exception: $exception');
+                          print('数据点位: stackTrace: $stackTrace');
+                        },
+                      ),
+                    )
+              : BoxDecoration(),
+          child: ScrollConfiguration(
+            behavior: CustomScrollBehavior(),
+            child: ListView.builder(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
+              controller: _scrollController,
+              itemCount: messageList.length,
+              itemBuilder: (context, index) {
+                if (messageList[index].identifier == 0) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(66, 8, 12, 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ///这里使用 [Expanded] 效果不好 使用 [Flexible]
+                        ///强制孩子填充可用空间。 [Expanded]小部件将这种[FlexFit]分配给其子级。
+                        ///这个孩子最多可以和可用空间一样大（但可以更小）。[Flexible]小部件将这种[FlexFit]分配给其子级。
+                        Flexible(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(0, 15, 4, 0),
+                            child: Bubble(
+                              elevation: 0.5,
+                              nip: BubbleNip.rightTop,
+                              color: Colors.lightBlue,
+                              child: Text(
+                                messageList[index].content,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Image.network(
+                              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=574971970,2943644506&fm=26&gp=0.jpg',
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(12, 8, 66, 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Card(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Image.network(
+                              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2987585290,3939268306&fm=26&gp=0.jpg',
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(4, 15, 0, 0),
+                            child: Bubble(
+                              elevation: 0.5,
+                              nip: BubbleNip.leftTop,
+                              child: Text(
+                                messageList[index].content,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+            ),
           ),
-        ),*/
-      child: ListView.builder(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
-        controller: _scrollController,
-        itemCount: messageList.length,
-        itemBuilder: (context, index) {
-          if (messageList[index].identifier == 0) {
-            return Container(
-              margin: EdgeInsets.fromLTRB(66, 8, 12, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ///这里使用 [Expanded] 效果不好 使用 [Flexible]
-                  ///强制孩子填充可用空间。 [Expanded]小部件将这种[FlexFit]分配给其子级。
-                  ///这个孩子最多可以和可用空间一样大（但可以更小）。[Flexible]小部件将这种[FlexFit]分配给其子级。
-                  Flexible(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 15, 4, 0),
-                      child: Bubble(
-                        elevation: 0.5,
-                        nip: BubbleNip.rightTop,
-                        color: Colors.lightBlue,
-                        child: Text(
-                          messageList[index].content,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Image.network(
-                        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=574971970,2943644506&fm=26&gp=0.jpg',
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else {
-            return Container(
-              margin: EdgeInsets.fromLTRB(12, 8, 66, 8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Card(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Image.network(
-                        'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2987585290,3939268306&fm=26&gp=0.jpg',
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(4, 15, 0, 0),
-                      child: Bubble(
-                        elevation: 0.5,
-                        nip: BubbleNip.leftTop,
-                        child: Text(
-                          messageList[index].content,
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
+        ),
       ),
     );
   }
@@ -201,6 +229,7 @@ class ChatRobotListState extends State<ChatRobotList> {
                 padding: EdgeInsets.only(right: 12),
                 child: ElevatedButton(
                   onPressed: () => sendMsg(),
+                  onLongPress: () => enterReadOnlyMode(),
                   child: Text('发送'),
                 ),
               ),
@@ -243,7 +272,6 @@ class ChatRobotListState extends State<ChatRobotList> {
           }
         });
       }
-
       //测试手机每行消息的长度大约在12个字符，所以针对超出两行消息的，自适应增加距离
       //增加距离是因为持久性底部遮挡,加上不确定消息文本长度带来的高度增加,设置一个大数值
       if (chatMessage.content.length < 12 * 2) {
@@ -270,7 +298,8 @@ class ChatRobotListState extends State<ChatRobotList> {
     //print("_scrollController.position.maxScrollExtent: ${_scrollController.position.maxScrollExtent}");
     if (messageList.length >= 4) {
       ///弹出软键盘，一开始的消息列表并不是最下方，需要手动滚动最下方  手动调出一个大概数值 总体效果不太理想 暂且放下
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent + 400);
+      _scrollController
+          .jumpTo(_scrollController.position.maxScrollExtent + 400);
     }
   }
 
@@ -282,9 +311,9 @@ class ChatRobotListState extends State<ChatRobotList> {
     }
     db = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
-          await db.execute(
-              'CREATE TABLE ChatHistory (id INTEGER PRIMARY KEY, tag INTEGER, content TEXT)');
-        });
+      await db.execute(
+          'CREATE TABLE ChatHistory (id INTEGER PRIMARY KEY, tag INTEGER, content TEXT)');
+    });
     await db.transaction((txn) async {
       messageList.forEach((e) async {
         ///将消息列表的数据循环插入到数据库中
@@ -319,7 +348,7 @@ class ChatRobotListState extends State<ChatRobotList> {
       print("数据点位: second:  $second");
       var last = map0.values.last;
       print("数据点位: last:  $last");*/
-      if(list.isNotEmpty){
+      if (list.isNotEmpty) {
         if (mounted) {
           setState(() {
             ///将数据库中的数据循环插入到消息列表
@@ -336,6 +365,34 @@ class ChatRobotListState extends State<ChatRobotList> {
           curve: Curves.decelerate,
         );
       }
+    }
+  }
+
+  void getChatBackgroundImage() async {
+    chatBgImagePath =
+        await SharedPreferencesUtil.getInstance().fetchChatBackgroundImage();
+    print('数据点位: chatBgImagePath: $chatBgImagePath');
+  }
+
+  void jumpToPage() {
+    //Navigator.pushNamed(context, '/chatSettingsRoute');
+    Navigator.push(context, _createSettingsRoute()).then((value) {
+      if (value == 'updateBgImage') {
+        if (mounted) {
+          setState(() {
+            getChatBackgroundImage();
+          });
+        }
+      }
+    });
+  }
+
+  void enterReadOnlyMode() {
+    Fluttertoast.showToast(msg: '按下返回键即可退出只读模式');
+    if (mounted) {
+      setState(() {
+        isOnlyReady = true;
+      });
     }
   }
 }

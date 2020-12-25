@@ -22,6 +22,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.2"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.13"
   args:
     dependency: transitive
     description:
@@ -126,7 +133,7 @@ packages:
       name: cached_network_image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.3"
+    version: "2.5.0"
   characters:
     dependency: transitive
     description:
@@ -383,7 +390,7 @@ packages:
       name: flutter_cache_manager
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.4.2"
+    version: "2.1.0"
   flutter_colorpicker:
     dependency: "direct main"
     description:
@@ -532,6 +539,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.4"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.19"
   image_gallery_saver:
     dependency: "direct main"
     description:
@@ -545,7 +559,7 @@ packages:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.7+12"
+    version: "0.6.7+17"
   image_picker_platform_interface:
     dependency: transitive
     description:
