@@ -1,9 +1,9 @@
+import 'package:alice/routes/my/my_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'life/third_bottom_navigationbar_itemview.dart';
-import 'more/show_page.dart';
 import 'movie/movie_home.dart';
 import 'news/new_home.dart';
 
@@ -54,7 +54,8 @@ class _HomePageState extends State<HomePage> {
     NewsHomePage(),
     MovieHomePage(),
     ThirdBottomNavigationBarItemView(),
-    ShowMorePage(),
+    MyHome(),
+    //ShowMorePage(),
   ];
 
   List<BottomNavigationBarItem> _bottomNavigationBarItemList = [

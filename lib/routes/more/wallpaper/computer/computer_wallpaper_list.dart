@@ -6,7 +6,6 @@ import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:alice/widgets/photo_view_single.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String label;
   final VoidCallback onPressedBack;
+  final Widget leading;
   final List<Widget> actions;
   final PreferredSizeWidget bottom;
   final double elevation;
@@ -15,8 +16,9 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   const MyAppBar({
     Key key,
     @required this.label,
-    @required this.onPressedBack,
+    this.onPressedBack,
     this.actions,
+    this.leading,
     this.bottom,
     this.elevation,
     this.backgroundColor,
@@ -41,7 +43,7 @@ class _MyAppBarState extends State<MyAppBar> {
           //如果指定了昼夜主题，使用昼夜主题色，如果指定了背景色，采用背景色。
           backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : widget.backgroundColor ?? Colors.white,
           brightness: AppThemeMode.isDark ? Brightness.dark : widget.backgroundColor == null ? Brightness.light : Brightness.dark,
-          leading: IconButton(
+          leading: widget.leading ?? IconButton(
             icon: Icon(
               Icons.arrow_back_rounded,
               color: AppThemeMode.isDark ? Colors.white : widget.backgroundColor == null ? Colors.black : Colors.white,

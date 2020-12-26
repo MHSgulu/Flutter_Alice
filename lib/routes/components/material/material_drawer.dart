@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 ///
 /// {@youtube 560315 https://www.youtube.com/watch?v=WRj86iHihgY}
 ///
-///抽屉通常与[Scaffold.drawer]属性一起使用。抽屉的子级通常是[ListView]，其第一个子级是[DrawerHeader]，它显示有关当前用户的状态信息。其余的抽屉式子代通常使用[ListTile]构造，通常以[AboutListTile]结束。
+///抽屉通常与[Scaffold.drawer]属性一起使用。抽屉的子级通常是[ListView]，其第一个子级是[DrawerHeader]，它显示有关当前用户的状态信息。
+///其余的抽屉式子代通常使用[ListTile]构造，通常以[AboutListTile]结束。
 ///
 ///当[脚手架]中有[抽屉]时，[AppBar]自动显示适当的[IconButton]以显示[抽屉]。 [脚手架]自动处理边缘滑动手势以显示抽屉。
 ///

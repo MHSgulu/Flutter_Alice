@@ -109,7 +109,6 @@ flutter: # 说明：版本号 x.y.z+m 其中 m 是构建版本，可以使用 --
     - assets/images/
     - assets/icons/
     - assets/icons/svg/
-    - assets/icons/mbe/
     - assets/animations/
     - resources/images/
     - resources/images/2.0x/
