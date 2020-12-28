@@ -54,8 +54,8 @@ import 'package:photo_view/photo_view.dart';
 ///！[带有Hero过渡部分的图。]（https://flutter.github.io/assets-for-api docs / assets / interaction / heroes.png）
 
 
-class PhotoViewSingle extends StatelessWidget {
-  const PhotoViewSingle({
+class PhotoSingleView extends StatelessWidget {
+  const PhotoSingleView({
     this.img, //图片
     this.loadingBuilder, //加载时的widget
     this.backgroundDecoration, //背景修饰

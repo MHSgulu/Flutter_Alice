@@ -148,7 +148,7 @@ class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => PhotoViewSingle(
+                builder: (context) => PhotoSingleView(
                   img: '${dataList[index].url}',
                   heroTag: '$index',
                 ),

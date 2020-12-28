@@ -128,7 +128,7 @@ class _PhoneWallpaperListState extends State<PhoneWallpaperList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PhotoViewSingle(
+                  builder: (context) => PhotoSingleView(
                     img: '${dataList[index].img}',
                     heroTag: '$index',
                   ),

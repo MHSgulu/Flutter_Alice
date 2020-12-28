@@ -96,7 +96,7 @@ class _GifPictureListState extends State<GifPictureList> with AutomaticKeepAlive
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PhotoViewSingle(
+                    builder: (context) => PhotoSingleView(
                       img: '${dataList[index].img}',
                       heroTag: 'gifPicture_$index',
                     )),

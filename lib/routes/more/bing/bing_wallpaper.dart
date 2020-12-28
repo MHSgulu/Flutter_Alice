@@ -73,7 +73,7 @@ class BingWallpaperRouteState extends State<BingWallpaperRoute> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PhotoViewSingle(
+                              builder: (context) => PhotoSingleView(
                                     img: Util.bingUrl + snapshot.data.images[0].url,
                                     minScale: 0.2, //必须设为double类型
                                     maxScale: 0.5, //定义允许图像采用的最小大小，它与原始图像大小成比例
