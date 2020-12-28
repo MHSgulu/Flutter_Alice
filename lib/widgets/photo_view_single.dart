@@ -100,8 +100,8 @@ class PhotoSingleView extends StatelessWidget {
                   child: Image.asset('assets/images/image_failed_load_1.png'),
                 ),
                 backgroundDecoration: backgroundDecoration,
-                minScale: minScale ?? 0.2, //定义允许图像采用的最小尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]
-                maxScale: maxScale ?? 0.5, //定义允许使用的最大图像尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]
+                minScale: minScale ?? 0.2, //定义允许图像采用的最小尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]  PhotoViewComputedScale.contained * 0.8,
+                maxScale: maxScale ?? 1.0, //定义允许使用的最大图像尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]  PhotoViewComputedScale.covered * 1.1,
                 heroAttributes: PhotoViewHeroAttributes(tag: heroTag),
                 enableRotation: false, //启用旋转手势支持的标志
               ),

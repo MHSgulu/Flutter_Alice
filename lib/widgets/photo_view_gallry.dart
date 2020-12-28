@@ -46,7 +46,7 @@ class _PhotoViewGalleryScreenState extends State<PhotoGalleryView> {
                     ? PhotoViewHeroAttributes(tag: widget.heroTag)
                     : null,
                 minScale: 0.2,
-                maxScale: 0.5,
+                maxScale: 1.0,
               );
             },
             loadingBuilder: (context, event) => Center(
