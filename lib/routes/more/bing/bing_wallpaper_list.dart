@@ -2,9 +2,9 @@ import 'package:alice/common/const/strings.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/common/util/tool_util.dart';
 import 'package:alice/model/bingwallpaper.dart';
-import 'package:alice/widgets/bing_wallpaper_photo_view_gallry_screen.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
+import 'package:alice/widgets/photo_view_gallry.dart';
 import 'package:flutter/material.dart';
 
 import 'package:transparent_image/transparent_image.dart';
@@ -16,6 +16,7 @@ class BingWallpaperList extends StatefulWidget {
 
 class BingWallpaperListState extends State<BingWallpaperList> {
   Future<BingWallpaper> futureBingWallpaperList;
+  List<String> imageList = List();
 
   @override
   void initState() {
@@ -34,6 +35,11 @@ class BingWallpaperListState extends State<BingWallpaperList> {
         future: futureBingWallpaperList,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+
+            snapshot.data.images.forEach((element) {
+              imageList.add(Util.bingUrl + element.url);
+            });
+
             return ListView.builder(
               /**
                   [scrollDirection]中滚动视图的范围是否应由正在查看的内容确定。
@@ -76,18 +82,19 @@ class BingWallpaperListState extends State<BingWallpaperList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PhotoViewGalleryScreen(
-                                      imageList:
-                                          snapshot.data.images, //传入图片list
-                                      index: index, //传入当前点击的图片的index
-                                      heroTag:
-                                          'hero${index}', //传入当前点击的图片的hero tag （可选）
+                                builder: (context) => PhotoGalleryView(
+                                      imageList: imageList,
+                                      index: index,
+                                      heroTag: '$index',
                                     )),
                           );
                         },
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: Util.bingUrl + snapshot.data.images[index].url,
+                        child: Hero(
+                          tag: '$index',
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: Util.bingUrl + snapshot.data.images[index].url,
+                          ),
                         ),
                       ),
                       Align(

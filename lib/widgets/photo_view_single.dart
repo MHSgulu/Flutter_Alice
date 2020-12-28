@@ -86,6 +86,7 @@ class PhotoSingleView extends StatelessWidget {
               right: 0,
               child: PhotoView(
                 imageProvider: NetworkImage(img),
+                //当[imageProvider]无法解析时，[PhotoView]会调用[loadingBuilder]进入屏幕，默认情况下它是居中的[CircularProgressIndicator]
                 loadingBuilder: (context, event) => Center(
                   child: CircularProgressIndicator(
                     value: event == null
@@ -94,12 +95,15 @@ class PhotoSingleView extends StatelessWidget {
                             event.expectedTotalBytes,
                   ),
                 ),
+                //当图像加载失败时显示loadFailedChild
+                loadFailedChild: Center(
+                  child: Image.asset('assets/images/image_failed_load_1.png'),
+                ),
                 backgroundDecoration: backgroundDecoration,
-                minScale: minScale,
-                maxScale: maxScale,
+                minScale: minScale ?? 0.2, //定义允许图像采用的最小尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]
+                maxScale: maxScale ?? 0.5, //定义允许使用的最大图像尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]
                 heroAttributes: PhotoViewHeroAttributes(tag: heroTag),
-                enableRotation: false,
-                ///启用旋转手势支持的标志
+                enableRotation: false, //启用旋转手势支持的标志
               ),
             ),
             Positioned(
