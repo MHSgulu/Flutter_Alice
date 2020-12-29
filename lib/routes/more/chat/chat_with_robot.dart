@@ -86,6 +86,13 @@ class ChatRobotListState extends State<ChatRobotList> {
       actions: [
         IconButton(
           icon: Image.asset(
+            'assets/icons/icon_chat_function.png',
+            width: 24,
+          ),
+          onPressed: () => sendChatFunctionCard(),
+        ),
+        IconButton(
+          icon: Image.asset(
             'assets/icons/icon_chat_setting.png',
             width: 24,
           ),
@@ -122,6 +129,7 @@ class ChatRobotListState extends State<ChatRobotList> {
               controller: _scrollController,
               itemCount: messageList.length,
               itemBuilder: (context, index) {
+                //用户消息气泡
                 if (messageList[index].identifier == 0) {
                   //仅在用户第一次发送消息和消息时间间隔大于3分钟的时候显示时间
                   var isShowMsgTime;
@@ -186,10 +194,12 @@ class ChatRobotListState extends State<ChatRobotList> {
                       ),
                     ],
                   );
-                } else {
-                  //考虑到聊天机器人2秒后即可回复消息，不显示聊天机器人的消息时间
+                }
+                //聊天机器人消息气泡
+                else if(messageList[index].identifier == 1){
                   return Column(
                     children: [
+                      //考虑到聊天机器人2秒后即可回复消息，不显示聊天机器人的消息时间
                       /*Container(
                         margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
                         child: Text(
@@ -232,6 +242,46 @@ class ChatRobotListState extends State<ChatRobotList> {
                       ),
                     ],
                   );
+                }
+                //用户聊天功能提示语
+                else if(messageList[index].identifier == 2){
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(66, 8, 12, 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Flexible(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(0, 15, 4, 0),
+                            child: Bubble(
+                              elevation: 0.5,
+                              nip: BubbleNip.rightTop,
+                              color: Colors.lightBlue,
+                              child: Text(
+                                messageList[index].content,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Image.network(
+                              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=574971970,2943644506&fm=26&gp=0.jpg',
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                else {
+                  return Container();
                 }
               },
             ),
@@ -408,11 +458,13 @@ class ChatRobotListState extends State<ChatRobotList> {
             });
           });
         }
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent + 99999,
+        //消息列表一旦增多 此方法无法跳到最底部！！！
+        /*_scrollController.animateTo(
+          _scrollController.position.maxScrollExtent + 9999,
           duration: Duration(milliseconds: 300),
           curve: Curves.decelerate,
-        );
+        );*/
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent + 10000);
       }
     }
   }
@@ -444,6 +496,16 @@ class ChatRobotListState extends State<ChatRobotList> {
       });
     }
   }
+
+  void sendChatFunctionCard() {
+    if (mounted) {
+      setState(() {
+        messageList.add(Message(2, '菲菲内置功能，发送“帮助”即可获得详细信息。',DateTime.now()));
+      });
+    }
+    _scrollController.jumpTo(_scrollController.position.maxScrollExtent + 100);
+  }
+
 }
 
 Route _createSettingsRoute() {

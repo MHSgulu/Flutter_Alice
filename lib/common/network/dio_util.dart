@@ -64,7 +64,7 @@ class DioUtil{
     ///青云客 Api
     _qykOptions = BaseOptions(
       baseUrl: Api.qingYunKeBaseUrl,
-      connectTimeout: 6000,
+      connectTimeout: 10000,
       receiveTimeout: 5000,
       sendTimeout: 5000,
     );
