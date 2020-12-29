@@ -18,8 +18,11 @@ import 'package:sqflite/sqflite.dart';
 
 class Message {
   final int identifier; //0 代表用户  1代表机器人
-  final String content;
-  Message(this.identifier, this.content);
+  final String content; //消息内容
+  final DateTime time; //消息时间
+
+  Message(this.identifier, this.content, this.time);
+
 }
 
 class ChatRobotList extends StatefulWidget {
@@ -35,6 +38,7 @@ class ChatRobotListState extends State<ChatRobotList> {
   Database db;
   String chatBgImagePath;
   bool isOnlyReady = false;
+  DateTime currentMsgTime; //用户当前发送消息的时间
 
   @override
   void initState() {
@@ -62,32 +66,36 @@ class ChatRobotListState extends State<ChatRobotList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: isOnlyReady
-          ? PreferredSize(
-              child: SafeArea(
-                child: Container(),
-              ),
-              preferredSize: Size.fromHeight(0),
-            )
-          : MyAppBar(
-              label: '菲菲',
-              onPressedBack: () => Navigator.pop(context),
-              actions: [
-                IconButton(
-                  icon: Image.asset(
-                    'assets/icons/icon_chat_setting.png',
-                    width: 24,
-                  ),
-                  onPressed: () => jumpToPage(),
-                ),
-              ],
-            ),
-      body: chatListView(),
-      bottomSheet: isOnlyReady ? Container(height: 0) : bottomChatInputBox(),
+      appBar: _appbar(),
+      body: _chatListView(),
+      bottomSheet: _bottomChatInputBox(),
     );
   }
 
-  Widget chatListView() {
+  Widget _appbar() {
+    return isOnlyReady
+        ? PreferredSize(
+      child: SafeArea(
+        child: Container(),
+      ),
+      preferredSize: Size.fromHeight(0),
+    )
+        : MyAppBar(
+      label: '菲菲',
+      onPressedBack: () => Navigator.pop(context),
+      actions: [
+        IconButton(
+          icon: Image.asset(
+            'assets/icons/icon_chat_setting.png',
+            width: 24,
+          ),
+          onPressed: () => jumpToPage(),
+        ),
+      ],
+    );
+  }
+
+  Widget _chatListView() {
     return ChangeNotifierProvider(
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
@@ -115,75 +123,114 @@ class ChatRobotListState extends State<ChatRobotList> {
               itemCount: messageList.length,
               itemBuilder: (context, index) {
                 if (messageList[index].identifier == 0) {
-                  return Container(
-                    margin: EdgeInsets.fromLTRB(66, 8, 12, 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        ///这里使用 [Expanded] 效果不好 使用 [Flexible]
-                        ///强制孩子填充可用空间。 [Expanded]小部件将这种[FlexFit]分配给其子级。
-                        ///这个孩子最多可以和可用空间一样大（但可以更小）。[Flexible]小部件将这种[FlexFit]分配给其子级。
-                        Flexible(
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 15, 4, 0),
-                            child: Bubble(
-                              elevation: 0.5,
-                              nip: BubbleNip.rightTop,
-                              color: Colors.lightBlue,
-                              child: Text(
-                                messageList[index].content,
-                                style: TextStyle(color: Colors.white),
+                  //仅在用户第一次发送消息和消息时间间隔大于3分钟的时候显示时间
+                  var isShowMsgTime;
+                  if(index == 0){
+                    isShowMsgTime = true;
+                  } else if(index > 1 && messageList[index].time.difference(messageList[index - 1].time) > Duration(minutes: 3)){
+                    isShowMsgTime = true;
+                  }else{
+                    isShowMsgTime = false;
+                  }
+                  return Column(
+                    children: [
+                      isShowMsgTime ? Container(
+                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        padding: EdgeInsets.fromLTRB(4, 2, 4, 2),
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          isShowMsgTime ? messageList[index].time.toString().substring(0,16) : '',
+                          style: TextStyle(color: Colors.white,fontSize: 11),
+                        ),
+                      ) : Container(),
+                      Container(
+                        //color: Colors.lightGreen,
+                        margin: EdgeInsets.fromLTRB(66, 8, 12, 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            ///这里使用 [Expanded] 效果不好 使用 [Flexible]
+                            ///强制孩子填充可用空间。 [Expanded]小部件将这种[FlexFit]分配给其子级。
+                            ///这个孩子最多可以和可用空间一样大（但可以更小）。[Flexible]小部件将这种[FlexFit]分配给其子级。
+                            Flexible(
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(0, 15, 4, 0),
+                                child: Bubble(
+                                  elevation: 0.5,
+                                  nip: BubbleNip.rightTop,
+                                  color: Colors.lightBlue,
+                                  child: Text(
+                                    messageList[index].content,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        Card(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: Image.network(
-                              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=574971970,2943644506&fm=26&gp=0.jpg',
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
+                            Card(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.network(
+                                  'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=574971970,2943644506&fm=26&gp=0.jpg',
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 } else {
-                  return Container(
-                    margin: EdgeInsets.fromLTRB(12, 8, 66, 8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Card(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: Image.network(
-                              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2987585290,3939268306&fm=26&gp=0.jpg',
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                  //考虑到聊天机器人2秒后即可回复消息，不显示聊天机器人的消息时间
+                  return Column(
+                    children: [
+                      /*Container(
+                        margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                        child: Text(
+                          messageList[index].time.substring(0,19),
+                          style: TextStyle(color: Colors.black38,fontSize: 12),
                         ),
-                        Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(4, 15, 0, 0),
-                            child: Bubble(
-                              elevation: 0.5,
-                              nip: BubbleNip.leftTop,
-                              child: Text(
-                                messageList[index].content,
-                                style: TextStyle(color: Colors.black),
+                      ),*/
+                      Container(
+                        //color: Colors.cyan,
+                        margin: EdgeInsets.fromLTRB(12, 8, 66, 8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Card(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.network(
+                                  'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2987585290,3939268306&fm=26&gp=0.jpg',
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
+                            Flexible(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(4, 15, 0, 0),
+                                child: Bubble(
+                                  elevation: 0.5,
+                                  nip: BubbleNip.leftTop,
+                                  child: Text(
+                                    messageList[index].content,
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 }
               },
@@ -195,8 +242,8 @@ class ChatRobotListState extends State<ChatRobotList> {
   }
 
   ///使用 bottomSheet 软件盘可以正常顶起输入框 bottomNavigationBar 无效
-  Widget bottomChatInputBox() {
-    return Container(
+  Widget _bottomChatInputBox() {
+    return isOnlyReady ? Container(height: 0) : Container(
       //color: Colors.lightBlueAccent,
       height: 50,
       child: Column(
@@ -244,7 +291,7 @@ class ChatRobotListState extends State<ChatRobotList> {
     if (_controller.text.trim().isNotEmpty) {
       if (mounted) {
         setState(() {
-          messageList.add(Message(0, _controller.text));
+          messageList.add(Message(0, _controller.text,DateTime.now()));
         });
       }
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
@@ -266,9 +313,9 @@ class ChatRobotListState extends State<ChatRobotList> {
           if (chatMessage.content.contains('{br}')) {
             //用[replace]替换所有与[from]匹配的子字符串。
             String newMessage = chatMessage.content.replaceAll('{br}', '\n');
-            messageList.add(Message(1, newMessage));
+            messageList.add(Message(1, newMessage,DateTime.now()));
           } else {
-            messageList.add(Message(1, chatMessage.content));
+            messageList.add(Message(1, chatMessage.content,DateTime.now()));
           }
         });
       }
@@ -312,14 +359,14 @@ class ChatRobotListState extends State<ChatRobotList> {
     db = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       await db.execute(
-          'CREATE TABLE ChatHistory (id INTEGER PRIMARY KEY, tag INTEGER, content TEXT)');
+          'CREATE TABLE ChatHistory (id INTEGER PRIMARY KEY, tag INTEGER, content TEXT, time TEXT)');
     });
     await db.transaction((txn) async {
       messageList.forEach((e) async {
         ///将消息列表的数据循环插入到数据库中
         await txn.rawInsert(
-            'INSERT INTO ChatHistory(tag, content) VALUES(?, ?)',
-            [e.identifier, e.content]);
+            'INSERT INTO ChatHistory(tag, content,time) VALUES(?, ?, ?)',
+            [e.identifier, e.content,e.time.toString()]);
       });
     });
     List<Map> list = await db.rawQuery('SELECT * FROM ChatHistory');
@@ -354,8 +401,10 @@ class ChatRobotListState extends State<ChatRobotList> {
             ///将数据库中的数据循环插入到消息列表
             list.forEach((element) {
               messageList.add(Message(
-                  int.parse(element.values.elementAt(1).toString()),
-                  element.values.last.toString()));
+                int.parse(element.values.elementAt(1).toString()),
+                element.values.elementAt(2).toString(),
+                DateTime.parse(element.values.last.toString()),
+              ));
             });
           });
         }
