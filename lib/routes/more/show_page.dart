@@ -1,3 +1,4 @@
+import 'package:alice/common/const/routes.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_list_tile_card.dart';
@@ -27,22 +28,22 @@ class ShowMoreRouteState extends State<ShowMoreRoute> {
             MyFunctionCard(
               title: '智能聊天机器人菲菲',
               asset: 'assets/icons/icon_chat.png',
-              onTap: ()=> Navigator.pushNamed(context, '/chatRobotList'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.chatRobotList),
             ),
             MyFunctionCard(
               title: '查询手机号码归属地',
               asset: 'assets/icons/icon_search.png',
-              onTap: ()=> Navigator.pushNamed(context, '/queryMobileHome'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.queryMobileHome),
             ),
             MyFunctionCard(
               title: '英文励志语录',
               asset: 'assets/icons/icon_record.png',
-              onTap: ()=> Navigator.pushNamed(context, '/englishQuotations'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.englishQuotations),
             ),
             MyFunctionCard(
               title: '必应壁纸',
               asset: 'assets/icons/icon_camera.png',
-              onTap: ()=> Navigator.pushNamed(context, '/bingWallpaperList'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.bingWallpaperRoute),
             ),
             MyFunctionCard(
               title: '壁纸大全',
@@ -52,22 +53,22 @@ class ShowMoreRouteState extends State<ShowMoreRoute> {
             MyFunctionCard(
               title: '淘女郎模特',
               asset: 'assets/icons/icon_account.png',
-              onTap: ()=> Navigator.pushNamed(context, '/taoModel'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.taoModel),
             ),
             MyFunctionCard(
               title: '菜谱大全',
               asset: 'assets/icons/icon_food.png',
-              onTap: ()=> Navigator.pushNamed(context, '/recipesRoute'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.recipesRoute),
             ),
             MyFunctionCard(
               title: '垃圾分类',
               asset: 'assets/icons/icon_shopping_cart.png',
-              onTap: ()=> Navigator.pushNamed(context, '/garbageClassification'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.garbageClassification),
             ),
             MyFunctionCard(
               title: '每日一文',
               asset: 'assets/icons/icon_edit.png',
-              onTap: ()=> Navigator.pushNamed(context, '/articleOfTheDayRoute'),
+              onTap: ()=> Navigator.pushNamed(context, RouteName.articleOfTheDayRoute),
             ),
           ],
         ),
