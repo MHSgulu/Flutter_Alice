@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/official/widget/week/expanded.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -27,6 +28,17 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SafeAreaDemo())),
                     child: ListTile(
                       title: Text('SafeArea'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ExpandedDemo())),
+                    child: ListTile(
+                      title: Text('Expanded'),
                     ),
                   ),
                 ),
