@@ -75,7 +75,7 @@ class GuideExampleRoute extends StatelessWidget {
                     onTap: () => Navigator.pushNamed(context, '/guideOfficialWidgetRoute'),
                     splashColor: Colors.brown[100],
                     child: ListTile(
-                      title: Text('Widget 目录'),
+                      title: Text('复杂组合型Widget'),
                     ),
                   ),
                 ),

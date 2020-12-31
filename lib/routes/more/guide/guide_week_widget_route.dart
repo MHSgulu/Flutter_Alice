@@ -1,5 +1,7 @@
-import 'package:alice/routes/example/official/widget/week/expanded.dart';
-import 'package:alice/routes/example/official/widget/week/safe_area.dart';
+import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
+import 'package:alice/routes/example/official/widget/week/flexible_demo.dart';
+import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
+import 'package:alice/routes/example/official/widget/week/wrap_demo.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +41,28 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ExpandedDemo())),
                     child: ListTile(
                       title: Text('Expanded'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FlexibleDemo())),
+                    child: ListTile(
+                      title: Text('Flexible'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => WrapDemo())),
+                    child: ListTile(
+                      title: Text('Wrap'),
                     ),
                   ),
                 ),
