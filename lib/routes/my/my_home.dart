@@ -2,6 +2,7 @@ import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/routes/my/about_app.dart';
+import 'package:alice/common/const/routes.dart';
 
 class MyHome extends StatefulWidget {
   @override
@@ -98,7 +99,7 @@ class _MyHomeState extends State<MyHome> {
                     style: TextStyle(color: Colors.black38),
                   ),
                   Text(
-                    '我心不负那明月',
+                    '我心可晓之悲欢',
                     style: TextStyle(color: Colors.black38),
                   ),
                 ],
@@ -108,20 +109,20 @@ class _MyHomeState extends State<MyHome> {
               leading: ImageIcon(
                   AssetImage('assets/icons/icon_draw_function.png')),
               title: Text('更多功能'),
-              onTap: () => Navigator.pushNamed(context, '/showMoreRoute'),
+              onTap: () => Navigator.pushNamed(context, RouteName.showMoreRoute),
             ),
             ListTile(
               leading: ImageIcon(
                   AssetImage('assets/icons/icon_draw_example.png')),
-              title: Text('示例样品'),
+              title: Text('示例演示'),
               onTap: () =>
-                  Navigator.pushNamed(context, '/guideExampleRoute'),
+                  Navigator.pushNamed(context, RouteName.guideExampleRoute),
             ),
             ListTile(
               leading: ImageIcon(
                   AssetImage('assets/icons/icon_draw_settings.png')),
               title: Text('设置应用'),
-              onTap: () => Navigator.pushNamed(context, '/settingPage')
+              onTap: () => Navigator.pushNamed(context, RouteName.settingPage)
                   .then((value) {
                 if (value == 'refresh') {
                   if (mounted) {

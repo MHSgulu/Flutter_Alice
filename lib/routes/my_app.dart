@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           //布尔参数[routes]和[navigatorObservers]不能为null。
           return MaterialApp(
             //debugShowCheckedModeBanner: false,  //通过启动应用程序时显示的[home]路由禁用“ debug”横幅。
-            title: _title,
+            title: _title, //由OS任务切换器使用
             home: WillPopScopeHome(),
             // 应用程序的顶级路由表。
             // 当使用[Navigator.pushNamed]推送命名的路线时，将在此地图中查找路线名称。

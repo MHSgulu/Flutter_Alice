@@ -38,7 +38,6 @@ class ChatRobotListState extends State<ChatRobotList> {
   Database db;
   String chatBgImagePath;
   bool isOnlyReady = false;
-  DateTime currentMsgTime; //用户当前发送消息的时间
 
   @override
   void initState() {
@@ -524,6 +523,22 @@ Route _createSettingsRoute() {
     reverseTransitionDuration: Duration(milliseconds: 300),
   );
 }
+
+
+///Flexible
+///
+///一个控件，该控件控制[Row]，[Column]或[Flex]的子代如何弯曲。
+///使用[Flexible]小部件可为[Row]，[Column]或[Flex]的子级提供扩展的灵活性，以填充主轴上的可用空间
+///（例如，水平放置[Row]或垂直放置 [Column]），但与[Expanded]不同，[Flexible]不需要孩子填写可用空间。
+///
+/// [Flexible]小部件必须是[Row]，[Column]或[Flex]的后代，
+/// 并且必须是[Flexible]小部件到其封闭的[Row]，[Column]或[Flex]的路径 ]必须仅包含[StatelessWidget]或[StatefulWidget]（
+/// 不能包含其他种类的小部件，例如[RenderObjectWidget]）。
+///
+/// 也可以看看：
+///
+/// * [Expanded]，它强制子项扩展以填充可用空间。
+/// * [Spacer]，一个小部件，它占用与其flex值成比例的空间。
 
 //返回此字符串中[pattern]的第一个匹配项的位置，从[start]开始。
 // 如果未找到匹配项，则返回-1。
