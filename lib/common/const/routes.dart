@@ -5,6 +5,7 @@ import 'package:alice/routes/more/chat/chat_with_robot.dart';
 import 'package:alice/routes/more/chat/settings/set_chat_background.dart';
 import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
 import 'package:alice/routes/more/guide/guide_flutter_favorite.dart';
+import 'package:alice/routes/more/guide/guide_week_widget_route.dart';
 import 'package:alice/routes/more/show_page.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper_list.dart';
@@ -70,6 +71,7 @@ Map<String, WidgetBuilder> routes = {
   '/guideCommunityPackageRoute': (context) => GuideCommunityPackageRoute(),
   '/guideDartTeamOfficialPackageRoute': (context) => GuideDartTeamOfficialPackageRoute(),
   '/guideRiveRoute': (context) => GuideRiveRoute(),
+   RouteName.guideWeekWidgetRoute: (context) => GuideWeekWidgetRoute(), //每周Flutter小部件页面
 };
 
 
@@ -98,6 +100,9 @@ class RouteName {
   static final String computerWallpaperRoute = '/computerWallpaperRoute';
   static final String computerWallpaperList = '/computerWallpaperList';
   static final String wallpaperPopularSearches = '/wallpaperPopularSearches';
+
+  //示例模块
+  static final String guideWeekWidgetRoute = '/guideWeekWidgetRoute';
 
 }
 

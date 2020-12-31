@@ -1,3 +1,4 @@
+import 'package:alice/common/const/routes.dart';
 import 'package:alice/routes/example/company/dash_overflow/provider/example_provider_counter.dart';
 import 'package:alice/routes/example/plugin_get_android_version.dart';
 import 'package:alice/routes/example/plugin_get_battery.dart';
@@ -49,6 +50,19 @@ class GuideExampleRoute extends StatelessWidget {
                     child: ListTile(
                       title: Text('Cupertino Components'),
                       subtitle: Text('库比蒂诺风格组件'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(4),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(context, RouteName.guideWeekWidgetRoute),
+                    splashColor: Colors.brown[100],
+                    child: ListTile(
+                      title: Text('每周Flutter小部件'),
                     ),
                   ),
                 ),
