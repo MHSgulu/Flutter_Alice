@@ -1,6 +1,12 @@
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 
+//使用Expanded小工具扩展您对Flutter的了解！
+// Flutter的Expanded将改变发送给行和列的子项的约束，指示它们填补可用的空间。
+// 因此，将您的子项包裹在Expanded小工具中，并观察它的增长！
+// {@youtube 560315 https://www.youtube.com/watch?v=_rnZaagadyo}
+
+
 ///一个小部件，可扩展[Row]，[Column]或[Flex]的子级，以便该子级填充可用空间。
 ///
 ///使用[Expanded]小部件可展开[Row]，[Column]或[Flex]的子级，以沿主轴填充可用空间
@@ -8,8 +14,6 @@ import 'package:flutter/material.dart';
 ///
 /// [Expanded]小部件必须是[Row]，[Column]或[Flex]的后代，并且必须是[Expanded]小部件到其封闭的[Row]，[Column]或[Flex]的路径]必须仅包含[StatelessWidget]或[StatefulWidget]
 /// （而不是其他类型的小部件，例如[RenderObjectWidget]）。
-///
-/// {@youtube 560315 https://www.youtube.com/watch?v=_rnZaagadyo}
 ///
 /// {@tool dartpad --template = stateless_widget_material}
 ///此示例说明如何在[Column]中使用[Expanded]小部件，以便使其中间子级[Container]展开以填充空间。

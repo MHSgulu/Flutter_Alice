@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 //Flutter的SafeArea工具可以避免讨厌的消息通知栏和不规则的手机屏幕干扰您的应用程序的正常显示。
 // 它使用MediaQuery来检查屏幕的尺寸，并使用一个子工具来匹配您的应用程序，确保它能在iOS和Android上都正常显示！
+//{@youtube 560315 https://www.youtube.com/watch?v=lkF0TQJO0bA}
 
 ///一个小部件，它通过足够的填充来插入其子级，以避免操作系统的入侵。
 ///
@@ -11,8 +12,6 @@ import 'package:flutter/material.dart';
 ///这还将使孩子缩进，以避免在iPhone X上出现缺口或其他类似的创造性外观特征。
 ///
 ///当指定[minimum]填充时，将应用最小填充或安全区域填充中的较大者。
-///
-/// {@youtube 560315 https://www.youtube.com/watch?v=lkF0TQJO0bA}
 ///
 /// 也可以看看：
 ///

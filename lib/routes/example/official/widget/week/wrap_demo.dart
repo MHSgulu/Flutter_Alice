@@ -1,6 +1,11 @@
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 
+//当你用完横向和纵向的布局空间时，试试Wrap吧！
+// Wrap可以为小图标进行纵向或横向的布局，且当空间用完时，它便会新增一行。
+// Direction属性、alignment属性和spacing属性，可以帮助你准确的获得你所需要的布局效果。
+// {@youtube 560315 https://www.youtube.com/watch?v=z5iw2SeFx2M}
+
 ///一个小部件，可在多个水平或垂直运行中显示其子级。
 ///
 /// [Wrap]布局每个孩子，并尝试将其放置在主轴上与前一个孩子相邻的位置上（由[direction]指定），在它们之间留出[spacing]间距。
@@ -9,8 +14,6 @@ import 'package:flutter/material.dart';
 ///在所有子项均已分配给游程后，游程中的子项将根据主轴中的[alignment]和交叉轴中的[crossAxisAlignment]进行定位。
 ///
 ///然后根据[runSpacing]和[runAlignment]将走线本身定位在横轴上。
-///
-/// {@youtube 560315 https://www.youtube.com/watch?v=z5iw2SeFx2M}
 ///
 /// 也可以看看：
 ///

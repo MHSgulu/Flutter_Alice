@@ -1,5 +1,8 @@
+import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
 import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
 import 'package:alice/routes/example/official/widget/week/flexible_demo.dart';
+import 'package:alice/routes/example/official/widget/week/futurebuilder_demo.dart';
+import 'package:alice/routes/example/official/widget/week/opacity_demo.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
 import 'package:alice/routes/example/official/widget/week/wrap_demo.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -29,7 +32,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   child: InkWell(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SafeAreaDemo())),
                     child: ListTile(
-                      title: Text('SafeArea'),
+                      title: Text('SafeArea(安全区)'),
                     ),
                   ),
                 ),
@@ -40,7 +43,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   child: InkWell(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ExpandedDemo())),
                     child: ListTile(
-                      title: Text('Expanded'),
+                      title: Text('Expanded(展开式)'),
                     ),
                   ),
                 ),
@@ -51,7 +54,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   child: InkWell(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FlexibleDemo())),
                     child: ListTile(
-                      title: Text('Flexible'),
+                      title: Text('Flexible(灵活)'),
                     ),
                   ),
                 ),
@@ -62,7 +65,40 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   child: InkWell(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => WrapDemo())),
                     child: ListTile(
-                      title: Text('Wrap'),
+                      title: Text('Wrap(包)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimatedContainerDemo())),
+                    child: ListTile(
+                      title: Text('AnimatedContainer(动画容器)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => OpacityDemo())),
+                    child: ListTile(
+                      title: Text('Opacity(不透明度)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FutureBuilderDemo())),
+                    child: ListTile(
+                      title: Text('FutureBuilder(未来建设者)'),
                     ),
                   ),
                 ),
