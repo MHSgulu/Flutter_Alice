@@ -1,9 +1,13 @@
 import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
 import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
+import 'package:alice/routes/example/official/widget/week/fade_transition_demo.dart';
 import 'package:alice/routes/example/official/widget/week/flexible_demo.dart';
 import 'package:alice/routes/example/official/widget/week/futurebuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/opacity_demo.dart';
+import 'package:alice/routes/example/official/widget/week/page_view_demo.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
+import 'package:alice/routes/example/official/widget/week/sliverappbar_demo.dart';
+import 'package:alice/routes/example/official/widget/week/table_demo.dart';
 import 'package:alice/routes/example/official/widget/week/wrap_demo.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -99,6 +103,50 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FutureBuilderDemo())),
                     child: ListTile(
                       title: Text('FutureBuilder(未来建设者)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeTransitionDemo())),
+                    child: ListTile(
+                      title: Text('FadeTransition(渐隐过渡)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PageViewDemo())),
+                    child: ListTile(
+                      title: Text('PageView'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TableDemo())),
+                    child: ListTile(
+                      title: Text('Table(表格)'),
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SliverAppBarDemo())),
+                    child: ListTile(
+                      title: Text('SliverAppBar'),
                     ),
                   ),
                 ),
