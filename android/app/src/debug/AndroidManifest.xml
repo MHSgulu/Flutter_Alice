@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ow.alice">
-    <!-- Flutter needs it to communicate with the running application
-         to allow setting breakpoints, to provide hot reload, etc.
+    <!--Flutter需要它与正在运行的应用程序进行通信
+    允许设置断点，提供热重载等
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

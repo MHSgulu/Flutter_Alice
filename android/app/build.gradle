@@ -37,9 +37,9 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // TODO:  指定您自己的唯一应用程序ID(https://developer.android.com/studio/build/application-id.html).
         applicationId "com.ow.alice"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -48,8 +48,8 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // TODO：为发布版本添加您自己的签名配置。
+            // 现在使用调试键进行签名，因此`flutter run --release`可以正常工作。
             signingConfig signingConfigs.debug
         }
     }
