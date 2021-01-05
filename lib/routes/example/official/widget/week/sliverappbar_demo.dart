@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 //当您的滚动时，会发生变化或消失的花哨动画标题十分流行！
 // 使用SliverAppBar，您可以轻松地在您的应用中使用它。
-// 与CustomScrollView一起使用，您可以在应用栏中获得自定义滚动行为！
-
+// 与CustomScrollView一起使用，您可以在应用栏中获得自定义滚动行为
 /// {@youtube 560 315 https://www.youtube.com/watch?v=R9C5KMJKluE}
 
 ///与[CustomScrollView]集成在一起的材质设计应用栏。

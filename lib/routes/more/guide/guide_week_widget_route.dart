@@ -1,18 +1,24 @@
 import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
 import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
+import 'package:alice/routes/example/official/widget/week/cliprect_demo.dart';
 import 'package:alice/routes/example/official/widget/week/fade_transition_demo.dart';
+import 'package:alice/routes/example/official/widget/week/fadeinimage_demo.dart';
 import 'package:alice/routes/example/official/widget/week/flexible_demo.dart';
 import 'package:alice/routes/example/official/widget/week/futurebuilder_demo.dart';
+import 'package:alice/routes/example/official/widget/week/inheritedmodel_demo.dart';
 import 'package:alice/routes/example/official/widget/week/opacity_demo.dart';
 import 'package:alice/routes/example/official/widget/week/page_view_demo.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
+import 'package:alice/routes/example/official/widget/week/sliver_list_demo.dart';
 import 'package:alice/routes/example/official/widget/week/sliverappbar_demo.dart';
+import 'package:alice/routes/example/official/widget/week/streambuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/table_demo.dart';
 import 'package:alice/routes/example/official/widget/week/wrap_demo.dart';
+import 'package:alice/routes/example/official/widget/week/hero_demo.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/custom/my_list_tile_card.dart';
 import 'package:flutter/material.dart';
-
 
 class GuideWeekWidgetRoute extends StatelessWidget {
   @override
@@ -29,126 +35,77 @@ class GuideWeekWidgetRoute extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: <Widget>[
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SafeAreaDemo())),
-                    child: ListTile(
-                      title: Text('SafeArea(安全区)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'SafeArea',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SafeAreaDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ExpandedDemo())),
-                    child: ListTile(
-                      title: Text('Expanded(展开式)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'Expanded',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ExpandedDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FlexibleDemo())),
-                    child: ListTile(
-                      title: Text('Flexible(灵活)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'Flexible',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FlexibleDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => WrapDemo())),
-                    child: ListTile(
-                      title: Text('Wrap(包)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'Wrap',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => WrapDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimatedContainerDemo())),
-                    child: ListTile(
-                      title: Text('AnimatedContainer(动画容器)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'AnimatedContainer',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimatedContainerDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => OpacityDemo())),
-                    child: ListTile(
-                      title: Text('Opacity(不透明度)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'Opacity',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => OpacityDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FutureBuilderDemo())),
-                    child: ListTile(
-                      title: Text('FutureBuilder(未来建设者)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'FutureBuilder',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FutureBuilderDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeTransitionDemo())),
-                    child: ListTile(
-                      title: Text('FadeTransition(渐隐过渡)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'FadeTransition',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeTransitionDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PageViewDemo())),
-                    child: ListTile(
-                      title: Text('PageView'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'PageView',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PageViewDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TableDemo())),
-                    child: ListTile(
-                      title: Text('Table(表格)'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'Table',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TableDemo())),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SliverAppBarDemo())),
-                    child: ListTile(
-                      title: Text('SliverAppBar'),
-                    ),
-                  ),
+                MyCardTile(
+                  text: 'SliverAppBar',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SliverAppBarDemo())),
+                ),
+                MyCardTile(
+                  text: 'SliverList＆SliverGrid',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SliverListDemo())),
+                ),
+                MyCardTile(
+                  text: 'FadeInImage',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeInImageDemo())),
+                ),
+                MyCardTile(
+                  text: 'FadeInImage',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeInImageDemo())),
+                ),
+                MyCardTile(
+                  text: 'StreamBuilder',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StreamBuilderDemo())),
+                ),
+                MyCardTile(
+                  text: 'InheritedModel',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InheritedModelDemo())),
+                ),
+                MyCardTile(
+                  text: 'ClipRRect&ClipOval',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ClipRectDemo())),
+                ),
+                MyCardTile(
+                  text: 'Hero',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => HeroDemo())),
                 ),
               ],
             ),

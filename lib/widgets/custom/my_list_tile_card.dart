@@ -35,3 +35,30 @@ class MyFunctionCard extends StatelessWidget {
     );
   }
 }
+
+
+///统一的卡片式瓦块
+class MyCardTile extends StatelessWidget {
+  final String text;
+  final GestureTapCallback onTap;
+
+  const MyCardTile({
+    Key key,
+    @required this.text,
+    @required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: ListTile(
+        title: Text(text),
+        onTap: onTap,
+      ),
+    );
+  }
+}
