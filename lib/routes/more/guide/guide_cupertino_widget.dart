@@ -12,6 +12,7 @@ import 'package:alice/routes/components/cupertino/cupertinol_dialog.dart';
 import 'package:alice/routes/components/cupertino/cupertinol_slider.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/custom/my_list_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -52,21 +53,9 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         child: ListView.builder(
           itemCount: titleList.length,
           itemBuilder: (context, index) {
-            return Container(
-              padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusDirectional.circular(4),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  onTap: () => jumpToRoute(index),
-                  splashColor: Colors.indigo[100],
-                  child: ListTile(
-                    title: Text(titleList[index]),
-                  ),
-                ),
-              ),
+            return MyCardTile(
+              text: titleList[index],
+              onTap: () => jumpToRoute(index),
             );
           },
         ),

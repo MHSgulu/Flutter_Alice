@@ -19,6 +19,7 @@ import 'package:alice/routes/components/material/material_time_pickers.dart';
 import 'package:alice/routes/example/official/example_google_fonts.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:alice/widgets/custom/my_list_tile_card.dart';
 
 import 'package:flutter/material.dart';
 
@@ -58,29 +59,13 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
       onPressedBack: () => Navigator.pop(context),
     ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(
-            isShowLeading: true,
-            isShowTrailing: true,
-            color: Colors.indigo[400],
-        ),
+        behavior: CustomScrollBehavior(),
         child: ListView.builder(
           itemCount: titleList.length,
           itemBuilder: (context, index) {
-            return Container(
-              padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusDirectional.circular(4),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  onTap: () => jumpToRoute(index),
-                  splashColor: Colors.indigo[100],
-                  child: ListTile(
-                    title: Text(titleList[index]),
-                  ),
-                ),
-              ),
+            return MyCardTile(
+              text: titleList[index],
+              onTap: () => jumpToRoute(index),
             );
           },
         ),

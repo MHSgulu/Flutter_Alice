@@ -9,7 +9,7 @@ class GuidePlugin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: 'Flutter 插件/包',
+        label: '原生SDK业务插件',
         onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(

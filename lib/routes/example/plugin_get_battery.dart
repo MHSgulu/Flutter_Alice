@@ -3,20 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
-
-class PluginGetBattery extends StatefulWidget{
-
+class PluginGetBattery extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _PluginGetBatteryState();
-  }
-
-
-
+  State<StatefulWidget> createState() => _PluginGetBatteryState();
 }
-
-
 
 class _PluginGetBatteryState extends State<PluginGetBattery> {
   static const platform = const MethodChannel('samples.flutter.io/battery');
@@ -37,7 +27,6 @@ class _PluginGetBatteryState extends State<PluginGetBattery> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,22 +34,17 @@ class _PluginGetBatteryState extends State<PluginGetBattery> {
         title: Text('Flutter中文网示例'),
       ),
       body: Center(
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            new RaisedButton(
-              child: new Text('点击获取手机电量'),
+            RaisedButton(
+              child: Text('点击获取手机电量'),
               onPressed: _getBatteryLevel,
             ),
-            new Text(_batteryLevel),
+            Text(_batteryLevel),
           ],
         ),
       ),
     );
   }
-
-
-
-
-
 }

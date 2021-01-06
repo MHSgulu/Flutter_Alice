@@ -2,21 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
-//import 'package:flutterpluginsimple/flutterpluginsimple.dart';
-
-
-class TestPlugScreen extends StatefulWidget{
-
+class TestPlugScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _TestPlugScreen();
-  }
-
+  State<StatefulWidget> createState() => _TestPlugScreen();
 }
 
-
-class _TestPlugScreen extends State<TestPlugScreen>{
-
+class _TestPlugScreen extends State<TestPlugScreen> {
   String _platformVersion = '未知版本';
 
   @override
@@ -56,9 +47,4 @@ class _TestPlugScreen extends State<TestPlugScreen>{
       ),
     );
   }
-
-
-
-
-
 }

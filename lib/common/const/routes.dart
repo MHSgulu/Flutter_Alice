@@ -5,6 +5,7 @@ import 'package:alice/routes/more/chat/chat_with_robot.dart';
 import 'package:alice/routes/more/chat/settings/set_chat_background.dart';
 import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
 import 'package:alice/routes/more/guide/guide_flutter_favorite.dart';
+import 'package:alice/routes/more/guide/guide_state_route.dart';
 import 'package:alice/routes/more/guide/guide_week_widget_route.dart';
 import 'package:alice/routes/more/show_page.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper.dart';
@@ -57,32 +58,32 @@ Map<String, WidgetBuilder> routes = {
   RouteName.computerWallpaperList: (context) => ComputerWallpaperList(), //电脑壁纸列表
   RouteName.wallpaperPopularSearches: (context) => WallpaperPopularSearches(), //电脑壁纸搜索页
   //设置模块
-  '/multiLanguage': (context) => MultiLanguage(),
+  RouteName.multiLanguage: (context) => MultiLanguage(), //设置页面
   //示例模块
-  '/guideMaterialWidgetRoute': (context) => GuideMaterialWidgetRoute(),
-  '/guideCupertinoWidgetRoute': (context) => GuideCupertinoWidgetRoute(),
-  '/guideDynamicEffectRoute': (context) => GuideDynamicEffectRoute(),
-  '/guideOfficialWidgetRoute': (context) => GuideOfficialWidgetRoute(),
-  '/guideHotPubLibraryRoute': (context) => GuideHotPubLibraryRoute(),
-  '/guidePlugin': (context) => GuidePlugin(),
-  '/guideFlutterFavoriteRoute': (context) => GuideFlutterFavoriteRoute(),
-  '/guideOfficialPluginRoute': (context) => GuideOfficialPluginRoute(),
-  '/guideOfficialPackageRoute': (context) => GuideOfficialPackageRoute(),
-  '/guideCommunityPackageRoute': (context) => GuideCommunityPackageRoute(),
-  '/guideDartTeamOfficialPackageRoute': (context) => GuideDartTeamOfficialPackageRoute(),
-  '/guideRiveRoute': (context) => GuideRiveRoute(),
-   RouteName.guideWeekWidgetRoute: (context) => GuideWeekWidgetRoute(), //每周Flutter小部件页面
+  RouteName.guideMaterialWidgetRoute: (context) => GuideMaterialWidgetRoute(), //材料设计风格组件
+  RouteName.guideCupertinoWidgetRoute: (context) => GuideCupertinoWidgetRoute(), //iOS风格组件
+  RouteName.guideDynamicEffectRoute: (context) => GuideDynamicEffectRoute(), //动态交互
+  RouteName.guideOfficialWidgetRoute: (context) => GuideOfficialWidgetRoute(), // 复杂组合型Widget
+  RouteName.guideHotPubLibraryRoute: (context) => GuideHotPubLibraryRoute(), //pub 库
+  RouteName.guidePlugin: (context) => GuidePlugin(),  //原生SDK业务插件
+  RouteName.guideFlutterFavoriteRoute: (context) => GuideFlutterFavoriteRoute(), //Flutter Favorite 库
+  RouteName.guideOfficialPluginRoute: (context) => GuideOfficialPluginRoute(), //Flutter团队维护的插件
+  RouteName.guideOfficialPackageRoute: (context) => GuideOfficialPackageRoute(), //Flutter团队维护的软件包
+  RouteName.guideCommunityPackageRoute: (context) => GuideCommunityPackageRoute(), //Flutter社区维护的软件包
+  RouteName.guideDartTeamOfficialPackageRoute: (context) => GuideDartTeamOfficialPackageRoute(), //Dart团队发布的软件包
+  RouteName.guideRiveRoute: (context) => GuideRiveRoute(), //Rive 动画
+  RouteName.guideWeekWidgetRoute: (context) => GuideWeekWidgetRoute(), //每周Flutter小部件系列页面
+  RouteName.guideStateRoute: (context) => GuideStateRoute(), //状态管理第三方库页面
 };
 
 
 //考虑到功能模块 迭代十分频繁(由于代码的分离和更改经导致路由经常更换)
-//所以设计 混合路由表 经常改动的路由名称设一个常量方便管理。
+//经常改动的路由名称设一个常量方便管理。
 class RouteName {
   //抽屉模块
   static final String showMoreRoute = '/showMoreRoute';
   static final String guideExampleRoute = '/guideExampleRoute';
   static final String settingPage = '/settingPage';
-
   //功能模块
   static final String queryMobileHome = '/queryMobileHome';
   static final String englishQuotations = '/englishQuotations';
@@ -100,9 +101,23 @@ class RouteName {
   static final String computerWallpaperRoute = '/computerWallpaperRoute';
   static final String computerWallpaperList = '/computerWallpaperList';
   static final String wallpaperPopularSearches = '/wallpaperPopularSearches';
-
+  //设置模块
+  static final String multiLanguage = '/multiLanguage';
   //示例模块
+  static final String guideMaterialWidgetRoute = '/guideMaterialWidgetRoute';
+  static final String guideCupertinoWidgetRoute = '/guideCupertinoWidgetRoute';
+  static final String guideDynamicEffectRoute = '/guideDynamicEffectRoute';
+  static final String guideOfficialWidgetRoute = '/guideOfficialWidgetRoute';
+  static final String guideHotPubLibraryRoute = '/guideHotPubLibraryRoute';
+  static final String guidePlugin = '/guidePlugin';
+  static final String guideFlutterFavoriteRoute = '/guideFlutterFavoriteRoute';
+  static final String guideOfficialPluginRoute = '/guideOfficialPluginRoute';
+  static final String guideOfficialPackageRoute = '/guideOfficialPackageRoute';
+  static final String guideCommunityPackageRoute = '/guideCommunityPackageRoute';
+  static final String guideDartTeamOfficialPackageRoute = '/guideDartTeamOfficialPackageRoute';
+  static final String guideRiveRoute = '/guideRiveRoute';
   static final String guideWeekWidgetRoute = '/guideWeekWidgetRoute';
+  static final String guideStateRoute = '/guideStateRoute';
 
 }
 
