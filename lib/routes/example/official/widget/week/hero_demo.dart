@@ -48,7 +48,7 @@ import 'package:flutter/material.dart';
 ///
 ///！[带有Hero过渡部分的图。]（https://flutter.github.io/assets-for-apidocs/assets/interaction/heroes.png）
 
-class HeroDemo extends StatelessWidget{
+class HeroDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,22 +57,22 @@ class HeroDemo extends StatelessWidget{
         onPressedBack: () => Navigator.pop(context),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Center(
             ///创建一个英雄。
             /// [tag]和[child]参数不能为null。
             /// [child]参数及其所有后代不能为[Hero] es。
             child: GestureDetector(
               child: Hero(
+                ///此特定英雄的标识符。 如果此英雄的标签与我们正在导航或从中导航的[PageRoute]上的英雄标签匹配，则将触发英雄动画。
                 tag: 'hero1',
                 child: Image.asset(
                   'assets/images/img_gatsby.webp',
-                  width: 250,
+                  //width: 250,
                 ),
               ),
-              onTap: (){
+              onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => HeroDemo1()));
               },
             ),
@@ -81,10 +81,9 @@ class HeroDemo extends StatelessWidget{
       ),
     );
   }
-
 }
 
-class HeroDemo1 extends StatelessWidget{
+class HeroDemo1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,10 +101,16 @@ class HeroDemo1 extends StatelessWidget{
               //width: 300,
             ),
           ),
-          Text('这种微笑是极为罕见的微笑，带有一种令人无比放心的感觉，也许你一辈子只可能碰上四五次。一瞬间这种微笑面对着或者似乎面对着整个永恒的世界，然而又一瞬间，它凝聚到你身上，对你表现出一种不可抗拒的偏爱。他所表现出的对你理解的程度，恰恰是你想要被理解的程度'),
+          Padding(
+            padding: EdgeInsets.fromLTRB(12, 8, 12, 0),
+            child: Text(
+              '这种微笑是极为罕见的微笑，带有一种令人无比放心的感觉，也许你一辈子只可能碰上四五次。 \n '
+              '一瞬间这种微笑面对着或者似乎面对着整个永恒的世界，然而又一瞬间，它凝聚到你身上，对你表现出一种不可抗拒的偏爱。 \n'
+              '他所表现出的对你理解的程度，恰恰是你想要被理解的程度',
+            ),
+          ),
         ],
       ),
     );
   }
-
 }

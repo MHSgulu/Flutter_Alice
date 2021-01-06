@@ -1,11 +1,15 @@
+import 'package:alice/routes/example/official/widget/week/absorbpointer_demo.dart';
 import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
+import 'package:alice/routes/example/official/widget/week/custompaint_demo.dart';
 import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
 import 'package:alice/routes/example/official/widget/week/cliprect_demo.dart';
 import 'package:alice/routes/example/official/widget/week/fade_transition_demo.dart';
 import 'package:alice/routes/example/official/widget/week/fadeinimage_demo.dart';
+import 'package:alice/routes/example/official/widget/week/fittedbox_demo.dart';
 import 'package:alice/routes/example/official/widget/week/flexible_demo.dart';
 import 'package:alice/routes/example/official/widget/week/futurebuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/inheritedmodel_demo.dart';
+import 'package:alice/routes/example/official/widget/week/layoutbuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/opacity_demo.dart';
 import 'package:alice/routes/example/official/widget/week/page_view_demo.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
@@ -13,6 +17,7 @@ import 'package:alice/routes/example/official/widget/week/sliver_list_demo.dart'
 import 'package:alice/routes/example/official/widget/week/sliverappbar_demo.dart';
 import 'package:alice/routes/example/official/widget/week/streambuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/table_demo.dart';
+import 'package:alice/routes/example/official/widget/week/transform_demo.dart';
 import 'package:alice/routes/example/official/widget/week/wrap_demo.dart';
 import 'package:alice/routes/example/official/widget/week/hero_demo.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -106,6 +111,26 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                 MyCardTile(
                   text: 'Hero',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => HeroDemo())),
+                ),
+                MyCardTile(
+                  text: 'CustomPaint',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CustomPaintDemo())),
+                ),
+                MyCardTile(
+                  text: 'FittedBox',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FittedBoxDemo())),
+                ),
+                MyCardTile(
+                  text: 'LayoutBuilder',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LayoutBuilderDemo())),
+                ),
+                MyCardTile(
+                  text: 'AbsorbPointer',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AbsorbPointerDemo())),
+                ),
+                MyCardTile(
+                  text: 'Transform',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TransformDemo())),
                 ),
               ],
             ),
