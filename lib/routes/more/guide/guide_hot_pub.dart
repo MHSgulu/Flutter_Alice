@@ -1,13 +1,15 @@
 import 'package:alice/routes/example/company/baseflow/cached_network_image/example_cached_network_image.dart';
 import 'package:alice/routes/example/company/baseflow/permission_handler/example_permission.dart';
-import 'package:alice/routes/example/individual/badges/example_badge.dart';
+import 'package:alice/routes/example/individual/example_badge.dart';
 import 'package:alice/routes/example/individual/city_picker/example_city_picker.dart';
-import 'package:alice/routes/example/individual/flutter_html/example_html.dart';
-import 'package:alice/routes/example/individual/flutter_image_compress/example_picture_compression.dart';
-import 'package:alice/routes/example/individual/flutter_staggered_grid/test_staggered_grid.dart';
-import 'package:alice/routes/example/individual/gesture_password/example_gesture_password.dart';
-import 'package:alice/routes/example/individual/image_gallery_saver/image_gallery_saver.dart';
-import 'package:alice/routes/example/individual/marquee/example_marquee.dart';
+import 'package:alice/routes/example/individual/example_html.dart';
+import 'package:alice/routes/example/individual/example_picture_compression.dart';
+import 'package:alice/routes/example/individual/test_staggered_grid.dart';
+import 'package:alice/routes/example/individual/example_gesture_password.dart';
+import 'package:alice/routes/example/individual/image_gallery_saver.dart';
+import 'package:alice/routes/example/individual/example_marquee.dart';
+import 'package:alice/routes/example/individual/example_shimmer.dart';
+import 'package:alice/routes/example/individual/example_flip_panel.dart';
 import 'package:alice/routes/example/individual/zefyr/example_zefyr.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -35,6 +37,8 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'flutter_staggered_grid_view',
     'gesture_password_widget',
     'image_gallery_saver',
+    'shimmer',
+    'flip_panel',
   ];
 
   List<String> subTitleList = [
@@ -50,6 +54,8 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'Flutter交错网格视图，支持多列且行大小不同',
     'Flutter的手势解锁小部件，支持高度自定义',
     '一个新的flutter插件项目，用于将图像保存到图库',
+    '提供了一种在Flutter项目中添加闪烁效果的简便方法',
+    '带有内置动画的翻盖包装',
   ];
 
   @override
@@ -129,6 +135,12 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
         break;
       case 11:
         Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleImageGallerySaver()));
+        break;
+      case 12:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleShimmerPage()));
+        break;
+      case 13:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleFlipPanelPage()));
         break;
     }
   }

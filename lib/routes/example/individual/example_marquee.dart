@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 
-
 class ExampleMarquee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

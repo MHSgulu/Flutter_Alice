@@ -3,13 +3,31 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
-import 'package:alice/routes/example/individual/flutter_image_compress/resource.dart';
 import 'package:alice/widgets/library/time_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
+
+/// generate by resouce_generator library, shouldn't edit.
+class R {
+
+  /// ![preview](file:///Users/caijinglong/Documents/GitHub/flutter_image_compress/example/./img/auto-angle.jpg)
+  static const String IMG_AUTO_ANGLE_JPG = "img/auto-angle.jpg";
+
+  /// ![preview](file:///Users/caijinglong/Documents/GitHub/flutter_image_compress/example/./img/have-exif.jpg)
+  static const String IMG_HAVE_EXIF_JPG = "img/have-exif.jpg";
+
+  /// ![preview](file:///Users/caijinglong/Documents/GitHub/flutter_image_compress/example/./img/header.png)
+  static const String IMG_HEADER_PNG = "img/header.png";
+
+  /// ![preview](file:///Users/caijinglong/Documents/GitHub/flutter_image_compress/example/./img/img.jpg)
+  static const String IMG_IMG_JPG = "img/img.jpg";
+
+  /// ![preview](file:///Users/caijinglong/Documents/GitHub/flutter_image_compress/example/./img/transparent-background.png)
+  static const String IMG_TRANSPARENT_BACKGROUND_PNG = "img/transparent-background.png";
+}
 
 class ExamplePictureCompression extends StatefulWidget {
   @override
