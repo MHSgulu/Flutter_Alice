@@ -1,6 +1,4 @@
-import 'package:alice/routes/example/official/widget/example_nested_scroll_view_1.dart';
-import 'package:alice/routes/example/official/widget/example_nested_scroll_view_2.dart';
-import 'package:alice/routes/example/official/widget/example_nested_scroll_view_3.dart';
+import 'package:alice/routes/example/official/widget/example_nested_scroll_view.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
