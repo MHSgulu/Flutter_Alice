@@ -1,5 +1,6 @@
 import 'package:alice/routes/example/official/widget/week/absorbpointer_demo.dart';
 import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
+import 'package:alice/routes/example/official/widget/week/backdropfilter_demo.dart';
 import 'package:alice/routes/example/official/widget/week/custompaint_demo.dart';
 import 'package:alice/routes/example/official/widget/week/expanded_demo.dart';
 import 'package:alice/routes/example/official/widget/week/cliprect_demo.dart';
@@ -41,7 +42,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 MyCardTile(
-                  text: 'SafeArea',
+                  text: 'SafeArea(适配各种型号系统状态栏)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SafeAreaDemo())),
                 ),
                 MyCardTile(
@@ -61,7 +62,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimatedContainerDemo())),
                 ),
                 MyCardTile(
-                  text: 'Opacity',
+                  text: 'Opacity(不透明度)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => OpacityDemo())),
                 ),
                 MyCardTile(
@@ -69,7 +70,7 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FutureBuilderDemo())),
                 ),
                 MyCardTile(
-                  text: 'FadeTransition',
+                  text: 'FadeTransition(渐隐过渡)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeTransitionDemo())),
                 ),
                 MyCardTile(
@@ -113,11 +114,11 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => HeroDemo())),
                 ),
                 MyCardTile(
-                  text: 'CustomPaint',
+                  text: 'CustomPaint(自定义视图)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CustomPaintDemo())),
                 ),
                 MyCardTile(
-                  text: 'FittedBox',
+                  text: 'FittedBox(贴合容器)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FittedBoxDemo())),
                 ),
                 MyCardTile(
@@ -125,12 +126,16 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LayoutBuilderDemo())),
                 ),
                 MyCardTile(
-                  text: 'AbsorbPointer',
+                  text: 'AbsorbPointer(屏蔽触摸事件)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AbsorbPointerDemo())),
                 ),
                 MyCardTile(
-                  text: 'Transform',
+                  text: 'Transform(矩阵变换)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TransformDemo())),
+                ),
+                MyCardTile(
+                  text: 'BackdropFilter(背景滤镜)',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => BackdropFilterDemo())),
                 ),
               ],
             ),
