@@ -24,7 +24,7 @@ class MovieDetailsPage extends StatefulWidget {
 class MovieDetailsPageState extends State<MovieDetailsPage> {
   MovieDetailArguments args;
   Future<MTMovieDetailEntity> _future;
-  Color dynamicBackgroundColor; //动态背景色
+  Color dominantColor; //从电影海报获取的主要颜色值
   PaletteGenerator generator;
 
   @override
@@ -35,23 +35,23 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    //print('数据点位: movieId： ${args.movieId}');
-    fetchMainColorPicture(args.imgUrl);
+    print('数据点位: movieId： ${args.movieId}');
+    fetchDominantColorPicture(args.imgUrl);
     _future = HttpUtil.fetchTimeMovieDetailData(args.movieId);
     super.didChangeDependencies();
   }
 
-  void fetchMainColorPicture(String imageUrl) async {
+  void fetchDominantColorPicture(String imageUrl) async {
     generator = await PaletteGenerator.fromImageProvider(
       NetworkImage(imageUrl),
     );
     if (generator == null || generator.colors.isEmpty) {
-      dynamicBackgroundColor = Colors.grey[850];
+      dominantColor = Colors.grey[850];
     } else {
       if (mounted) {
         setState(() {
-          dynamicBackgroundColor = generator.dominantColor.color;
-          print(dynamicBackgroundColor.toString());
+          dominantColor = generator.dominantColor.color;
+          print('数据点位: dominantColor: ${dominantColor.toString()}');
         });
       }
     }
@@ -59,7 +59,7 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return dynamicBackgroundColor == null
+    return dominantColor == null
         ? themeColorsLoadingView()
         : themeColorsMovieView();
   }
@@ -75,9 +75,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
 
   Widget themeColorsMovieView() {
     return Scaffold(
-      //backgroundColor: ,
+      backgroundColor: dominantColor,
       appBar: AppBar(
-        backgroundColor: dynamicBackgroundColor,
+        backgroundColor: dominantColor,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
           onPressed: () => Navigator.pop(context),
@@ -105,29 +105,26 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
             behavior: CustomScrollBehavior(
               isShowLeading: true,
               isShowTrailing: true,
-              color: dynamicBackgroundColor,
+              color: dominantColor,
             ),
             child: SingleChildScrollView(
-              child: Container(
-                color: dynamicBackgroundColor,
-                padding: EdgeInsets.fromLTRB(8, 8, 8, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    MovieBasicInfoWidget(snapshot: snapshot), //电影基础信息栏
-                    MovieRatingInfoWidget(snapshot: snapshot), //电影评分信息栏
-                    MovieTypeInfoWidget(snapshot: snapshot), //电影类型信息栏
-                    MovieContentInfoWidget(snapshot: snapshot), //电影内容简介栏
-                    MovieActorInfoWidget( //电影演员列表栏
-                        snapshot: snapshot,
-                        valueColor: dynamicBackgroundColor,
-                    ),
-                    MovieStillInfoWidget( //电影预告片/剧照列表栏
-                        snapshot: snapshot,
-                        valueColor: dynamicBackgroundColor,
-                    ),
-                  ],
-                ),
+              padding: EdgeInsets.fromLTRB(8, 8, 8, 20),
+              child:Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  MovieBasicInfoWidget(snapshot: snapshot), //电影基础信息栏
+                  MovieRatingInfoWidget(snapshot: snapshot), //电影评分信息栏
+                  MovieTypeInfoWidget(snapshot: snapshot), //电影类型信息栏
+                  MovieContentInfoWidget(snapshot: snapshot), //电影内容简介栏
+                  MovieActorInfoWidget(
+                    snapshot: snapshot,
+                    valueColor: dominantColor,
+                  ), //电影演员列表栏
+                  MovieStillInfoWidget(
+                    snapshot: snapshot,
+                    valueColor: dominantColor,
+                  ), //电影预告片/剧照列表栏
+                ],
               ),
             ),
           );
