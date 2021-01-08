@@ -13,6 +13,7 @@ import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper_list.dar
 import 'package:alice/routes/more/wallpaper/computer/popular_searches.dart';
 import 'package:alice/routes/more/wallpaper/phone/phone_wallpaper.dart';
 import 'package:alice/routes/more/wallpaper/phone/phone_wallpaper_list.dart';
+import 'package:alice/routes/movie/movie_details.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alice/routes/more/setting.dart';
@@ -36,6 +37,11 @@ import 'package:alice/routes/more/recipes/recipes_route.dart';
 import 'package:alice/routes/more/setting/multi_language.dart';
 
 Map<String, WidgetBuilder> routes = {
+  //电影模块
+  RouteName.movieDetailsPage: (_) => MovieDetailsPage(), //电影详情页面
+
+
+
   //抽屉模块
   RouteName.showMoreRoute: (context) => ShowMoreRoute(), //功能列表页面
   RouteName.guideExampleRoute: (context) => GuideExampleRoute(), //示例页面
@@ -80,6 +86,8 @@ Map<String, WidgetBuilder> routes = {
 //考虑到功能模块 迭代十分频繁(由于代码的分离和更改经导致路由经常更换)
 //经常改动的路由名称设一个常量方便管理。
 class RouteName {
+  //电影模块
+  static final String movieDetailsPage = '/movieDetailsPage';
   //抽屉模块
   static final String showMoreRoute = '/showMoreRoute';
   static final String guideExampleRoute = '/guideExampleRoute';

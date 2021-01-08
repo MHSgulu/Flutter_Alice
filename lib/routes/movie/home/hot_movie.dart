@@ -1,3 +1,5 @@
+import 'package:alice/common/const/arguments.dart';
+import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
@@ -14,14 +16,18 @@ class HotMovieView extends StatefulWidget {
 class _HotMovieViewState extends State<HotMovieView> {
   Future<MtimeHotMovieEntity> _future;
 
-  void jumpToMovieDetails(String movieId, String imgUrl) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => MovieDetailsPage(movieId: movieId, imgUrl: imgUrl)));
-  }
-
   @override
   void initState() {
     _future = HttpUtil.fetchTimeHotMovieData();
     super.initState();
+  }
+
+  void jumpToMovieDetails(String movieId, String imgUrl) {
+    Navigator.pushNamed(
+      context,
+      RouteName.movieDetailsPage,
+      arguments: MovieDetailArguments(movieId, imgUrl),
+    );
   }
 
   @override
@@ -63,9 +69,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                 ),
                 GridView.builder(
                   padding: EdgeInsets.fromLTRB(8, 4, 8, 8),
-                  shrinkWrap: true, //是否根据子组件的总长度来设置列表的长度，默认值为false
-                  physics:
-                      NeverScrollableScrollPhysics(), //解决可互动组件的嵌套滑动冲突 禁止滚动 交给最外层滑动
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 0.55,
@@ -79,7 +84,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                     return GestureDetector(
                       onTap: () => jumpToMovieDetails(
                           snapshot.data.ms[index].id.toString(),
-                          snapshot.data.ms[index].img),
+                          snapshot.data.ms[index].img,
+                      ),
                       child: Column(
                         children: <Widget>[
                           Card(
@@ -156,4 +162,5 @@ class _HotMovieViewState extends State<HotMovieView> {
       },
     );
   }
+
 }

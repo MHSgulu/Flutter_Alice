@@ -5,7 +5,7 @@ import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart'
 import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
-import 'package:alice/generated/json/m_time_movie_detail_entity_helper.dart';
+import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
@@ -21,7 +21,7 @@ import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/model/bird_wallpaper_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/model/m_time_movie_detail_entity.dart';
+import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
@@ -193,20 +193,17 @@ class HttpUtil {
   }
 
   ///时光网API 电影详情
-  static Future<MTimeMovieDetailEntity> fetchTimeMovieDetailData(String movieId) async {
-    /*Response response = await DioUtil.getInstance().createTimeMovieDio2().get(
+  static Future<MTMovieDetailEntity> fetchTimeMovieDetailData(String movieId) async {
+    Response response = await DioUtil.getInstance().createTimeMovieDio().get(
       Api.mTimeMovieDetail,
       queryParameters: {
         "locationId": '290',
         "movieId": movieId,
       },
-    );*/
-    final response = await http.get('https://ticket-api-m.mtime.cn/movie/detail.api?locationId=290&movieId=${movieId}');
+    );
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
-      //print('数据点位： ${response.body}');
-      //return mTimeMovieDetailEntityFromJson(MTimeMovieDetailEntity(), jsonDecode(response.toString()));
-      return mTimeMovieDetailEntityFromJson(MTimeMovieDetailEntity(), jsonDecode(response.body));
+      return mTMovieDetailEntityFromJson(MTMovieDetailEntity(), jsonDecode(response.toString()));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
