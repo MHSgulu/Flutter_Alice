@@ -1,4 +1,5 @@
 import 'package:alice/routes/example/official/widget/week/absorbpointer_demo.dart';
+import 'package:alice/routes/example/official/widget/week/align_demo.dart';
 import 'package:alice/routes/example/official/widget/week/animated_container_demo.dart';
 import 'package:alice/routes/example/official/widget/week/backdropfilter_demo.dart';
 import 'package:alice/routes/example/official/widget/week/custompaint_demo.dart';
@@ -13,6 +14,7 @@ import 'package:alice/routes/example/official/widget/week/inheritedmodel_demo.da
 import 'package:alice/routes/example/official/widget/week/layoutbuilder_demo.dart';
 import 'package:alice/routes/example/official/widget/week/opacity_demo.dart';
 import 'package:alice/routes/example/official/widget/week/page_view_demo.dart';
+import 'package:alice/routes/example/official/widget/week/positioned_demo.dart';
 import 'package:alice/routes/example/official/widget/week/safe_area_demo.dart';
 import 'package:alice/routes/example/official/widget/week/sliver_list_demo.dart';
 import 'package:alice/routes/example/official/widget/week/sliverappbar_demo.dart';
@@ -94,15 +96,11 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeInImageDemo())),
                 ),
                 MyCardTile(
-                  text: 'FadeInImage',
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FadeInImageDemo())),
-                ),
-                MyCardTile(
                   text: 'StreamBuilder',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StreamBuilderDemo())),
                 ),
                 MyCardTile(
-                  text: 'InheritedModel',
+                  text: 'InheritedWidget(继承) - 进阶 Provider',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InheritedModelDemo())),
                 ),
                 MyCardTile(
@@ -136,6 +134,14 @@ class GuideWeekWidgetRoute extends StatelessWidget {
                 MyCardTile(
                   text: 'BackdropFilter(背景滤镜)',
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => BackdropFilterDemo())),
+                ),
+                MyCardTile(
+                  text: 'Align(对齐)',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AlignDemo())),
+                ),
+                MyCardTile(
+                  text: 'Positioned(定位)',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => PositionedDemo())),
                 ),
               ],
             ),
