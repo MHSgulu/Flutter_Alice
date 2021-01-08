@@ -3,16 +3,22 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 filmMakerWorkEntityFromJson(FilmMakerWorkEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
-		data.count = json['count']?.toInt();
+		data.count = json['count'] is String
+				? int.tryParse(json['count'])
+				: json['count'].toInt();
 	}
 	if (json['start'] != null) {
-		data.start = json['start']?.toInt();
+		data.start = json['start'] is String
+				? int.tryParse(json['start'])
+				: json['start'].toInt();
 	}
 	if (json['celebrity'] != null) {
 		data.celebrity = new FilmMakerWorkCelebrity().fromJson(json['celebrity']);
 	}
 	if (json['total'] != null) {
-		data.total = json['total']?.toInt();
+		data.total = json['total'] is String
+				? int.tryParse(json['total'])
+				: json['total'].toInt();
 	}
 	if (json['works'] != null) {
 		data.works = new List<FilmMakerWorkWork>();
@@ -42,16 +48,16 @@ filmMakerWorkCelebrityFromJson(FilmMakerWorkCelebrity data, Map<String, dynamic>
 		data.avatars = new FilmMakerWorkCelebrityAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -70,13 +76,13 @@ Map<String, dynamic> filmMakerWorkCelebrityToJson(FilmMakerWorkCelebrity entity)
 
 filmMakerWorkCelebrityAvatarsFromJson(FilmMakerWorkCelebrityAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -91,7 +97,7 @@ Map<String, dynamic> filmMakerWorkCelebrityAvatarsToJson(FilmMakerWorkCelebrityA
 
 filmMakerWorkWorkFromJson(FilmMakerWorkWork data, Map<String, dynamic> json) {
 	if (json['roles'] != null) {
-		data.roles = json['roles']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.roles = json['roles']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['subject'] != null) {
 		data.subject = new FilmMakerWorkWorksSubject().fromJson(json['subject']);
@@ -113,10 +119,10 @@ filmMakerWorkWorksSubjectFromJson(FilmMakerWorkWorksSubject data, Map<String, dy
 		data.rating = new FilmMakerWorkWorksSubjectRating().fromJson(json['rating']);
 	}
 	if (json['genres'] != null) {
-		data.genres = json['genres']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.genres = json['genres']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['casts'] != null) {
 		data.casts = new List<FilmMakerWorkWorksSubjectCast>();
@@ -125,22 +131,24 @@ filmMakerWorkWorksSubjectFromJson(FilmMakerWorkWorksSubject data, Map<String, dy
 		});
 	}
 	if (json['durations'] != null) {
-		data.durations = json['durations']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.durations = json['durations']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['collect_count'] != null) {
-		data.collectCount = json['collect_count']?.toInt();
+		data.collectCount = json['collect_count'] is String
+				? int.tryParse(json['collect_count'])
+				: json['collect_count'].toInt();
 	}
 	if (json['mainland_pubdate'] != null) {
-		data.mainlandPubdate = json['mainland_pubdate']?.toString();
+		data.mainlandPubdate = json['mainland_pubdate'].toString();
 	}
 	if (json['has_video'] != null) {
 		data.hasVideo = json['has_video'];
 	}
 	if (json['original_title'] != null) {
-		data.originalTitle = json['original_title']?.toString();
+		data.originalTitle = json['original_title'].toString();
 	}
 	if (json['subtype'] != null) {
-		data.subtype = json['subtype']?.toString();
+		data.subtype = json['subtype'].toString();
 	}
 	if (json['directors'] != null) {
 		data.directors = new List<FilmMakerWorkWorksSubjectDirector>();
@@ -149,19 +157,19 @@ filmMakerWorkWorksSubjectFromJson(FilmMakerWorkWorksSubject data, Map<String, dy
 		});
 	}
 	if (json['pubdates'] != null) {
-		data.pubdates = json['pubdates']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.pubdates = json['pubdates']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['year'] != null) {
-		data.year = json['year']?.toString();
+		data.year = json['year'].toString();
 	}
 	if (json['images'] != null) {
 		data.images = new FilmMakerWorkWorksSubjectImages().fromJson(json['images']);
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -197,19 +205,25 @@ Map<String, dynamic> filmMakerWorkWorksSubjectToJson(FilmMakerWorkWorksSubject e
 
 filmMakerWorkWorksSubjectRatingFromJson(FilmMakerWorkWorksSubjectRating data, Map<String, dynamic> json) {
 	if (json['max'] != null) {
-		data.max = json['max']?.toInt();
+		data.max = json['max'] is String
+				? int.tryParse(json['max'])
+				: json['max'].toInt();
 	}
 	if (json['average'] != null) {
-		data.average = json['average']?.toDouble();
+		data.average = json['average'] is String
+				? double.tryParse(json['average'])
+				: json['average'].toDouble();
 	}
 	if (json['details'] != null) {
 		data.details = new FilmMakerWorkWorksSubjectRatingDetails().fromJson(json['details']);
 	}
 	if (json['stars'] != null) {
-		data.stars = json['stars']?.toString();
+		data.stars = json['stars'].toString();
 	}
 	if (json['min'] != null) {
-		data.min = json['min']?.toInt();
+		data.min = json['min'] is String
+				? int.tryParse(json['min'])
+				: json['min'].toInt();
 	}
 	return data;
 }
@@ -228,19 +242,29 @@ Map<String, dynamic> filmMakerWorkWorksSubjectRatingToJson(FilmMakerWorkWorksSub
 
 filmMakerWorkWorksSubjectRatingDetailsFromJson(FilmMakerWorkWorksSubjectRatingDetails data, Map<String, dynamic> json) {
 	if (json['1'] != null) {
-		data.x1 = json['1']?.toDouble();
+		data.x1 = json['1'] is String
+				? double.tryParse(json['1'])
+				: json['1'].toDouble();
 	}
 	if (json['3'] != null) {
-		data.x3 = json['3']?.toDouble();
+		data.x3 = json['3'] is String
+				? double.tryParse(json['3'])
+				: json['3'].toDouble();
 	}
 	if (json['2'] != null) {
-		data.x2 = json['2']?.toDouble();
+		data.x2 = json['2'] is String
+				? double.tryParse(json['2'])
+				: json['2'].toDouble();
 	}
 	if (json['5'] != null) {
-		data.x5 = json['5']?.toDouble();
+		data.x5 = json['5'] is String
+				? double.tryParse(json['5'])
+				: json['5'].toDouble();
 	}
 	if (json['4'] != null) {
-		data.x4 = json['4']?.toDouble();
+		data.x4 = json['4'] is String
+				? double.tryParse(json['4'])
+				: json['4'].toDouble();
 	}
 	return data;
 }
@@ -260,16 +284,16 @@ filmMakerWorkWorksSubjectCastFromJson(FilmMakerWorkWorksSubjectCast data, Map<St
 		data.avatars = new FilmMakerWorkWorksSubjectCastsAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -288,13 +312,13 @@ Map<String, dynamic> filmMakerWorkWorksSubjectCastToJson(FilmMakerWorkWorksSubje
 
 filmMakerWorkWorksSubjectCastsAvatarsFromJson(FilmMakerWorkWorksSubjectCastsAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -312,16 +336,16 @@ filmMakerWorkWorksSubjectDirectorFromJson(FilmMakerWorkWorksSubjectDirector data
 		data.avatars = new FilmMakerWorkWorksSubjectDirectorsAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -340,13 +364,13 @@ Map<String, dynamic> filmMakerWorkWorksSubjectDirectorToJson(FilmMakerWorkWorksS
 
 filmMakerWorkWorksSubjectDirectorsAvatarsFromJson(FilmMakerWorkWorksSubjectDirectorsAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -361,13 +385,13 @@ Map<String, dynamic> filmMakerWorkWorksSubjectDirectorsAvatarsToJson(FilmMakerWo
 
 filmMakerWorkWorksSubjectImagesFromJson(FilmMakerWorkWorksSubjectImages data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }

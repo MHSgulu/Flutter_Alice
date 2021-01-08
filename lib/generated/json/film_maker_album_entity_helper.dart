@@ -3,7 +3,9 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 filmMakerAlbumEntityFromJson(FilmMakerAlbumEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
-		data.count = json['count']?.toInt();
+		data.count = json['count'] is String
+				? int.tryParse(json['count'])
+				: json['count'].toInt();
 	}
 	if (json['photos'] != null) {
 		data.photos = new List<FilmMakerAlbumPhoto>();
@@ -15,10 +17,14 @@ filmMakerAlbumEntityFromJson(FilmMakerAlbumEntity data, Map<String, dynamic> jso
 		data.celebrity = new FilmMakerAlbumCelebrity().fromJson(json['celebrity']);
 	}
 	if (json['total'] != null) {
-		data.total = json['total']?.toInt();
+		data.total = json['total'] is String
+				? int.tryParse(json['total'])
+				: json['total'].toInt();
 	}
 	if (json['start'] != null) {
-		data.start = json['start']?.toInt();
+		data.start = json['start'] is String
+				? int.tryParse(json['start'])
+				: json['start'].toInt();
 	}
 	return data;
 }
@@ -39,61 +45,69 @@ Map<String, dynamic> filmMakerAlbumEntityToJson(FilmMakerAlbumEntity entity) {
 
 filmMakerAlbumPhotoFromJson(FilmMakerAlbumPhoto data, Map<String, dynamic> json) {
 	if (json['photos_count'] != null) {
-		data.photosCount = json['photos_count']?.toInt();
+		data.photosCount = json['photos_count'] is String
+				? int.tryParse(json['photos_count'])
+				: json['photos_count'].toInt();
 	}
 	if (json['thumb'] != null) {
-		data.thumb = json['thumb']?.toString();
+		data.thumb = json['thumb'].toString();
 	}
 	if (json['icon'] != null) {
-		data.icon = json['icon']?.toString();
+		data.icon = json['icon'].toString();
 	}
 	if (json['author'] != null) {
 		data.author = new FilmMakerAlbumPhotosAuthor().fromJson(json['author']);
 	}
 	if (json['created_at'] != null) {
-		data.createdAt = json['created_at']?.toString();
+		data.createdAt = json['created_at'].toString();
 	}
 	if (json['album_id'] != null) {
-		data.albumId = json['album_id']?.toString();
+		data.albumId = json['album_id'].toString();
 	}
 	if (json['cover'] != null) {
-		data.cover = json['cover']?.toString();
+		data.cover = json['cover'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['prev_photo'] != null) {
-		data.prevPhoto = json['prev_photo']?.toString();
+		data.prevPhoto = json['prev_photo'].toString();
 	}
 	if (json['album_url'] != null) {
-		data.albumUrl = json['album_url']?.toString();
+		data.albumUrl = json['album_url'].toString();
 	}
 	if (json['comments_count'] != null) {
-		data.commentsCount = json['comments_count']?.toInt();
+		data.commentsCount = json['comments_count'] is String
+				? int.tryParse(json['comments_count'])
+				: json['comments_count'].toInt();
 	}
 	if (json['image'] != null) {
-		data.image = json['image']?.toString();
+		data.image = json['image'].toString();
 	}
 	if (json['recs_count'] != null) {
-		data.recsCount = json['recs_count']?.toInt();
+		data.recsCount = json['recs_count'] is String
+				? int.tryParse(json['recs_count'])
+				: json['recs_count'].toInt();
 	}
 	if (json['position'] != null) {
-		data.position = json['position']?.toInt();
+		data.position = json['position'] is String
+				? int.tryParse(json['position'])
+				: json['position'].toInt();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['album_title'] != null) {
-		data.albumTitle = json['album_title']?.toString();
+		data.albumTitle = json['album_title'].toString();
 	}
 	if (json['next_photo'] != null) {
-		data.nextPhoto = json['next_photo']?.toString();
+		data.nextPhoto = json['next_photo'].toString();
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['desc'] != null) {
-		data.desc = json['desc']?.toString();
+		data.desc = json['desc'].toString();
 	}
 	return data;
 }
@@ -126,22 +140,22 @@ Map<String, dynamic> filmMakerAlbumPhotoToJson(FilmMakerAlbumPhoto entity) {
 
 filmMakerAlbumPhotosAuthorFromJson(FilmMakerAlbumPhotosAuthor data, Map<String, dynamic> json) {
 	if (json['uid'] != null) {
-		data.uid = json['uid']?.toString();
+		data.uid = json['uid'].toString();
 	}
 	if (json['avatar'] != null) {
-		data.avatar = json['avatar']?.toString();
+		data.avatar = json['avatar'].toString();
 	}
 	if (json['signature'] != null) {
-		data.signature = json['signature']?.toString();
+		data.signature = json['signature'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }
@@ -162,16 +176,16 @@ filmMakerAlbumCelebrityFromJson(FilmMakerAlbumCelebrity data, Map<String, dynami
 		data.avatars = new FilmMakerAlbumCelebrityAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -190,13 +204,13 @@ Map<String, dynamic> filmMakerAlbumCelebrityToJson(FilmMakerAlbumCelebrity entit
 
 filmMakerAlbumCelebrityAvatarsFromJson(FilmMakerAlbumCelebrityAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }

@@ -2,13 +2,13 @@ import 'package:alice/model/mobie_phone_entity.dart';
 
 mobiePhoneEntityFromJson(MobiePhoneEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new MobiePhoneResult().fromJson(json['result']);
@@ -29,10 +29,12 @@ Map<String, dynamic> mobiePhoneEntityToJson(MobiePhoneEntity entity) {
 
 mobiePhoneResultFromJson(MobiePhoneResult data, Map<String, dynamic> json) {
 	if (json['status'] != null) {
-		data.status = json['status']?.toInt();
+		data.status = json['status'] is String
+				? int.tryParse(json['status'])
+				: json['status'].toInt();
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new MobiePhoneResultResult().fromJson(json['result']);
@@ -52,22 +54,22 @@ Map<String, dynamic> mobiePhoneResultToJson(MobiePhoneResult entity) {
 
 mobiePhoneResultResultFromJson(MobiePhoneResultResult data, Map<String, dynamic> json) {
 	if (json['shouji'] != null) {
-		data.shouji = json['shouji']?.toString();
+		data.shouji = json['shouji'].toString();
 	}
 	if (json['province'] != null) {
-		data.province = json['province']?.toString();
+		data.province = json['province'].toString();
 	}
 	if (json['city'] != null) {
-		data.city = json['city']?.toString();
+		data.city = json['city'].toString();
 	}
 	if (json['company'] != null) {
-		data.company = json['company']?.toString();
+		data.company = json['company'].toString();
 	}
 	if (json['cardtype'] != null) {
-		data.cardtype = json['cardtype']?.toString();
+		data.cardtype = json['cardtype'].toString();
 	}
 	if (json['areacode'] != null) {
-		data.areacode = json['areacode']?.toString();
+		data.areacode = json['areacode'].toString();
 	}
 	return data;
 }

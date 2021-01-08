@@ -2,16 +2,18 @@ import 'package:alice/model/mtime_hot_movie_entity.dart';
 
 mtimeHotMovieEntityFromJson(MtimeHotMovieEntity data, Map<String, dynamic> json) {
 	if (json['bImg'] != null) {
-		data.bImg = json['bImg']?.toString();
+		data.bImg = json['bImg'].toString();
 	}
 	if (json['date'] != null) {
-		data.date = json['date']?.toString();
+		data.date = json['date'].toString();
 	}
 	if (json['hasPromo'] != null) {
 		data.hasPromo = json['hasPromo'];
 	}
 	if (json['lid'] != null) {
-		data.lid = json['lid']?.toInt();
+		data.lid = json['lid'] is String
+				? int.tryParse(json['lid'])
+				: json['lid'].toInt();
 	}
 	if (json['ms'] != null) {
 		data.ms = new List<MtimeHotMovieM>();
@@ -20,16 +22,20 @@ mtimeHotMovieEntityFromJson(MtimeHotMovieEntity data, Map<String, dynamic> json)
 		});
 	}
 	if (json['newActivitiesTime'] != null) {
-		data.newActivitiesTime = json['newActivitiesTime']?.toInt();
+		data.newActivitiesTime = json['newActivitiesTime'] is String
+				? int.tryParse(json['newActivitiesTime'])
+				: json['newActivitiesTime'].toInt();
 	}
 	if (json['promo'] != null) {
 		data.promo = new MtimeHotMoviePromo().fromJson(json['promo']);
 	}
 	if (json['totalComingMovie'] != null) {
-		data.totalComingMovie = json['totalComingMovie']?.toInt();
+		data.totalComingMovie = json['totalComingMovie'] is String
+				? int.tryParse(json['totalComingMovie'])
+				: json['totalComingMovie'].toInt();
 	}
 	if (json['voucherMsg'] != null) {
-		data.voucherMsg = json['voucherMsg']?.toString();
+		data.voucherMsg = json['voucherMsg'].toString();
 	}
 	return data;
 }
@@ -54,43 +60,55 @@ Map<String, dynamic> mtimeHotMovieEntityToJson(MtimeHotMovieEntity entity) {
 
 mtimeHotMovieMFromJson(MtimeHotMovieM data, Map<String, dynamic> json) {
 	if (json['NearestCinemaCount'] != null) {
-		data.nearestCinemaCount = json['NearestCinemaCount']?.toInt();
+		data.nearestCinemaCount = json['NearestCinemaCount'] is String
+				? int.tryParse(json['NearestCinemaCount'])
+				: json['NearestCinemaCount'].toInt();
 	}
 	if (json['NearestDay'] != null) {
-		data.nearestDay = json['NearestDay']?.toInt();
+		data.nearestDay = json['NearestDay'] is String
+				? int.tryParse(json['NearestDay'])
+				: json['NearestDay'].toInt();
 	}
 	if (json['NearestShowtimeCount'] != null) {
-		data.nearestShowtimeCount = json['NearestShowtimeCount']?.toInt();
+		data.nearestShowtimeCount = json['NearestShowtimeCount'] is String
+				? int.tryParse(json['NearestShowtimeCount'])
+				: json['NearestShowtimeCount'].toInt();
 	}
 	if (json['aN1'] != null) {
-		data.aN1 = json['aN1']?.toString();
+		data.aN1 = json['aN1'].toString();
 	}
 	if (json['aN2'] != null) {
-		data.aN2 = json['aN2']?.toString();
+		data.aN2 = json['aN2'].toString();
 	}
 	if (json['actors'] != null) {
-		data.actors = json['actors']?.toString();
+		data.actors = json['actors'].toString();
 	}
 	if (json['cC'] != null) {
-		data.cC = json['cC']?.toInt();
+		data.cC = json['cC'] is String
+				? int.tryParse(json['cC'])
+				: json['cC'].toInt();
 	}
 	if (json['commonSpecial'] != null) {
-		data.commonSpecial = json['commonSpecial']?.toString();
+		data.commonSpecial = json['commonSpecial'].toString();
 	}
 	if (json['d'] != null) {
-		data.d = json['d']?.toString();
+		data.d = json['d'].toString();
 	}
 	if (json['dN'] != null) {
-		data.dN = json['dN']?.toString();
+		data.dN = json['dN'].toString();
 	}
 	if (json['def'] != null) {
-		data.def = json['def']?.toInt();
+		data.def = json['def'] is String
+				? int.tryParse(json['def'])
+				: json['def'].toInt();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toInt();
+		data.id = json['id'] is String
+				? int.tryParse(json['id'])
+				: json['id'].toInt();
 	}
 	if (json['img'] != null) {
-		data.img = json['img']?.toString();
+		data.img = json['img'].toString();
 	}
 	if (json['is3D'] != null) {
 		data.is3D = json['is3D'];
@@ -120,46 +138,58 @@ mtimeHotMovieMFromJson(MtimeHotMovieM data, Map<String, dynamic> json) {
 		data.isTicket = json['isTicket'];
 	}
 	if (json['m'] != null) {
-		data.m = json['m']?.toString();
+		data.m = json['m'].toString();
 	}
 	if (json['movieId'] != null) {
-		data.movieId = json['movieId']?.toInt();
+		data.movieId = json['movieId'] is String
+				? int.tryParse(json['movieId'])
+				: json['movieId'].toInt();
 	}
 	if (json['movieType'] != null) {
-		data.movieType = json['movieType']?.toString();
+		data.movieType = json['movieType'].toString();
 	}
 	if (json['p'] != null) {
-		data.p = json['p']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.p = json['p']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['preferentialFlag'] != null) {
 		data.preferentialFlag = json['preferentialFlag'];
 	}
 	if (json['r'] != null) {
-		data.r = json['r']?.toDouble();
+		data.r = json['r'] is String
+				? double.tryParse(json['r'])
+				: json['r'].toDouble();
 	}
 	if (json['rc'] != null) {
-		data.rc = json['rc']?.toInt();
+		data.rc = json['rc'] is String
+				? int.tryParse(json['rc'])
+				: json['rc'].toInt();
 	}
 	if (json['rd'] != null) {
-		data.rd = json['rd']?.toString();
+		data.rd = json['rd'].toString();
 	}
 	if (json['rsC'] != null) {
-		data.rsC = json['rsC']?.toInt();
+		data.rsC = json['rsC'] is String
+				? int.tryParse(json['rsC'])
+				: json['rsC'].toInt();
 	}
 	if (json['sC'] != null) {
-		data.sC = json['sC']?.toInt();
+		data.sC = json['sC'] is String
+				? int.tryParse(json['sC'])
+				: json['sC'].toInt();
 	}
 	if (json['t'] != null) {
-		data.t = json['t']?.toString();
+		data.t = json['t'].toString();
 	}
 	if (json['tCn'] != null) {
-		data.tCn = json['tCn']?.toString();
+		data.tCn = json['tCn'].toString();
 	}
 	if (json['tEn'] != null) {
-		data.tEn = json['tEn']?.toString();
+		data.tEn = json['tEn'].toString();
 	}
 	if (json['ua'] != null) {
-		data.ua = json['ua']?.toInt();
+		data.ua = json['ua'] is String
+				? int.tryParse(json['ua'])
+				: json['ua'].toInt();
 	}
 	if (json['versions'] != null) {
 		data.versions = new List<MtimeHotMovieMsVersion>();
@@ -168,10 +198,12 @@ mtimeHotMovieMFromJson(MtimeHotMovieM data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['wantedCount'] != null) {
-		data.wantedCount = json['wantedCount']?.toInt();
+		data.wantedCount = json['wantedCount'] is String
+				? int.tryParse(json['wantedCount'])
+				: json['wantedCount'].toInt();
 	}
 	if (json['year'] != null) {
-		data.year = json['year']?.toString();
+		data.year = json['year'].toString();
 	}
 	return data;
 }
@@ -224,10 +256,12 @@ Map<String, dynamic> mtimeHotMovieMToJson(MtimeHotMovieM entity) {
 
 mtimeHotMovieMsVersionFromJson(MtimeHotMovieMsVersion data, Map<String, dynamic> json) {
 	if (json['enum'] != null) {
-		data.xEnum = json['enum']?.toInt();
+		data.xEnum = json['enum'] is String
+				? int.tryParse(json['enum'])
+				: json['enum'].toInt();
 	}
 	if (json['version'] != null) {
-		data.version = json['version']?.toString();
+		data.version = json['version'].toString();
 	}
 	return data;
 }

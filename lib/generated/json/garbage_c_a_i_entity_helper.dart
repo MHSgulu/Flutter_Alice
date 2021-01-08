@@ -2,13 +2,13 @@ import 'package:alice/model/garbage_c_a_i_entity.dart';
 
 garbageCAIEntityFromJson(GarbageCAIEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new GarbageCAIResult().fromJson(json['result']);
@@ -29,22 +29,28 @@ Map<String, dynamic> garbageCAIEntityToJson(GarbageCAIEntity entity) {
 
 garbageCAIResultFromJson(GarbageCAIResult data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['remain'] != null) {
-		data.remain = json['remain']?.toInt();
+		data.remain = json['remain'] is String
+				? int.tryParse(json['remain'])
+				: json['remain'].toInt();
 	}
 	if (json['remainTimes'] != null) {
-		data.remainTimes = json['remainTimes']?.toInt();
+		data.remainTimes = json['remainTimes'] is String
+				? int.tryParse(json['remainTimes'])
+				: json['remainTimes'].toInt();
 	}
 	if (json['remainSeconds'] != null) {
-		data.remainSeconds = json['remainSeconds']?.toInt();
+		data.remainSeconds = json['remainSeconds'] is String
+				? int.tryParse(json['remainSeconds'])
+				: json['remainSeconds'].toInt();
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new GarbageCAIResultResult().fromJson(json['result']);
@@ -68,10 +74,12 @@ Map<String, dynamic> garbageCAIResultToJson(GarbageCAIResult entity) {
 
 garbageCAIResultResultFromJson(GarbageCAIResultResult data, Map<String, dynamic> json) {
 	if (json['status'] != null) {
-		data.status = json['status']?.toInt();
+		data.status = json['status'] is String
+				? int.tryParse(json['status'])
+				: json['status'].toInt();
 	}
 	if (json['message'] != null) {
-		data.message = json['message']?.toString();
+		data.message = json['message'].toString();
 	}
 	if (json['garbage_info'] != null) {
 		data.garbageInfo = new List<GarbageCAIResultResultGarbageInfo>();
@@ -94,22 +102,24 @@ Map<String, dynamic> garbageCAIResultResultToJson(GarbageCAIResultResult entity)
 
 garbageCAIResultResultGarbageInfoFromJson(GarbageCAIResultResultGarbageInfo data, Map<String, dynamic> json) {
 	if (json['cate_name'] != null) {
-		data.cateName = json['cate_name']?.toString();
+		data.cateName = json['cate_name'].toString();
 	}
 	if (json['city_id'] != null) {
-		data.cityId = json['city_id']?.toString();
+		data.cityId = json['city_id'].toString();
 	}
 	if (json['city_name'] != null) {
-		data.cityName = json['city_name']?.toString();
+		data.cityName = json['city_name'].toString();
 	}
 	if (json['confidence'] != null) {
-		data.confidence = json['confidence']?.toInt();
+		data.confidence = json['confidence'] is String
+				? int.tryParse(json['confidence'])
+				: json['confidence'].toInt();
 	}
 	if (json['garbage_name'] != null) {
-		data.garbageName = json['garbage_name']?.toString();
+		data.garbageName = json['garbage_name'].toString();
 	}
 	if (json['ps'] != null) {
-		data.ps = json['ps']?.toString();
+		data.ps = json['ps'].toString();
 	}
 	return data;
 }

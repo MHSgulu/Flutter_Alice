@@ -2,16 +2,16 @@ import 'package:alice/model/bird_wallpaper_category_entity.dart';
 
 birdWallpaperCategoryEntityFromJson(BirdWallpaperCategoryEntity data, Map<String, dynamic> json) {
 	if (json['errno'] != null) {
-		data.errno = json['errno']?.toString();
+		data.errno = json['errno'].toString();
 	}
 	if (json['errmsg'] != null) {
-		data.errmsg = json['errmsg']?.toString();
+		data.errmsg = json['errmsg'].toString();
 	}
 	if (json['consume'] != null) {
-		data.consume = json['consume']?.toString();
+		data.consume = json['consume'].toString();
 	}
 	if (json['total'] != null) {
-		data.total = json['total']?.toString();
+		data.total = json['total'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new List<BirdWallpaperCategoryData>();
@@ -36,19 +36,19 @@ Map<String, dynamic> birdWallpaperCategoryEntityToJson(BirdWallpaperCategoryEnti
 
 birdWallpaperCategoryDataFromJson(BirdWallpaperCategoryData data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['order_num'] != null) {
-		data.orderNum = json['order_num']?.toString();
+		data.orderNum = json['order_num'].toString();
 	}
 	if (json['tag'] != null) {
-		data.tag = json['tag']?.toString();
+		data.tag = json['tag'].toString();
 	}
 	if (json['create_time'] != null) {
-		data.createTime = json['create_time']?.toString();
+		data.createTime = json['create_time'].toString();
 	}
 	return data;
 }

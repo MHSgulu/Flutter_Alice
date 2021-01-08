@@ -2,16 +2,16 @@ import 'package:alice/model/bird_wallpaper_entity.dart';
 
 birdWallpaperEntityFromJson(BirdWallpaperEntity data, Map<String, dynamic> json) {
 	if (json['errno'] != null) {
-		data.errno = json['errno']?.toString();
+		data.errno = json['errno'].toString();
 	}
 	if (json['errmsg'] != null) {
-		data.errmsg = json['errmsg']?.toString();
+		data.errmsg = json['errmsg'].toString();
 	}
 	if (json['consume'] != null) {
-		data.consume = json['consume']?.toString();
+		data.consume = json['consume'].toString();
 	}
 	if (json['total'] != null) {
-		data.total = json['total']?.toString();
+		data.total = json['total'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new List<BirdWallpaperData>();
@@ -36,86 +36,86 @@ Map<String, dynamic> birdWallpaperEntityToJson(BirdWallpaperEntity entity) {
 
 birdWallpaperDataFromJson(BirdWallpaperData data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['class_id'] != null) {
-		data.classId = json['class_id']?.toString();
+		data.classId = json['class_id'].toString();
 	}
 	if (json['resolution'] != null) {
-		data.resolution = json['resolution']?.toString();
+		data.resolution = json['resolution'].toString();
 	}
 	if (json['url_mobile'] != null) {
-		data.urlMobile = json['url_mobile']?.toString();
+		data.urlMobile = json['url_mobile'].toString();
 	}
 	if (json['url'] != null) {
-		data.url = json['url']?.toString();
+		data.url = json['url'].toString();
 	}
 	if (json['url_thumb'] != null) {
-		data.urlThumb = json['url_thumb']?.toString();
+		data.urlThumb = json['url_thumb'].toString();
 	}
 	if (json['url_mid'] != null) {
-		data.urlMid = json['url_mid']?.toString();
+		data.urlMid = json['url_mid'].toString();
 	}
 	if (json['download_times'] != null) {
-		data.downloadTimes = json['download_times']?.toString();
+		data.downloadTimes = json['download_times'].toString();
 	}
 	if (json['imgcut'] != null) {
-		data.imgcut = json['imgcut']?.toString();
+		data.imgcut = json['imgcut'].toString();
 	}
 	if (json['tag'] != null) {
-		data.tag = json['tag']?.toString();
+		data.tag = json['tag'].toString();
 	}
 	if (json['create_time'] != null) {
-		data.createTime = json['create_time']?.toString();
+		data.createTime = json['create_time'].toString();
 	}
 	if (json['update_time'] != null) {
-		data.updateTime = json['update_time']?.toString();
+		data.updateTime = json['update_time'].toString();
 	}
 	if (json['ad_id'] != null) {
-		data.adId = json['ad_id']?.toString();
+		data.adId = json['ad_id'].toString();
 	}
 	if (json['ad_img'] != null) {
-		data.adImg = json['ad_img']?.toString();
+		data.adImg = json['ad_img'].toString();
 	}
 	if (json['ad_pos'] != null) {
-		data.adPos = json['ad_pos']?.toString();
+		data.adPos = json['ad_pos'].toString();
 	}
 	if (json['ad_url'] != null) {
-		data.adUrl = json['ad_url']?.toString();
+		data.adUrl = json['ad_url'].toString();
 	}
 	if (json['ext_1'] != null) {
-		data.ext1 = json['ext_1']?.toString();
+		data.ext1 = json['ext_1'].toString();
 	}
 	if (json['ext_2'] != null) {
-		data.ext2 = json['ext_2']?.toString();
+		data.ext2 = json['ext_2'].toString();
 	}
 	if (json['utag'] != null) {
-		data.utag = json['utag']?.toString();
+		data.utag = json['utag'].toString();
 	}
 	if (json['tempdata'] != null) {
-		data.tempdata = json['tempdata']?.toString();
+		data.tempdata = json['tempdata'].toString();
 	}
 	if (json['rdata'] != null) {
 		data.rdata = new List<dynamic>();
 		data.rdata.addAll(json['rdata']);
 	}
 	if (json['img_1600_900'] != null) {
-		data.img1600900 = json['img_1600_900']?.toString();
+		data.img1600900 = json['img_1600_900'].toString();
 	}
 	if (json['img_1440_900'] != null) {
-		data.img1440900 = json['img_1440_900']?.toString();
+		data.img1440900 = json['img_1440_900'].toString();
 	}
 	if (json['img_1366_768'] != null) {
-		data.img1366768 = json['img_1366_768']?.toString();
+		data.img1366768 = json['img_1366_768'].toString();
 	}
 	if (json['img_1280_800'] != null) {
-		data.img1280800 = json['img_1280_800']?.toString();
+		data.img1280800 = json['img_1280_800'].toString();
 	}
 	if (json['img_1280_1024'] != null) {
-		data.img12801024 = json['img_1280_1024']?.toString();
+		data.img12801024 = json['img_1280_1024'].toString();
 	}
 	if (json['img_1024_768'] != null) {
-		data.img1024768 = json['img_1024_768']?.toString();
+		data.img1024768 = json['img_1024_768'].toString();
 	}
 	return data;
 }

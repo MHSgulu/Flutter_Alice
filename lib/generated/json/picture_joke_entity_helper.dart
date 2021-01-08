@@ -3,13 +3,13 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 pictureJokeEntityFromJson(PictureJokeEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new PictureJokeResult().fromJson(json['result']);
@@ -30,13 +30,15 @@ Map<String, dynamic> pictureJokeEntityToJson(PictureJokeEntity entity) {
 
 pictureJokeResultFromJson(PictureJokeResult data, Map<String, dynamic> json) {
 	if (json['showapi_res_error'] != null) {
-		data.showapiResError = json['showapi_res_error']?.toString();
+		data.showapiResError = json['showapi_res_error'].toString();
 	}
 	if (json['showapi_res_id'] != null) {
-		data.showapiResId = json['showapi_res_id']?.toString();
+		data.showapiResId = json['showapi_res_id'].toString();
 	}
 	if (json['showapi_res_code'] != null) {
-		data.showapiResCode = json['showapi_res_code']?.toInt();
+		data.showapiResCode = json['showapi_res_code'] is String
+				? int.tryParse(json['showapi_res_code'])
+				: json['showapi_res_code'].toInt();
 	}
 	if (json['showapi_res_body'] != null) {
 		data.showapiResBody = new PictureJokeResultShowapiResBody().fromJson(json['showapi_res_body']);
@@ -57,10 +59,14 @@ Map<String, dynamic> pictureJokeResultToJson(PictureJokeResult entity) {
 
 pictureJokeResultShowapiResBodyFromJson(PictureJokeResultShowapiResBody data, Map<String, dynamic> json) {
 	if (json['allPages'] != null) {
-		data.allPages = json['allPages']?.toInt();
+		data.allPages = json['allPages'] is String
+				? int.tryParse(json['allPages'])
+				: json['allPages'].toInt();
 	}
 	if (json['ret_code'] != null) {
-		data.retCode = json['ret_code']?.toInt();
+		data.retCode = json['ret_code'] is String
+				? int.tryParse(json['ret_code'])
+				: json['ret_code'].toInt();
 	}
 	if (json['contentlist'] != null) {
 		data.contentlist = new List<PictureJokeResultShowapiResBodyContentlist>();
@@ -69,13 +75,19 @@ pictureJokeResultShowapiResBodyFromJson(PictureJokeResultShowapiResBody data, Ma
 		});
 	}
 	if (json['currentPage'] != null) {
-		data.currentPage = json['currentPage']?.toInt();
+		data.currentPage = json['currentPage'] is String
+				? int.tryParse(json['currentPage'])
+				: json['currentPage'].toInt();
 	}
 	if (json['allNum'] != null) {
-		data.allNum = json['allNum']?.toInt();
+		data.allNum = json['allNum'] is String
+				? int.tryParse(json['allNum'])
+				: json['allNum'].toInt();
 	}
 	if (json['maxResult'] != null) {
-		data.maxResult = json['maxResult']?.toInt();
+		data.maxResult = json['maxResult'] is String
+				? int.tryParse(json['maxResult'])
+				: json['maxResult'].toInt();
 	}
 	return data;
 }
@@ -95,19 +107,21 @@ Map<String, dynamic> pictureJokeResultShowapiResBodyToJson(PictureJokeResultShow
 
 pictureJokeResultShowapiResBodyContentlistFromJson(PictureJokeResultShowapiResBodyContentlist data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['img'] != null) {
-		data.img = json['img']?.toString();
+		data.img = json['img'].toString();
 	}
 	if (json['type'] != null) {
-		data.type = json['type']?.toInt();
+		data.type = json['type'] is String
+				? int.tryParse(json['type'])
+				: json['type'].toInt();
 	}
 	if (json['ct'] != null) {
-		data.ct = json['ct']?.toString();
+		data.ct = json['ct'].toString();
 	}
 	return data;
 }

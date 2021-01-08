@@ -3,13 +3,13 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 newsEntityFromJson(NewsEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new NewsResult().fromJson(json['result']);
@@ -30,10 +30,12 @@ Map<String, dynamic> newsEntityToJson(NewsEntity entity) {
 
 newsResultFromJson(NewsResult data, Map<String, dynamic> json) {
 	if (json['status'] != null) {
-		data.status = json['status']?.toInt();
+		data.status = json['status'] is String
+				? int.tryParse(json['status'])
+				: json['status'].toInt();
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new NewsResultResult().fromJson(json['result']);
@@ -53,10 +55,12 @@ Map<String, dynamic> newsResultToJson(NewsResult entity) {
 
 newsResultResultFromJson(NewsResultResult data, Map<String, dynamic> json) {
 	if (json['channel'] != null) {
-		data.channel = json['channel']?.toString();
+		data.channel = json['channel'].toString();
 	}
 	if (json['num'] != null) {
-		data.num = json['num']?.toInt();
+		data.num = json['num'] is String
+				? int.tryParse(json['num'])
+				: json['num'].toInt();
 	}
 	if (json['list'] != null) {
 		data.xList = new List<NewsResultResultList>();
@@ -79,28 +83,28 @@ Map<String, dynamic> newsResultResultToJson(NewsResultResult entity) {
 
 newsResultResultListFromJson(NewsResultResultList data, Map<String, dynamic> json) {
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['time'] != null) {
-		data.time = json['time']?.toString();
+		data.time = json['time'].toString();
 	}
 	if (json['src'] != null) {
-		data.src = json['src']?.toString();
+		data.src = json['src'].toString();
 	}
 	if (json['category'] != null) {
-		data.category = json['category']?.toString();
+		data.category = json['category'].toString();
 	}
 	if (json['pic'] != null) {
-		data.pic = json['pic']?.toString();
+		data.pic = json['pic'].toString();
 	}
 	if (json['content'] != null) {
-		data.content = json['content']?.toString();
+		data.content = json['content'].toString();
 	}
 	if (json['url'] != null) {
-		data.url = json['url']?.toString();
+		data.url = json['url'].toString();
 	}
 	if (json['weburl'] != null) {
-		data.weburl = json['weburl']?.toString();
+		data.weburl = json['weburl'].toString();
 	}
 	return data;
 }

@@ -20,19 +20,21 @@ articleDataFromJson(ArticleData data, Map<String, dynamic> json) {
 		data.date = new ArticleDataDate().fromJson(json['date']);
 	}
 	if (json['author'] != null) {
-		data.author = json['author']?.toString();
+		data.author = json['author'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['digest'] != null) {
-		data.digest = json['digest']?.toString();
+		data.digest = json['digest'].toString();
 	}
 	if (json['content'] != null) {
-		data.content = json['content']?.toString();
+		data.content = json['content'].toString();
 	}
 	if (json['wc'] != null) {
-		data.wc = json['wc']?.toInt();
+		data.wc = json['wc'] is String
+				? int.tryParse(json['wc'])
+				: json['wc'].toInt();
 	}
 	return data;
 }
@@ -52,13 +54,13 @@ Map<String, dynamic> articleDataToJson(ArticleData entity) {
 
 articleDataDateFromJson(ArticleDataDate data, Map<String, dynamic> json) {
 	if (json['curr'] != null) {
-		data.curr = json['curr']?.toString();
+		data.curr = json['curr'].toString();
 	}
 	if (json['prev'] != null) {
-		data.prev = json['prev']?.toString();
+		data.prev = json['prev'].toString();
 	}
 	if (json['next'] != null) {
-		data.next = json['next']?.toString();
+		data.next = json['next'].toString();
 	}
 	return data;
 }

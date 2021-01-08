@@ -3,13 +3,13 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 hotWordTypeEntityFromJson(HotWordTypeEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new HotWordTypeResult().fromJson(json['result']);
@@ -30,13 +30,15 @@ Map<String, dynamic> hotWordTypeEntityToJson(HotWordTypeEntity entity) {
 
 hotWordTypeResultFromJson(HotWordTypeResult data, Map<String, dynamic> json) {
 	if (json['showapi_res_error'] != null) {
-		data.showapiResError = json['showapi_res_error']?.toString();
+		data.showapiResError = json['showapi_res_error'].toString();
 	}
 	if (json['showapi_res_id'] != null) {
-		data.showapiResId = json['showapi_res_id']?.toString();
+		data.showapiResId = json['showapi_res_id'].toString();
 	}
 	if (json['showapi_res_code'] != null) {
-		data.showapiResCode = json['showapi_res_code']?.toInt();
+		data.showapiResCode = json['showapi_res_code'] is String
+				? int.tryParse(json['showapi_res_code'])
+				: json['showapi_res_code'].toInt();
 	}
 	if (json['showapi_res_body'] != null) {
 		data.showapiResBody = new HotWordTypeResultShowapiResBody().fromJson(json['showapi_res_body']);
@@ -57,7 +59,9 @@ Map<String, dynamic> hotWordTypeResultToJson(HotWordTypeResult entity) {
 
 hotWordTypeResultShowapiResBodyFromJson(HotWordTypeResultShowapiResBody data, Map<String, dynamic> json) {
 	if (json['ret_code'] != null) {
-		data.retCode = json['ret_code']?.toInt();
+		data.retCode = json['ret_code'] is String
+				? int.tryParse(json['ret_code'])
+				: json['ret_code'].toInt();
 	}
 	if (json['list'] != null) {
 		data.xList = new List<HotWordTypeResultShowapiResBodyList>();
@@ -79,7 +83,7 @@ Map<String, dynamic> hotWordTypeResultShowapiResBodyToJson(HotWordTypeResultShow
 
 hotWordTypeResultShowapiResBodyListFromJson(HotWordTypeResultShowapiResBodyList data, Map<String, dynamic> json) {
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['childList'] != null) {
 		data.childList = new List<HotWordTypeResultShowapiResBodyListChildList>();
@@ -101,10 +105,10 @@ Map<String, dynamic> hotWordTypeResultShowapiResBodyListToJson(HotWordTypeResult
 
 hotWordTypeResultShowapiResBodyListChildListFromJson(HotWordTypeResultShowapiResBodyListChildList data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }

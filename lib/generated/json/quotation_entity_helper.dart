@@ -3,13 +3,15 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 quotationEntityFromJson(QuotationEntity data, Map<String, dynamic> json) {
 	if (json['showapi_res_error'] != null) {
-		data.showapiResError = json['showapi_res_error']?.toString();
+		data.showapiResError = json['showapi_res_error'].toString();
 	}
 	if (json['showapi_res_id'] != null) {
-		data.showapiResId = json['showapi_res_id']?.toString();
+		data.showapiResId = json['showapi_res_id'].toString();
 	}
 	if (json['showapi_res_code'] != null) {
-		data.showapiResCode = json['showapi_res_code']?.toInt();
+		data.showapiResCode = json['showapi_res_code'] is String
+				? int.tryParse(json['showapi_res_code'])
+				: json['showapi_res_code'].toInt();
 	}
 	if (json['showapi_res_body'] != null) {
 		data.showapiResBody = new QuotationShowapiResBody().fromJson(json['showapi_res_body']);
@@ -30,10 +32,12 @@ Map<String, dynamic> quotationEntityToJson(QuotationEntity entity) {
 
 quotationShowapiResBodyFromJson(QuotationShowapiResBody data, Map<String, dynamic> json) {
 	if (json['ret_code'] != null) {
-		data.retCode = json['ret_code']?.toInt();
+		data.retCode = json['ret_code'] is String
+				? int.tryParse(json['ret_code'])
+				: json['ret_code'].toInt();
 	}
 	if (json['ret_message'] != null) {
-		data.retMessage = json['ret_message']?.toString();
+		data.retMessage = json['ret_message'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new List<QuotationShowapiResBodyData>();
@@ -56,10 +60,10 @@ Map<String, dynamic> quotationShowapiResBodyToJson(QuotationShowapiResBody entit
 
 quotationShowapiResBodyDataFromJson(QuotationShowapiResBodyData data, Map<String, dynamic> json) {
 	if (json['english'] != null) {
-		data.english = json['english']?.toString();
+		data.english = json['english'].toString();
 	}
 	if (json['chinese'] != null) {
-		data.chinese = json['chinese']?.toString();
+		data.chinese = json['chinese'].toString();
 	}
 	return data;
 }

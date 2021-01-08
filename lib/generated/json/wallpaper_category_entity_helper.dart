@@ -2,13 +2,15 @@ import 'package:alice/model/wallpaper_category_entity.dart';
 
 wallpaperCategoryEntityFromJson(WallpaperCategoryEntity data, Map<String, dynamic> json) {
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['res'] != null) {
 		data.res = new WallpaperCategoryRes().fromJson(json['res']);
 	}
 	if (json['code'] != null) {
-		data.code = json['code']?.toInt();
+		data.code = json['code'] is String
+				? int.tryParse(json['code'])
+				: json['code'].toInt();
 	}
 	return data;
 }
@@ -43,47 +45,57 @@ Map<String, dynamic> wallpaperCategoryResToJson(WallpaperCategoryRes entity) {
 
 wallpaperCategoryResCategoryFromJson(WallpaperCategoryResCategory data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
-		data.count = json['count']?.toInt();
+		data.count = json['count'] is String
+				? int.tryParse(json['count'])
+				: json['count'].toInt();
 	}
 	if (json['ename'] != null) {
-		data.ename = json['ename']?.toString();
+		data.ename = json['ename'].toString();
 	}
 	if (json['rname'] != null) {
-		data.rname = json['rname']?.toString();
+		data.rname = json['rname'].toString();
 	}
 	if (json['cover_temp'] != null) {
-		data.coverTemp = json['cover_temp']?.toString();
+		data.coverTemp = json['cover_temp'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['cover'] != null) {
-		data.cover = json['cover']?.toString();
+		data.cover = json['cover'].toString();
 	}
 	if (json['rank'] != null) {
-		data.rank = json['rank']?.toInt();
+		data.rank = json['rank'] is String
+				? int.tryParse(json['rank'])
+				: json['rank'].toInt();
 	}
 	if (json['filter'] != null) {
 		data.filter = new List<dynamic>();
 		data.filter.addAll(json['filter']);
 	}
 	if (json['sn'] != null) {
-		data.sn = json['sn']?.toInt();
+		data.sn = json['sn'] is String
+				? int.tryParse(json['sn'])
+				: json['sn'].toInt();
 	}
 	if (json['icover'] != null) {
-		data.icover = json['icover']?.toString();
+		data.icover = json['icover'].toString();
 	}
 	if (json['atime'] != null) {
-		data.atime = json['atime']?.toDouble();
+		data.atime = json['atime'] is String
+				? double.tryParse(json['atime'])
+				: json['atime'].toDouble();
 	}
 	if (json['type'] != null) {
-		data.type = json['type']?.toInt();
+		data.type = json['type'] is String
+				? int.tryParse(json['type'])
+				: json['type'].toInt();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['picasso_cover'] != null) {
-		data.picassoCover = json['picasso_cover']?.toString();
+		data.picassoCover = json['picasso_cover'].toString();
 	}
 	return data;
 }

@@ -6,7 +6,9 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		data.rating = new MoiveDetailsRating().fromJson(json['rating']);
 	}
 	if (json['reviews_count'] != null) {
-		data.reviewsCount = json['reviews_count']?.toInt();
+		data.reviewsCount = json['reviews_count'] is String
+				? int.tryParse(json['reviews_count'])
+				: json['reviews_count'].toInt();
 	}
 	if (json['videos'] != null) {
 		data.videos = new List<MoiveDetailsVideo>();
@@ -15,25 +17,29 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['wish_count'] != null) {
-		data.wishCount = json['wish_count']?.toInt();
+		data.wishCount = json['wish_count'] is String
+				? int.tryParse(json['wish_count'])
+				: json['wish_count'].toInt();
 	}
 	if (json['original_title'] != null) {
-		data.originalTitle = json['original_title']?.toString();
+		data.originalTitle = json['original_title'].toString();
 	}
 	if (json['blooper_urls'] != null) {
-		data.blooperUrls = json['blooper_urls']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.blooperUrls = json['blooper_urls']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['collect_count'] != null) {
-		data.collectCount = json['collect_count']?.toInt();
+		data.collectCount = json['collect_count'] is String
+				? int.tryParse(json['collect_count'])
+				: json['collect_count'].toInt();
 	}
 	if (json['images'] != null) {
 		data.images = new MoiveDetailsImages().fromJson(json['images']);
 	}
 	if (json['douban_site'] != null) {
-		data.doubanSite = json['douban_site']?.toString();
+		data.doubanSite = json['douban_site'].toString();
 	}
 	if (json['year'] != null) {
-		data.year = json['year']?.toString();
+		data.year = json['year'].toString();
 	}
 	if (json['popular_comments'] != null) {
 		data.popularComments = new List<MoiveDetailsPopularCommants>();
@@ -42,22 +48,24 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['mobile_url'] != null) {
-		data.mobileUrl = json['mobile_url']?.toString();
+		data.mobileUrl = json['mobile_url'].toString();
 	}
 	if (json['photos_count'] != null) {
-		data.photosCount = json['photos_count']?.toInt();
+		data.photosCount = json['photos_count'] is String
+				? int.tryParse(json['photos_count'])
+				: json['photos_count'].toInt();
 	}
 	if (json['pubdate'] != null) {
-		data.pubdate = json['pubdate']?.toString();
+		data.pubdate = json['pubdate'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['do_count'] != null) {
 		data.doCount = json['do_count'];
@@ -66,16 +74,16 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		data.hasVideo = json['has_video'];
 	}
 	if (json['share_url'] != null) {
-		data.shareUrl = json['share_url']?.toString();
+		data.shareUrl = json['share_url'].toString();
 	}
 	if (json['seasons_count'] != null) {
 		data.seasonsCount = json['seasons_count'];
 	}
 	if (json['languages'] != null) {
-		data.languages = json['languages']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.languages = json['languages']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['schedule_url'] != null) {
-		data.scheduleUrl = json['schedule_url']?.toString();
+		data.scheduleUrl = json['schedule_url'].toString();
 	}
 	if (json['writers'] != null) {
 		data.writers = new List<MoiveDetailsWriter>();
@@ -84,22 +92,22 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['pubdates'] != null) {
-		data.pubdates = json['pubdates']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.pubdates = json['pubdates']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['website'] != null) {
-		data.website = json['website']?.toString();
+		data.website = json['website'].toString();
 	}
 	if (json['tags'] != null) {
-		data.tags = json['tags']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.tags = json['tags']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['has_schedule'] != null) {
 		data.hasSchedule = json['has_schedule'];
 	}
 	if (json['durations'] != null) {
-		data.durations = json['durations']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.durations = json['durations']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['genres'] != null) {
-		data.genres = json['genres']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.genres = json['genres']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['collection'] != null) {
 		data.collection = json['collection'];
@@ -114,7 +122,7 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		data.episodesCount = json['episodes_count'];
 	}
 	if (json['trailer_urls'] != null) {
-		data.trailerUrls = json['trailer_urls']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.trailerUrls = json['trailer_urls']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['has_ticket'] != null) {
 		data.hasTicket = json['has_ticket'];
@@ -126,7 +134,7 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['clip_urls'] != null) {
-		data.clipUrls = json['clip_urls']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.clipUrls = json['clip_urls']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['current_season'] != null) {
 		data.currentSeason = json['current_season'];
@@ -138,10 +146,10 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['countries'] != null) {
-		data.countries = json['countries']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.countries = json['countries']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['mainland_pubdate'] != null) {
-		data.mainlandPubdate = json['mainland_pubdate']?.toString();
+		data.mainlandPubdate = json['mainland_pubdate'].toString();
 	}
 	if (json['photos'] != null) {
 		data.photos = new List<MoiveDetailsPhoto>();
@@ -150,7 +158,7 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['summary'] != null) {
-		data.summary = json['summary']?.toString();
+		data.summary = json['summary'].toString();
 	}
 	if (json['clips'] != null) {
 		data.clips = new List<MoiveDetailsClip>();
@@ -159,7 +167,7 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['subtype'] != null) {
-		data.subtype = json['subtype']?.toString();
+		data.subtype = json['subtype'].toString();
 	}
 	if (json['directors'] != null) {
 		data.directors = new List<MoiveDetailsDirector>();
@@ -168,7 +176,9 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['comments_count'] != null) {
-		data.commentsCount = json['comments_count']?.toInt();
+		data.commentsCount = json['comments_count'] is String
+				? int.tryParse(json['comments_count'])
+				: json['comments_count'].toInt();
 	}
 	if (json['popular_reviews'] != null) {
 		data.popularReviews = new List<MoiveDetailsPopularReview>();
@@ -177,10 +187,12 @@ moiveDetailsEntityFromJson(MoiveDetailsEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['ratings_count'] != null) {
-		data.ratingsCount = json['ratings_count']?.toInt();
+		data.ratingsCount = json['ratings_count'] is String
+				? int.tryParse(json['ratings_count'])
+				: json['ratings_count'].toInt();
 	}
 	if (json['aka'] != null) {
-		data.aka = json['aka']?.map((v) => v?.toString())?.toList()?.cast<String>();
+		data.aka = json['aka']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	return data;
 }
@@ -266,19 +278,25 @@ Map<String, dynamic> moiveDetailsEntityToJson(MoiveDetailsEntity entity) {
 
 moiveDetailsRatingFromJson(MoiveDetailsRating data, Map<String, dynamic> json) {
 	if (json['max'] != null) {
-		data.max = json['max']?.toInt();
+		data.max = json['max'] is String
+				? int.tryParse(json['max'])
+				: json['max'].toInt();
 	}
 	if (json['average'] != null) {
-		data.average = json['average']?.toDouble();
+		data.average = json['average'] is String
+				? double.tryParse(json['average'])
+				: json['average'].toDouble();
 	}
 	if (json['details'] != null) {
 		data.details = new MoiveDetailsRatingDetails().fromJson(json['details']);
 	}
 	if (json['stars'] != null) {
-		data.stars = json['stars']?.toString();
+		data.stars = json['stars'].toString();
 	}
 	if (json['min'] != null) {
-		data.min = json['min']?.toInt();
+		data.min = json['min'] is String
+				? int.tryParse(json['min'])
+				: json['min'].toInt();
 	}
 	return data;
 }
@@ -297,19 +315,29 @@ Map<String, dynamic> moiveDetailsRatingToJson(MoiveDetailsRating entity) {
 
 moiveDetailsRatingDetailsFromJson(MoiveDetailsRatingDetails data, Map<String, dynamic> json) {
 	if (json['1'] != null) {
-		data.x1 = json['1']?.toDouble();
+		data.x1 = json['1'] is String
+				? double.tryParse(json['1'])
+				: json['1'].toDouble();
 	}
 	if (json['3'] != null) {
-		data.x3 = json['3']?.toDouble();
+		data.x3 = json['3'] is String
+				? double.tryParse(json['3'])
+				: json['3'].toDouble();
 	}
 	if (json['2'] != null) {
-		data.x2 = json['2']?.toDouble();
+		data.x2 = json['2'] is String
+				? double.tryParse(json['2'])
+				: json['2'].toDouble();
 	}
 	if (json['5'] != null) {
-		data.x5 = json['5']?.toDouble();
+		data.x5 = json['5'] is String
+				? double.tryParse(json['5'])
+				: json['5'].toDouble();
 	}
 	if (json['4'] != null) {
-		data.x4 = json['4']?.toDouble();
+		data.x4 = json['4'] is String
+				? double.tryParse(json['4'])
+				: json['4'].toDouble();
 	}
 	return data;
 }
@@ -329,10 +357,10 @@ moiveDetailsVideoFromJson(MoiveDetailsVideo data, Map<String, dynamic> json) {
 		data.source = new MoiveDetailsVideosSource().fromJson(json['source']);
 	}
 	if (json['sample_link'] != null) {
-		data.sampleLink = json['sample_link']?.toString();
+		data.sampleLink = json['sample_link'].toString();
 	}
 	if (json['video_id'] != null) {
-		data.videoId = json['video_id']?.toString();
+		data.videoId = json['video_id'].toString();
 	}
 	if (json['need_pay'] != null) {
 		data.needPay = json['need_pay'];
@@ -353,13 +381,13 @@ Map<String, dynamic> moiveDetailsVideoToJson(MoiveDetailsVideo entity) {
 
 moiveDetailsVideosSourceFromJson(MoiveDetailsVideosSource data, Map<String, dynamic> json) {
 	if (json['literal'] != null) {
-		data.literal = json['literal']?.toString();
+		data.literal = json['literal'].toString();
 	}
 	if (json['pic'] != null) {
-		data.pic = json['pic']?.toString();
+		data.pic = json['pic'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }
@@ -374,13 +402,13 @@ Map<String, dynamic> moiveDetailsVideosSourceToJson(MoiveDetailsVideosSource ent
 
 moiveDetailsImagesFromJson(MoiveDetailsImages data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -398,22 +426,24 @@ moiveDetailsPopularCommantsFromJson(MoiveDetailsPopularCommants data, Map<String
 		data.rating = new MoiveDetailsPopularCommentsRating().fromJson(json['rating']);
 	}
 	if (json['useful_count'] != null) {
-		data.usefulCount = json['useful_count']?.toInt();
+		data.usefulCount = json['useful_count'] is String
+				? int.tryParse(json['useful_count'])
+				: json['useful_count'].toInt();
 	}
 	if (json['author'] != null) {
 		data.author = new MoiveDetailsPopularCommentsAuthor().fromJson(json['author']);
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['content'] != null) {
-		data.content = json['content']?.toString();
+		data.content = json['content'].toString();
 	}
 	if (json['created_at'] != null) {
-		data.createdAt = json['created_at']?.toString();
+		data.createdAt = json['created_at'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -436,13 +466,19 @@ Map<String, dynamic> moiveDetailsPopularCommantsToJson(MoiveDetailsPopularComman
 
 moiveDetailsPopularCommentsRatingFromJson(MoiveDetailsPopularCommentsRating data, Map<String, dynamic> json) {
 	if (json['max'] != null) {
-		data.max = json['max']?.toInt();
+		data.max = json['max'] is String
+				? int.tryParse(json['max'])
+				: json['max'].toInt();
 	}
 	if (json['value'] != null) {
-		data.value = json['value']?.toDouble();
+		data.value = json['value'] is String
+				? double.tryParse(json['value'])
+				: json['value'].toDouble();
 	}
 	if (json['min'] != null) {
-		data.min = json['min']?.toInt();
+		data.min = json['min'] is String
+				? int.tryParse(json['min'])
+				: json['min'].toInt();
 	}
 	return data;
 }
@@ -457,22 +493,22 @@ Map<String, dynamic> moiveDetailsPopularCommentsRatingToJson(MoiveDetailsPopular
 
 moiveDetailsPopularCommentsAuthorFromJson(MoiveDetailsPopularCommentsAuthor data, Map<String, dynamic> json) {
 	if (json['uid'] != null) {
-		data.uid = json['uid']?.toString();
+		data.uid = json['uid'].toString();
 	}
 	if (json['avatar'] != null) {
-		data.avatar = json['avatar']?.toString();
+		data.avatar = json['avatar'].toString();
 	}
 	if (json['signature'] != null) {
-		data.signature = json['signature']?.toString();
+		data.signature = json['signature'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }
@@ -493,16 +529,16 @@ moiveDetailsWriterFromJson(MoiveDetailsWriter data, Map<String, dynamic> json) {
 		data.avatars = new MoiveDetailsWritersAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -521,13 +557,13 @@ Map<String, dynamic> moiveDetailsWriterToJson(MoiveDetailsWriter entity) {
 
 moiveDetailsWritersAvatarsFromJson(MoiveDetailsWritersAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -542,25 +578,25 @@ Map<String, dynamic> moiveDetailsWritersAvatarsToJson(MoiveDetailsWritersAvatars
 
 moiveDetailsTrailerFromJson(MoiveDetailsTrailer data, Map<String, dynamic> json) {
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['resource_url'] != null) {
-		data.resourceUrl = json['resource_url']?.toString();
+		data.resourceUrl = json['resource_url'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -579,25 +615,25 @@ Map<String, dynamic> moiveDetailsTrailerToJson(MoiveDetailsTrailer entity) {
 
 moiveDetailsBlooperFromJson(MoiveDetailsBlooper data, Map<String, dynamic> json) {
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['resource_url'] != null) {
-		data.resourceUrl = json['resource_url']?.toString();
+		data.resourceUrl = json['resource_url'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -619,16 +655,16 @@ moiveDetailsCastFromJson(MoiveDetailsCast data, Map<String, dynamic> json) {
 		data.avatars = new MoiveDetailsCastsAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -647,13 +683,13 @@ Map<String, dynamic> moiveDetailsCastToJson(MoiveDetailsCast entity) {
 
 moiveDetailsCastsAvatarsFromJson(MoiveDetailsCastsAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -668,22 +704,22 @@ Map<String, dynamic> moiveDetailsCastsAvatarsToJson(MoiveDetailsCastsAvatars ent
 
 moiveDetailsPhotoFromJson(MoiveDetailsPhoto data, Map<String, dynamic> json) {
 	if (json['thumb'] != null) {
-		data.thumb = json['thumb']?.toString();
+		data.thumb = json['thumb'].toString();
 	}
 	if (json['image'] != null) {
-		data.image = json['image']?.toString();
+		data.image = json['image'].toString();
 	}
 	if (json['cover'] != null) {
-		data.cover = json['cover']?.toString();
+		data.cover = json['cover'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['icon'] != null) {
-		data.icon = json['icon']?.toString();
+		data.icon = json['icon'].toString();
 	}
 	return data;
 }
@@ -701,25 +737,25 @@ Map<String, dynamic> moiveDetailsPhotoToJson(MoiveDetailsPhoto entity) {
 
 moiveDetailsClipFromJson(MoiveDetailsClip data, Map<String, dynamic> json) {
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['resource_url'] != null) {
-		data.resourceUrl = json['resource_url']?.toString();
+		data.resourceUrl = json['resource_url'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -741,16 +777,16 @@ moiveDetailsDirectorFromJson(MoiveDetailsDirector data, Map<String, dynamic> jso
 		data.avatars = new MoiveDetailsDirectorsAvatars().fromJson(json['avatars']);
 	}
 	if (json['name_en'] != null) {
-		data.nameEn = json['name_en']?.toString();
+		data.nameEn = json['name_en'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -769,13 +805,13 @@ Map<String, dynamic> moiveDetailsDirectorToJson(MoiveDetailsDirector entity) {
 
 moiveDetailsDirectorsAvatarsFromJson(MoiveDetailsDirectorsAvatars data, Map<String, dynamic> json) {
 	if (json['small'] != null) {
-		data.small = json['small']?.toString();
+		data.small = json['small'].toString();
 	}
 	if (json['large'] != null) {
-		data.large = json['large']?.toString();
+		data.large = json['large'].toString();
 	}
 	if (json['medium'] != null) {
-		data.medium = json['medium']?.toString();
+		data.medium = json['medium'].toString();
 	}
 	return data;
 }
@@ -793,22 +829,22 @@ moiveDetailsPopularReviewFromJson(MoiveDetailsPopularReview data, Map<String, dy
 		data.rating = new MoiveDetailsPopularReviewsRating().fromJson(json['rating']);
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['subject_id'] != null) {
-		data.subjectId = json['subject_id']?.toString();
+		data.subjectId = json['subject_id'].toString();
 	}
 	if (json['author'] != null) {
 		data.author = new MoiveDetailsPopularReviewsAuthor().fromJson(json['author']);
 	}
 	if (json['summary'] != null) {
-		data.summary = json['summary']?.toString();
+		data.summary = json['summary'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	return data;
 }
@@ -831,13 +867,19 @@ Map<String, dynamic> moiveDetailsPopularReviewToJson(MoiveDetailsPopularReview e
 
 moiveDetailsPopularReviewsRatingFromJson(MoiveDetailsPopularReviewsRating data, Map<String, dynamic> json) {
 	if (json['max'] != null) {
-		data.max = json['max']?.toInt();
+		data.max = json['max'] is String
+				? int.tryParse(json['max'])
+				: json['max'].toInt();
 	}
 	if (json['value'] != null) {
-		data.value = json['value']?.toDouble();
+		data.value = json['value'] is String
+				? double.tryParse(json['value'])
+				: json['value'].toDouble();
 	}
 	if (json['min'] != null) {
-		data.min = json['min']?.toInt();
+		data.min = json['min'] is String
+				? int.tryParse(json['min'])
+				: json['min'].toInt();
 	}
 	return data;
 }
@@ -852,22 +894,22 @@ Map<String, dynamic> moiveDetailsPopularReviewsRatingToJson(MoiveDetailsPopularR
 
 moiveDetailsPopularReviewsAuthorFromJson(MoiveDetailsPopularReviewsAuthor data, Map<String, dynamic> json) {
 	if (json['uid'] != null) {
-		data.uid = json['uid']?.toString();
+		data.uid = json['uid'].toString();
 	}
 	if (json['avatar'] != null) {
-		data.avatar = json['avatar']?.toString();
+		data.avatar = json['avatar'].toString();
 	}
 	if (json['signature'] != null) {
-		data.signature = json['signature']?.toString();
+		data.signature = json['signature'].toString();
 	}
 	if (json['alt'] != null) {
-		data.alt = json['alt']?.toString();
+		data.alt = json['alt'].toString();
 	}
 	if (json['id'] != null) {
-		data.id = json['id']?.toString();
+		data.id = json['id'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }

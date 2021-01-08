@@ -3,13 +3,13 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 realTimeHotspotEntityFromJson(RealTimeHotspotEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new RealTimeHotspotResult().fromJson(json['result']);
@@ -30,13 +30,15 @@ Map<String, dynamic> realTimeHotspotEntityToJson(RealTimeHotspotEntity entity) {
 
 realTimeHotspotResultFromJson(RealTimeHotspotResult data, Map<String, dynamic> json) {
 	if (json['showapi_res_error'] != null) {
-		data.showapiResError = json['showapi_res_error']?.toString();
+		data.showapiResError = json['showapi_res_error'].toString();
 	}
 	if (json['showapi_res_id'] != null) {
-		data.showapiResId = json['showapi_res_id']?.toString();
+		data.showapiResId = json['showapi_res_id'].toString();
 	}
 	if (json['showapi_res_code'] != null) {
-		data.showapiResCode = json['showapi_res_code']?.toInt();
+		data.showapiResCode = json['showapi_res_code'] is String
+				? int.tryParse(json['showapi_res_code'])
+				: json['showapi_res_code'].toInt();
 	}
 	if (json['showapi_res_body'] != null) {
 		data.showapiResBody = new RealTimeHotspotResultShowapiResBody().fromJson(json['showapi_res_body']);
@@ -57,7 +59,9 @@ Map<String, dynamic> realTimeHotspotResultToJson(RealTimeHotspotResult entity) {
 
 realTimeHotspotResultShowapiResBodyFromJson(RealTimeHotspotResultShowapiResBody data, Map<String, dynamic> json) {
 	if (json['ret_code'] != null) {
-		data.retCode = json['ret_code']?.toInt();
+		data.retCode = json['ret_code'] is String
+				? int.tryParse(json['ret_code'])
+				: json['ret_code'].toInt();
 	}
 	if (json['list'] != null) {
 		data.xList = new List<RealTimeHotspotResultShowapiResBodyList>();
@@ -79,16 +83,16 @@ Map<String, dynamic> realTimeHotspotResultShowapiResBodyToJson(RealTimeHotspotRe
 
 realTimeHotspotResultShowapiResBodyListFromJson(RealTimeHotspotResultShowapiResBodyList data, Map<String, dynamic> json) {
 	if (json['num'] != null) {
-		data.num = json['num']?.toString();
+		data.num = json['num'].toString();
 	}
 	if (json['level'] != null) {
-		data.level = json['level']?.toString();
+		data.level = json['level'].toString();
 	}
 	if (json['trend'] != null) {
-		data.trend = json['trend']?.toString();
+		data.trend = json['trend'].toString();
 	}
 	if (json['name'] != null) {
-		data.name = json['name']?.toString();
+		data.name = json['name'].toString();
 	}
 	return data;
 }

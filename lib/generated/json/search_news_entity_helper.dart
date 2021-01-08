@@ -3,13 +3,13 @@ import 'package:alice/generated/json/base/json_filed.dart';
 
 searchNewsEntityFromJson(SearchNewsEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['charge'] != null) {
 		data.charge = json['charge'];
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new SearchNewsResult().fromJson(json['result']);
@@ -30,10 +30,12 @@ Map<String, dynamic> searchNewsEntityToJson(SearchNewsEntity entity) {
 
 searchNewsResultFromJson(SearchNewsResult data, Map<String, dynamic> json) {
 	if (json['status'] != null) {
-		data.status = json['status']?.toInt();
+		data.status = json['status'] is String
+				? int.tryParse(json['status'])
+				: json['status'].toInt();
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
 		data.result = new SearchNewsResultResult().fromJson(json['result']);
@@ -53,10 +55,12 @@ Map<String, dynamic> searchNewsResultToJson(SearchNewsResult entity) {
 
 searchNewsResultResultFromJson(SearchNewsResultResult data, Map<String, dynamic> json) {
 	if (json['keyword'] != null) {
-		data.keyword = json['keyword']?.toString();
+		data.keyword = json['keyword'].toString();
 	}
 	if (json['num'] != null) {
-		data.num = json['num']?.toInt();
+		data.num = json['num'] is String
+				? int.tryParse(json['num'])
+				: json['num'].toInt();
 	}
 	if (json['list'] != null) {
 		data.xList = new List<SearchNewsResultResultList>();
@@ -79,31 +83,33 @@ Map<String, dynamic> searchNewsResultResultToJson(SearchNewsResultResult entity)
 
 searchNewsResultResultListFromJson(SearchNewsResultResultList data, Map<String, dynamic> json) {
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['time'] != null) {
-		data.time = json['time']?.toString();
+		data.time = json['time'].toString();
 	}
 	if (json['src'] != null) {
-		data.src = json['src']?.toString();
+		data.src = json['src'].toString();
 	}
 	if (json['url'] != null) {
-		data.url = json['url']?.toString();
+		data.url = json['url'].toString();
 	}
 	if (json['weburl'] != null) {
-		data.weburl = json['weburl']?.toString();
+		data.weburl = json['weburl'].toString();
 	}
 	if (json['content'] != null) {
-		data.content = json['content']?.toString();
+		data.content = json['content'].toString();
 	}
 	if (json['gallery'] != null) {
-		data.gallery = json['gallery']?.toString();
+		data.gallery = json['gallery'].toString();
 	}
 	if (json['addtime'] != null) {
-		data.addtime = json['addtime']?.toInt();
+		data.addtime = json['addtime'] is String
+				? int.tryParse(json['addtime'])
+				: json['addtime'].toInt();
 	}
 	if (json['pic'] != null) {
-		data.pic = json['pic']?.toString();
+		data.pic = json['pic'].toString();
 	}
 	return data;
 }
