@@ -39,9 +39,6 @@ import 'package:alice/routes/more/setting/multi_language.dart';
 Map<String, WidgetBuilder> routes = {
   //电影模块
   RouteName.movieDetailsPage: (_) => MovieDetailsPage(), //电影详情页面
-
-
-
   //抽屉模块
   RouteName.showMoreRoute: (context) => ShowMoreRoute(), //功能列表页面
   RouteName.guideExampleRoute: (context) => GuideExampleRoute(), //示例页面

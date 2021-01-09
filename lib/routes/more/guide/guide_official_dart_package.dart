@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/official/package/example_web_socket.dart';
 import 'package:alice/routes/example/official/package/localization/example_localization.dart';
 import 'package:alice/routes/example/official/package/localization/intl/example_localization_intl.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -10,8 +11,7 @@ class GuideDartTeamOfficialPackageRoute extends StatefulWidget {
   State<StatefulWidget> createState() => GuideOfficialPackageRouteState();
 }
 
-class GuideOfficialPackageRouteState
-    extends State<GuideDartTeamOfficialPackageRoute> {
+class GuideOfficialPackageRouteState extends State<GuideDartTeamOfficialPackageRoute> {
   List<String> titleList = [
     '不使用 intl包',
     'intl',
@@ -63,6 +63,9 @@ class GuideOfficialPackageRouteState
   }
 
   void jumpToRoute(int index) {
+    setState(() {
+
+    });
     switch (index) {
       case 0:
         Navigator.push(context, MaterialPageRoute(builder: (context) => Demo()));
@@ -71,7 +74,7 @@ class GuideOfficialPackageRouteState
         Navigator.push(context, MaterialPageRoute(builder: (_) => DemoIntl()));
         break;
       case 2:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => WebViewExample()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleWebSocket()));
         break;
       case 3:
         //Navigator.push(context, MaterialPageRoute(builder: (_) => DeviceInfo()));

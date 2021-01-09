@@ -66,11 +66,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
         onPressedBack: () => Navigator.pop(context),
       ),
       body: ScrollConfiguration(
-        behavior: CustomScrollBehavior(
-            isShowLeading: true,
-            isShowTrailing: true,
-            color: Colors.indigo[400],
-        ),
+        behavior: CustomScrollBehavior(),
         child: ListView.builder(
           //reverse: true,
           itemCount: titleList.length,
