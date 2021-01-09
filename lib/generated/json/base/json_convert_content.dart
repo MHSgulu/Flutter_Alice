@@ -9,10 +9,12 @@ import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/model/wallpaper_entity.dart';
 import 'package:alice/generated/json/wallpaper_entity_helper.dart';
+import 'package:alice/model/bird_wallpaper_entity.dart';
+import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
 import 'package:alice/generated/json/search_news_entity_helper.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
-import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
+import 'package:alice/model/quotation_entity.dart';
+import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/model/garbage_c_a_i_entity.dart';
 import 'package:alice/generated/json/garbage_c_a_i_entity_helper.dart';
 import 'package:alice/model/bird_wallpaper_category_entity.dart';
@@ -25,6 +27,8 @@ import 'package:alice/model/written_jokes_entity.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/wallpaper_category_entity.dart';
 import 'package:alice/generated/json/wallpaper_category_entity_helper.dart';
+import 'package:alice/model/m_t_movie_detail_entity.dart';
+import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/model/moive_details_entity.dart';
 import 'package:alice/generated/json/moive_details_entity_helper.dart';
 import 'package:alice/model/film_maker_works_entity.dart';
@@ -33,24 +37,22 @@ import 'package:alice/model/film_maker_work_entity.dart';
 import 'package:alice/generated/json/film_maker_work_entity_helper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
-import 'package:alice/model/gif_picture_jokes_entity.dart';
-import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
-import 'package:alice/model/quotation_entity.dart';
-import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/model/film_maker_entity.dart';
 import 'package:alice/generated/json/film_maker_entity_helper.dart';
 import 'package:alice/model/article_entity.dart';
 import 'package:alice/generated/json/article_entity_helper.dart';
-import 'package:alice/model/bird_wallpaper_entity.dart';
-import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
+import 'package:alice/model/gif_picture_jokes_entity.dart';
+import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/model/film_maker_album_entity.dart';
 import 'package:alice/generated/json/film_maker_album_entity_helper.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
+import 'package:alice/model/movie_crew_entity.dart';
+import 'package:alice/generated/json/movie_crew_entity_helper.dart';
 import 'package:alice/model/movie_entity.dart';
 import 'package:alice/generated/json/movie_entity_helper.dart';
 
@@ -99,6 +101,10 @@ class JsonConvert<T> {
 				return wallpaperResFromJson(data as WallpaperRes, json) as T;
 			case WallpaperResVertical:
 				return wallpaperResVerticalFromJson(data as WallpaperResVertical, json) as T;
+			case BirdWallpaperEntity:
+				return birdWallpaperEntityFromJson(data as BirdWallpaperEntity, json) as T;
+			case BirdWallpaperData:
+				return birdWallpaperDataFromJson(data as BirdWallpaperData, json) as T;
 			case SearchNewsEntity:
 				return searchNewsEntityFromJson(data as SearchNewsEntity, json) as T;
 			case SearchNewsResult:
@@ -107,18 +113,12 @@ class JsonConvert<T> {
 				return searchNewsResultResultFromJson(data as SearchNewsResultResult, json) as T;
 			case SearchNewsResultResultList:
 				return searchNewsResultResultListFromJson(data as SearchNewsResultResultList, json) as T;
-			case MTMovieDetailEntity:
-				return mTMovieDetailEntityFromJson(data as MTMovieDetailEntity, json) as T;
-			case MTMovieDetailDirector:
-				return mTMovieDetailDirectorFromJson(data as MTMovieDetailDirector, json) as T;
-			case MTMovieDetailActorList:
-				return mTMovieDetailActorListFromJson(data as MTMovieDetailActorList, json) as T;
-			case MTMovieDetailStyle:
-				return mTMovieDetailStyleFromJson(data as MTMovieDetailStyle, json) as T;
-			case MTMovieDetailRelease:
-				return mTMovieDetailReleaseFromJson(data as MTMovieDetailRelease, json) as T;
-			case MTMovieDetailVideo:
-				return mTMovieDetailVideoFromJson(data as MTMovieDetailVideo, json) as T;
+			case QuotationEntity:
+				return quotationEntityFromJson(data as QuotationEntity, json) as T;
+			case QuotationShowapiResBody:
+				return quotationShowapiResBodyFromJson(data as QuotationShowapiResBody, json) as T;
+			case QuotationShowapiResBodyData:
+				return quotationShowapiResBodyDataFromJson(data as QuotationShowapiResBodyData, json) as T;
 			case GarbageCAIEntity:
 				return garbageCAIEntityFromJson(data as GarbageCAIEntity, json) as T;
 			case GarbageCAIResult:
@@ -177,6 +177,18 @@ class JsonConvert<T> {
 				return wallpaperCategoryResFromJson(data as WallpaperCategoryRes, json) as T;
 			case WallpaperCategoryResCategory:
 				return wallpaperCategoryResCategoryFromJson(data as WallpaperCategoryResCategory, json) as T;
+			case MTMovieDetailEntity:
+				return mTMovieDetailEntityFromJson(data as MTMovieDetailEntity, json) as T;
+			case MTMovieDetailDirector:
+				return mTMovieDetailDirectorFromJson(data as MTMovieDetailDirector, json) as T;
+			case MTMovieDetailActorList:
+				return mTMovieDetailActorListFromJson(data as MTMovieDetailActorList, json) as T;
+			case MTMovieDetailStyle:
+				return mTMovieDetailStyleFromJson(data as MTMovieDetailStyle, json) as T;
+			case MTMovieDetailRelease:
+				return mTMovieDetailReleaseFromJson(data as MTMovieDetailRelease, json) as T;
+			case MTMovieDetailVideo:
+				return mTMovieDetailVideoFromJson(data as MTMovieDetailVideo, json) as T;
 			case MoiveDetailsEntity:
 				return moiveDetailsEntityFromJson(data as MoiveDetailsEntity, json) as T;
 			case MoiveDetailsRating:
@@ -279,20 +291,6 @@ class JsonConvert<T> {
 				return hotWordTypeResultShowapiResBodyListFromJson(data as HotWordTypeResultShowapiResBodyList, json) as T;
 			case HotWordTypeResultShowapiResBodyListChildList:
 				return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;
-			case GifPictureJokesEntity:
-				return gifPictureJokesEntityFromJson(data as GifPictureJokesEntity, json) as T;
-			case GifPictureJokesResult:
-				return gifPictureJokesResultFromJson(data as GifPictureJokesResult, json) as T;
-			case GifPictureJokesResultShowapiResBody:
-				return gifPictureJokesResultShowapiResBodyFromJson(data as GifPictureJokesResultShowapiResBody, json) as T;
-			case GifPictureJokesResultShowapiResBodyContentlist:
-				return gifPictureJokesResultShowapiResBodyContentlistFromJson(data as GifPictureJokesResultShowapiResBodyContentlist, json) as T;
-			case QuotationEntity:
-				return quotationEntityFromJson(data as QuotationEntity, json) as T;
-			case QuotationShowapiResBody:
-				return quotationShowapiResBodyFromJson(data as QuotationShowapiResBody, json) as T;
-			case QuotationShowapiResBodyData:
-				return quotationShowapiResBodyDataFromJson(data as QuotationShowapiResBodyData, json) as T;
 			case FilmMakerEntity:
 				return filmMakerEntityFromJson(data as FilmMakerEntity, json) as T;
 			case FilmMakerWork:
@@ -323,10 +321,6 @@ class JsonConvert<T> {
 				return articleDataFromJson(data as ArticleData, json) as T;
 			case ArticleDataDate:
 				return articleDataDateFromJson(data as ArticleDataDate, json) as T;
-			case BirdWallpaperEntity:
-				return birdWallpaperEntityFromJson(data as BirdWallpaperEntity, json) as T;
-			case BirdWallpaperData:
-				return birdWallpaperDataFromJson(data as BirdWallpaperData, json) as T;
 			case NewsEntity:
 				return newsEntityFromJson(data as NewsEntity, json) as T;
 			case NewsResult:
@@ -343,6 +337,14 @@ class JsonConvert<T> {
 				return realTimeHotspotResultShowapiResBodyFromJson(data as RealTimeHotspotResultShowapiResBody, json) as T;
 			case RealTimeHotspotResultShowapiResBodyList:
 				return realTimeHotspotResultShowapiResBodyListFromJson(data as RealTimeHotspotResultShowapiResBodyList, json) as T;
+			case GifPictureJokesEntity:
+				return gifPictureJokesEntityFromJson(data as GifPictureJokesEntity, json) as T;
+			case GifPictureJokesResult:
+				return gifPictureJokesResultFromJson(data as GifPictureJokesResult, json) as T;
+			case GifPictureJokesResultShowapiResBody:
+				return gifPictureJokesResultShowapiResBodyFromJson(data as GifPictureJokesResultShowapiResBody, json) as T;
+			case GifPictureJokesResultShowapiResBodyContentlist:
+				return gifPictureJokesResultShowapiResBodyContentlistFromJson(data as GifPictureJokesResultShowapiResBodyContentlist, json) as T;
 			case FilmMakerAlbumEntity:
 				return filmMakerAlbumEntityFromJson(data as FilmMakerAlbumEntity, json) as T;
 			case FilmMakerAlbumPhoto:
@@ -361,6 +363,12 @@ class JsonConvert<T> {
 				return mtimeHotMovieMsVersionFromJson(data as MtimeHotMovieMsVersion, json) as T;
 			case MtimeHotMoviePromo:
 				return mtimeHotMoviePromoFromJson(data as MtimeHotMoviePromo, json) as T;
+			case MovieCrewEntity:
+				return movieCrewEntityFromJson(data as MovieCrewEntity, json) as T;
+			case MovieCrewType:
+				return movieCrewTypeFromJson(data as MovieCrewType, json) as T;
+			case MovieCrewTypesPerson:
+				return movieCrewTypesPersonFromJson(data as MovieCrewTypesPerson, json) as T;
 			case MovieEntity:
 				return movieEntityFromJson(data as MovieEntity, json) as T;
 			case MovieSubject:
@@ -418,6 +426,10 @@ class JsonConvert<T> {
 				return wallpaperResToJson(data as WallpaperRes);
 			case WallpaperResVertical:
 				return wallpaperResVerticalToJson(data as WallpaperResVertical);
+			case BirdWallpaperEntity:
+				return birdWallpaperEntityToJson(data as BirdWallpaperEntity);
+			case BirdWallpaperData:
+				return birdWallpaperDataToJson(data as BirdWallpaperData);
 			case SearchNewsEntity:
 				return searchNewsEntityToJson(data as SearchNewsEntity);
 			case SearchNewsResult:
@@ -426,18 +438,12 @@ class JsonConvert<T> {
 				return searchNewsResultResultToJson(data as SearchNewsResultResult);
 			case SearchNewsResultResultList:
 				return searchNewsResultResultListToJson(data as SearchNewsResultResultList);
-			case MTMovieDetailEntity:
-				return mTMovieDetailEntityToJson(data as MTMovieDetailEntity);
-			case MTMovieDetailDirector:
-				return mTMovieDetailDirectorToJson(data as MTMovieDetailDirector);
-			case MTMovieDetailActorList:
-				return mTMovieDetailActorListToJson(data as MTMovieDetailActorList);
-			case MTMovieDetailStyle:
-				return mTMovieDetailStyleToJson(data as MTMovieDetailStyle);
-			case MTMovieDetailRelease:
-				return mTMovieDetailReleaseToJson(data as MTMovieDetailRelease);
-			case MTMovieDetailVideo:
-				return mTMovieDetailVideoToJson(data as MTMovieDetailVideo);
+			case QuotationEntity:
+				return quotationEntityToJson(data as QuotationEntity);
+			case QuotationShowapiResBody:
+				return quotationShowapiResBodyToJson(data as QuotationShowapiResBody);
+			case QuotationShowapiResBodyData:
+				return quotationShowapiResBodyDataToJson(data as QuotationShowapiResBodyData);
 			case GarbageCAIEntity:
 				return garbageCAIEntityToJson(data as GarbageCAIEntity);
 			case GarbageCAIResult:
@@ -496,6 +502,18 @@ class JsonConvert<T> {
 				return wallpaperCategoryResToJson(data as WallpaperCategoryRes);
 			case WallpaperCategoryResCategory:
 				return wallpaperCategoryResCategoryToJson(data as WallpaperCategoryResCategory);
+			case MTMovieDetailEntity:
+				return mTMovieDetailEntityToJson(data as MTMovieDetailEntity);
+			case MTMovieDetailDirector:
+				return mTMovieDetailDirectorToJson(data as MTMovieDetailDirector);
+			case MTMovieDetailActorList:
+				return mTMovieDetailActorListToJson(data as MTMovieDetailActorList);
+			case MTMovieDetailStyle:
+				return mTMovieDetailStyleToJson(data as MTMovieDetailStyle);
+			case MTMovieDetailRelease:
+				return mTMovieDetailReleaseToJson(data as MTMovieDetailRelease);
+			case MTMovieDetailVideo:
+				return mTMovieDetailVideoToJson(data as MTMovieDetailVideo);
 			case MoiveDetailsEntity:
 				return moiveDetailsEntityToJson(data as MoiveDetailsEntity);
 			case MoiveDetailsRating:
@@ -598,20 +616,6 @@ class JsonConvert<T> {
 				return hotWordTypeResultShowapiResBodyListToJson(data as HotWordTypeResultShowapiResBodyList);
 			case HotWordTypeResultShowapiResBodyListChildList:
 				return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);
-			case GifPictureJokesEntity:
-				return gifPictureJokesEntityToJson(data as GifPictureJokesEntity);
-			case GifPictureJokesResult:
-				return gifPictureJokesResultToJson(data as GifPictureJokesResult);
-			case GifPictureJokesResultShowapiResBody:
-				return gifPictureJokesResultShowapiResBodyToJson(data as GifPictureJokesResultShowapiResBody);
-			case GifPictureJokesResultShowapiResBodyContentlist:
-				return gifPictureJokesResultShowapiResBodyContentlistToJson(data as GifPictureJokesResultShowapiResBodyContentlist);
-			case QuotationEntity:
-				return quotationEntityToJson(data as QuotationEntity);
-			case QuotationShowapiResBody:
-				return quotationShowapiResBodyToJson(data as QuotationShowapiResBody);
-			case QuotationShowapiResBodyData:
-				return quotationShowapiResBodyDataToJson(data as QuotationShowapiResBodyData);
 			case FilmMakerEntity:
 				return filmMakerEntityToJson(data as FilmMakerEntity);
 			case FilmMakerWork:
@@ -642,10 +646,6 @@ class JsonConvert<T> {
 				return articleDataToJson(data as ArticleData);
 			case ArticleDataDate:
 				return articleDataDateToJson(data as ArticleDataDate);
-			case BirdWallpaperEntity:
-				return birdWallpaperEntityToJson(data as BirdWallpaperEntity);
-			case BirdWallpaperData:
-				return birdWallpaperDataToJson(data as BirdWallpaperData);
 			case NewsEntity:
 				return newsEntityToJson(data as NewsEntity);
 			case NewsResult:
@@ -662,6 +662,14 @@ class JsonConvert<T> {
 				return realTimeHotspotResultShowapiResBodyToJson(data as RealTimeHotspotResultShowapiResBody);
 			case RealTimeHotspotResultShowapiResBodyList:
 				return realTimeHotspotResultShowapiResBodyListToJson(data as RealTimeHotspotResultShowapiResBodyList);
+			case GifPictureJokesEntity:
+				return gifPictureJokesEntityToJson(data as GifPictureJokesEntity);
+			case GifPictureJokesResult:
+				return gifPictureJokesResultToJson(data as GifPictureJokesResult);
+			case GifPictureJokesResultShowapiResBody:
+				return gifPictureJokesResultShowapiResBodyToJson(data as GifPictureJokesResultShowapiResBody);
+			case GifPictureJokesResultShowapiResBodyContentlist:
+				return gifPictureJokesResultShowapiResBodyContentlistToJson(data as GifPictureJokesResultShowapiResBodyContentlist);
 			case FilmMakerAlbumEntity:
 				return filmMakerAlbumEntityToJson(data as FilmMakerAlbumEntity);
 			case FilmMakerAlbumPhoto:
@@ -680,6 +688,12 @@ class JsonConvert<T> {
 				return mtimeHotMovieMsVersionToJson(data as MtimeHotMovieMsVersion);
 			case MtimeHotMoviePromo:
 				return mtimeHotMoviePromoToJson(data as MtimeHotMoviePromo);
+			case MovieCrewEntity:
+				return movieCrewEntityToJson(data as MovieCrewEntity);
+			case MovieCrewType:
+				return movieCrewTypeToJson(data as MovieCrewType);
+			case MovieCrewTypesPerson:
+				return movieCrewTypesPersonToJson(data as MovieCrewTypesPerson);
 			case MovieEntity:
 				return movieEntityToJson(data as MovieEntity);
 			case MovieSubject:
@@ -738,6 +752,10 @@ class JsonConvert<T> {
 			return WallpaperRes().fromJson(json);
 		}	else if(type == (WallpaperResVertical).toString()){
 			return WallpaperResVertical().fromJson(json);
+		}	else if(type == (BirdWallpaperEntity).toString()){
+			return BirdWallpaperEntity().fromJson(json);
+		}	else if(type == (BirdWallpaperData).toString()){
+			return BirdWallpaperData().fromJson(json);
 		}	else if(type == (SearchNewsEntity).toString()){
 			return SearchNewsEntity().fromJson(json);
 		}	else if(type == (SearchNewsResult).toString()){
@@ -746,18 +764,12 @@ class JsonConvert<T> {
 			return SearchNewsResultResult().fromJson(json);
 		}	else if(type == (SearchNewsResultResultList).toString()){
 			return SearchNewsResultResultList().fromJson(json);
-		}	else if(type == (MTMovieDetailEntity).toString()){
-			return MTMovieDetailEntity().fromJson(json);
-		}	else if(type == (MTMovieDetailDirector).toString()){
-			return MTMovieDetailDirector().fromJson(json);
-		}	else if(type == (MTMovieDetailActorList).toString()){
-			return MTMovieDetailActorList().fromJson(json);
-		}	else if(type == (MTMovieDetailStyle).toString()){
-			return MTMovieDetailStyle().fromJson(json);
-		}	else if(type == (MTMovieDetailRelease).toString()){
-			return MTMovieDetailRelease().fromJson(json);
-		}	else if(type == (MTMovieDetailVideo).toString()){
-			return MTMovieDetailVideo().fromJson(json);
+		}	else if(type == (QuotationEntity).toString()){
+			return QuotationEntity().fromJson(json);
+		}	else if(type == (QuotationShowapiResBody).toString()){
+			return QuotationShowapiResBody().fromJson(json);
+		}	else if(type == (QuotationShowapiResBodyData).toString()){
+			return QuotationShowapiResBodyData().fromJson(json);
 		}	else if(type == (GarbageCAIEntity).toString()){
 			return GarbageCAIEntity().fromJson(json);
 		}	else if(type == (GarbageCAIResult).toString()){
@@ -816,6 +828,18 @@ class JsonConvert<T> {
 			return WallpaperCategoryRes().fromJson(json);
 		}	else if(type == (WallpaperCategoryResCategory).toString()){
 			return WallpaperCategoryResCategory().fromJson(json);
+		}	else if(type == (MTMovieDetailEntity).toString()){
+			return MTMovieDetailEntity().fromJson(json);
+		}	else if(type == (MTMovieDetailDirector).toString()){
+			return MTMovieDetailDirector().fromJson(json);
+		}	else if(type == (MTMovieDetailActorList).toString()){
+			return MTMovieDetailActorList().fromJson(json);
+		}	else if(type == (MTMovieDetailStyle).toString()){
+			return MTMovieDetailStyle().fromJson(json);
+		}	else if(type == (MTMovieDetailRelease).toString()){
+			return MTMovieDetailRelease().fromJson(json);
+		}	else if(type == (MTMovieDetailVideo).toString()){
+			return MTMovieDetailVideo().fromJson(json);
 		}	else if(type == (MoiveDetailsEntity).toString()){
 			return MoiveDetailsEntity().fromJson(json);
 		}	else if(type == (MoiveDetailsRating).toString()){
@@ -918,20 +942,6 @@ class JsonConvert<T> {
 			return HotWordTypeResultShowapiResBodyList().fromJson(json);
 		}	else if(type == (HotWordTypeResultShowapiResBodyListChildList).toString()){
 			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);
-		}	else if(type == (GifPictureJokesEntity).toString()){
-			return GifPictureJokesEntity().fromJson(json);
-		}	else if(type == (GifPictureJokesResult).toString()){
-			return GifPictureJokesResult().fromJson(json);
-		}	else if(type == (GifPictureJokesResultShowapiResBody).toString()){
-			return GifPictureJokesResultShowapiResBody().fromJson(json);
-		}	else if(type == (GifPictureJokesResultShowapiResBodyContentlist).toString()){
-			return GifPictureJokesResultShowapiResBodyContentlist().fromJson(json);
-		}	else if(type == (QuotationEntity).toString()){
-			return QuotationEntity().fromJson(json);
-		}	else if(type == (QuotationShowapiResBody).toString()){
-			return QuotationShowapiResBody().fromJson(json);
-		}	else if(type == (QuotationShowapiResBodyData).toString()){
-			return QuotationShowapiResBodyData().fromJson(json);
 		}	else if(type == (FilmMakerEntity).toString()){
 			return FilmMakerEntity().fromJson(json);
 		}	else if(type == (FilmMakerWork).toString()){
@@ -962,10 +972,6 @@ class JsonConvert<T> {
 			return ArticleData().fromJson(json);
 		}	else if(type == (ArticleDataDate).toString()){
 			return ArticleDataDate().fromJson(json);
-		}	else if(type == (BirdWallpaperEntity).toString()){
-			return BirdWallpaperEntity().fromJson(json);
-		}	else if(type == (BirdWallpaperData).toString()){
-			return BirdWallpaperData().fromJson(json);
 		}	else if(type == (NewsEntity).toString()){
 			return NewsEntity().fromJson(json);
 		}	else if(type == (NewsResult).toString()){
@@ -982,6 +988,14 @@ class JsonConvert<T> {
 			return RealTimeHotspotResultShowapiResBody().fromJson(json);
 		}	else if(type == (RealTimeHotspotResultShowapiResBodyList).toString()){
 			return RealTimeHotspotResultShowapiResBodyList().fromJson(json);
+		}	else if(type == (GifPictureJokesEntity).toString()){
+			return GifPictureJokesEntity().fromJson(json);
+		}	else if(type == (GifPictureJokesResult).toString()){
+			return GifPictureJokesResult().fromJson(json);
+		}	else if(type == (GifPictureJokesResultShowapiResBody).toString()){
+			return GifPictureJokesResultShowapiResBody().fromJson(json);
+		}	else if(type == (GifPictureJokesResultShowapiResBodyContentlist).toString()){
+			return GifPictureJokesResultShowapiResBodyContentlist().fromJson(json);
 		}	else if(type == (FilmMakerAlbumEntity).toString()){
 			return FilmMakerAlbumEntity().fromJson(json);
 		}	else if(type == (FilmMakerAlbumPhoto).toString()){
@@ -1000,6 +1014,12 @@ class JsonConvert<T> {
 			return MtimeHotMovieMsVersion().fromJson(json);
 		}	else if(type == (MtimeHotMoviePromo).toString()){
 			return MtimeHotMoviePromo().fromJson(json);
+		}	else if(type == (MovieCrewEntity).toString()){
+			return MovieCrewEntity().fromJson(json);
+		}	else if(type == (MovieCrewType).toString()){
+			return MovieCrewType().fromJson(json);
+		}	else if(type == (MovieCrewTypesPerson).toString()){
+			return MovieCrewTypesPerson().fromJson(json);
 		}	else if(type == (MovieEntity).toString()){
 			return MovieEntity().fromJson(json);
 		}	else if(type == (MovieSubject).toString()){
@@ -1058,6 +1078,10 @@ class JsonConvert<T> {
 			return data.map<WallpaperRes>((e) => WallpaperRes().fromJson(e)).toList() as M;
 		}	else if(List<WallpaperResVertical>() is M){
 			return data.map<WallpaperResVertical>((e) => WallpaperResVertical().fromJson(e)).toList() as M;
+		}	else if(List<BirdWallpaperEntity>() is M){
+			return data.map<BirdWallpaperEntity>((e) => BirdWallpaperEntity().fromJson(e)).toList() as M;
+		}	else if(List<BirdWallpaperData>() is M){
+			return data.map<BirdWallpaperData>((e) => BirdWallpaperData().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsEntity>() is M){
 			return data.map<SearchNewsEntity>((e) => SearchNewsEntity().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsResult>() is M){
@@ -1066,18 +1090,12 @@ class JsonConvert<T> {
 			return data.map<SearchNewsResultResult>((e) => SearchNewsResultResult().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsResultResultList>() is M){
 			return data.map<SearchNewsResultResultList>((e) => SearchNewsResultResultList().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailEntity>() is M){
-			return data.map<MTMovieDetailEntity>((e) => MTMovieDetailEntity().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailDirector>() is M){
-			return data.map<MTMovieDetailDirector>((e) => MTMovieDetailDirector().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailActorList>() is M){
-			return data.map<MTMovieDetailActorList>((e) => MTMovieDetailActorList().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailStyle>() is M){
-			return data.map<MTMovieDetailStyle>((e) => MTMovieDetailStyle().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailRelease>() is M){
-			return data.map<MTMovieDetailRelease>((e) => MTMovieDetailRelease().fromJson(e)).toList() as M;
-		}	else if(List<MTMovieDetailVideo>() is M){
-			return data.map<MTMovieDetailVideo>((e) => MTMovieDetailVideo().fromJson(e)).toList() as M;
+		}	else if(List<QuotationEntity>() is M){
+			return data.map<QuotationEntity>((e) => QuotationEntity().fromJson(e)).toList() as M;
+		}	else if(List<QuotationShowapiResBody>() is M){
+			return data.map<QuotationShowapiResBody>((e) => QuotationShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<QuotationShowapiResBodyData>() is M){
+			return data.map<QuotationShowapiResBodyData>((e) => QuotationShowapiResBodyData().fromJson(e)).toList() as M;
 		}	else if(List<GarbageCAIEntity>() is M){
 			return data.map<GarbageCAIEntity>((e) => GarbageCAIEntity().fromJson(e)).toList() as M;
 		}	else if(List<GarbageCAIResult>() is M){
@@ -1136,6 +1154,18 @@ class JsonConvert<T> {
 			return data.map<WallpaperCategoryRes>((e) => WallpaperCategoryRes().fromJson(e)).toList() as M;
 		}	else if(List<WallpaperCategoryResCategory>() is M){
 			return data.map<WallpaperCategoryResCategory>((e) => WallpaperCategoryResCategory().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailEntity>() is M){
+			return data.map<MTMovieDetailEntity>((e) => MTMovieDetailEntity().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailDirector>() is M){
+			return data.map<MTMovieDetailDirector>((e) => MTMovieDetailDirector().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailActorList>() is M){
+			return data.map<MTMovieDetailActorList>((e) => MTMovieDetailActorList().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailStyle>() is M){
+			return data.map<MTMovieDetailStyle>((e) => MTMovieDetailStyle().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailRelease>() is M){
+			return data.map<MTMovieDetailRelease>((e) => MTMovieDetailRelease().fromJson(e)).toList() as M;
+		}	else if(List<MTMovieDetailVideo>() is M){
+			return data.map<MTMovieDetailVideo>((e) => MTMovieDetailVideo().fromJson(e)).toList() as M;
 		}	else if(List<MoiveDetailsEntity>() is M){
 			return data.map<MoiveDetailsEntity>((e) => MoiveDetailsEntity().fromJson(e)).toList() as M;
 		}	else if(List<MoiveDetailsRating>() is M){
@@ -1238,20 +1268,6 @@ class JsonConvert<T> {
 			return data.map<HotWordTypeResultShowapiResBodyList>((e) => HotWordTypeResultShowapiResBodyList().fromJson(e)).toList() as M;
 		}	else if(List<HotWordTypeResultShowapiResBodyListChildList>() is M){
 			return data.map<HotWordTypeResultShowapiResBodyListChildList>((e) => HotWordTypeResultShowapiResBodyListChildList().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesEntity>() is M){
-			return data.map<GifPictureJokesEntity>((e) => GifPictureJokesEntity().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResult>() is M){
-			return data.map<GifPictureJokesResult>((e) => GifPictureJokesResult().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResultShowapiResBody>() is M){
-			return data.map<GifPictureJokesResultShowapiResBody>((e) => GifPictureJokesResultShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResultShowapiResBodyContentlist>() is M){
-			return data.map<GifPictureJokesResultShowapiResBodyContentlist>((e) => GifPictureJokesResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
-		}	else if(List<QuotationEntity>() is M){
-			return data.map<QuotationEntity>((e) => QuotationEntity().fromJson(e)).toList() as M;
-		}	else if(List<QuotationShowapiResBody>() is M){
-			return data.map<QuotationShowapiResBody>((e) => QuotationShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<QuotationShowapiResBodyData>() is M){
-			return data.map<QuotationShowapiResBodyData>((e) => QuotationShowapiResBodyData().fromJson(e)).toList() as M;
 		}	else if(List<FilmMakerEntity>() is M){
 			return data.map<FilmMakerEntity>((e) => FilmMakerEntity().fromJson(e)).toList() as M;
 		}	else if(List<FilmMakerWork>() is M){
@@ -1282,10 +1298,6 @@ class JsonConvert<T> {
 			return data.map<ArticleData>((e) => ArticleData().fromJson(e)).toList() as M;
 		}	else if(List<ArticleDataDate>() is M){
 			return data.map<ArticleDataDate>((e) => ArticleDataDate().fromJson(e)).toList() as M;
-		}	else if(List<BirdWallpaperEntity>() is M){
-			return data.map<BirdWallpaperEntity>((e) => BirdWallpaperEntity().fromJson(e)).toList() as M;
-		}	else if(List<BirdWallpaperData>() is M){
-			return data.map<BirdWallpaperData>((e) => BirdWallpaperData().fromJson(e)).toList() as M;
 		}	else if(List<NewsEntity>() is M){
 			return data.map<NewsEntity>((e) => NewsEntity().fromJson(e)).toList() as M;
 		}	else if(List<NewsResult>() is M){
@@ -1302,6 +1314,14 @@ class JsonConvert<T> {
 			return data.map<RealTimeHotspotResultShowapiResBody>((e) => RealTimeHotspotResultShowapiResBody().fromJson(e)).toList() as M;
 		}	else if(List<RealTimeHotspotResultShowapiResBodyList>() is M){
 			return data.map<RealTimeHotspotResultShowapiResBodyList>((e) => RealTimeHotspotResultShowapiResBodyList().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesEntity>() is M){
+			return data.map<GifPictureJokesEntity>((e) => GifPictureJokesEntity().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResult>() is M){
+			return data.map<GifPictureJokesResult>((e) => GifPictureJokesResult().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResultShowapiResBody>() is M){
+			return data.map<GifPictureJokesResultShowapiResBody>((e) => GifPictureJokesResultShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResultShowapiResBodyContentlist>() is M){
+			return data.map<GifPictureJokesResultShowapiResBodyContentlist>((e) => GifPictureJokesResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
 		}	else if(List<FilmMakerAlbumEntity>() is M){
 			return data.map<FilmMakerAlbumEntity>((e) => FilmMakerAlbumEntity().fromJson(e)).toList() as M;
 		}	else if(List<FilmMakerAlbumPhoto>() is M){
@@ -1320,6 +1340,12 @@ class JsonConvert<T> {
 			return data.map<MtimeHotMovieMsVersion>((e) => MtimeHotMovieMsVersion().fromJson(e)).toList() as M;
 		}	else if(List<MtimeHotMoviePromo>() is M){
 			return data.map<MtimeHotMoviePromo>((e) => MtimeHotMoviePromo().fromJson(e)).toList() as M;
+		}	else if(List<MovieCrewEntity>() is M){
+			return data.map<MovieCrewEntity>((e) => MovieCrewEntity().fromJson(e)).toList() as M;
+		}	else if(List<MovieCrewType>() is M){
+			return data.map<MovieCrewType>((e) => MovieCrewType().fromJson(e)).toList() as M;
+		}	else if(List<MovieCrewTypesPerson>() is M){
+			return data.map<MovieCrewTypesPerson>((e) => MovieCrewTypesPerson().fromJson(e)).toList() as M;
 		}	else if(List<MovieEntity>() is M){
 			return data.map<MovieEntity>((e) => MovieEntity().fromJson(e)).toList() as M;
 		}	else if(List<MovieSubject>() is M){

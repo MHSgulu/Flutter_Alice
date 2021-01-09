@@ -23,6 +23,7 @@ class Api {
   //时光网API
   static final String mTimeHotMovie = '/Showtime/LocationMovies.api'; //正在热映
   static final String mTimeMovieDetail = '/movie/detail.api'; //电影详情
+  static final String mTimeMovieActor = '/Movie/MovieCreditsWithTypes.api'; //电影演员
 
   //必应壁纸
   static final String bingWallPaper = 'https://cn.bing.com/HPImageArchive.aspx?format=js&n=1';

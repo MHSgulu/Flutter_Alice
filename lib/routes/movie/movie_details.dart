@@ -35,7 +35,7 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    print('数据点位: movieId： ${args.movieId}');
+    //print('数据点位: movieId： ${args.movieId}');
     fetchDominantColorPicture(args.imgUrl);
     _future = HttpUtil.fetchTimeMovieDetailData(args.movieId);
     super.didChangeDependencies();
@@ -117,6 +117,7 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
                   MovieTypeInfoWidget(snapshot: snapshot), //电影类型信息栏
                   MovieContentInfoWidget(snapshot: snapshot), //电影内容简介栏
                   MovieActorInfoWidget(
+                    movieId: args.movieId,
                     snapshot: snapshot,
                     valueColor: dominantColor,
                   ), //电影演员列表栏

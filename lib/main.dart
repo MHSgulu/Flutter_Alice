@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:web_socket_channel/io.dart';
 
 
 void main() {
@@ -33,15 +32,6 @@ void main() {
     ///因此，双数“ 0.0”等于整数“ 0”。 对于在AOT或VM上运行的Dart代码，情况并非如此。
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
-
-  /*final channel = IOWebSocketChannel.connect(
-      "wss://echo.websocket.org",
-    //protocols: '/ajaxchattest',
-  );
-  channel.sink.add("connected!");
-  channel.stream.listen((message) {
-    print('数据点位: ${message.toString()}');
-  });*/
 
 }
 

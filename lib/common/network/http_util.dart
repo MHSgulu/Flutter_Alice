@@ -7,6 +7,7 @@ import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
+import 'package:alice/generated/json/movie_crew_entity_helper.dart';
 import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
@@ -23,6 +24,7 @@ import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
+import 'package:alice/model/movie_crew_entity.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
@@ -204,6 +206,22 @@ class HttpUtil {
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
       return mTMovieDetailEntityFromJson(MTMovieDetailEntity(), jsonDecode(response.toString()));
+    } else {
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///时光网API 电影演职员
+  static Future<MovieCrewEntity> fetchTimeMovieActorData(String movieId) async {
+    Response response = await DioUtil.getInstance().createTimeMovieDio().get(
+      Api.mTimeMovieActor,
+      queryParameters: {
+        "movieId": movieId,
+      },
+    );
+    if (response.statusCode == 200) {
+      //print('数据点位： ${response.data}');
+      return movieCrewEntityFromJson(MovieCrewEntity(), jsonDecode(response.toString()));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
