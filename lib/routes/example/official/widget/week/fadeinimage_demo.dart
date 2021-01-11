@@ -85,6 +85,13 @@ class FadeInImageDemo1 extends StatelessWidget {
         //这里的“ bytes”是一个Uint8List，其中包含内存映像的字节
         placeholder: MemoryImage(/*bytes*/ kTransparentImage),
         image: NetworkImage('https://icweiliimg6.pstatp.com/weili/l/429876877287489570.webp'),
+        ///一个生成器函数，如果在图像加载期间发生错误，则会调用该生成器函数。
+        ///如果未提供此构建器，则任何异常都将报告给[FlutterError.onError]。 如果已提供，则调用者应通过提供替换窗口小部件来处理异常，或重新抛出异常。
+        imageErrorBuilder: (BuildContext context, Object error, StackTrace stackTrace,){
+          return Center(
+            child: Text('加载错误'),
+          );
+        },
       ),
     );
   }

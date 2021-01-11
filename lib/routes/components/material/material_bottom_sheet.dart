@@ -8,11 +8,14 @@ import 'package:flutter/material.dart';
 ///一个密切相关的小部件是一个持久的底部表，它显示了在不阻止用户与应用程序交互的情况下补充该应用程序主要内容的信息。
 ///可以使用[showBottomSheet]函数或[ScaffoldState.showBottomSheet]方法创建并显示持久的底部工作表。
 ///
-///`context`参数用于查找底页的[Navigator]和[Theme]。仅在调用该方法时使用。在关闭底部工作表之前，可以将其相应的小部件安全地从树中删除。
+///`context`参数用于查找底页的[Navigator]和[Theme]。仅在调用该方法时使用。
+///在关闭底部工作表之前，可以将其相应的小部件安全地从树中删除。
 ///
-///`isScrollControlled`参数指定这是否是使用[DraggableScrollableSheet]的底部工作表的路由。如果希望具有可滚动子级（例如[ListView]或[GridView]）的底页，并且底页是可拖动的，则应将此参数设置为true。
+///`isScrollControlled`参数指定这是否是使用[DraggableScrollableSheet]的底部工作表的路由。
+///如果希望具有可滚动子级（例如[ListView]或[GridView]）的底页，并且底页是可拖动的，则应将此参数设置为true。
 ///
-///`useRootNavigator`参数确保当设置为true时，根导航器用于显示[BottomSheet]。如果需要在所有其他内容上方显示模式[BottomSheet]，但调用者在另一个[Navigator]内部，则此功能很有用。
+///`useRootNavigator`参数确保当设置为true时，根导航器用于显示[BottomSheet]。
+///如果需要在所有其他内容上方显示模式[BottomSheet]，但调用者在另一个[Navigator]内部，则此功能很有用。
 ///
 /// [isDismissible]参数指定当用户轻按稀松布时是否关闭底纸。
 ///
@@ -20,7 +23,8 @@ import 'package:flutter/material.dart';
 ///
 ///可以传入可选的[backgroundColor]，[elevation]，[shape]和[clipBehavior]参数，以自定义模态底板的外观和行为。
 ///
-///可选的`routeSettings`参数设置模态底部工作表的[RouteSettings]。这在用户想要观察[NavigatorObserver]中的[PopupRoute]的情况下特别有用。
+///可选的`routeSettings`参数设置模态底部工作表的[RouteSettings]。
+///这在用户想要观察[NavigatorObserver]中的[PopupRoute]的情况下特别有用。
 ///
 ///返回一个“ Future”，它将解析为之前的值（如果有）
 ///当模式底部关闭时，传递给[Navigator.pop]。
@@ -170,6 +174,10 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
         });
   }
 
+
+  // {@youtube 560315 https://www.youtube.com/watch?v=Hgw819mL_78}
+
+
   ///这是一个示例小部件，它显示具有25个[ListTile]的[ListView]。
   ///它开始时占据了[Scaffold]主体的一半，并且可以被拖曳至支架的整个高度或降至支架高度的25％。
   ///达到最大高度后，列表内容将向上或向下滚动，直到它们再次到达列表的顶部，并且用户将工作表向下拖动。
@@ -192,7 +200,14 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
         ///默认情况下，小部件将扩展其非占用区域以填充父级中的可用空间。
         ///如果不希望这样做，例如由于父级希望基于其占用的空间来定位工作表，因此[expand]属性可以设置为false。
         return DraggableScrollableSheet(
-          //initialChildSize: 1.0,
+          initialChildSize: 1.0,
+          minChildSize: 0.25,
+          maxChildSize: 1.0,
+          ///小部件是否应扩展以填充其父级中的可用空间。
+          ///在大多数情况下，这应该是正确的。
+          ///但是，如果父窗口小部件将根据其所需的大小来定位该窗口小部件（例如[Center]），则应将其设置为false。
+          /// 默认值是true。
+          expand: true,
           builder: (context, scrollController) {
             return Container(
               color: Colors.blue[100],
@@ -209,6 +224,9 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
           },
         );
       },
+      ///`isScrollControlled`参数指定这是否是使用[DraggableScrollableSheet]的底部工作表的路由。
+      ///如果希望具有可滚动子级（例如[ListView]或[GridView]）的底页，并且底页是可拖动的，则应将此参数设置为true。
+      isScrollControlled: false,
     );
   }
 }

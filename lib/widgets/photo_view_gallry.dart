@@ -58,7 +58,7 @@ class _PhotoViewGalleryScreenState extends State<PhotoGalleryView> {
               ),
             ),
             loadFailedChild: Center(
-              child: Image.asset('assets/images/image_failed_load_1.png'),
+              child: Image.asset('assets/images/image_failed_load.png'),
             ),
             pageController: controller,
             onPageChanged: (index) {

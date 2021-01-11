@@ -97,7 +97,7 @@ class PhotoSingleView extends StatelessWidget {
                 ),
                 //当图像加载失败时显示loadFailedChild
                 loadFailedChild: Center(
-                  child: Image.asset('assets/images/image_failed_load_1.png'),
+                  child: Image.asset('assets/images/image_failed_load.png'),
                 ),
                 backgroundDecoration: backgroundDecoration,
                 minScale: minScale ?? 0.2, //定义允许图像采用的最小尺寸，它与原始图像尺寸成比例。 可以是双精度（绝对值）或可以乘以双精度的[PhotoViewComputedScale]  PhotoViewComputedScale.contained * 0.8,

@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 
 ///构建一个取决于父窗口小部件大小的窗口小部件树。
 ///
-///与[Builder]小部件类似，除了框架在布局时调用[builder]函数并提供父小部件的约束。当父母限制孩子的大小并且不依赖于孩子的内在大小时，这很有用。 [LayoutBuilder]的最终大小将与其子代的大小匹配。
+///与[Builder]小部件类似，除了框架在布局时调用[builder]函数并提供父小部件的约束。
+///当父母限制孩子的大小并且不依赖于孩子的内在大小时，这很有用。[LayoutBuilder]的最终大小将与其子代的大小匹配。
 ///
 ///如果子项小于父项，请考虑将子项包装在[Align]小部件中。如果孩子可能想要更大，请考虑将其包装在[SingleChildScrollView]或[OverflowBox]中。
 ///
