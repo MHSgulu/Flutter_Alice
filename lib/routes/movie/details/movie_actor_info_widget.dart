@@ -1,8 +1,8 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/movie_crew_entity.dart';
-import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
+import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -58,12 +58,45 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-                child: Text(
-                  '演职员',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '演职员',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => showAllMovieActorBottomSheet(),
+                      child: Row(
+                        children: [
+                          Text(
+                            '全部',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            '${entity.types[0].persons.length + entity.types[1].persons.length}',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          SizedBox(width: 2),
+                          Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.white70,
+                            size: 14,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
@@ -71,79 +104,163 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                 //color: Colors.pink,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: entity.types[1].persons.length > 5 ? 6 : entity.types[1].persons.length + 1,
+                  itemCount: entity.types[1].persons.length > 5
+                      ? 6
+                      : entity.types[1].persons.length + 1,
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: <Widget>[
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          child: CachedNetworkImage(
-                            imageUrl: index == 0
-                                ? entity.types[0].persons[0].image
-                                : entity.types[1].persons[index - 1].image,
-                            imageBuilder: (context, imageProvider) => Container(
+                    return Container(
+                      width: 90,
+                      child: Column(
+                        children: <Widget>[
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: MyFadeInImage(
+                              imageUrl: index == 0
+                                  ? entity.types[0].persons[0].image
+                                  : entity.types[1].persons[index - 1].image,
                               width: 80,
                               height: 120,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                             ),
-                            placeholder: (context, url) => MyLoadingIndicator(
-                              valueColor: widget.valueColor,
-                              strokeWidth: 2,
+                          ),
+                          Text(
+                            index == 0
+                                ? entity.types[0].persons[0].name
+                                : entity.types[1].persons[index - 1].name,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
                             ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                        Text(
-                          index == 0
-                              ? entity.types[0].persons[0].name
-                              : entity.types[1].persons[index - 1].name,
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 13,
+                          Text(
+                            index == 0
+                                ? '${entity.types[0].persons[0].nameEn}'
+                                : '${entity.types[1].persons[index - 1].nameEn}',
+                            style: TextStyle(
+                              color: Colors.white60,
+                              fontSize: 12,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          index == 0
-                              ? '${entity.types[0].persons[0].nameEn}'
-                              : '${entity.types[1].persons[index - 1].nameEn}',
-                          style: TextStyle(
-                            color: Colors.white60,
-                            fontSize: 12,
+                          Text(
+                            index == 0
+                                ? '导演'
+                                : entity.types[1].persons[index - 1].personate
+                                        .isEmpty
+                                    ? ''
+                                    : '饰 ${entity.types[1].persons[index - 1].personate}',
+                            style: TextStyle(
+                              color: Colors.white60,
+                              fontSize: 11,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          index == 0
-                              ? '导演'
-                              : entity.types[1].persons[index - 1].personate
-                                      .isEmpty
-                                  ? ''
-                                  : '饰 ${entity.types[1].persons[index - 1].personate}',
-                          style: TextStyle(
-                            color: Colors.white60,
-                            fontSize: 11,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),
               ),
             ],
           );
+  }
+
+  void showAllMovieActorBottomSheet() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) => allMovieActorDraggableList(),
+      isScrollControlled: true, //设置true，解决了模态底页无法全屏
+    );
+  }
+
+  Widget allMovieActorDraggableList() {
+    return DraggableScrollableSheet(
+      initialChildSize: 1.0,
+      minChildSize: 0.25,
+      maxChildSize: 1.0,
+      expand: false, //设置false，解决了下滑时小部件的留白。
+      builder: (context, scrollController) => Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(15),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.close_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                Flexible(child: Container()),
+                Flexible(child: Text('全部演员')),
+                Flexible(child: Container()),
+              ],
+            ),
+          ),
+          elevation: 0.5,
+          backgroundColor: Colors.white,
+          brightness: Brightness.light,
+          centerTitle: true,
+        ),
+        body: ScrollConfiguration(
+          behavior: CustomScrollBehavior(
+            isShowLeading: true,
+            isShowTrailing: true,
+            color: widget.valueColor,
+          ),
+          child: ListView.separated(
+            controller: scrollController,
+            padding: EdgeInsets.fromLTRB(12, 8, 0, 8),
+            itemBuilder: (context, index) => Container(
+              child: Row(
+                children: [
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    child: MyFadeInImage(
+                      imageUrl: '${entity.types[1].persons[index].image}',
+                      width: 80,
+                      height: 120,
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${entity.types[1].persons[index].name}',
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '${entity.types[1].persons[index].nameEn}',
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '演员  ${entity.types[1].persons[index].personate.isEmpty ? '' : '饰 (${entity.types[1].persons[index].personate})'}',
+                          style: TextStyle(color: Colors.black54, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            separatorBuilder: (context, index) => Divider(),
+            itemCount: entity.types[1].persons.length,
+          ),
+        ),
+      ),
+    );
   }
 }
