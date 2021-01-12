@@ -21,7 +21,7 @@ class Api {
   static final String garbageTextSearch = '/JDAI/garbageTextSearch'; //文本垃圾分类识别
 
   //时光网API
-  static final String mTimeHotMovie = '/Showtime/LocationMovies.api'; //正在热映
+  static final String mTimeHotMovie = '/PageSubArea/HotPlayMovies.api'; //正在售票(包括正在热映和即将上映)
   static final String mTimeMovieDetail = '/movie/detail.api'; //电影详情
   static final String mTimeMovieActor = '/Movie/MovieCreditsWithTypes.api'; //电影演员
 

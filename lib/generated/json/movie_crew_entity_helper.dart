@@ -59,9 +59,9 @@ movieCrewTypesPersonFromJson(MovieCrewTypesPerson data, Map<String, dynamic> jso
 	if (json['image'] != null) {
 		data.image = json['image'].toString();
 	}
-  if (json['personate'] != null) {
-    data.personate = json['personate'].toString();
-  }
+	if (json['personate'] != null) {
+		data.personate = json['personate'].toString();
+	}
 	return data;
 }
 
@@ -71,5 +71,6 @@ Map<String, dynamic> movieCrewTypesPersonToJson(MovieCrewTypesPerson entity) {
 	data['name'] = entity.name;
 	data['nameEn'] = entity.nameEn;
 	data['image'] = entity.image;
+	data['personate'] = entity.personate;
 	return data;
 }

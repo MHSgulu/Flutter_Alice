@@ -1,7 +1,7 @@
 import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/network/http_util.dart';
-import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/model/m_t_hot_movie_entity.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
@@ -14,7 +14,7 @@ class HotMovieView extends StatefulWidget {
 }
 
 class _HotMovieViewState extends State<HotMovieView> {
-  Future<MtimeHotMovieEntity> _future;
+  Future<MTHotMovieEntity> _future;
 
   @override
   void initState() {
@@ -22,17 +22,9 @@ class _HotMovieViewState extends State<HotMovieView> {
     super.initState();
   }
 
-  void jumpToMovieDetails(String movieId, String imgUrl) {
-    Navigator.pushNamed(
-      context,
-      RouteName.movieDetailsPage,
-      arguments: MovieDetailArguments(movieId, imgUrl),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<MtimeHotMovieEntity>(
+    return FutureBuilder<MTHotMovieEntity>(
       future: _future,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -55,7 +47,7 @@ class _HotMovieViewState extends State<HotMovieView> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              '全部  ${snapshot.data.ms.length}',
+                              '全部  ${snapshot.data.count}',
                               style: TextStyle(fontSize: 12),
                             ),
                             Container(width: 4),
@@ -76,26 +68,26 @@ class _HotMovieViewState extends State<HotMovieView> {
                     mainAxisSpacing: 0,
                     crossAxisSpacing: 0,
                   ),
-                  itemCount: snapshot.data.ms.length > 9
+                  itemCount: snapshot.data.movies.length > 9
                       ? 9
-                      : snapshot.data.ms.length,
+                      : snapshot.data.movies.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => jumpToMovieDetails(
-                          snapshot.data.ms[index].id.toString(),
-                          snapshot.data.ms[index].img,
+                          snapshot.data.movies[index].movieId.toString(),
+                          snapshot.data.movies[index].img,
                       ),
                       child: Column(
                         children: <Widget>[
                           MyRRectCard(
                             child: MyFadeInImage(
-                              imageUrl: snapshot.data.ms[index].img,
+                              imageUrl: snapshot.data.movies[index].img,
                               width: 265, //1280
                               height: 150, //720
                             ),
                           ),
                           Text(
-                            snapshot.data.ms[index].tCn,
+                            snapshot.data.movies[index].titleCn,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -103,8 +95,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RatingBarIndicator(
-                                rating: snapshot.data.ms[index].r > 0
-                                    ? snapshot.data.ms[index].r / 2.0
+                                rating: snapshot.data.movies[index].ratingFinal > 0
+                                    ? snapshot.data.movies[index].ratingFinal / 2.0
                                     : 0,
                                 itemSize: 15,
                                 itemBuilder: (context, index) {
@@ -118,8 +110,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                                 width: 6,
                               ),
                               Text(
-                                snapshot.data.ms[index].r > 0
-                                    ? snapshot.data.ms[index].r.toString()
+                                snapshot.data.movies[index].ratingFinal > 0
+                                    ? snapshot.data.movies[index].ratingFinal.toString()
                                     : '',
                                 style: TextStyle(fontSize: 12),
                               ),
@@ -143,6 +135,14 @@ class _HotMovieViewState extends State<HotMovieView> {
           strokeWidth: 3,
         );
       },
+    );
+  }
+
+  void jumpToMovieDetails(String movieId, String imgUrl) {
+    Navigator.pushNamed(
+      context,
+      RouteName.movieDetailsPage,
+      arguments: MovieDetailArguments(movieId, imgUrl),
     );
   }
 

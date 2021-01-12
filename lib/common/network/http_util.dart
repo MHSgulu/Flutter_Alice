@@ -5,10 +5,10 @@ import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart'
 import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
+import 'package:alice/generated/json/m_t_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/generated/json/movie_crew_entity_helper.dart';
-import 'package:alice/generated/json/mtime_hot_movie_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
@@ -22,10 +22,10 @@ import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/model/bird_wallpaper_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
+import 'package:alice/model/m_t_hot_movie_entity.dart';
 import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/model/movie_crew_entity.dart';
-import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
@@ -178,17 +178,22 @@ class HttpUtil {
     }
   }
 
+  //正在热映
+  //url：https://api-m.mtime.cn/Showtime/LocationMovies.api?locationId=?
+  //示例 url：https://api-m.mtime.cn/Showtime/LocationMovies.api?locationId=290
+  /// 之前采用的 API废弃  目前返回空值 2021-1-12 眼皮子底下发现的
+
   ///时光网API 正在热映
-  static Future<MtimeHotMovieEntity> fetchTimeHotMovieData() async {
+  static Future<MTHotMovieEntity> fetchTimeHotMovieData() async {
     Response response = await DioUtil.getInstance().createTimeMovieDio().get(
       Api.mTimeHotMovie,
       queryParameters: {
-        "locationId": '290',
+        "locationId": '292', //上海
       },
     );
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
-      return mtimeHotMovieEntityFromJson(MtimeHotMovieEntity(), jsonDecode(response.toString()));
+      return mTHotMovieEntityFromJson(MTHotMovieEntity(), jsonDecode(response.toString()));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
