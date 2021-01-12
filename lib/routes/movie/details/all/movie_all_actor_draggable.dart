@@ -1,9 +1,11 @@
 import 'package:alice/model/movie_crew_entity.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
+import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
+import 'package:alice/widgets/photo_view_gallry.dart';
 import 'package:flutter/material.dart';
 
-class MovieAllActorDraggableWidget extends StatelessWidget {
+class MovieAllActorDraggableWidget extends StatefulWidget {
   final Color valueColor;
   final MovieCrewEntity entity;
 
@@ -12,6 +14,22 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
     @required this.valueColor,
     @required this.entity,
   }) : super(key: key);
+
+  @override
+  _MovieAllActorDraggableWidgetState createState() => _MovieAllActorDraggableWidgetState();
+}
+
+class _MovieAllActorDraggableWidgetState extends State<MovieAllActorDraggableWidget> {
+  List<String> actorPictureList = List();
+
+
+  @override
+  void initState() {
+    widget.entity.types[1].persons.forEach((element) {
+      actorPictureList.add(element.image);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +67,7 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
           behavior: CustomScrollBehavior(
             isShowLeading: true,
             isShowTrailing: true,
-            color: valueColor,
+            color: widget.valueColor,
           ),
           child: ListView.separated(
             controller: scrollController,
@@ -57,15 +75,17 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
             itemBuilder: (context, index) => Container(
               child: Row(
                 children: [
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: MyFadeInImage(
-                      imageUrl: '${entity.types[1].persons[index].image}',
-                      width: 80,
-                      height: 120,
+                  GestureDetector(
+                    onTap: ()=> jumpToPhotoView(index),
+                    child: Hero(
+                      tag: 'actorPicture:$index',
+                      child: MyRRectCard(
+                        child: MyFadeInImage(
+                          imageUrl: '${widget.entity.types[1].persons[index].image}',
+                          width: 80,
+                          height: 120,
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(width: 12),
@@ -74,15 +94,15 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${entity.types[1].persons[index].name}',
+                          '${widget.entity.types[1].persons[index].name}',
                         ),
                         SizedBox(height: 4),
                         Text(
-                          '${entity.types[1].persons[index].nameEn}',
+                          '${widget.entity.types[1].persons[index].nameEn}',
                         ),
                         SizedBox(height: 4),
                         Text(
-                          '演员  ${entity.types[1].persons[index].personate.isEmpty ? '' : '饰 (${entity.types[1].persons[index].personate})'}',
+                          '演员  ${widget.entity.types[1].persons[index].personate.isEmpty ? '' : '饰 (${widget.entity.types[1].persons[index].personate})'}',
                           style: TextStyle(color: Colors.black54, fontSize: 12),
                         ),
                       ],
@@ -92,10 +112,21 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
               ),
             ),
             separatorBuilder: (context, index) => Divider(),
-            itemCount: entity.types[1].persons.length,
+            itemCount: widget.entity.types[1].persons.length,
           ),
         ),
       ),
     );
+  }
+
+  void jumpToPhotoView(int index) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) => PhotoGalleryView(
+              imageList: actorPictureList,
+              index: index,
+              heroTag: 'actorPicture:$index',
+            )));
   }
 }
