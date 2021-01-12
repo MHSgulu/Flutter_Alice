@@ -97,7 +97,7 @@ class _StaticPictureListState extends State<StaticPictureList> with AutomaticKee
                 context,
                 MaterialPageRoute(
                     builder: (context) => PhotoSingleView(
-                      img: '${dataList[index].img}',
+                      imgUrl: '${dataList[index].img}',
                       heroTag: 'staticPicture_$index',
                     )),
               );

@@ -6,7 +6,7 @@ import 'package:photo_view/photo_view_gallery.dart';
 class PhotoGalleryView extends StatefulWidget {
   final List<String> imageList;
   final int index;
-  final String heroTag;
+  final Object heroTag;
 
   const PhotoGalleryView({
     Key key,
@@ -42,9 +42,7 @@ class _PhotoViewGalleryScreenState extends State<PhotoGalleryView> {
             builder: (BuildContext context, int index) {
               return PhotoViewGalleryPageOptions(
                 imageProvider: NetworkImage(widget.imageList[index]),
-                heroAttributes: widget.heroTag.isNotEmpty
-                    ? PhotoViewHeroAttributes(tag: widget.heroTag)
-                    : null,
+                heroAttributes: widget.heroTag == null ? PhotoViewHeroAttributes(tag: '') : PhotoViewHeroAttributes(tag: widget.heroTag),
                 minScale: 0.2,
                 maxScale: 1.0,
               );
