@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+/// 淡入效果的图片展示
 class MyFadeInImage extends StatelessWidget {
   final String imageUrl;
   final double width;
