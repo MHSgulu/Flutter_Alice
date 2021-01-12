@@ -3,6 +3,8 @@ import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/movie_crew_entity.dart';
 import 'package:alice/routes/movie/details/all/movie_all_actor_draggable.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
+import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
+import 'package:alice/widgets/photo_view_single.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -112,17 +114,19 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                       width: 90,
                       child: Column(
                         children: <Widget>[
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
+                          GestureDetector(
+                            onTap: () => jumpToPhotoView(index),
+                            child: Hero(
+                              tag: '$index',
+                              child: MyRRectCard(
+                              child: MyFadeInImage(
+                                imageUrl: index == 0
+                                    ? entity.types[0].persons[0].image
+                                    : entity.types[1].persons[index - 1].image,
+                                width: 80,
+                                height: 120,
+                              ),
                             ),
-                            clipBehavior: Clip.antiAlias,
-                            child: MyFadeInImage(
-                              imageUrl: index == 0
-                                  ? entity.types[0].persons[0].image
-                                  : entity.types[1].persons[index - 1].image,
-                              width: 80,
-                              height: 120,
                             ),
                           ),
                           Text(
@@ -180,6 +184,18 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       ),
       isScrollControlled: true, //设置true，解决了模态底页无法全屏
     );
+  }
+
+  void jumpToPhotoView(int index) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) => PhotoSingleView(
+              imgUrl: index == 0
+                  ? entity.types[0].persons[0].image
+                  : entity.types[1].persons[index - 1].image,
+              heroTag: '$index',
+            )));
   }
 
 }

@@ -14,6 +14,7 @@ import 'package:palette_generator/palette_generator.dart';
 
 import 'details/movie_basic_info_widget.dart';
 import 'details/movie_still_info_widget.dart';
+import 'details/movie_trailer_info_widget.dart';
 import 'details/movie_type_info_widget.dart';
 
 class MovieDetailsPage extends StatefulWidget {
@@ -120,11 +121,15 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
                     movieId: args.movieId,
                     snapshot: snapshot,
                     valueColor: dominantColor,
-                  ), //电影演员列表栏
+                  ), //电影演员栏
                   MovieStillInfoWidget(
                     snapshot: snapshot,
                     valueColor: dominantColor,
-                  ), //电影预告片/剧照列表栏
+                  ), //电影剧照栏
+                  MovieTrailerInfoWidget(
+                    snapshot: snapshot,
+                    valueColor: dominantColor,
+                  ), //电影预告片/花絮栏
                 ],
               ),
             ),
