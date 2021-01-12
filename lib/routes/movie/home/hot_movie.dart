@@ -3,7 +3,6 @@ import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'file:///E:/Alice_flutter/alice/lib/routes/movie/movie_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
