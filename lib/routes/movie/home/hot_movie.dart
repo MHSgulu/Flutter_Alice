@@ -2,8 +2,9 @@ import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/mtime_hot_movie_entity.dart';
+import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -44,8 +45,7 @@ class _HotMovieViewState extends State<HotMovieView> {
                     children: <Widget>[
                       Text(
                         '正在热映',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Expanded(child: Container()),
                       GestureDetector(
@@ -87,27 +87,11 @@ class _HotMovieViewState extends State<HotMovieView> {
                       ),
                       child: Column(
                         children: <Widget>[
-                          Card(
-                            clipBehavior: Clip.antiAlias,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadiusDirectional.circular(4),
-                            ),
-                            child: CachedNetworkImage(
-                              imageUrl:  snapshot.data.ms[index].img,
-                              imageBuilder: (context, imageProvider) => Container(
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              placeholder: (context, url) => MyLoadingIndicator(
-                                valueColor: Colors.teal[300],
-                                strokeWidth: 2,
-                              ),
-                              errorWidget: (context, url, error) => Icon(Icons.error),
+                          MyRRectCard(
+                            child: MyFadeInImage(
+                              imageUrl: snapshot.data.ms[index].img,
+                              width: 265, //1280
+                              height: 150, //720
                             ),
                           ),
                           Text(
