@@ -17,7 +17,7 @@ class MovieAllActorDraggableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       initialChildSize: 1.0,
-      minChildSize: 0.25,
+      minChildSize: 0.8,
       maxChildSize: 1.0,
       expand: false, //设置false，解决了下滑时小部件的留白。
       builder: (context, scrollController) => Scaffold(
