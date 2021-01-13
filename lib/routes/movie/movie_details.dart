@@ -1,7 +1,4 @@
 import 'package:alice/common/const/arguments.dart';
-import 'package:alice/common/network/http_util.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
-import 'package:alice/routes/movie/details/movie_actor_info_widget.dart';
 import 'package:alice/routes/movie/details/movie_content_info_widget.dart';
 import 'package:alice/routes/movie/details/movie_rating_info_widget.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -12,9 +9,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:palette_generator/palette_generator.dart';
 
+import 'details/movie_actor_info_widget.dart';
 import 'details/movie_basic_info_widget.dart';
 import 'details/movie_still_info_widget.dart';
-import 'details/movie_trailer_info_widget.dart';
 import 'details/movie_type_info_widget.dart';
 
 class MovieDetailsPage extends StatefulWidget {
@@ -24,7 +21,6 @@ class MovieDetailsPage extends StatefulWidget {
 
 class MovieDetailsPageState extends State<MovieDetailsPage> {
   MovieDetailArguments args;
-  Future<MTMovieDetailEntity> _future;
   Color dominantColor; //从电影海报获取的主要颜色值
   PaletteGenerator generator;
 
@@ -36,9 +32,8 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    //print('数据点位: movieId： ${args.movieId}');
-    fetchDominantColorPicture(args.imgUrl);
-    _future = HttpUtil.fetchTimeMovieDetailData(args.movieId);
+    print('数据点位: movieId： ${args.movieEntity.movieId}');
+    fetchDominantColorPicture(args.movieEntity.img);
     super.didChangeDependencies();
   }
 
@@ -88,62 +83,41 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_horiz),
-            onPressed: () => Fluttertoast.showToast(msg: '动作'),
+            onPressed: () => Fluttertoast.showToast(msg: '菜单'),
           ),
         ],
         elevation: 1,
       ),
-      body: movieFutureBuilder(),
+      body: movieDetailsView(),
     );
   }
 
-  Widget movieFutureBuilder() {
-    return FutureBuilder<MTMovieDetailEntity>(
-      future: _future,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return ScrollConfiguration(
-            behavior: CustomScrollBehavior(
-              isShowLeading: true,
-              isShowTrailing: true,
-              color: dominantColor,
-            ),
-            child: SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(8, 8, 8, 20),
-              child:Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  MovieBasicInfoWidget(snapshot: snapshot), //电影基础信息栏
-                  MovieRatingInfoWidget(snapshot: snapshot), //电影评分信息栏
-                  MovieTypeInfoWidget(snapshot: snapshot), //电影类型信息栏
-                  MovieContentInfoWidget(snapshot: snapshot), //电影内容简介栏
-                  MovieActorInfoWidget(
-                    movieId: args.movieId,
+  Widget movieDetailsView() {
+    return ScrollConfiguration(
+      behavior: CustomScrollBehavior(
+        isShowLeading: true,
+        isShowTrailing: true,
+        color: dominantColor,
+      ),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(8, 8, 8, 20),
+        child:Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            MovieBasicInfoWidget(args: args), //电影基础信息栏
+            MovieRatingInfoWidget(args: args), //电影评分信息栏
+            MovieTypeInfoWidget(args: args), //电影类型信息栏
+            MovieContentInfoWidget(), //电影内容简介栏
+            MovieActorInfoWidget(valueColor: dominantColor), //电影演员栏
+            MovieStillInfoWidget(valueColor: dominantColor), //电影剧照栏
+            /*MovieTrailerInfoWidget(
                     snapshot: snapshot,
                     valueColor: dominantColor,
-                  ), //电影演员栏
-                  MovieStillInfoWidget(
-                    snapshot: snapshot,
-                    valueColor: dominantColor,
-                  ), //电影剧照栏
-                  MovieTrailerInfoWidget(
-                    snapshot: snapshot,
-                    valueColor: dominantColor,
-                  ), //电影预告片/花絮栏
-                ],
-              ),
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Center(
-            child: Text("${snapshot.error}"),
-          );
-        }
-        return MyLoadingIndicator(
-          valueColor: Colors.teal[400],
-          strokeWidth: 3,
-        );
-      },
+                  ),*/ //电影预告片/花絮栏
+          ],
+        ),
+      ),
     );
   }
+
 }

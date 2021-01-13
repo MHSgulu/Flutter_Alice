@@ -7,6 +7,7 @@ import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HotMovieView extends StatefulWidget {
   @override
@@ -37,11 +38,13 @@ class _HotMovieViewState extends State<HotMovieView> {
                     children: <Widget>[
                       Text(
                         '正在热映',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Expanded(child: Container()),
                       GestureDetector(
                         onTap: () {
+                          Fluttertoast.showToast(msg: '全部电影');
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => IsShowingUpListScreen(futureData: futureMovieEntity,)));
                         },
                         child: Row(
@@ -73,10 +76,7 @@ class _HotMovieViewState extends State<HotMovieView> {
                       : snapshot.data.movies.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => jumpToMovieDetails(
-                          snapshot.data.movies[index].movieId.toString(),
-                          snapshot.data.movies[index].img,
-                      ),
+                      onTap: () => jumpToMovieDetails(snapshot.data.movies[index]),
                       child: Column(
                         children: <Widget>[
                           MyRRectCard(
@@ -95,9 +95,12 @@ class _HotMovieViewState extends State<HotMovieView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RatingBarIndicator(
-                                rating: snapshot.data.movies[index].ratingFinal > 0
-                                    ? snapshot.data.movies[index].ratingFinal / 2.0
-                                    : 0,
+                                rating:
+                                    snapshot.data.movies[index].ratingFinal > 0
+                                        ? snapshot.data.movies[index]
+                                                .ratingFinal /
+                                            2.0
+                                        : 0,
                                 itemSize: 15,
                                 itemBuilder: (context, index) {
                                   return Icon(
@@ -111,7 +114,8 @@ class _HotMovieViewState extends State<HotMovieView> {
                               ),
                               Text(
                                 snapshot.data.movies[index].ratingFinal > 0
-                                    ? snapshot.data.movies[index].ratingFinal.toString()
+                                    ? snapshot.data.movies[index].ratingFinal
+                                        .toString()
                                     : '',
                                 style: TextStyle(fontSize: 12),
                               ),
@@ -138,12 +142,11 @@ class _HotMovieViewState extends State<HotMovieView> {
     );
   }
 
-  void jumpToMovieDetails(String movieId, String imgUrl) {
+  void jumpToMovieDetails(MTHotMovieMovie movieEntity) {
     Navigator.pushNamed(
       context,
       RouteName.movieDetailsPage,
-      arguments: MovieDetailArguments(movieId, imgUrl),
+      arguments: MovieDetailArguments(movieEntity),
     );
   }
-
 }

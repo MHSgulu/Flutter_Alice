@@ -1,3 +1,5 @@
+import 'package:alice/model/m_t_hot_movie_entity.dart';
+
 class ScreenArguments {
   final String title;
   final String message;
@@ -21,8 +23,7 @@ class BirdWallpaperListScreenArguments {
 }
 
 class MovieDetailArguments {
-  final String movieId;
-  final String imgUrl;
+  final MTHotMovieMovie movieEntity;
 
-  MovieDetailArguments(this.movieId, this.imgUrl);
+  MovieDetailArguments(this.movieEntity);
 }

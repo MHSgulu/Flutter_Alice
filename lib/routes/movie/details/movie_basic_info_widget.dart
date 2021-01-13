@@ -1,31 +1,23 @@
-import 'package:alice/common/util/tool_util.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
+import 'package:alice/common/const/arguments.dart';
+import 'package:alice/widgets/custom/my_fade_in_image.dart';
+import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class MovieBasicInfoWidget extends StatelessWidget{
-  final AsyncSnapshot<MTMovieDetailEntity> snapshot;
+  final MovieDetailArguments args;
 
-  const MovieBasicInfoWidget({Key key, @required this.snapshot}) : super(key: key);
+  const MovieBasicInfoWidget({Key key, @required this.args}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Card(
-          elevation: 2,
-          clipBehavior: Clip.antiAlias,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(2),
-          ),
-          child: Container(
-            child: FadeInImage.memoryNetwork(
-              width: 110,
-              fit: BoxFit.cover,
-              placeholder: kTransparentImage,
-              image: snapshot.data.image,
-            ),
+        MyRRectCard(
+          child: MyFadeInImage(
+              imageUrl: 'https://icweiliimg1.pstatp.com/weili/l/902997606818381932.jpg',
+              width: 110, //1
+              height: 165, //1.5
           ),
         ),
         Expanded(
@@ -35,37 +27,41 @@ class MovieBasicInfoWidget extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  snapshot.data.titleCn,
+                  '即使能够进入梦境世界，但还是无法找到Alice',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
-                  maxLines: 2, //文字显示最大行数
-                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  snapshot.data.titleCn == snapshot.data.titleEn
-                      ? ' (${snapshot.data.year})'
-                      : snapshot.data.titleEn + ' (${snapshot.data.year})',
+                  'Even if I can enter the dream world, I still can’t find Alice',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
-                  maxLines: 2, //文字显示最大行数
-                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '类型: ${ToolUtil.listToString(snapshot.data.type)}'
-                      ' / 上映时间:  ${snapshot.data.release.date} (${snapshot.data.release.location}) '
-                      '/ 片长:  ${snapshot.data.runTime}',
+                  '类型: 剧情 / 科幻 / 奇幻 / 动作 / 爱情',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white70,
                   ),
-                  maxLines: 2, //文字显示最大行数
-                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  '上映: 2033-2-29',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white70,
+                  ),
+                ),
+                Text(
+                  '片长: ${args.movieEntity.length} 分钟',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white70,
+                  ),
                 ),
               ],
             ),

@@ -34,6 +34,7 @@ class MyFadeInImage extends StatelessWidget {
             width: width,
             height: height,
             fit: fit ?? BoxFit.cover,
+            //alignment: Alignment.centerRight,
           ),
         );
       },

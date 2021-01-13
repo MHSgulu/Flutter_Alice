@@ -1,19 +1,23 @@
 import 'package:alice/common/util/tool_util.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:flutter/material.dart';
 
 class MovieContentInfoWidget extends StatefulWidget {
-  final AsyncSnapshot<MTMovieDetailEntity> snapshot;
-
-  const MovieContentInfoWidget({Key key, @required this.snapshot})
-      : super(key: key);
-
   @override
   _MovieContentInfoWidgetState createState() => _MovieContentInfoWidgetState();
 }
 
 class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
+  String movieSynopsis;
   bool isExpand = false; //是否展开电影简介的内容
+
+  @override
+  void initState() {
+    movieSynopsis = '我是谁？我从哪里来？我到哪里去？每当马小萌午夜进入梦境时，总是要自动发出哲学三连击来询问自己。'
+        '无数个日日夜夜，形形色色的不同世界，看似不一样的世界，但是好像这些梦境之间都有着若隐若现的关联。'
+        '他何时能够知道自己是谁？他又如何能够明白自己从哪来和到哪去？'
+        '一次又一次的梦境经历，仿佛轮回似的宿命，他又怎样挣脱命运的锁链呢？';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,7 @@ class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
             padding: EdgeInsets.only(top: 8),
             child: isExpand
                 ? Text(
-                    widget.snapshot.data.content,
+                    movieSynopsis,
                     style: TextStyle(color: Colors.white60),
                   )
                 : LayoutBuilder(builder: (context, size) {
@@ -41,7 +45,7 @@ class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
                       children: <Widget>[
                         Text.rich(
                           TextSpan(
-                            text: widget.snapshot.data.content,
+                            text: movieSynopsis,
                             style:
                                 TextStyle(fontSize: 14, color: Colors.white70),
                           ),
@@ -49,7 +53,7 @@ class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
                           maxLines: 4,
                         ),
                         ToolUtil.isFilmIntroductionOverflow(
-                          widget.snapshot.data.content,
+                          movieSynopsis,
                           size.maxWidth,
                         )
                             ? GestureDetector(

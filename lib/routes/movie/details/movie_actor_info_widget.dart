@@ -1,22 +1,13 @@
-import 'package:alice/common/network/http_util.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
-import 'package:alice/model/movie_crew_entity.dart';
-import 'package:alice/routes/movie/details/all/movie_all_actor_draggable.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/photo_view_single.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class MovieActorInfoWidget extends StatefulWidget {
-  final String movieId;
-  final AsyncSnapshot<MTMovieDetailEntity> snapshot;
   final Color valueColor;
 
   const MovieActorInfoWidget({
     Key key,
-    @required this.movieId,
-    @required this.snapshot,
     @required this.valueColor,
   }) : super(key: key);
 
@@ -25,37 +16,43 @@ class MovieActorInfoWidget extends StatefulWidget {
 }
 
 class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
-  MovieCrewEntity entity;
+  //演员图像
+  List myMovieActorPictureList = [
+    'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3479171438,187203267&fm=26&gp=0.jpg', //黑衣人
+    'https://img3.doubanio.com/view/photo/l/public/p2621735140.webp', //灰原哀
+    'https://img1.doubanio.com/view/photo/l/public/p604983657.webp', //朽木露琪亚
+    'https://img9.doubanio.com/view/photo/l/public/p1945704333.webp', //三立阿卡曼
+  ];
+
+  List myMovieActorCnNameList = [
+    '黑衣人',
+    '灰原哀',
+    '朽木露琪亚',
+    '三笠 阿克曼',
+  ];
+
+  List myMovieActorEnNameList = [
+    'Man in black',
+    'Haibara Ai',
+    'Kuchiki Rukia',
+    'Mikasa Ackerman',
+  ];
+
+  List myMovieActorRoleNameList = [
+    '导演',
+    '饰  初始指引者',
+    '饰  成长羁绊者',
+    '饰  孤独陪伴者',
+  ];
 
   @override
   void initState() {
-    print('数据点位: movieId： ${widget.movieId}');
-    fetchData();
     super.initState();
-  }
-
-  void fetchData() async {
-    var result = await HttpUtil.fetchTimeMovieActorData(widget.movieId);
-    if (result is Exception) {
-      Exception exception = result as Exception;
-      Fluttertoast.showToast(msg: 'error: $exception');
-    } else {
-      if (mounted) {
-        setState(() {
-          entity = result;
-        });
-      }
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return entity == null
-        ? Container(
-            width: 100,
-            height: 180,
-          )
-        : Column(
+    return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -71,7 +68,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => showAllMovieActorBottomSheet(),
+                      //onTap: () => showAllMovieActorBottomSheet(),
                       child: Row(
                         children: [
                           Text(
@@ -83,7 +80,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                           ),
                           SizedBox(width: 4),
                           Text(
-                            '${entity.types[0].persons.length + entity.types[1].persons.length}',
+                            '${myMovieActorPictureList.length}',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.white70,
@@ -102,13 +99,11 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                 ),
               ),
               Container(
-                height: 180,
+                height: 185,
                 //color: Colors.pink,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: entity.types[1].persons.length > 5
-                      ? 6
-                      : entity.types[1].persons.length + 1,
+                  itemCount: myMovieActorPictureList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       width: 90,
@@ -120,9 +115,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                               tag: '$index',
                               child: MyRRectCard(
                               child: MyFadeInImage(
-                                imageUrl: index == 0
-                                    ? entity.types[0].persons[0].image
-                                    : entity.types[1].persons[index - 1].image,
+                                imageUrl: myMovieActorPictureList[index],
                                 width: 80,
                                 height: 120,
                               ),
@@ -130,9 +123,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                             ),
                           ),
                           Text(
-                            index == 0
-                                ? entity.types[0].persons[0].name
-                                : entity.types[1].persons[index - 1].name,
+                            myMovieActorCnNameList[index],
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 13,
@@ -141,9 +132,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            index == 0
-                                ? '${entity.types[0].persons[0].nameEn}'
-                                : '${entity.types[1].persons[index - 1].nameEn}',
+                            myMovieActorEnNameList[index],
                             style: TextStyle(
                               color: Colors.white60,
                               fontSize: 12,
@@ -152,12 +141,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            index == 0
-                                ? '导演'
-                                : entity.types[1].persons[index - 1].personate
-                                        .isEmpty
-                                    ? ''
-                                    : '饰 ${entity.types[1].persons[index - 1].personate}',
+                            myMovieActorRoleNameList[index],
                             style: TextStyle(
                               color: Colors.white60,
                               fontSize: 11,
@@ -175,7 +159,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
           );
   }
 
-  void showAllMovieActorBottomSheet() {
+  /*void showAllMovieActorBottomSheet() {
     showModalBottomSheet<void>(
       context: context,
       builder: (context) => MovieAllActorDraggableWidget(
@@ -184,16 +168,14 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       ),
       isScrollControlled: true, //设置true，解决了模态底页无法全屏
     );
-  }
+  }*/
 
   void jumpToPhotoView(int index) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (_) => PhotoSingleView(
-              imgUrl: index == 0
-                  ? entity.types[0].persons[0].image
-                  : entity.types[1].persons[index - 1].image,
+              imgUrl: myMovieActorPictureList[index],
               heroTag: '$index',
             )));
   }

@@ -31,6 +31,11 @@ class ToolUtil{
    return sb.toString();
  }
 
+ ///String转List
+ static List stringToList(String string) {
+   return string.split(' / ');
+ }
+
 
  ///判断电影简介的文本是否溢出 (简洁版)
  static bool isFilmIntroductionOverflow(String text, double maxWidth) {

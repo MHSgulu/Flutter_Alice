@@ -1,11 +1,11 @@
-import 'package:alice/model/m_t_movie_detail_entity.dart';
+import 'package:alice/common/const/arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MovieRatingInfoWidget extends StatelessWidget{
-  final AsyncSnapshot<MTMovieDetailEntity> snapshot;
+  final MovieDetailArguments args;
 
-  const MovieRatingInfoWidget({Key key, @required this.snapshot}) : super(key: key);
+  const MovieRatingInfoWidget({Key key, @required this.args}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               RatingBarIndicator(
-                rating: double.parse(snapshot.data.rating) >
+                rating: args.movieEntity.ratingFinal >
                     0
-                    ? double.parse(snapshot.data.rating) /
+                    ? args.movieEntity.ratingFinal /
                     2.0
                     : 0,
                 itemSize: 13,
@@ -44,15 +44,14 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               Text(
-                double.parse(snapshot.data.rating) < 0
+                args.movieEntity.ratingFinal < 0
                     ? '暂未上映'
-                    : '${double.parse(snapshot.data.rating)}',
+                    : '${args.movieEntity.ratingFinal}',
                 style: TextStyle(
-                  fontSize:
-                  double.parse(snapshot.data.rating) < 0
+                  fontSize: args.movieEntity.ratingFinal < 0
                       ? 12
                       : 14,
-                  color: double.parse(snapshot.data.rating) < 0
+                  color: args.movieEntity.ratingFinal < 0
                       ? Colors.white60
                       : Colors.white,
                 ),
@@ -71,28 +70,12 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               Text(
-                '${snapshot.data.scoreCount}人评分',
+                '${args.movieEntity.wantedCount}人想看',
                 style: TextStyle(
                   color: Colors.white54,
                   fontSize: 11,
                 ),
               ),
-              /*Container(width: 8),
-              Text(
-                '${snapshot.data.scoreCount}人看过',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 11,
-                ),
-              ),
-              Container(width: 8),
-              Text(
-                '${snapshot.data.scoreCount}人想看',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 11,
-                ),
-              ),*/
             ],
           ),
         ],

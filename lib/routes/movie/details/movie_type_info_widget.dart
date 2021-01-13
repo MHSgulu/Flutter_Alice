@@ -1,13 +1,26 @@
-import 'package:alice/model/m_t_movie_detail_entity.dart';
+import 'package:alice/common/const/arguments.dart';
 import 'package:flutter/material.dart';
 
 class MovieTypeInfoWidget extends StatelessWidget{
-  final AsyncSnapshot<MTMovieDetailEntity> snapshot;
+  final MovieDetailArguments args;
 
-  const MovieTypeInfoWidget({Key key, @required this.snapshot}) : super(key: key);
+  const MovieTypeInfoWidget({Key key, @required this.args}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List myMovieType = [
+      '剧情',
+      '科幻',
+      '奇幻',
+      '爱情',
+      '动作',
+      '冒险',
+      '灾难',
+      '温情',
+      '意识流',
+      '实验',
+    ];
+
     return Row(
       children: <Widget>[
         Container(
@@ -27,7 +40,7 @@ class MovieTypeInfoWidget extends StatelessWidget{
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: snapshot.data.type.length,
+              itemCount: /*args.movieEntity.type.split('/')*/myMovieType.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   margin: EdgeInsets.only(right: 12),
@@ -37,7 +50,7 @@ class MovieTypeInfoWidget extends StatelessWidget{
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(
-                      snapshot.data.type[index],
+                      /*args.movieEntity.type.split(' / ')*/myMovieType[index],
                       style: TextStyle(
                         color: Colors.white70,
                         fontSize: 12,
