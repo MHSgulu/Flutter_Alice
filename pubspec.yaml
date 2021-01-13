@@ -37,7 +37,7 @@ dependencies:
   http: ^0.12.2  # 可组合的，多平台的，基于Future的API，用于HTTP请求。( 该软件包包含一组高级功能和类，可轻松使用HTTP资源。它是多平台的，并且支持移动设备，台式机和浏览器。)
   dio: ^3.0.10  # Dart的功能强大的Http客户端，它支持拦截器，FormData，请求取消，文件下载，超时等。
   json_annotation: ^3.1.0  # 通过`json_serializable`包支持JSON代码生成的类和辅助函数。
-  url_launcher: ^5.7.8  # Flutter插件，用于在Android和iOS上启动URL。支持Web，电话，SMS和电子邮件方案(Flutter插件，用于在移动平台中启动URL。支持iOS，Android，Web，Windows，macOS和Linux。)
+  url_launcher: ^5.7.10  # Flutter插件，用于在Android和iOS上启动URL。支持Web，电话，SMS和电子邮件方案(Flutter插件，用于在移动平台中启动URL。支持iOS，Android，Web，Windows，macOS和Linux。)
   photo_view: ^0.10.3  # Photo View提供了一个手势敏感的可缩放小部件。Photo View主要用于显示交互图像和SVG等其他内容。
   transparent_image: ^1.0.0  # Dart代码中的透明图像，表示为Uint8List。
   cached_network_image: ^2.5.0  # Flutter库可加载和缓存网络图像。也可以与占位符和错误小部件一起使用
