@@ -1,4 +1,4 @@
-import 'file:///E:/Alice_flutter/alice/lib/common/const/api.dart';
+import 'package:alice/common/const/api.dart';
 import 'package:dio/dio.dart';
 
 

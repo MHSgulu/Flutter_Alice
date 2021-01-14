@@ -11,8 +11,8 @@ class MyFadeInImage extends StatelessWidget {
   const MyFadeInImage({
     Key key,
     @required this.imageUrl,
-    @required this.width,
-    @required this.height,
+    this.width,
+    this.height,
     this.fit,
   }) : super(key: key);
 
@@ -31,6 +31,10 @@ class MyFadeInImage extends StatelessWidget {
         return Center(
           child: Image.asset(
             'assets/images/image_failed_load.png',
+            //如果非空，则要求图像具有此宽度。
+            //如果为null，则图像将选择最能保留其固有纵横比的尺寸。
+            //强烈建议同时指定[width]和[height]，或者将小部件放置在设置严格布局约束的上下文中，以使图像在加载时不会改变大小。
+            //如果事先不知道确切的图像尺寸，请考虑使用[fit]来调整图像的渲染以适合给定的宽度和高度。
             width: width,
             height: height,
             fit: fit ?? BoxFit.cover,
@@ -38,6 +42,10 @@ class MyFadeInImage extends StatelessWidget {
           ),
         );
       },
+      //如果非空，则要求图像具有此宽度。
+      //如果为null，则图像将选择最能保留其固有纵横比的尺寸。
+      // 如果占位符图像的大小与目标图像的大小不匹配，则可能会导致突然的更改。
+      //大小也受比例因子的影响。
       width: width,
       height: height,
       fit: fit ?? BoxFit.cover,
