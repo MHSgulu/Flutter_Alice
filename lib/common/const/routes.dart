@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/docs/flutter_layout_constraints.dart';
 import 'package:alice/routes/more/article/article_of_the_day.dart';
 import 'package:alice/routes/more/bing/bing_wallpaper.dart';
 import 'package:alice/routes/more/chat/chat_settings.dart';
@@ -65,6 +66,7 @@ Map<String, WidgetBuilder> routes = {
   //示例模块
   RouteName.guideMaterialWidgetRoute: (context) => GuideMaterialWidgetRoute(), //材料设计风格组件
   RouteName.guideCupertinoWidgetRoute: (context) => GuideCupertinoWidgetRoute(), //iOS风格组件
+  RouteName.flutterLayoutConstraintsExample: (context) => FlutterLayoutConstraintsExample(), //Flutter 布局约束
   RouteName.guideDynamicEffectRoute: (context) => GuideDynamicEffectRoute(), //动态交互
   RouteName.guideOfficialWidgetRoute: (context) => GuideOfficialWidgetRoute(), // 复杂组合型Widget
   RouteName.guideHotPubLibraryRoute: (context) => GuideHotPubLibraryRoute(), //pub 库
@@ -111,6 +113,7 @@ class RouteName {
   //示例模块
   static final String guideMaterialWidgetRoute = '/guideMaterialWidgetRoute';
   static final String guideCupertinoWidgetRoute = '/guideCupertinoWidgetRoute';
+  static final String flutterLayoutConstraintsExample = '/flutterLayoutConstraintsExample';
   static final String guideDynamicEffectRoute = '/guideDynamicEffectRoute';
   static final String guideOfficialWidgetRoute = '/guideOfficialWidgetRoute';
   static final String guideHotPubLibraryRoute = '/guideHotPubLibraryRoute';

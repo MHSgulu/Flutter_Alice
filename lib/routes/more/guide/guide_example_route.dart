@@ -28,6 +28,10 @@ class GuideExampleRoute extends StatelessWidget {
                   onTap: () => Navigator.pushNamed(context, RouteName.guideCupertinoWidgetRoute),
                 ),
                 MyCardTile(
+                  text: '深入理解 Flutter 布局约束',
+                  onTap: () => Navigator.pushNamed(context, RouteName.flutterLayoutConstraintsExample),
+                ),
+                MyCardTile(
                   text: 'Flutter小部件系列',
                   onTap: () => Navigator.pushNamed(context, RouteName.guideWeekWidgetRoute),
                 ),
