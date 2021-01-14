@@ -49,6 +49,12 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       '饰  孤独陪伴者',
     ));
     actorList.add(MovieActorEntity(
+      'https://img9.doubanio.com/view/photo/m/public/p2387056615.webp',
+      '菜月昴',
+      'Subaru Natsuki',
+      '饰  无尽轮回者',
+    ));
+    actorList.add(MovieActorEntity(
       'https://img1.doubanio.com/view/photo/l/public/p2497256618.webp', //包哥
       '包哥',
       'Brother  Bao',
