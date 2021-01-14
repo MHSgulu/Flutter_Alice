@@ -1,4 +1,4 @@
-import 'package:alice/model/movie_crew_entity.dart';
+import 'package:alice/model/movie_actor_entity.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 
 class MovieAllActorDraggableWidget extends StatefulWidget {
   final Color valueColor;
-  final MovieCrewEntity entity;
+  final List<MovieActorEntity> actorList;
 
   const MovieAllActorDraggableWidget({
     Key key,
     @required this.valueColor,
-    @required this.entity,
+    @required this.actorList,
   }) : super(key: key);
 
   @override
@@ -22,11 +22,10 @@ class MovieAllActorDraggableWidget extends StatefulWidget {
 class _MovieAllActorDraggableWidgetState extends State<MovieAllActorDraggableWidget> {
   List<String> actorPictureList = List();
 
-
   @override
   void initState() {
-    widget.entity.types[1].persons.forEach((element) {
-      actorPictureList.add(element.image);
+    widget.actorList.forEach((element) {
+      actorPictureList.add(element.img);
     });
     super.initState();
   }
@@ -81,7 +80,7 @@ class _MovieAllActorDraggableWidgetState extends State<MovieAllActorDraggableWid
                       tag: 'actorPicture:$index',
                       child: MyRRectCard(
                         child: MyFadeInImage(
-                          imageUrl: '${widget.entity.types[1].persons[index].image}',
+                          imageUrl: widget.actorList[index].img,
                           width: 80,
                           height: 120,
                         ),
@@ -93,16 +92,14 @@ class _MovieAllActorDraggableWidgetState extends State<MovieAllActorDraggableWid
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(widget.actorList[index].nameCn),
+                        SizedBox(height: 4),
                         Text(
-                          '${widget.entity.types[1].persons[index].name}',
+                          widget.actorList[index].nameEn,
                         ),
                         SizedBox(height: 4),
                         Text(
-                          '${widget.entity.types[1].persons[index].nameEn}',
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '演员  ${widget.entity.types[1].persons[index].personate.isEmpty ? '' : '饰 (${widget.entity.types[1].persons[index].personate})'}',
+                          widget.actorList[index].nameRole,
                           style: TextStyle(color: Colors.black54, fontSize: 12),
                         ),
                       ],
@@ -112,7 +109,7 @@ class _MovieAllActorDraggableWidgetState extends State<MovieAllActorDraggableWid
               ),
             ),
             separatorBuilder: (context, index) => Divider(),
-            itemCount: widget.entity.types[1].persons.length,
+            itemCount: widget.actorList.length,
           ),
         ),
       ),
