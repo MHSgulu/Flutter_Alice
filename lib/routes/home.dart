@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'life/third_bottom_navigationbar_itemview.dart';
 import 'movie/movie_home.dart';
 import 'news/new_home.dart';
+import 'video/featured_video_home.dart';
 
 
 class WillPopScopeHome extends StatefulWidget {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _widgetOptions = <Widget>[
     NewsHomePage(),
     MovieHomePage(),
-    ThirdBottomNavigationBarItemView(),
+    FeaturedVideoHomePage(),
     MyHome(),
     //ShowMorePage(),
   ];
