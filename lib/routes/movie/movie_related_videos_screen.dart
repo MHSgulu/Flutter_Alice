@@ -4,13 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:video_player/video_player.dart';
-import 'package:alice/model/moive_details_entity.dart';
 
-class MovieRelatedVideosScreen extends StatefulWidget {
+/*class MovieRelatedVideosScreen extends StatefulWidget {
   final String videoUrl;
-  final List<MoiveDetailsTrailer> data;
-  final List<MoiveDetailsBlooper> data2;
-  final List<MoiveDetailsClip> data3;
 
   MovieRelatedVideosScreen(
       {Key key, @required this.videoUrl, this.data, this.data2, this.data3})
@@ -26,12 +22,6 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
   TargetPlatform _platform;
   VideoPlayerController _videoPlayerController;
   ChewieController _chewieController;
-  //预告片列表
-  List<MoiveDetailsTrailer> moiveDetailsTrailerlList;
-  //花絮列表
-  List<MoiveDetailsBlooper> moiveDetailsBlooperlList;
-  //片段列表
-  List<MoiveDetailsClip> moiveDetailsCliplList;
   //当前被选中的预告片索引
   int selectedIndex;
   //当前被选中的花絮索引
@@ -43,10 +33,6 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
   void initState() {
     super.initState();
     selectedIndex = 0;
-    moiveDetailsTrailerlList = widget.data;
-    moiveDetailsBlooperlList = widget.data2;
-    moiveDetailsCliplList = widget.data3;
-
     ///只能识别https     http开头无法播放                          用[replacement]替换从[start]到[end]的子字符串。
     _videoPlayerController = VideoPlayerController.network(
         widget.videoUrl.replaceRange(0, 4, 'https'));
@@ -418,4 +404,4 @@ class _MovieRelatedVideosScreen extends State<MovieRelatedVideosScreen> {
       ),
     );
   }
-}
+}*/

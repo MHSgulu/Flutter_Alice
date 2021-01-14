@@ -6,9 +6,7 @@ import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_t_hot_movie_entity_helper.dart';
-import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
-import 'package:alice/generated/json/movie_crew_entity_helper.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
@@ -23,9 +21,7 @@ import 'package:alice/model/bird_wallpaper_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_t_hot_movie_entity.dart';
-import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/model/mobie_phone_entity.dart';
-import 'package:alice/model/movie_crew_entity.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
@@ -200,7 +196,7 @@ class HttpUtil {
   }
 
   ///时光网API 电影详情
-  static Future<MTMovieDetailEntity> fetchTimeMovieDetailData(String movieId) async {
+  /*static Future<MTMovieDetailEntity> fetchTimeMovieDetailData(String movieId) async {
     Response response = await DioUtil.getInstance().createTimeMovieDio().get(
       Api.mTimeMovieDetail,
       queryParameters: {
@@ -214,10 +210,10 @@ class HttpUtil {
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
-  }
+  }*/
 
   ///时光网API 电影演职员
-  static Future<MovieCrewEntity> fetchTimeMovieActorData(String movieId) async {
+  /*static Future<MovieCrewEntity> fetchTimeMovieActorData(String movieId) async {
     Response response = await DioUtil.getInstance().createTimeMovieDio().get(
       Api.mTimeMovieActor,
       queryParameters: {
@@ -230,7 +226,7 @@ class HttpUtil {
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
-  }
+  }*/
 
   ///垃圾分类识别    似乎这个接口只能Post请求(文档也标注这个细节)
   ///https://wx.jdcloud.com/market/datas/30/13947
