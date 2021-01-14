@@ -75,6 +75,8 @@ dependencies:
   sqflite: ^1.3.2+1  # SQLite的Flutter插件，这是一个自包含的，高可靠性的嵌入式SQL数据库引擎
   shimmer: ^1.1.2  # 软件包提供了一种在Flutter项目中添加闪烁效果的简便方法
   flip_panel: ^1.0.1  # 带有内置动画的翻盖包装
+  sticky_headers: ^0.1.8+1  # Flutter粘性标头-使您可以将标头放在可滚动的内容上，当内容滚动时，这些内容将粘在容器的顶部。
+
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
   zego_express_engine: ^1.15.0  # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
   zego_permission:  # 即构Flutter工具插件，包含检查（摄像头、麦克风、相册）权限、授权（摄像头、麦克风、相册）操作、跳转设置页等功能。

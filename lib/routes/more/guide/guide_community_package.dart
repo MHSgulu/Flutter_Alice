@@ -1,3 +1,4 @@
+import 'package:alice/routes/example/community/example_sticky_headers.dart';
 import 'package:alice/routes/example/official/example_font_awesome.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -13,10 +14,12 @@ class GuideCommunityPackageRouteState
     extends State<GuideCommunityPackageRoute> {
   List<String> titleList = [
     'font_awesome_flutter',
+    'sticky_headers',
   ];
 
   List<String> subTitleList = [
     'Font Awesome图标包以Flutter Icons的形式提供。提供1500个其他图标供您的应用程序使用',
+    'Flutter粘性标头-使您可以将标头放在可滚动的内容上，当内容滚动时，这些内容将粘在容器的顶部',
   ];
 
   @override
@@ -60,11 +63,10 @@ class GuideCommunityPackageRouteState
   void jumpToRoute(int index) {
     switch (index) {
       case 0:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (_) => FontAwesomeGalleryHome()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => FontAwesomeGalleryHome()));
         break;
       case 1:
-        //Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleImagePicker()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => StickyHeadersExample()));
         break;
       case 2:
         //Navigator.push(context, MaterialPageRoute(builder: (_) => WebViewExample()));
