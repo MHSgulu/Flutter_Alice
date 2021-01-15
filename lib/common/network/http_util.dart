@@ -3,6 +3,7 @@ import 'package:alice/common/const/strings.dart';
 import 'package:alice/generated/json/article_entity_helper.dart';
 import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart';
 import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
+import 'package:alice/generated/json/eye_opening_video_daily_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
 import 'package:alice/generated/json/m_t_hot_movie_entity_helper.dart';
@@ -18,6 +19,7 @@ import 'package:alice/model/article_entity.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/model/bird_wallpaper_entity.dart';
+import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/model/m_t_hot_movie_entity.dart';
@@ -190,6 +192,17 @@ class HttpUtil {
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
       return mTHotMovieEntityFromJson(MTHotMovieEntity(), jsonDecode(response.toString()));
+    } else {
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///开眼视频API  首页日报
+  static Future<EyeOpeningVideoDailyEntity> fetchEyeOpeningVideoDailyData() async {
+    Response response = await DioUtil.getInstance().createEyeOpeningVideoDio().get(Api.videoDaily);
+    if (response.statusCode == 200) {
+      //print('数据点位： ${response.data}');
+      return eyeOpeningVideoDailyEntityFromJson(EyeOpeningVideoDailyEntity(), jsonDecode(response.toString()));
     } else {
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }

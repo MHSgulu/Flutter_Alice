@@ -4,6 +4,7 @@ class Api {
   static final String qingYunKeBaseUrl = 'http://api.qingyunke.com'; //青云客 请求基址
   static final String chatRobot = '/api.php'; //青云客 请求基址尾部
   static final String mTimeMovieBaseUrl = 'https://api-m.mtime.cn'; //时光网 请求基址
+  static final String eyeOpenVideoBaseUrl = 'http://baobab.kaiyanapp.com'; //开眼视频 请求基址
 
   //万维易源
   static final String englishQuotation = 'https://route.showapi.com/1211-1?showapi_appid=136754&showapi_sign=4b0c074ea24f4360a5f21905acab9b81&count=10'; //查询英文励志语录
@@ -20,10 +21,13 @@ class Api {
   static final String textJoke = '/showapi/wbxh'; //笑话大全-文本笑话
   static final String garbageTextSearch = '/JDAI/garbageTextSearch'; //文本垃圾分类识别
 
-  //时光网API
+  //时光网 API
   static final String mTimeHotMovie = '/PageSubArea/HotPlayMovies.api'; //正在售票(包括正在热映和即将上映)
   static final String mTimeMovieDetail = '/movie/detail.api'; //电影详情
   static final String mTimeMovieActor = '/Movie/MovieCreditsWithTypes.api'; //电影演员
+
+  //开眼视频 API
+  static final String videoDaily = '/api/v4/tabs/selected'; //日报
 
   //必应壁纸
   static final String bingWallPaper = 'https://cn.bing.com/HPImageArchive.aspx?format=js&n=1';

@@ -63,33 +63,29 @@ class _HomePageState extends State<HomePage> {
       icon: ImageIcon(
         AssetImage('assets/icons/icon_news.png'),
       ),
-      activeIcon: Icon(Icons.library_books /*book*/ /*collections_bookmark*/),
+      activeIcon: Icon(Icons.library_books_rounded),
       label: '新闻',
-      //backgroundColor: Colors.blueAccent[200],
-    ),
-    BottomNavigationBarItem(
-      icon: ImageIcon(
-        AssetImage('assets/icons/icon_movie.png'),
-      ),
-      activeIcon: Icon(Icons.video_library /*movie_filter*/ /*library_music*/),
-      label: '电影',
-      //backgroundColor: Colors.teal[400],
     ),
     BottomNavigationBarItem(
       icon: ImageIcon(
         AssetImage('assets/icons/icon_picture.png'),
       ),
-      label: '待定',
-      activeIcon: Icon(Icons.collections /*perm_media*/),
-      // backgroundColor: Colors.deepOrangeAccent[100],
+      activeIcon: Icon(Icons.collections_rounded),
+      label: '电影',
+    ),
+    BottomNavigationBarItem(
+      icon: ImageIcon(
+        AssetImage('assets/icons/icon_movie.png'),
+      ),
+      label: '视频',
+      activeIcon: Icon(Icons.video_library_rounded),
     ),
     BottomNavigationBarItem(
       icon: ImageIcon(
         AssetImage('assets/icons/icon_more.png'),
       ),
-      activeIcon: Icon(Icons.library_add /*widgets*/),
+      activeIcon: Icon(Icons.library_add_rounded),
       label: '更多',
-      //backgroundColor: Colors.cyan[200],
     ),
   ];
 
