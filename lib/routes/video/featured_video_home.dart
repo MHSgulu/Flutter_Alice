@@ -26,8 +26,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
   void fetchData(int page) async {
     var result = await HttpUtil.fetchEyeOpeningVideoDailyData();
     if (result is Exception) {
-      Exception exception = result as Exception;
-      Fluttertoast.showToast(msg: 'Exception: ${exception.toString()}');
+      Fluttertoast.showToast(msg: 'Exception: ${result.toString()}');
     } else {
       entity = result;
       if (mounted) {

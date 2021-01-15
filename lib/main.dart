@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 
-
 void main() {
   /// 返回[WidgetsBinding]的实例，必要时创建并初始化它。 如果创建了一个，它将是一个[WidgetsFlutterBinding]。
   /// 如果以前已经初始化过，那么它将至少实现[WidgetsBinding]。
@@ -32,8 +31,4 @@ void main() {
     ///因此，双数“ 0.0”等于整数“ 0”。 对于在AOT或VM上运行的Dart代码，情况并非如此。
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
-
 }
-
-
-

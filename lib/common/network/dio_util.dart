@@ -9,12 +9,14 @@ class DioUtil{
   static Dio _qykDio;
   static Dio _jdWxDio;
   static Dio _mTimeMovieDio;
+  static Dio _eyeOpenVideoDio;
 
   BaseOptions _sampleOptions;
   BaseOptions _wwOptions;
   BaseOptions _qykOptions;
   BaseOptions _jdWxOptions;
   BaseOptions _mTimeMovieOptions;
+  BaseOptions _eyeOpenVideoOptions;
 
   factory DioUtil.getInstance() => _instance;
 
@@ -50,7 +52,7 @@ class DioUtil{
 
     );
 
-    ///万维易源 Api
+    ///万维易源
     _wwOptions = BaseOptions(
       baseUrl: Api.wanWeiBaseUrl,
       connectTimeout: 6000,
@@ -59,7 +61,7 @@ class DioUtil{
     );
     _wwDio = Dio(_wwOptions);
 
-    ///青云客 Api
+    ///青云客
     _qykOptions = BaseOptions(
       baseUrl: Api.qingYunKeBaseUrl,
       connectTimeout: 10000,
@@ -68,7 +70,7 @@ class DioUtil{
     );
     _qykDio = Dio(_qykOptions);
 
-    ///京东万象 Api
+    ///京东万象
     _jdWxOptions = BaseOptions(
       baseUrl: Api.jdWanXiangBaseUrl,
       connectTimeout: 6000,
@@ -77,14 +79,23 @@ class DioUtil{
     );
     _jdWxDio = Dio(_jdWxOptions);
 
-    ///时光网 Api
-    _mTimeMovieOptions = BaseOptions(
+    ///时光网
+    _eyeOpenVideoOptions = BaseOptions(
       baseUrl: Api.mTimeMovieBaseUrl,
       connectTimeout: 6000,
       receiveTimeout: 5000,
       sendTimeout: 5000,
     );
-    _mTimeMovieDio = Dio(_mTimeMovieOptions);
+    _mTimeMovieDio = Dio(_eyeOpenVideoOptions);
+
+    ///开眼视频
+    _mTimeMovieOptions = BaseOptions(
+      baseUrl: Api.eyeOpenVideoBaseUrl,
+      connectTimeout: 6000,
+      receiveTimeout: 5000,
+      sendTimeout: 5000,
+    );
+    _eyeOpenVideoDio = Dio(_mTimeMovieOptions);
 
    /* _wwDio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async{
@@ -129,6 +140,10 @@ class DioUtil{
 
   Dio createTimeMovieDio() {
     return _mTimeMovieDio;
+  }
+
+  Dio createEyeOpeningVideoDio() {
+    return _eyeOpenVideoDio;
   }
 
 
