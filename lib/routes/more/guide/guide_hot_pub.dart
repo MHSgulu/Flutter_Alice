@@ -2,6 +2,7 @@ import 'package:alice/routes/example/company/baseflow/cached_network_image/examp
 import 'package:alice/routes/example/company/baseflow/permission_handler/example_permission.dart';
 import 'package:alice/routes/example/individual/example_badge.dart';
 import 'package:alice/routes/example/individual/city_picker/example_city_picker.dart';
+import 'package:alice/routes/example/individual/example_chewie.dart';
 import 'package:alice/routes/example/individual/example_html.dart';
 import 'package:alice/routes/example/individual/example_picture_compression.dart';
 import 'package:alice/routes/example/individual/test_staggered_grid.dart';
@@ -39,6 +40,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'image_gallery_saver',
     'shimmer',
     'flip_panel',
+    'chewie',
   ];
 
   List<String> subTitleList = [
@@ -56,6 +58,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     '一个新的flutter插件项目，用于将图像保存到图库',
     '提供了一种在Flutter项目中添加闪烁效果的简便方法',
     '带有内置动画的翻盖包装',
+    'Flutter的视频播放器，带有Cupertino和Material播放控件',
   ];
 
   @override
@@ -137,6 +140,9 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
         break;
       case 13:
         Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleFlipPanelPage()));
+        break;
+      case 14:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ChewieDemo()));
         break;
     }
   }

@@ -45,6 +45,11 @@
 	<key>NSFaceIDUsageDescription</key>
     <string>Because of that, scientific truth.</string>
 
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
 
 </dict>
 </plist>

@@ -47,7 +47,7 @@ dependencies:
   flutter_swiper: ^1.1.6  # 最好的拍打器（轮播），具有多种布局，无限循环。与Android和iOS兼容。
   palette_generator: ^0.2.3  # Flutter软件包,用于从源图像生成调色板颜色。
   chewie: ^0.12.1  # Flutter的视频播放器，带有Cupertino和Material播放控件
-  video_player: '>=0.10.12+5 <2.0.0'  # Flutter插件，用于与Android，iOS和Web上的其他Flutter小部件一起显示嵌入式视频。
+  video_player: ^1.0.1  # Flutter插件，用于与Android，iOS和Web上的其他Flutter小部件一起显示嵌入式视频。
   shared_preferences: '>=0.5.12 <2.0.0'  # Flutter插件，用于读写简单的键值对。包装iOS上的NSUserDefaults和Android上的SharedPreferences。
   flutter_staggered_grid_view: ^0.3.2  # Flutter交错网格视图。
   webview_flutter: ^1.0.7 # Flutter插件，可在Android和iOS上提供WebView小部件。
@@ -111,6 +111,7 @@ flutter: # 说明：版本号 x.y.z+m 其中 m 是构建版本，可以使用 --
   # 注意: 由于 yaml 文件对缩进严格，所以必须严格按照每一层两个空格的方式进行缩进，此处assets前面应有两个空格。
   assets:
     - assets/images/
+    - assets/videos/
     - assets/icons/
     - assets/icons/svg/
     - assets/animations/
