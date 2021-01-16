@@ -201,7 +201,7 @@ class _BumbleBeeRemoteVideoState extends State<_BumbleBeeRemoteVideo> {
   @override
   void initState() {
     super.initState();
-    //只能识别https     http开头无法播放    用[replacement]替换从[start]到[end]的子字符串  eg: videoUrl.replaceRange(0, 4, 'https'));
+    //只能识别https     http开头无法播放    用[replacement]替换从[start]到[end]的子字符串  eg: videoUrl.replaceRange(0, 4, 'https')
     _controller = VideoPlayerController.network(
       'https://ali.cdn.kaiyanapp.com/1610608904833_c941e31e.mp4?auth_key=1610778990-0-0-7114a94d3f9ce4565096032d4654a68f',
       //closedCaptionFile: _loadCaptions(),

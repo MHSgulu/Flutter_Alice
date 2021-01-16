@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-
 class ChewieDemo extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
   const ChewieDemo({this.title = 'Chewie 示例'});
@@ -28,15 +27,15 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
   @override
   void dispose() {
-    _videoPlayerController1.dispose();
-    _videoPlayerController2.dispose();
-    _chewieController.dispose();
+    _videoPlayerController1?.dispose();
+    _videoPlayerController2?.dispose();
+    _chewieController?.dispose();
     super.dispose();
   }
 
   Future<void> initializePlayer() async {
     _videoPlayerController1 = VideoPlayerController.network(
-      'https://ali.cdn.kaiyanapp.com/1610608904833_c941e31e.mp4?auth_key=1610778990-0-0-7114a94d3f9ce4565096032d4654a68f');
+        'https://ali.cdn.kaiyanapp.com/1610608904833_c941e31e.mp4?auth_key=1610778990-0-0-7114a94d3f9ce4565096032d4654a68f');
     await _videoPlayerController1.initialize();
     _videoPlayerController2 = VideoPlayerController.network(
         'https://ali.cdn.kaiyanapp.com/1610529931876_cf0d7a87.mp4?auth_key=1610780709-0-0-26045b0a4d989391af23f0572beb5b31');
@@ -78,18 +77,19 @@ class _ChewieDemoState extends State<ChewieDemo> {
             Expanded(
               child: Center(
                 child: _chewieController != null &&
-                    _chewieController.videoPlayerController.value.initialized
+                        _chewieController
+                            .videoPlayerController.value.initialized
                     ? Chewie(
-                  controller: _chewieController,
-                )
+                        controller: _chewieController,
+                      )
                     : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircularProgressIndicator(),
-                    SizedBox(height: 20),
-                    Text('Loading'),
-                  ],
-                ),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          CircularProgressIndicator(),
+                          SizedBox(height: 20),
+                          Text('Loading'),
+                        ],
+                      ),
               ),
             ),
             FlatButton(

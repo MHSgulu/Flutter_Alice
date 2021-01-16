@@ -15,6 +15,7 @@ import 'package:alice/routes/more/wallpaper/computer/popular_searches.dart';
 import 'package:alice/routes/more/wallpaper/phone/phone_wallpaper.dart';
 import 'package:alice/routes/more/wallpaper/phone/phone_wallpaper_list.dart';
 import 'package:alice/routes/movie/movie_details.dart';
+import 'package:alice/routes/video/play_eye_opening_video.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alice/routes/more/setting.dart';
@@ -40,6 +41,8 @@ import 'package:alice/routes/more/setting/multi_language.dart';
 Map<String, WidgetBuilder> routes = {
   //电影模块
   RouteName.movieDetailsPage: (_) => MovieDetailsPage(), //电影详情页面
+  //视频模块
+  RouteName.playEyeOpeningVideo: (_) => PlayEyeOpeningVideo(), //视频详情页面
   //抽屉模块
   RouteName.showMoreRoute: (context) => ShowMoreRoute(), //功能列表页面
   RouteName.guideExampleRoute: (context) => GuideExampleRoute(), //示例页面
@@ -87,6 +90,8 @@ Map<String, WidgetBuilder> routes = {
 class RouteName {
   //电影模块
   static final String movieDetailsPage = '/movieDetailsPage';
+  //视频模块
+  static final String playEyeOpeningVideo = '/playEyeOpeningVideo';
   //抽屉模块
   static final String showMoreRoute = '/showMoreRoute';
   static final String guideExampleRoute = '/guideExampleRoute';

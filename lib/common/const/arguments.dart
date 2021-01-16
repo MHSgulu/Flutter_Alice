@@ -1,3 +1,4 @@
+import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/model/m_t_hot_movie_entity.dart';
 
 class ScreenArguments {
@@ -26,4 +27,11 @@ class MovieDetailArguments {
   final MTHotMovieMovie movieEntity;
 
   MovieDetailArguments(this.movieEntity);
+}
+
+class VideoInfoArguments {
+  final EyeOpeningVideoDailyItemListData data;
+
+  VideoInfoArguments(this.data);
+
 }
