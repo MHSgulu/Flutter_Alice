@@ -1,4 +1,3 @@
-import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
