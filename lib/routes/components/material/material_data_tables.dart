@@ -1,6 +1,8 @@
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 
+import 'demo/demo_data_table.dart';
+
 ///材料设计数据表。
 ///
 /// {@youtube 560315 https://www.youtube.com/watch?v=ktTajqbhIcY}
@@ -142,6 +144,11 @@ class _DataTableDemoState extends State<DataTableDemo> {
               DataColumn(label: Text('Header D')),
             ],
             source: _DataSource(context),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: ()=> Navigator.push(context, MaterialPageRoute(builder: (_) => DataTableDemo2())),
+              child: Text('查看更多演示数据的PaginatedDataTable'),),
           ),
         ],
       ),
