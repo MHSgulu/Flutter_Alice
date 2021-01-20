@@ -2,6 +2,7 @@ import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/routes/drawer/my_drawer.dart';
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/loading/video_loading_view.dart';
@@ -42,20 +43,15 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: MyAppBar(
         leading: Builder(
           builder: (context) => IconButton(
             icon: Icon(Icons.menu_rounded),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
+        label: '今日精选视频',
         backgroundColor: Colors.deepOrangeAccent[100],
-        title: Text(
-          '今日精选视频',
-          style: TextStyle(fontSize: 18),
-        ),
-        centerTitle: true,
-        elevation: 1,
       ),
       body: dataList.isEmpty ? VideoLoadingView() : videoListView(),
       drawer: MyDrawer(),
@@ -71,13 +67,11 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
           double minutes = (dataList[index].data.duration) / 60;
           int seconds = (dataList[index].data.duration) % 60;
           return GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                RouteName.playEyeOpeningVideo,
-                arguments: VideoInfoArguments(dataList[index].data),
-              );
-            },
+            onTap: () => Navigator.pushNamed(
+              context,
+              RouteName.playEyeOpeningVideo,
+              arguments: VideoInfoArguments(dataList[index].data),
+            ),
             child: Container(
               padding: EdgeInsets.fromLTRB(8, 16, 8, 0),
               child: Column(
@@ -139,7 +133,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                color: Colors.black87,
+                                //color: Colors.black87,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -147,7 +141,9 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
                             Text(
                               '${dataList[index].data.author.name}/ #${dataList[index].data.category}',
                               style: TextStyle(
-                                  color: Colors.black45, fontSize: 12),
+                                //color: Colors.black45,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),

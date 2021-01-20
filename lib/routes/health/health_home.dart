@@ -1,6 +1,7 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/today_epidemic_data_entity.dart';
 import 'package:alice/routes/drawer/my_drawer.dart';
+import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
@@ -49,40 +50,43 @@ class _HealthHomeState extends State<HealthHome> {
   }
 
   Widget bodyView() {
-    return ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(12, 12, 0, 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '国内疫情',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
+    return ScrollConfiguration(
+      behavior: CustomScrollBehavior(),
+      child: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(12, 12, 0, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '国内疫情',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-              Text(
-                '数据更新至 ${data.updateTime} ',
-                style: TextStyle(
-                  //color: Colors.black54,
-                  fontSize: 13,
+                Text(
+                  '数据更新至 ${data.updateTime} ',
+                  style: TextStyle(
+                    //color: Colors.black54,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
-              Text(
-                '(字段值为-1时表示暂无该数据)',
-                style: TextStyle(
-                  //color: Colors.black54,
-                  fontSize: 13,
+                Text(
+                  '(字段值为-1时表示暂无该数据)',
+                  style: TextStyle(
+                    //color: Colors.black54,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        dataTableView(),
-        SizedBox(height: 40),
-      ],
+          dataTableView(),
+          SizedBox(height: 40),
+        ],
+      ),
     );
   }
 
