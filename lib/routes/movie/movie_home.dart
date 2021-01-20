@@ -2,6 +2,7 @@ import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import 'home/hot_movie.dart';
@@ -47,7 +48,7 @@ class MovieHomePage extends StatelessWidget {
               IconButton(
                 color: Colors.white,
                 icon: Icon(Icons.movie_filter),
-                onPressed: () {},
+                onPressed: () => Fluttertoast.showToast(msg: '期待不如等待'),
               )
             ],
             elevation: 1,
