@@ -1,12 +1,12 @@
 import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
+import 'package:alice/routes/drawer/my_drawer.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/loading/video_loading_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:alice/common/const/routes.dart';
 
@@ -27,19 +27,15 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
 
   void fetchData(int page) async {
     var result = await HttpUtil.fetchEyeOpeningVideoDailyData();
-    if (result is Exception) {
-      Fluttertoast.showToast(msg: 'Exception: ${result.toString()}');
-    } else {
-      entity = result;
-      if (mounted) {
-        setState(() {
-          if (page == 1) {
-            dataList = entity.itemList;
-          } else {
-            dataList.addAll(entity.itemList);
-          }
-        });
-      }
+    entity = result;
+    if (mounted) {
+      setState(() {
+        if (page == 1) {
+          dataList = entity.itemList;
+        } else {
+          dataList.addAll(entity.itemList);
+        }
+      });
     }
   }
 
@@ -47,6 +43,12 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu_rounded),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         backgroundColor: Colors.deepOrangeAccent[100],
         title: Text(
           '今日精选视频',
@@ -56,6 +58,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
         elevation: 1,
       ),
       body: dataList.isEmpty ? VideoLoadingView() : videoListView(),
+      drawer: MyDrawer(),
     );
   }
 

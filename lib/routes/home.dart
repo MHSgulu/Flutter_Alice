@@ -1,8 +1,8 @@
-import 'package:alice/routes/my/my_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'health/health_home.dart';
 import 'movie/movie_home.dart';
 import 'news/new_home.dart';
 import 'video/featured_video_home.dart';
@@ -54,8 +54,7 @@ class _HomePageState extends State<HomePage> {
     NewsHomePage(),
     MovieHomePage(),
     FeaturedVideoHomePage(),
-    MyHome(),
-    //ShowMorePage(),
+    HealthHome(),
   ];
 
   List<BottomNavigationBarItem> _bottomNavigationBarItemList = [
@@ -85,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         AssetImage('assets/icons/icon_more.png'),
       ),
       activeIcon: Icon(Icons.library_add_rounded),
-      label: '更多',
+      label: '疫情',
     ),
   ];
 
