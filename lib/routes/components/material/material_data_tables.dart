@@ -25,6 +25,20 @@ class DataTableDemo extends StatefulWidget {
   _DataTableDemoState createState() => _DataTableDemoState();
 }
 
+///创建一个描述数据表的小部件。
+///
+/// [columns]参数必须是与表要具有的列一样多的[DataColumn]对象的列表，并忽略前导复选框（如果有
+/// [columns]参数的长度必须大于零，并且不能为null。
+///
+/// [rows]参数必须是表具有行数的[DataRow]对象的列表，而忽略包含列标题的前导行（从[columns]参数派生）
+/// 可能有零行，但rows参数不能为null。
+///
+/// [行]中的每个[DataRow]对象在[DataRow.cells]列表中必须具有与表中的列一样多的[DataCell]对象。
+///
+///如果对表进行了排序，则应通过[sortColumnIndex]中的index指定提供当前主键的列，0表示[列]中的第一列，1表示下一个，依此类推。
+///
+///可以使用[sortAscending]指定实际的排序顺序； 如果排序顺序升序，则应为true（默认值），否则应为false。
+
 class _DataTableDemoState extends State<DataTableDemo> {
   static const int numItems = 10;
   List<bool> selected = List<bool>.generate(numItems, (index) => false);
@@ -86,6 +100,13 @@ class _DataTableDemoState extends State<DataTableDemo> {
                 ],
               ),
             ],
+            ///是否在表格底部显示边框。
+            ///默认情况下，底部不显示边框以允许表格周围有边框。
+            showBottomBorder: false,
+            ///在[TableRow]之间出现的分隔线的宽度。
+            ///必须大于或等于零。
+            ///此值默认为1.0。
+            dividerThickness: 1.0,
           ),
           SizedBox(height: 40),
           ///此示例说明如何显示[DataTable]，每行具有交替的颜色，以及选择行时的自定义颜色。
