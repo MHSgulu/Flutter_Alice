@@ -1,6 +1,5 @@
 import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
-import 'package:alice/model/bingwallpaper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'hotspot/hot_word_classification.dart';

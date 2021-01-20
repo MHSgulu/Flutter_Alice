@@ -1,8 +1,9 @@
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/news_entity.dart';
-import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:alice/widgets/custom/my_fade_in_image.dart';
+import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
+import 'package:alice/widgets/loading/news_loading_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -51,56 +52,40 @@ class _NewsListState extends State<TabNewsList> {
                     ),
                   );
                 },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  clipBehavior: Clip.antiAlias,
+                child: MyRRectCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      CachedNetworkImage(
+                      MyFadeInImage(
                         imageUrl: snapshot.data.result.result.xList[index].pic,
-                        imageBuilder: (context, imageProvider) => Container(
-                          height: 130,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover,
-                              //在绘制图像之前应用于图像的颜色过滤器。
-                              //colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn),
-                            ),
-                          ),
-                        ),
-                        placeholder: (context, url) => MyLoadingIndicator(
-                          valueColor: Colors.blueAccent[200],
-                          strokeWidth: 3,
-                        ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        width: double.infinity,
+                        height: 130,
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(8, 6, 4, 0),
                         child: Text(
-                            snapshot.data.result.result.xList[index].title),
+                          snapshot.data.result.result.xList[index].title,
+                        ),
                       ),
                       Container(
                         padding: EdgeInsets.fromLTRB(8, 6, 8, 6),
                         child: Row(
                           children: <Widget>[
-                            Container(
-                              child: Text(
-                                  snapshot.data.result.result.xList[index].time,
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      color: AppThemeMode.lightTextColors)),
+                            Text(
+                              snapshot.data.result.result.xList[index].time,
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: AppThemeMode.lightTextColors,
+                              ),
                             ),
-                            Expanded(
-                              child: Container(),
+                            Expanded(child: Container()),
+                            Text(
+                              snapshot.data.result.result.xList[index].src,
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: AppThemeMode.lightTextColors,
+                              ),
                             ),
-                            Text(snapshot.data.result.result.xList[index].src,
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: AppThemeMode.lightTextColors)),
                           ],
                         ),
                       ),
@@ -115,10 +100,7 @@ class _NewsListState extends State<TabNewsList> {
             child: Text("${snapshot.error}"),
           );
         }
-        return MyLoadingIndicator(
-          valueColor: Colors.blueAccent[200],
-          strokeWidth: 3,
-        );
+        return NewsLoadingView();
       },
     );
   }
