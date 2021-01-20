@@ -206,38 +206,6 @@ class HttpUtil {
     }
   }
 
-  ///时光网API 电影详情
-  /*static Future<MTMovieDetailEntity> fetchTimeMovieDetailData(String movieId) async {
-    Response response = await DioUtil.getInstance().createTimeMovieDio().get(
-      Api.mTimeMovieDetail,
-      queryParameters: {
-        "locationId": '290',
-        "movieId": movieId,
-      },
-    );
-    if (response.statusCode == 200) {
-      //print('数据点位： ${response.data}');
-      return mTMovieDetailEntityFromJson(MTMovieDetailEntity(), jsonDecode(response.toString()));
-    } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
-    }
-  }*/
-
-  ///时光网API 电影演职员
-  /*static Future<MovieCrewEntity> fetchTimeMovieActorData(String movieId) async {
-    Response response = await DioUtil.getInstance().createTimeMovieDio().get(
-      Api.mTimeMovieActor,
-      queryParameters: {
-        "movieId": movieId,
-      },
-    );
-    if (response.statusCode == 200) {
-      //print('数据点位： ${response.data}');
-      return movieCrewEntityFromJson(MovieCrewEntity(), jsonDecode(response.toString()));
-    } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
-    }
-  }*/
 
   ///垃圾分类识别    似乎这个接口只能Post请求(文档也标注这个细节)
   ///https://wx.jdcloud.com/market/datas/30/13947
