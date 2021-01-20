@@ -10,7 +10,7 @@ class MovieCarouselView extends StatefulWidget {
 
 class _MovieCarouselViewState extends State<MovieCarouselView> {
   List<String> bannerImgUrl = [
-    'https://img9.doubanio.com/view/photo/l/public/p2167320929.webp', //黄金时代
+    'https://img1.doubanio.com/view/photo/l/public/p2201327958.webp', //黄金时代
     'https://img9.doubanio.com/view/photo/l/public/p2535265164.webp', //影
     'https://img9.doubanio.com/view/photo/l/public/p2540924496.webp', //龙猫
   ];
