@@ -12,6 +12,7 @@ import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
+import 'package:alice/generated/json/today_epidemic_data_entity_helper.dart';
 import 'package:alice/generated/json/wallpaper_category_entity_helper.dart';
 import 'package:alice/generated/json/wallpaper_entity_helper.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
@@ -28,6 +29,7 @@ import 'package:alice/model/news_entity.dart';
 import 'package:alice/model/picture_joke_entity.dart';
 import 'package:alice/model/quotation_entity.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
+import 'package:alice/model/today_epidemic_data_entity.dart';
 import 'package:alice/model/wallpaper_category_entity.dart';
 import 'package:alice/model/wallpaper_entity.dart';
 import 'package:alice/model/written_jokes_entity.dart';
@@ -117,6 +119,23 @@ class HttpUtil {
       return quotationEntityFromJson(QuotationEntity(), json.decode(response.body));
     } else {
       //如果服务器没有返回200 OK响应,然后抛出一个异常。
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///今日疫情明细
+  static Future<TodayEpidemicDataEntity> fetchTodayCOVID_19Data() async {
+    Response response = await DioUtil.getInstance().createWwDio().get(
+      Api.todayCOVID_19Data,
+      queryParameters: {
+        "showapi_appid": Util.wShowApiId,
+        "showapi_sign": Util.wShowApiSign,
+      },
+    );
+    if (response.statusCode == 200) {
+      //print('数据点位： ${response.data}');
+      return todayEpidemicDataEntityFromJson(TodayEpidemicDataEntity(), json.decode(response.toString()));
+    } else{
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }
   }

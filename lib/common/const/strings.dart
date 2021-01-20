@@ -9,15 +9,15 @@ class Util {
   ///京东万象apikey
   static final String jdWxApiKey = "bd1ee420d53dcd93f21d338cd6bebba3";
 
-  ///万维易源请求 showapi_appid
+  //大号 QQ邮箱的万维易源请求 showapi_appid
   static final String wShowApiId = '136754';
-
-  ///万维易源请求 showapi_sign
+  //大号 万维易源请求 showapi_sign
   static final String wShowApiSign = '4b0c074ea24f4360a5f21905acab9b81';
 
-  static final String wShowTestAppId = '163034'; //小号的万维易源 AppId
-  static final String wShowTestApiSign =
-      '95586dba4ecf48a49f712ebd73e0fcb0'; //小号的万维易源 密钥secret
+  //小号  网易邮箱的万维易源 AppId
+  static final String wShowTestAppId = '163034';
+  //小号的万维易源 密钥secret
+  static final String wShowTestApiSign = '95586dba4ecf48a49f712ebd73e0fcb0';
 
   ///笑话大全1页数据量的最大结果集
   static final int maxResult = 20;

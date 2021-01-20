@@ -11,6 +11,8 @@ class Api {
   static final String taoModelStyle = '/126-1'; //查询淘女郎模特风格
   static final String taoModelList = '/126-2'; //根据风格查询淘女郎模特列表
 
+  static final String todayCOVID_19Data = '/2217-2'; //今日疫情明细
+
   //京东万象
   static final String hotEventsRank = 'https://way.jd.com/showapi/rcInfo?typeId=1&appkey=bd1ee420d53dcd93f21d338cd6bebba3'; //京东万象  实时热点排行
   static final String hotWordType = '/showapi/rdType'; //热点词分类
