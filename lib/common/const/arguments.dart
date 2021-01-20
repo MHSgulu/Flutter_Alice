@@ -1,5 +1,5 @@
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
-import 'package:alice/model/m_t_hot_movie_entity.dart';
+import 'package:alice/model/hot_movie_entity.dart';
 
 class ScreenArguments {
   final String title;
@@ -24,7 +24,7 @@ class BirdWallpaperListScreenArguments {
 }
 
 class MovieDetailArguments {
-  final MTHotMovieMovie movieEntity;
+  final HotMovieM movieEntity;
 
   MovieDetailArguments(this.movieEntity);
 }

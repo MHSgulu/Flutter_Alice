@@ -351,7 +351,7 @@ Map<String, dynamic> eyeOpeningVideoDailyItemListDataToJson(EyeOpeningVideoDaily
 	data['playlists'] = entity.playlists;
 	data['src'] = entity.src;
 	data['recallSource'] = entity.recallSource;
-	data['recall_source'] = entity.recallSource;
+	data['recall_source'] = entity.recallsource;
 	return data;
 }
 

@@ -29,9 +29,9 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               RatingBarIndicator(
-                rating: args.movieEntity.ratingFinal >
+                rating: args.movieEntity.r >
                     0
-                    ? args.movieEntity.ratingFinal /
+                    ? args.movieEntity.r /
                     2.0
                     : 0,
                 itemSize: 13,
@@ -44,14 +44,14 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               Text(
-                args.movieEntity.ratingFinal < 0
+                args.movieEntity.r < 0
                     ? '暂未上映'
-                    : '${args.movieEntity.ratingFinal}',
+                    : '${args.movieEntity.r}',
                 style: TextStyle(
-                  fontSize: args.movieEntity.ratingFinal < 0
+                  fontSize: args.movieEntity.r < 0
                       ? 12
                       : 14,
-                  color: args.movieEntity.ratingFinal < 0
+                  color: args.movieEntity.r < 0
                       ? Colors.white60
                       : Colors.white,
                 ),

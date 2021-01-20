@@ -57,7 +57,7 @@ class MovieBasicInfoWidget extends StatelessWidget{
                   ),
                 ),
                 Text(
-                  '片长: ${args.movieEntity.length} 分钟',
+                  '片长: 未知 分钟',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white70,
