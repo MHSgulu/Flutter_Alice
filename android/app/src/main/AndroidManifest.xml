@@ -13,7 +13,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/app_logo"
-        android:label="Alice"
+        android:label="@string/app_name"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
