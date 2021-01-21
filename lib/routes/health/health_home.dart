@@ -1,10 +1,13 @@
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/today_epidemic_data_entity.dart';
 import 'package:alice/routes/drawer/my_drawer.dart';
+import 'package:alice/routes/health/region_statistics_route.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+
+import 'domestic/data_table_view.dart';
 
 class HealthHome extends StatefulWidget {
   @override
@@ -44,7 +47,11 @@ class _HealthHomeState extends State<HealthHome> {
           ),
         ),
       ),
-      body: data == null ? MyLoadingIndicator() : bodyView(),
+      body: data == null
+          ? MyLoadingIndicator(
+              valueColor: Colors.cyan[300],
+            )
+          : bodyView(),
       drawer: MyDrawer(),
     );
   }
@@ -53,6 +60,7 @@ class _HealthHomeState extends State<HealthHome> {
     return ScrollConfiguration(
       behavior: CustomScrollBehavior(),
       child: ListView(
+        padding: EdgeInsets.only(bottom: 20),
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(12, 12, 0, 12),
@@ -67,7 +75,7 @@ class _HealthHomeState extends State<HealthHome> {
                   ),
                 ),
                 Text(
-                  '数据更新至 ${data.updateTime} ',
+                  '数据更新至 ${data.updateTime}',
                   style: TextStyle(
                     //color: Colors.black54,
                     fontSize: 13,
@@ -83,145 +91,25 @@ class _HealthHomeState extends State<HealthHome> {
               ],
             ),
           ),
-          dataTableView(),
-          SizedBox(height: 40),
+          DomesticEpidemicsSummaryDataView(
+            data: data.todayStatictic,
+          ),
+          SizedBox(height: 50),
+          Center(
+            child: ElevatedButton(
+              onPressed: _jumpToPage,
+              child: Text('国内各地区疫情统计汇总'),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget dataTableView() {
-    return DataTable(
-      columns: [
-        DataColumn(
-          label: Text(
-            '类型',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-        DataColumn(
-          label: Text(
-            '总数',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-        DataColumn(
-          label: Text(
-            '昨日+',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-      ],
-      rows: [
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('现有确诊')),
-            DataCell(Text(
-              '${data.todayStatictic.confirmedNum}',
-              style: TextStyle(color: Color(0xFFFF6A57)),
-            )),
-            DataCell(
-              Text(
-                '${data.todayStatictic.confirmedIncr - data.todayStatictic.curedIncr - data.todayStatictic.deadIncr}',
-                style: TextStyle(color: Color(0xFFFF6A57)),
-              ),
-            ),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('无症状')),
-            DataCell(Text(
-              '${data.todayStatictic.asymptomaticNum}',
-              style: TextStyle(color: Color(0xFFEA7648)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.asymptomaticIncr}',
-              style: TextStyle(color: Color(0xFFEA7648)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('现有疑似')),
-            DataCell(Text(
-              '${data.todayStatictic.suspectedNum}',
-              style: TextStyle(color: Color(0xFFEC9217)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.suspectedIncr}',
-              style: TextStyle(color: Color(0xFFEC9217)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('现有重症')),
-            DataCell(Text(
-              '${data.todayStatictic.seriousNum}',
-              style: TextStyle(color: Color(0xFF545499)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.seriousIncr}',
-              style: TextStyle(color: Color(0xFF545499)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('境外输入')),
-            DataCell(Text(
-              '${data.todayStatictic.externalConfirmedNum}',
-              style: TextStyle(color: Color(0xFF476DAB)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.externalConfirmedIncr}',
-              style: TextStyle(color: Color(0xFF476DAB)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('累计确诊')),
-            DataCell(Text(
-              '${data.todayStatictic.curedNum + data.todayStatictic.deadNum + data.todayStatictic.confirmedNum}',
-              style: TextStyle(color: Color(0xFFE83132)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.confirmedIncr}',
-              style: TextStyle(color: Color(0xFFE83132)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('累计治愈')),
-            DataCell(Text(
-              '${data.todayStatictic.curedNum}',
-              style: TextStyle(color: Color(0xFF26AEB5)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.curedIncr}',
-              style: TextStyle(color: Color(0xFF26AEB5)),
-            )),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('累计死亡')),
-            DataCell(Text(
-              '${data.todayStatictic.deadNum}',
-              style: TextStyle(color: Color(0xFF4D5054)),
-            )),
-            DataCell(Text(
-              '${data.todayStatictic.deadIncr}',
-              style: TextStyle(color: Color(0xFF4D5054)),
-            )),
-          ],
-        ),
-      ],
-      showBottomBorder: true,
-      dividerThickness: 1.0,
-    );
+  void _jumpToPage() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) => RegionStatisticsRoute(data: data.todayDetailList)));
   }
 }
