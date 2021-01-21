@@ -7,7 +7,7 @@ class LatoText extends StatelessWidget {
 
   const LatoText({
     Key key,
-    this.data,
+    @required this.data,
     this.style,
   })  : assert(
           data != null,
