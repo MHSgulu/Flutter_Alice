@@ -100,6 +100,12 @@ class _DataTableDemoState extends State<DataTableDemo> {
                 ],
               ),
             ],
+            ///小部件是否应显示可选行的复选框。
+            ///如果为true，则会在每行的开头放置一个[复选框],那是可选的。
+            ///但是，如果未设置[DataRow.onSelectChanged],
+            ///对于任何行，即使此值为true，也不会放置复选框。
+            ///如果为false，则所有行都不会显示[复选框]。
+            showCheckboxColumn: false,
             ///是否在表格底部显示边框。
             ///默认情况下，底部不显示边框以允许表格周围有边框。
             showBottomBorder: false,
@@ -155,16 +161,47 @@ class _DataTableDemoState extends State<DataTableDemo> {
           ///
           /// * [DataTable]，未分页。
           /// * <https://material.io/go/design-data-tables#data-tables-tables-within-cards>
+          //
+          ///创建一个小部件，该小部件描述[Card]上的分页的[DataTable]。
+          ///
+          /// [header]应该提供卡的标题，通常是[Text]小部件。不能为空。
+          ///
+          /// [columns]参数必须是与表要具有的列一样多的[DataColumn]对象的列表，并忽略前导复选框（如果有）。
+          /// [columns]参数的长度必须大于零，并且不能为null。
+          ///
+          ///如果对表进行了排序，则应通过[sortColumnIndex]中的index指定提供当前主键的列，0表示[列]中的第一列，1表示下一个，依此类推。
+          ///
+          ///可以使用[sortAscending]指定实际的排序顺序；如果排序顺序升序，则应为true（默认值），否则应为false。
+          ///
+          /// [source]不能为null。 [源]应该是长期存在的[DataTableSource]。每次创建特定的[PaginatedDataTable]小部件时，都应提供相同的来源；避免使用[PaginatedDataTable]小部件的每个新实例创建一个新的[DataTableSource]，除非数据表现在确实要显示与新来源完全不同的数据。
+          ///
+          /// [rowsPerPage]和[availableRowsPerPage]不能为null（尽管它们都有默认值，所以不必指定）。
           PaginatedDataTable(
+            //桌卡的标题。
+            //这通常是[Text]小部件，但也可以是带有[FlatButton]的[ButtonBar]。
+            // 自动为字体，按钮颜色，按钮填充等提供合适的默认值。
+            //如果在表项目是可选择的，然后，当选择不为空，则报头由所选择的项的计数代替。
             header: Text('Header Text'),
+            //每页上显示的行数。
             rowsPerPage: 4,
+            //表中各列的配置和标签。
             columns: [
               DataColumn(label: Text('Header A')),
               DataColumn(label: Text('Header B')),
               DataColumn(label: Text('Header C')),
               DataColumn(label: Text('Header D')),
             ],
+            //提供数据以显示在每一行中的数据源。 必须为非null。
+            //通常，此对象的生存期应比[PaginatedDataTable]小部件本身的生存期更长；
+            //每次调用[PaginatedDataTable]构造函数时，都应重用它。
             source: _DataSource(context),
+            //为rowsPerPage提供的选项。
+            //当前[rowsPerPage]必须是此列表中的值。
+            //此列表中的值应按升序排序。
+            availableRowsPerPage: [4,8],
+            //当用户选择每页不同的行数时调用。
+            //如果为null，则将使用[rowsPerPage]给定的值，并且不会提供任何负担来更改该值。
+            onRowsPerPageChanged: (value){},
           ),
           Center(
             child: ElevatedButton(
