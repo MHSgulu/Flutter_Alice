@@ -2,6 +2,7 @@ import 'package:alice/common/const/arguments.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/routes/drawer/my_drawer.dart';
+import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
@@ -63,7 +64,9 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> with Auto
   }
 
   Widget videoListView() {
-    return ListView.builder(
+    return ScrollConfiguration(
+      behavior: CustomScrollBehavior(),
+      child: ListView.builder(
       padding: EdgeInsets.only(bottom: 20),
       itemCount: dataList.length,
       itemBuilder: (context, index) {
@@ -162,6 +165,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> with Auto
           return Container();
         }
       },
+    ),
     );
   }
 }
