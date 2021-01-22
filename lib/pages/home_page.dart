@@ -1,16 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-class MyCupertinoApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoApp(
-      //debugShowCheckedModeBanner: false, //去掉右上角Debug标志
-      title: 'Alice',
-      home: CupertinoHomePage(),
-    );
-  }
-}
+import 'package:flutter/widgets.dart';
 
 class CupertinoHomePage extends StatefulWidget {
   @override
