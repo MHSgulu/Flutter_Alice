@@ -1,5 +1,6 @@
 import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/routes/drawer/my_drawer.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,8 +56,14 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
         builder: (context, theme, child) => Scaffold(
           appBar: AppBar(
             backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.blueAccent[200],
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu_rounded),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+            ),
             title: Container(
-              height: 35.0,
+              height: 32.5,
               decoration: ShapeDecoration(
                 color: Colors.white, //此处颜色若不设置，会被同化成AppBar背景色
                 shape: StadiumBorder(
@@ -74,14 +81,14 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
                     child: Image.asset('assets/icons/icon_search_news.png'),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: EdgeInsets.only(left: 8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => SearchNewsScreen()));
                       },
                       child: Text(
-                        '点击此处搜索你想了解的新闻',
-                        style: TextStyle(color: Colors.black45, fontSize: 14.0),
+                        '搜索你想了解的新闻',
+                        style: TextStyle(color: Colors.black45, fontSize: 13.5),
                       ),
                     ),
                   ),
@@ -127,6 +134,7 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
             ],
           ),
           ),
+          drawer: MyDrawer(),
         ),
       ),
     );

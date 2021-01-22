@@ -1,5 +1,6 @@
 import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/routes/drawer/my_drawer.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,8 +18,14 @@ class MovieHomePage extends StatelessWidget {
         builder: (context, theme, child) => Scaffold(
           appBar: AppBar(
             backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : Colors.teal[400],
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu_rounded),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+            ),
             title: Container(
-              height: 35.0,
+              height: 32.5,
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: StadiumBorder(
@@ -37,8 +44,8 @@ class MovieHomePage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 10),
                     child: Text(
-                      '点击此处搜索你想了解的电影',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 14.0),
+                      '搜索你想了解的电影',
+                      style: TextStyle(color: Colors.grey[600], fontSize: 13.5),
                     ),
                   ),
                 ],
@@ -65,6 +72,7 @@ class MovieHomePage extends StatelessWidget {
                   ),
                 )),
           ),
+          drawer: MyDrawer(),
         ),
       ),
     );
