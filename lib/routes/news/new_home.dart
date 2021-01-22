@@ -1,5 +1,6 @@
 import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'hotspot/hot_word_classification.dart';
@@ -91,13 +92,11 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
               IconButton(
                 color: Colors.white,
                 icon: Icon(Icons.assessment), //如果[onPressed]不为空，则启用该图标。 之前值为null 颜色没变化
-                onPressed: () {
-                  Navigator.push(
+                onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => HotWordClassification()),
-                  );
-                },
+                  ),
               )
             ],
             elevation: 1,
@@ -119,11 +118,14 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
               ),
             ),
           ),
-          body: TabBarView(
+          body: ScrollConfiguration(
+            behavior: CustomScrollBehavior(),
+            child: TabBarView(
             controller: _tabController,
             children: [
               for (final tab in newsTabs) TabNewsList(channelName: tab.text),
             ],
+          ),
           ),
         ),
       ),
