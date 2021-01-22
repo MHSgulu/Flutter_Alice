@@ -43,10 +43,10 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       '饰  成长羁绊者',
     ));
     actorList.add(MovieActorEntity(
-      'https://img3.doubanio.com/view/photo/l/public/p2158454670.webp',
-      '三笠 阿克曼',
-      'Mikasa Ackerman',
-      '饰  孤独陪伴者',
+      'https://img9.doubanio.com/view/photo/l/public/p2628282626.webp',
+      '艾主席',
+      'Alan Yeager',
+      '饰  孤独坚定者',
     ));
     actorList.add(MovieActorEntity(
       'https://img9.doubanio.com/view/photo/m/public/p2387056615.webp',
@@ -55,7 +55,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       '饰  无尽轮回者',
     ));
     actorList.add(MovieActorEntity(
-      'https://img1.doubanio.com/view/photo/l/public/p2497256618.webp', //包哥
+      'https://img1.doubanio.com/view/photo/l/public/p2497256618.webp',
       '包哥',
       'Brother  Bao',
       '饰  快乐无忧者',
