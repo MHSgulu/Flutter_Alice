@@ -27,7 +27,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
             )),
             DataCell(
               Text(
-                '${data.confirmedIncr - data.curedIncr - data.deadIncr}',
+                '${data.confirmedIncr == null ? -1 : data.confirmedIncr - data.curedIncr - data.deadIncr}',
                 style: TextStyle(color: Color(0xFFFF6A57)),
               ),
             ),
@@ -54,7 +54,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFFEC9217)),
             )),
             DataCell(Text(
-              '${data.suspectedIncr}',
+              '${data.suspectedIncr ?? -1}',
               style: TextStyle(color: Color(0xFFEC9217)),
             )),
           ],
@@ -67,7 +67,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFF545499)),
             )),
             DataCell(Text(
-              '${data.seriousIncr}',
+              '${data.seriousIncr ?? -1}',
               style: TextStyle(color: Color(0xFF545499)),
             )),
           ],
@@ -80,7 +80,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFF476DAB)),
             )),
             DataCell(Text(
-              '${data.externalConfirmedIncr}',
+              '${data.externalConfirmedIncr ?? -1}',
               style: TextStyle(color: Color(0xFF476DAB)),
             )),
           ],
@@ -93,7 +93,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFFE83132)),
             )),
             DataCell(Text(
-              '${data.confirmedIncr}',
+              '${data.confirmedIncr ?? -1}',
               style: TextStyle(color: Color(0xFFE83132)),
             )),
           ],
@@ -106,7 +106,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFF26AEB5)),
             )),
             DataCell(Text(
-              '${data.curedIncr}',
+              '${data.curedIncr ?? -1}',
               style: TextStyle(color: Color(0xFF26AEB5)),
             )),
           ],
@@ -119,7 +119,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFF4D5054)),
             )),
             DataCell(Text(
-              '${data.deadIncr}',
+              '${data.deadIncr ?? -1}',
               style: TextStyle(color: Color(0xFF4D5054)),
             )),
           ],

@@ -6,6 +6,7 @@ import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'domestic/data_table_view.dart';
 
@@ -107,9 +108,14 @@ class _HealthHomeState extends State<HealthHome> {
   }
 
   void _jumpToPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (_) => RegionStatisticsRoute(data: data.todayDetailList)));
+    if(data.todayDetailList.isNotEmpty){
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => RegionStatisticsRoute(data: data.todayDetailList)));
+    }else{
+      Fluttertoast.showToast(msg: '暂无今日国内各地区疫情统计数据');
+    }
+
   }
 }
