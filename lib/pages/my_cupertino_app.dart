@@ -7,7 +7,7 @@ class MyCupertinoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      debugShowCheckedModeBanner: false, //去掉右上角Debug标志
+      debugShowCheckedModeBanner: false,
       title: 'Cupertino Alice',
       home: CupertinoHomePage(),
     );

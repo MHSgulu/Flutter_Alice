@@ -1,3 +1,4 @@
+import 'package:alice/pages/film/film_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,8 +8,26 @@ class CupertinoHomePage extends StatefulWidget {
 }
 
 class CupertinoHomePageState extends State<CupertinoHomePage> {
+  List<String> titleList = ['新闻', '电影', '视频', '待定',];
 
-  List<String> titleList = ['新闻', '电影', '待定', '更多',];
+  List<Widget> _widgetOptions;
+
+  @override
+  void initState() {
+    _widgetOptions = [
+      Center(
+        child: Text('新闻'),
+      ),
+      FilmHomePage(),
+      Center(
+        child: Text('视频'),
+      ),
+      Center(
+        child: Text('待定'),
+      ),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +52,22 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book_circle),
+          activeIcon: Icon(CupertinoIcons.book_circle_fill),
           label: '新闻',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.arrowtriangle_right_circle),
+          icon: Icon(CupertinoIcons.camera_circle),
+          activeIcon: Icon(CupertinoIcons.camera_circle_fill),
           label: '电影',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.pencil_circle),
-          label: '待定',
+          icon: Icon(CupertinoIcons.arrowtriangle_right_circle),
+          activeIcon: Icon(CupertinoIcons.arrowtriangle_right_circle_fill),
+          label: '视频',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.person_crop_circle),
+          icon: Icon(CupertinoIcons./*compass*/plus_circle),
+          activeIcon: Icon(CupertinoIcons.plus_circle_fill),
           label: '更多',
         ),
       ],
@@ -62,9 +85,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
           navigationBar: CupertinoNavigationBar(
             middle: Text(titleList[index]),
           ),
-          child: Center(
-            child: Text(titleList[index]),
-          ),
+          child: _widgetOptions[index],
         );
       },
     );
