@@ -7,8 +7,51 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 class MyMaterialApp extends StatelessWidget {
-  static const String _title = 'Alice';
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => AppThemeMode(),
+      child: Consumer<AppThemeMode>(
+        builder: (context, theme, child) {
+          return MaterialApp(
+            title: 'Material Alice',
+            home: WillPopScopeHome(),
+            routes: routes,
+            //onGenerateTitle: (context) => MyLocalizations.of(context).appTitle,
+            theme: ThemeData(
+              brightness: AppThemeMode.isDark ? Brightness.dark : Brightness.light,
+              primarySwatch: Colors.blue,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              scaffoldBackgroundColor: AppThemeMode.isDark ? Colors.grey[850] : Colors.grey[50],
+            ),
+            locale: Locale.fromSubtags(languageCode: AppThemeMode.language, scriptCode: AppThemeMode.script.isEmpty ? null : AppThemeMode.script),
+            localizationsDelegates: [
+              const MyLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) => locale,
+            supportedLocales: [
+              const Locale('en', ''),
+              const Locale('fr', ''),
+              const Locale('ja', ''),
+              const Locale('ko', ''),
+              const Locale.fromSubtags(languageCode: 'zh'),
+              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
+              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
+              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans', countryCode: 'CN'),
+              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'),
+              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'HK'),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
 
+class MyMaterialAppDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -23,7 +66,12 @@ class MyMaterialApp extends StatelessWidget {
           //布尔参数[routes]和[navigatorObservers]不能为null。
           return MaterialApp(
             //debugShowCheckedModeBanner: false,  //通过启动应用程序时显示的[home]路由禁用“ debug”横幅。
-            title: _title, //由OS任务切换器使用
+            ///设备用于识别用户应用程序的单行描述。
+            ///在Android上，标题显示在任务管理器的应用程序快照上方，当用户按下“最近的应用程序”按钮时，将显示这些标题。
+            ///在iOS上，无法使用此值。 应用程序的“ Info.plist”中的“ CFBundleDisplayName”将在存在时被引用，否则，将被“ CFBundleName”引用。
+            ///在网络上，它用作页面标题，显示在浏览器的打开选项卡列表中。
+            ///要提供本地化的标题，请使用[onGenerateTitle]。
+            title: 'Material Alice',
             home: WillPopScopeHome(),
             // 应用程序的顶级路由表。
             // 当使用[Navigator.pushNamed]推送命名的路线时，将在此地图中查找路线名称。
