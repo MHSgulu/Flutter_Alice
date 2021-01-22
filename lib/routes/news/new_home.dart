@@ -13,7 +13,7 @@ class NewsHomePage extends StatefulWidget {
   State<StatefulWidget> createState() => NewsHomePageState();
 }
 
-class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderStateMixin {
+class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin{
   TabController _tabController;
 
   List<Tab> newsTabs = <Tab>[
@@ -49,7 +49,11 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ChangeNotifierProvider(
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
@@ -139,4 +143,5 @@ class NewsHomePageState extends State<NewsHomePage> with SingleTickerProviderSta
       ),
     );
   }
+
 }

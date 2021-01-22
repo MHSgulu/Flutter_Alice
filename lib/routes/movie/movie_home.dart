@@ -9,9 +9,19 @@ import 'package:provider/provider.dart';
 import 'home/hot_movie.dart';
 import 'home/movie_carousel.dart';
 
-class MovieHomePage extends StatelessWidget {
+class MovieHomePage extends StatefulWidget {
+  @override
+  _MovieHomePageState createState() => _MovieHomePageState();
+}
+
+class _MovieHomePageState extends State<MovieHomePage> with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ChangeNotifierProvider(
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(

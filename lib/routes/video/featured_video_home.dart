@@ -16,7 +16,7 @@ class FeaturedVideoHomePage extends StatefulWidget {
   State<StatefulWidget> createState() => _FeaturedVideoHomePageState();
 }
 
-class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
+class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> with AutomaticKeepAliveClientMixin{
   EyeOpeningVideoDailyEntity entity;
   List<EyeOpeningVideoDailyItemList> dataList = List();
 
@@ -25,6 +25,9 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
     fetchData(1);
     super.initState();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   void fetchData(int page) async {
     var result = await HttpUtil.fetchEyeOpeningVideoDailyData();
@@ -42,6 +45,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: MyAppBar(
         leading: Builder(

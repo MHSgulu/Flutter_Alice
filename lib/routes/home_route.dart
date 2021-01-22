@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'health/health_home.dart';
@@ -49,69 +50,35 @@ class HomePage extends StatefulWidget {
 ///这个小部件是应用程序的主页。它是有状态的，这意味着它有一个状态对象（定义如下），其中包含影响其外观的字段。
 ///这个类是状态的配置。它保存父程序提供的值，并由状态的build方法使用。小部件子类中的字段总是标记为“final”。
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  int _currentIndex;
+  PageController _pageController;
 
-  List<Widget> _widgetOptions = <Widget>[
-    NewsHomePage(),
-    MovieHomePage(),
-    FeaturedVideoHomePage(),
-    HealthHome(),
-  ];
+  @override
+  void initState() {
+    _currentIndex = 0;
+    _pageController = PageController();
+    super.initState();
+  }
 
-  List<BottomNavigationBarItem> _bottomNavigationBarItemList = [
-    BottomNavigationBarItem(
-      icon: ImageIcon(
-        AssetImage('assets/icons/icon_news.png'),
-      ),
-      activeIcon: Icon(Icons.library_books_rounded),
-      label: '新闻',
-    ),
-    BottomNavigationBarItem(
-      icon: ImageIcon(
-        AssetImage('assets/icons/icon_picture.png'),
-      ),
-      activeIcon: Icon(Icons.collections_rounded),
-      label: '电影',
-    ),
-    BottomNavigationBarItem(
-      icon: ImageIcon(
-        AssetImage('assets/icons/icon_movie.png'),
-      ),
-      label: '视频',
-      activeIcon: Icon(Icons.video_library_rounded),
-    ),
-    BottomNavigationBarItem(
-      icon: ImageIcon(
-        AssetImage('assets/icons/icon_more.png'),
-      ),
-      activeIcon: Icon(Icons.library_add_rounded),
-      label: '疫情',
-    ),
-  ];
+  @override
+  void dispose() {
+    _pageController?.dispose();
+    super.dispose();
+  }
 
   Color _getSelectedItemColor() {
     return _currentIndex == 0
         ? Colors.blueAccent[200]
         : _currentIndex == 1
-            ? Colors.teal[400]
-            : _currentIndex == 2
-                ? Colors.deepOrangeAccent[100]
-                : Colors.cyan[300];
+        ? Colors.teal[400]
+        : _currentIndex == 2
+        ? Colors.deepOrangeAccent[100]
+        : Colors.cyan[300];
   }
 
-  ///对setState的调用告诉Flutter框架在这种状态下发生了一些变化，这导致它重新运行下面的build方法，以便显示可以反映更新的值。
-  ///如果我们在不调用setState（）的情况下更改了索引，则不会再次调用生成方法，因此看起来不会发生任何事情。
-  void _onItemTapped(int value) {
-    if (mounted) {
-      setState(() {
-        _currentIndex = value;
-      });
-    }
-  }
-
-  @override
+  //原版 无PageView
+ /* @override
   Widget build(BuildContext context) {
-    //此方法在每次调用setState时都会重新运行
     return Scaffold(
       body: Container(
         ///返回第[index]个元素。
@@ -124,16 +91,14 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         //backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-
-        ///The [showUnselectedLabels] argument defaults
-        ///if [type] is [BottomNavigationBarType.fixed]   `true`
-        ///if [type] is[BottomNavigationBarType.shifting]. `false`
+        ///[showUnselectedLabels] 参数默认值
+        ///如果[type]是[BottomNavigationBarType.fixed]   `true`
+        ///如果[type]是[BottomNavigationBarType.shifting]. `false`
         //showUnselectedLabels: true,
         selectedItemColor: _getSelectedItemColor(),
         //unselectedItemColor: Colors.black38,
         selectedFontSize: 12,
         unselectedFontSize: 12,
-
         ///当点击[item]之一时调用。
         ///创建底部导航栏的有状态小部件需要跟踪所选[BottomNavigationBarItem]的索引，并调用`setState`以使用新的[currentIndex]重建底部导航栏。
         onTap: _onItemTapped,
@@ -141,5 +106,72 @@ class _HomePageState extends State<HomePage> {
         items: _bottomNavigationBarItemList,
       ),
     );
+  }*/
+
+  //结合PageView
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: _pageController,
+        physics: NeverScrollableScrollPhysics(),
+        //pageSnapping: false, ///禁用页面捕捉，滑动之后页面不会自动对齐。
+        //allowImplicitScrolling: true, //灵敏的滑动，稍微滑一点就会到下一页。
+        onPageChanged: (index){
+          if (mounted) {
+            setState(() {
+              _currentIndex = index;
+            });
+          }
+        },
+        children: [
+          NewsHomePage(),
+          MovieHomePage(),
+          FeaturedVideoHomePage(),
+          HealthHome(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index)=> _pageController.jumpToPage(index),
+        items: [
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/icon_news.png'),
+            ),
+            activeIcon: Icon(Icons.library_books_rounded),
+            label: '新闻',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/icon_picture.png'),
+            ),
+            activeIcon: Icon(Icons.collections_rounded),
+            label: '电影',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/icon_movie.png'),
+            ),
+            label: '视频',
+            activeIcon: Icon(Icons.video_library_rounded),
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/icon_more.png'),
+            ),
+            activeIcon: Icon(Icons.library_add_rounded),
+            label: '疫情',
+          ),
+        ],
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: _getSelectedItemColor(),
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+      ),
+    );
   }
+
+
+
 }
