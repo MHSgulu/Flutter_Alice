@@ -1,50 +1,12 @@
 import 'package:alice/common/const/routes.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/l10n/LocalizationsDelegate.dart';
-import 'package:alice/routes/home.dart';
+import 'package:alice/routes/home_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-
-///Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56
-
-///从Dart 2开始，new关键字是可选的
-
-///将给定的路由推到最紧密地包围给定上下文的导航器上，然后删除所有先前的路由，直到“predicate”返回true。
-///   Navigator.pushAndRemoveUntil(
-///     context,
-///     MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
-///     ModalRoute.withName('/'),
-///   );
-
-///ModalRoute   阻止与以前的路由交互的路由。
-///[ModalRoute]覆盖整个[Navigator]。他们不一定[不透明]，例如，一个弹出菜单使用了一个[ModalRoute]，但是只在一个小框中显示菜单，与前面的路径重叠。
-
-///withName  如果路由具有指定的名称并且如果弹出路线不会产生相同的路线，即，如果路线的[willHandlePopInternally]属性为false。此函数通常与[Navigator.popntil导航器()].
-
-///使用材料设计的应用程序。
-///
-///一个方便的小部件，其中包装了材料设计应用程序通常需要的许多小部件。它通过添加特定于材料设计的功能（例如[AnimatedTheme]和[GridPaper]），以[WidgetsApp]为基础。
-///
-/// [MaterialApp]将顶级[Navigator]配置为按以下顺序搜索路线：
-///
-/// 1.对于`/`路由，使用[home]属性（如果非null）。
-///
-/// 2.否则，如果[routes]表具有路由条目，则使用该表。
-///
-/// 3.否则，如果提供，则调用[onGenerateRoute]。对于未由[home]和[routes]处理的任何_valid_路由，它应返回非null值。
-///
-/// 4.最后，如果其他所有方法都失败，则调用[onUnknownRoute]。
-///
-///如果创建了[Navigator]，则这些选项中的至少一个必须处理`/`路由，因为在启动时指定了无效的[initialRoute]时会使用该路由（例如，另一个应用程序有意地启动该路由）在Android上；
-///参见[Window.defaultRouteName]。
-///
-///此小部件还配置顶级[Navigator]（如果有）的观察者以执行[Hero]动画。
-///
-///如果[home]，[routes]，[onGenerateRoute]和[onUnknownRoute]全部为空，并且[builder]不为空，则不会创建[Navigator]。
-
-class MyApp extends StatelessWidget {
+class MyMaterialApp extends StatelessWidget {
   static const String _title = 'Alice';
 
   @override
@@ -126,3 +88,40 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+///Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56
+
+///从Dart 2开始，new关键字是可选的
+
+///将给定的路由推到最紧密地包围给定上下文的导航器上，然后删除所有先前的路由，直到“predicate”返回true。
+///   Navigator.pushAndRemoveUntil(
+///     context,
+///     MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
+///     ModalRoute.withName('/'),
+///   );
+
+///ModalRoute   阻止与以前的路由交互的路由。
+///[ModalRoute]覆盖整个[Navigator]。他们不一定[不透明]，例如，一个弹出菜单使用了一个[ModalRoute]，但是只在一个小框中显示菜单，与前面的路径重叠。
+
+///withName  如果路由具有指定的名称并且如果弹出路线不会产生相同的路线，即，如果路线的[willHandlePopInternally]属性为false。此函数通常与[Navigator.popntil导航器()].
+
+///使用材料设计的应用程序。
+///
+///一个方便的小部件，其中包装了材料设计应用程序通常需要的许多小部件。它通过添加特定于材料设计的功能（例如[AnimatedTheme]和[GridPaper]），以[WidgetsApp]为基础。
+///
+/// [MaterialApp]将顶级[Navigator]配置为按以下顺序搜索路线：
+///
+/// 1.对于`/`路由，使用[home]属性（如果非null）。
+///
+/// 2.否则，如果[routes]表具有路由条目，则使用该表。
+///
+/// 3.否则，如果提供，则调用[onGenerateRoute]。对于未由[home]和[routes]处理的任何_valid_路由，它应返回非null值。
+///
+/// 4.最后，如果其他所有方法都失败，则调用[onUnknownRoute]。
+///
+///如果创建了[Navigator]，则这些选项中的至少一个必须处理`/`路由，因为在启动时指定了无效的[initialRoute]时会使用该路由（例如，另一个应用程序有意地启动该路由）在Android上；
+///参见[Window.defaultRouteName]。
+///
+///此小部件还配置顶级[Navigator]（如果有）的观察者以执行[Hero]动画。
+///
+///如果[home]，[routes]，[onGenerateRoute]和[onUnknownRoute]全部为空，并且[builder]不为空，则不会创建[Navigator]。

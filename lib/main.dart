@@ -1,5 +1,5 @@
 import 'package:alice/common/global/theme_mode.dart';
-import 'package:alice/routes/my_app.dart';
+import 'package:alice/routes/my_material_app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -11,7 +11,7 @@ void main() {
   /// 仅在需要在调用[runApp]之前初始化绑定的情况下，才需要调用此方法。
   /// 在`flutter_test`框架中，[testWidgets]将绑定实例初始化为[TestWidgetsFlutterBinding]，而不是[WidgetsFlutterBinding]。
   WidgetsFlutterBinding.ensureInitialized(); //添加此处代码是为了防止下句代码报错
-  AppThemeMode.init().then((e) => runApp(MyApp()));
+  AppThemeMode.init().then((e) => runApp(MyMaterialApp()));
   if (Platform.isAndroid) {
     /// 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(

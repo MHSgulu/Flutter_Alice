@@ -7,7 +7,6 @@ import 'movie/movie_home.dart';
 import 'news/new_home.dart';
 import 'video/featured_video_home.dart';
 
-
 class WillPopScopeHome extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => WillPopScopeHomeState();
@@ -27,7 +26,9 @@ class WillPopScopeHomeState extends State<WillPopScopeHome> {
         ///如果回调返回的Future解析为false，则不会弹出封闭路由。
         onWillPop: () async {
           //如果用户初次点击返回键或者连续两次点击返回键间隔时间大于1秒
-          if (_lastClickTime == null || DateTime.now().difference(_lastClickTime) > Duration(seconds: 1)) {
+          if (_lastClickTime == null ||
+              DateTime.now().difference(_lastClickTime) >
+                  Duration(seconds: 1)) {
             ///返回[Duration]，其中包含[this]和[other]之间的差异。这种差异是以秒和秒的分数来衡量的。
             Fluttertoast.showToast(msg: '再按一次退出');
             _lastClickTime = DateTime.now();
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
   ///对setState的调用告诉Flutter框架在这种状态下发生了一些变化，这导致它重新运行下面的build方法，以便显示可以反映更新的值。
   ///如果我们在不调用setState（）的情况下更改了索引，则不会再次调用生成方法，因此看起来不会发生任何事情。
   void _onItemTapped(int value) {
-    if(mounted){
+    if (mounted) {
       setState(() {
         _currentIndex = value;
       });
@@ -123,6 +124,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         //backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
+
         ///The [showUnselectedLabels] argument defaults
         ///if [type] is [BottomNavigationBarType.fixed]   `true`
         ///if [type] is[BottomNavigationBarType.shifting]. `false`
