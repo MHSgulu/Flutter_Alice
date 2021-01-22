@@ -43,7 +43,7 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
       '饰  成长羁绊者',
     ));
     actorList.add(MovieActorEntity(
-      'https://img9.doubanio.com/view/photo/l/public/p1945704333.webp',
+      'https://img3.doubanio.com/view/photo/l/public/p2158454670.webp',
       '三笠 阿克曼',
       'Mikasa Ackerman',
       '饰  孤独陪伴者',
