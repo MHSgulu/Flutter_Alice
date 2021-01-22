@@ -1,8 +1,8 @@
 import 'package:alice/common/const/routes.dart';
+import 'package:alice/routes/drawer/show/about_app.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 
-import 'about_app.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -58,15 +58,13 @@ class _MyDrawerState extends State<MyDrawer> {
               leading:
               ImageIcon(AssetImage('assets/icons/icon_draw_function.png')),
               title: Text('更多功能'),
-              onTap: () =>
-                  Navigator.pushNamed(context, RouteName.showMoreRoute),
+              onTap: () => Navigator.pushNamed(context, RouteName.showMoreRoute),
             ),
             ListTile(
               leading:
               ImageIcon(AssetImage('assets/icons/icon_draw_example.png')),
               title: Text('示例演示'),
-              onTap: () =>
-                  Navigator.pushNamed(context, RouteName.guideExampleRoute),
+              onTap: () => Navigator.pushNamed(context, RouteName.guideExampleRoute),
             ),
             ListTile(
               leading:

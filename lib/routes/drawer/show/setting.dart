@@ -1,11 +1,11 @@
+import 'package:alice/routes/more/setting/switch_cupertino.dart';
+import 'package:alice/routes/more/setting/switch_drak.dart';
+import 'package:alice/routes/more/setting/switch_material.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'setting/switch_cupertino.dart';
-import 'setting/switch_drak.dart';
-import 'setting/switch_material.dart';
 
 class SettingPage extends StatelessWidget {
   @override

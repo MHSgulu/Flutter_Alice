@@ -1,3 +1,6 @@
+import 'package:alice/routes/drawer/show/guide_example_route.dart';
+import 'package:alice/routes/drawer/show/setting.dart';
+import 'package:alice/routes/drawer/show/show_page.dart';
 import 'package:alice/routes/example/docs/flutter_layout_constraints.dart';
 import 'package:alice/routes/more/article/article_of_the_day.dart';
 import 'package:alice/routes/more/bing/bing_wallpaper.dart';
@@ -8,7 +11,6 @@ import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
 import 'package:alice/routes/more/guide/guide_flutter_favorite.dart';
 import 'package:alice/routes/more/guide/guide_state_route.dart';
 import 'package:alice/routes/more/guide/guide_week_widget_route.dart';
-import 'package:alice/routes/more/show_page.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper_list.dart';
 import 'package:alice/routes/more/wallpaper/computer/popular_searches.dart';
@@ -18,12 +20,11 @@ import 'package:alice/routes/movie/movie_details.dart';
 import 'package:alice/routes/video/play_eye_opening_video.dart';
 import 'package:flutter/material.dart';
 
-import 'package:alice/routes/more/setting.dart';
+
 import 'package:alice/routes/more/english_quotations.dart';
 import 'package:alice/routes/more/garbage/garbage_classification.dart';
 import 'package:alice/routes/more/guide/guide_community_package.dart';
 import 'package:alice/routes/more/guide/guide_cupertino_widget.dart';
-import 'package:alice/routes/more/guide/guide_example_route.dart';
 import 'package:alice/routes/more/guide/guide_hot_pub.dart';
 import 'package:alice/routes/more/guide/guide_material_widget.dart';
 import 'package:alice/routes/more/guide/guide_official_dart_package.dart';
@@ -45,7 +46,7 @@ Map<String, WidgetBuilder> routes = {
   RouteName.playEyeOpeningVideo: (_) => PlayEyeOpeningVideo(), //视频详情页面
   //抽屉模块
   RouteName.showMoreRoute: (context) => ShowMoreRoute(), //功能列表页面
-  RouteName.guideExampleRoute: (context) => GuideExampleRoute(), //示例页面
+  RouteName.guideExampleRoute: (context) => GuideExampleRoute(), //示例演示页面
   RouteName.settingPage: (context) => SettingPage(), //设置页面
   //功能模块
   RouteName.queryMobileHome: (context) => QueryMobileHome(), //查询手机号码归属地页面
