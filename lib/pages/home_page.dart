@@ -1,4 +1,5 @@
 import 'package:alice/pages/film/film_home_page.dart';
+import 'package:alice/pages/video/video_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:alice/common/const/cupertino_routes.dart';
@@ -25,9 +26,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
         child: Text('新闻'),
       ),
       FilmHomePage(),
-      Center(
-        child: Text('视频'),
-      ),
+      VideoHomePage(),
       Center(
         child: Text('待定'),
       ),
@@ -54,7 +53,28 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
   }
 
   Widget _cupertinoTabBar() {
-    return CupertinoTabBar(
+    ///一个iOS样式的底部导航选项卡栏。
+    ///
+    ///使用[BottomNavigationBarItem]显示多个标签，其中一个标签处于活动状态，默认情况下第一个标签。
+    ///
+    ///此[StatelessWidget]不存储活动选项卡本身。
+    ///您必须监听[onTap]回调并使用新的[currentIndex]调用setState以反映新的选择。
+    ///也可以通过用[CupertinoTabScaffold]包裹自动完成此操作。
+    ///
+    ///根据标准的iOS设计，更改制表符通常会触发[Navigator]之间的切换，每个都有自己的导航堆栈。
+    ///这可以通过使用[CupertinoTabScaffold]中每个选项卡构建器中的[CupertinoTabView]来完成
+    ///
+    ///如果给定的[backgroundColor]的不透明度不是1.0（默认情况下是这种情况），它将对其后面的内容产生模糊效果。
+    ///
+    ///用作[CupertinoTabScaffold.tabBar]时，默认情况下，`CupertinoTabBar`的文本比例因子设置为1.0，并且不响应操作系统中文本比例因子的变化，以匹配本机iOS行为。
+    ///要覆盖此行为，请使用所需的[MediaQueryData.textScaleFactor]值将每个`navigationBar`组件包装在[MediaQuery]中。
+    ///可以通过多种方式检索操作系统中的文本比例因子值，例如，根据[CupertinoApp]的[BuildContext]查询[MediaQuery.textScaleFactorOf]。
+    ///
+    /// 也可以看看：
+    ///
+    /// * [CupertinoTabScaffold]，在底部托管[CupertinoTabBar]。
+    /// * [BottomNavigationBarItem]，[CupertinoTabBar]中的一项。
+    return CupertinoTabBar(///创建iOS风格的标签栏。
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book_circle),

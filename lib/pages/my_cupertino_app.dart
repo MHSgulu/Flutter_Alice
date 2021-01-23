@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'home_page.dart';
 
@@ -21,6 +22,15 @@ class MyCupertinoApp extends StatelessWidget {
       //routes: routes,
       title: 'Cupertino Alice',
       debugShowCheckedModeBanner: false,
+      ///此应用的[Localizations]小部件的委托。
+      ///代表共同定义了此应用程序的[Localizations]小部件的所有本地化资源
+      //在CupertinoApp中使用一些 MD部件出错(比如Scaffold的AppBar)
+      //错误信息 指向这里 于是添加了这个 本以为是跟国际化相关的。
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }
