@@ -1,6 +1,7 @@
 import 'package:alice/pages/film/film_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:alice/common/const/cupertino_routes.dart';
 
 class CupertinoHomePage extends StatefulWidget {
   @override
@@ -8,7 +9,12 @@ class CupertinoHomePage extends StatefulWidget {
 }
 
 class CupertinoHomePageState extends State<CupertinoHomePage> {
-  List<String> titleList = ['新闻', '电影', '视频', '待定',];
+  List<String> titleList = [
+    '新闻',
+    '电影',
+    '视频',
+    '待定',
+  ];
 
   List<Widget> _widgetOptions;
 
@@ -47,7 +53,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
     );
   }
 
-  Widget _cupertinoTabBar(){
+  Widget _cupertinoTabBar() {
     return CupertinoTabBar(
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -66,7 +72,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
           label: '视频',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons./*compass*/plus_circle),
+          icon: Icon(CupertinoIcons. /*compass*/ plus_circle),
           activeIcon: Icon(CupertinoIcons.plus_circle_fill),
           label: '更多',
         ),
@@ -74,21 +80,42 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
     );
   }
 
-  Widget _tabBuilder(BuildContext context, int index){
+  Widget _tabBuilder(BuildContext context, int index) {
     //使用CupertinoTabView作为每个选项卡的根窗口小部件，以支持具有并行导航状态和历史记录的选项卡。
     // 由于每个CupertinoTabView都包含一个导航器，
     // 因此在CupertinoTabView.builder中使用其他WidgetBuilder实例重建CupertinoTabView不会重新创建CupertinoTabView的导航堆栈或更新其UI。
     // 要在CupertinoTabView生成后更新其内容，请从其后代而不是其祖先触发重建（例如，通过State.setState进行）。
     return CupertinoTabView(
+      //选项卡视图的默认路由的窗口小部件构建器（[Navigator.defaultRouteName]，为`/`）。
+      //如果指定了[builder]，则[routes]不得包含`/`的条目，因为[builder]会代替它。
+      //用其他[builder]重建[CupertinoTabView]不会清除其当前导航堆栈或更新其后代。 而是从其子树中的后代触发重建。 这可以通过以下方法来完成：
+      // *在子孙[StatefulWidget]的[State]上调用[State.setState]
+      // *修改后代将其注册为从属的[InheritedWidget]。
       builder: (BuildContext context) {
+        //实现单个iOS应用程序页面的布局。
+        //支架将导航栏布置在顶部，并将内容布置在导航栏之间或之后。
         return CupertinoPageScaffold(
+          //为页面创建布局，顶部带有导航栏。
           navigationBar: CupertinoNavigationBar(
+            ///放置在导航栏开始处的小部件。
+            ///通常，正常页面的后退按钮或整页对话框的取消按钮。
+            ///如果为null且[automaticallyImplyLeading]为true，则会自动创建一个适当的按钮。
+            leading: null,
             middle: Text(titleList[index]),
           ),
           child: _widgetOptions[index],
         );
       },
+      ///默认路由的标题。
+      defaultTitle: 'Cuperitino Home',
+      ///此选项卡视图的路由表。
+      ///在此选项卡视图中使用[Navigator.pushNamed]推送命名的路线时，将在此地图中查找路线名称。
+      ///如果存在该名称，则使用关联的[WidgetBuilder]构造一个[CupertinoPageRoute]，以执行到新路由的适当转换。
+      ///如果选项卡视图只有一页，则可以使用[builder]来指定它。
+      ///如果指定了[builder]，则表示此表中的条目[Navigator.defaultRouteName]路由（`/`），并且在[routes]表中冗余地提供这样的路由是错误的。
+      ///如果请求的路由未在此表中指定（或通过[builder]），然后调用[onGenerateRoute]回调来构建页面。
+      ///此路由表不与任何祖先或后代[Navigator]的路由表共享。
+      routes: cupertinoRoutes,
     );
   }
-
 }

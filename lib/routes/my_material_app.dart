@@ -84,8 +84,10 @@ class MyMaterialAppDemo extends StatelessWidget {
             // 每当[WidgetsApp]重建时，都会调用[onGenerateTitle]回调。
             ///onGenerateTitle: (context) => MyLocalizations.of(context).appTitle,
             //此应用程序的默认视觉属性，例如颜色字体和形状材料小部件。
-            //也可以指定第二个[darkTheme] [ThemeData]值，该值用于提供深色的用户界面。 如果提供了[darkTheme]，则[themeMode]将控制使用哪个主题。
+            //也可以指定第二个[darkTheme] [ThemeData]值，该值用于提供深色的用户界面。
+            //如果提供了[darkTheme]，则[themeMode]将控制使用哪个主题。
             //此属性的默认值为[ThemeData.light（）]的值。
+            // 也可以看看：
             // [themeMode]，它控制要使用的主题。
             // [MediaQueryData.platformBrightness]，它指示平台所需的亮度，并用于在[MaterialApp]中的[theme]和[darkTheme]之间自动切换。
             // [ThemeData.brightness]，它指示主题颜色的[Brightness]。
