@@ -1,4 +1,5 @@
 import 'package:alice/common/const/arguments.dart';
+import 'package:alice/common/const/constant.dart';
 import 'package:alice/routes/movie/details/movie_content_info_widget.dart';
 import 'package:alice/routes/movie/details/movie_rating_info_widget.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -108,12 +109,8 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
             MovieRatingInfoWidget(args: args), //电影评分信息栏
             MovieTypeInfoWidget(args: args), //电影类型信息栏
             MovieContentInfoWidget(), //电影内容简介栏
-            MovieActorInfoWidget(valueColor: dominantColor), //电影演员栏
-            MovieStillInfoWidget(valueColor: dominantColor), //电影剧照栏
-            /*MovieTrailerInfoWidget(
-                    snapshot: snapshot,
-                    valueColor: dominantColor,
-                  ),*/ //电影预告片/花絮栏
+            MovieActorInfoWidget(valueColor: dominantColor, style: Constant.material,), //电影演员栏
+            MovieStillInfoWidget(valueColor: dominantColor, style: Constant.material,), //电影剧照栏
           ],
         ),
       ),

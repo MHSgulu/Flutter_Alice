@@ -1,15 +1,19 @@
+import 'package:alice/common/const/constant.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/photo_view_gallry.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MovieStillInfoWidget extends StatefulWidget {
   final Color valueColor;
+  final String style;
 
   const MovieStillInfoWidget({
     Key key,
     @required this.valueColor,
+    @required this.style,
   }) : super(key: key);
 
   @override
@@ -100,14 +104,7 @@ class _MovieStillInfoWidgetState extends State<MovieStillInfoWidget> {
             itemCount: myMovieStillList.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => PhotoGalleryView(
-                                imageList: myMovieStillList,
-                                index: index,
-                                heroTag: 'still:$index',
-                              ))),
+                onTap: ()=> jumpToPhotoView(index),
                 child: Hero(
                   tag: 'still:$index',
                   child: MyRRectCard(
@@ -125,4 +122,27 @@ class _MovieStillInfoWidgetState extends State<MovieStillInfoWidget> {
       ],
     );
   }
+
+  void jumpToPhotoView(int index){
+    if(widget.style == Constant.material){
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => PhotoGalleryView(
+                imageList: myMovieStillList,
+                index: index,
+                heroTag: 'still:$index',
+              )));
+    }else{
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (_) => PhotoGalleryView(
+                imageList: myMovieStillList,
+                index: index,
+                heroTag: 'still:$index',
+              )));
+    }
+  }
+
 }

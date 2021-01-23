@@ -38,7 +38,10 @@ class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
             child: isExpand
                 ? Text(
                     movieSynopsis,
-                    style: TextStyle(color: Colors.white60),
+                    style: TextStyle(
+                      color: Colors.white60,
+                      fontSize: 14,
+                    ),
                   )
                 : LayoutBuilder(builder: (context, size) {
                     return Column(
@@ -46,8 +49,10 @@ class _MovieContentInfoWidgetState extends State<MovieContentInfoWidget> {
                         Text.rich(
                           TextSpan(
                             text: movieSynopsis,
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.white70),
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white70,
+                            ),
                           ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 4,

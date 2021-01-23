@@ -1,17 +1,23 @@
+import 'package:alice/common/const/constant.dart';
 import 'package:alice/model/movie_actor_entity.dart';
+import 'package:alice/pages/film/view/film_actor_draggable_view.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/photo_view_single.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'all/movie_all_actor_draggable.dart';
+import 'movie_all_actor_draggable.dart';
+
 
 class MovieActorInfoWidget extends StatefulWidget {
   final Color valueColor;
+  final String style;
 
   const MovieActorInfoWidget({
     Key key,
     @required this.valueColor,
+    @required this.style,
   }) : super(key: key);
 
   @override
@@ -173,23 +179,43 @@ class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
   }
 
   void showAllMovieActorBottomSheet() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (context) => MovieAllActorDraggableWidget(
-        valueColor: widget.valueColor,
-        actorList: actorList,
-      ),
-      isScrollControlled: true, //设置true，解决了模态底页无法全屏
-    );
+    if (widget.style == Constant.material) {
+      showModalBottomSheet<void>(
+        context: context,
+        builder: (context) => MovieAllActorDraggableWidget(
+          valueColor: widget.valueColor,
+          actorList: actorList,
+        ),
+        isScrollControlled: true, //设置true，解决了模态底页无法全屏
+      );
+    } else {
+      showCupertinoModalPopup(
+        context: context,
+        builder: (context) => FilmActorDraggableView(
+          valueColor: widget.valueColor,
+          actorList: actorList,
+        ),
+      );
+    }
   }
 
   void jumpToPhotoView(int index) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (_) => PhotoSingleView(
-                  imgUrl: actorList[index].img,
-                  heroTag: '$index',
-                )));
+    if (widget.style == Constant.material) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => PhotoSingleView(
+                    imgUrl: actorList[index].img,
+                    heroTag: '$index',
+                  )));
+    } else {
+      Navigator.push(
+          context,
+          CupertinoPageRoute(
+              builder: (_) => PhotoSingleView(
+                    imgUrl: actorList[index].img,
+                    heroTag: '$index',
+                  )));
+    }
   }
 }

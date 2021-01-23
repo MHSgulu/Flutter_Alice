@@ -1,7 +1,7 @@
 import 'package:alice/common/const/arguments.dart';
+import 'package:alice/common/const/cupertino_routes.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/hot_movie_entity.dart';
-import 'package:alice/pages/film/movie_details_page.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:alice/widgets/loading/movie_loading_view.dart';
@@ -10,12 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class HotMovieView extends StatefulWidget {
+class HotFilmView extends StatefulWidget {
   @override
-  _HotMovieViewState createState() => _HotMovieViewState();
+  _HotFilmViewState createState() => _HotFilmViewState();
 }
 
-class _HotMovieViewState extends State<HotMovieView> {
+class _HotFilmViewState extends State<HotFilmView> {
   Future<HotMovieEntity> _future;
 
   @override
@@ -86,6 +86,7 @@ class _HotMovieViewState extends State<HotMovieView> {
                         ),
                         Text(
                           snapshot.data.ms[index].tCn,
+                          style: TextStyle(fontSize: 14),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -133,14 +134,10 @@ class _HotMovieViewState extends State<HotMovieView> {
   }
 
   void jumpToMovieDetails(HotMovieM movieEntity) {
-    Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (_) => MovieDetailsPage(),
-            settings: RouteSettings(
-              arguments: MovieDetailArguments(movieEntity),
-            ),
-        ),
+    Navigator.pushNamed(
+      context,
+      RouteName.filmDetailsPage,
+      arguments: MovieDetailArguments(movieEntity),
     );
 
   }
