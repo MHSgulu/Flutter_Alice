@@ -41,7 +41,7 @@ dependencies:
   photo_view: ^0.10.3  # Photo View提供了一个手势敏感的可缩放小部件。Photo View主要用于显示交互图像和SVG等其他内容。
   transparent_image: ^1.0.0  # Dart代码中的透明图像，表示为Uint8List。
   cached_network_image: ^2.5.0  # Flutter库可加载和缓存网络图像。也可以与占位符和错误小部件一起使用
-  fluttertoast: ^7.0.4  # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
+  fluttertoast: ^7.1.6  # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
   pull_to_refresh: ^1.6.2  # 提供给Flutter滚动组件的小部件可下拉刷新并上拉负载。
   flutter_html: ^1.1.1  # Flutter小部件，将静态HTML和CSS呈现为Flutter小部件
   flutter_swiper: ^1.1.6  # 最好的拍打器（轮播），具有多种布局，无限循环。与Android和iOS兼容。

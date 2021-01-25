@@ -15,6 +15,4 @@ class MyColors{
   static final Color scaffoldBackgroundLightColor = Colors.grey[850];
   static final Color scaffoldBackgroundDarkColor = Colors.grey[50];
 
-
-
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -70,14 +71,22 @@ class _HomePageState extends State<HomePage> {
     return _currentIndex == 0
         ? Colors.blueAccent[200]
         : _currentIndex == 1
-        ? Colors.teal[400]
-        : _currentIndex == 2
-        ? Colors.deepOrangeAccent[100]
-        : Colors.cyan[300];
+            ? Colors.teal[400]
+            : _currentIndex == 2
+                ? Colors.deepOrangeAccent[100]
+                : Colors.cyan[300];
+  }
+
+  void _onPageChanged(int index){
+    if (mounted) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 
   //原版 无PageView
- /* @override
+  /* @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -117,13 +126,7 @@ class _HomePageState extends State<HomePage> {
         physics: NeverScrollableScrollPhysics(),
         //pageSnapping: false, ///禁用页面捕捉，滑动之后页面不会自动对齐。
         //allowImplicitScrolling: true, //灵敏的滑动，稍微滑一点就会到下一页。
-        onPageChanged: (index){
-          if (mounted) {
-            setState(() {
-              _currentIndex = index;
-            });
-          }
-        },
+        onPageChanged: _onPageChanged,
         children: [
           NewsHomePage(),
           MovieHomePage(),
@@ -132,7 +135,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index)=> _pageController.jumpToPage(index),
+        onTap: (index) => _pageController.jumpToPage(index),
         items: [
           BottomNavigationBarItem(
             icon: ImageIcon(
@@ -168,10 +171,8 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: _getSelectedItemColor(),
         selectedFontSize: 12,
         unselectedFontSize: 12,
+        mouseCursor: SystemMouseCursors.click, //鼠标指针进入或悬停在图块上时的光标。//如果此属性为null，则将使用[SystemMouseCursors.click]。
       ),
     );
   }
-
-
-
 }
