@@ -76,6 +76,8 @@ dependencies:
   shimmer: ^1.1.2  # 软件包提供了一种在Flutter项目中添加闪烁效果的简便方法
   flip_panel: ^1.0.1  # 带有内置动画的翻盖包装
   sticky_headers: ^0.1.8+1  # Flutter粘性标头-使您可以将标头放在可滚动的内容上，当内容滚动时，这些内容将粘在容器的顶部。
+  qr_flutter: ^3.2.0  # QR.Flutter是一个Flutter库，用于通过Widget或自定义画图器简单，快速地渲染QR代码。
+  screenshot: ^0.2.0  # Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像。
 
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
   zego_express_engine: ^1.15.0  # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
