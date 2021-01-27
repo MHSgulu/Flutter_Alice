@@ -121,9 +121,14 @@ class PhotoSingleView extends StatelessWidget {
     final result = await ImageGallerySaver.saveImage(
       Uint8List.fromList(response.data),
       quality: 100,
-      name: "picture_$time",
+      name: "$time",
     );
-    print('数据点位： 图片地址： $result');
-    Fluttertoast.showToast(msg: '图片已保存到相册中');
+    if(result['isSuccess']){
+      print('图片地址：${result['filePath']}');
+      Fluttertoast.showToast(msg: '图片已保存到相册中');
+    }else{
+      print('错误信息：${result['errorMessage']}');
+      Fluttertoast.showToast(msg: '图片保存失败');
+    }
   }
 }
