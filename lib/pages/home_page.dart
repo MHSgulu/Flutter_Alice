@@ -1,8 +1,10 @@
 import 'package:alice/pages/film/film_home_page.dart';
+import 'package:alice/pages/news/news_home_page.dart';
 import 'package:alice/pages/video/video_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:alice/common/const/cupertino_routes.dart';
+
 
 class CupertinoHomePage extends StatefulWidget {
   @override
@@ -22,9 +24,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
   @override
   void initState() {
     _widgetOptions = [
-      Center(
-        child: Text('新闻'),
-      ),
+      NewsHomePage(),
       FilmHomePage(),
       VideoHomePage(),
       Center(

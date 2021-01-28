@@ -10,6 +10,7 @@ import 'package:alice/routes/example/individual/example_gesture_password.dart';
 import 'package:alice/routes/example/individual/image_gallery_saver.dart';
 import 'package:alice/routes/example/individual/example_marquee.dart';
 import 'package:alice/routes/example/individual/example_shimmer.dart';
+import 'package:alice/routes/example/individual/example_screenshot.dart';
 import 'package:alice/routes/example/individual/example_flip_panel.dart';
 import 'package:alice/routes/example/individual/zefyr/example_zefyr.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -41,6 +42,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     'shimmer',
     'flip_panel',
     'chewie',
+    'screenshot',
   ];
 
   List<String> subTitleList = [
@@ -59,6 +61,7 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
     '提供了一种在Flutter项目中添加闪烁效果的简便方法',
     '带有内置动画的翻盖包装',
     'Flutter的视频播放器，带有Cupertino和Material播放控件',
+    'Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像',
   ];
 
   @override
@@ -100,49 +103,67 @@ class GuideHotPubLibraryRouteState extends State<GuideHotPubLibraryRoute> {
   void jumpToRoute(int index) {
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleCachedNetworkImage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => ExampleCachedNetworkImage()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExamplePermission()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExamplePermission()));
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => GuideChartRoute()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => GuideChartRoute()));
         break;
       case 3:
         Navigator.push(context, MaterialPageRoute(builder: (_) => ZefyrApp()));
         break;
       case 4:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExamplePictureCompression()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => ExamplePictureCompression()));
         break;
       case 5:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleCityPicker()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExampleCityPicker()));
         break;
       case 6:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleBadgePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExampleBadgePage()));
         break;
       case 7:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleMarquee()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExampleMarquee()));
         break;
       case 8:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => HtmlExamplePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => HtmlExamplePage()));
         break;
       case 9:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => TestStaggeredGrid()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => TestStaggeredGrid()));
         break;
       case 10:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => GesturePasswordWidgetDemo()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => GesturePasswordWidgetDemo()));
         break;
       case 11:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleImageGallerySaver()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (_) => ExampleImageGallerySaver()));
         break;
       case 12:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleShimmerPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExampleShimmerPage()));
         break;
       case 13:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleFlipPanelPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ExampleFlipPanelPage()));
         break;
       case 14:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ChewieDemo()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ChewieDemo()));
+        break;
+      case 15:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => ScreenshotDemo()));
         break;
     }
   }
