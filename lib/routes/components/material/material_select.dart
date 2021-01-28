@@ -11,7 +11,6 @@ class _MaterialSelectState extends State<MaterialSelect> {
   List<bool> checked = [true, true, false, false, true];
   bool valued = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +23,7 @@ class _MaterialSelectState extends State<MaterialSelect> {
         child: Column(
           children: [
             Text('单选按钮'),
+
             ///以下示例显示了禁用最后一行的列表中使用的单选按钮。
             Column(
               children: <Widget>[
@@ -41,10 +41,10 @@ class _MaterialSelectState extends State<MaterialSelect> {
                       onChanged: i == 5
                           ? null
                           : (int value) {
-                        setState(() {
-                          _value = value;
-                        });
-                      },
+                              setState(() {
+                                _value = value;
+                              });
+                            },
                     ),
                   ),
               ],
@@ -60,10 +60,10 @@ class _MaterialSelectState extends State<MaterialSelect> {
                         onChanged: i == 4
                             ? null
                             : (bool value) {
-                          setState(() {
-                            checked[i] = value;
-                          });
-                        },
+                                setState(() {
+                                  checked[i] = value;
+                                });
+                              },
                         tristate: i == 1,
                         value: checked[i],
                         activeColor: Color(0xFF6200EE),
@@ -80,6 +80,7 @@ class _MaterialSelectState extends State<MaterialSelect> {
             ),
             SizedBox(height: 20),
             Text('开关'),
+
             ///材料设计开关。
             ///
             ///用于切换单个设置的开/关状态。
@@ -102,7 +103,7 @@ class _MaterialSelectState extends State<MaterialSelect> {
             /// * <https://material.io/design/components/selection-controls.html#switches>
             Switch(
               value: valued,
-              onChanged: (value){
+              onChanged: (value) {
                 setState(() {
                   valued = value;
                 });
