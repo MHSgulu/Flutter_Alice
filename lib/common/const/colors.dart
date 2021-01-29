@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MyColors{
+
   static final Color white = Color(0xFFFFFFFF);
+  static final Color white90 = Color(0xE6FFFFFF);
+  static final Color white80 = Color(0xCCFFFFFF);
+
   static final Color black = Color(0xFF000000);
 
   ///深灰色 黑色模式主题色    十六进制颜色码 #121212  RGB颜色值18,18,18
