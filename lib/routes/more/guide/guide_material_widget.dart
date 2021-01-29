@@ -2,6 +2,7 @@ import 'package:alice/routes/components/material/demo/demo_bottomappbar.dart';
 import 'package:alice/routes/components/material/demo/demo_colors.dart';
 import 'package:alice/routes/components/material/demo/demo_textfield.dart';
 import 'package:alice/routes/components/material/demo/demo_tooltip.dart';
+import 'package:alice/routes/components/material/demo/demo_expansionpanelist.dart';
 import 'package:alice/routes/components/material/demo/demo_typesetting.dart';
 import 'package:alice/routes/components/material/material_banner.dart';
 import 'package:alice/routes/components/material/material_bottom_sheet.dart';
@@ -49,6 +50,7 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
     'BottomAppBar(底部应用栏)',
     'TextField(文本字段)',
     'ToolTip(工具提示)',
+    'ExpansionPanelList(材料扩展面板列表)',
   ];
 
   @override
@@ -131,6 +133,9 @@ class GuideMaterialWidgetRouteState extends State<GuideMaterialWidgetRoute> {
         break;
       case 18:
         Navigator.push(context, MaterialPageRoute(builder: (_) => TooltipDemo()));
+        break;
+      case 19:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExpansionPaneListDemo()));
         break;
     }
   }
