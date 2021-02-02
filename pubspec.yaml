@@ -30,7 +30,7 @@ dependencies:
     sdk: flutter
   intl: ^0.16.1  # 该软件包提供国际化和本地化功能，包括消息翻译，复数形式和性别，日期/数字格式和解析以及双向文本
   cupertino_icons: ^1.0.0  # 将Cupertino图标字体添加到应用程序中。用于iOS风格图标的CupertinoIcons类。对于1.0.0及更高版本（仅在Flutter SDK 1.22+版上可用）
-  font_awesome_flutter: ^8.8.1  # font_awesome_flutter 以Flutter Icons的形式提供。提供1500个其他图标供您的应用程序使用。
+  font_awesome_flutter: ^8.11.0  # font_awesome_flutter 以Flutter Icons的形式提供。提供1500个其他图标供您的应用程序使用。
   google_fonts: ^1.1.0  # 一种在Flutter应用程序中包含fonts.google.com中的字体的软件包。
   # flutter_svg: ^0.19.0   # 用于Flutter的SVG渲染和窗口小部件库，允许绘制和显示可缩放矢量图形1.1文件
   device_info: '>=0.4.2+8 <2.0.0'  # Flutter插件提供有关设备（制造商，型号等）以及运行该应用程序的Android或iOS版本的详细信息
@@ -59,7 +59,7 @@ dependencies:
   fl_chart: ^0.12.0   # 强大的Flutter图表库，当前支持折线图，条形图和饼图。
   flutter_rating_bar: ^3.0.1+1  # 一个简单但可完全自定义的Flutter等级栏。
   zefyr: ^0.12.0  # 干净，简约，易于协作的Flutter富文本编辑器。
-  image_picker: ^0.6.7+17  # Flutter插件，用于从Android和iOS图像库中选择图像，并使用相机拍摄新照片。
+  image_picker: ^0.6.7+22  # Flutter插件，用于从Android和iOS图像库中选择图像，并使用相机拍摄新照片。
   city_pickers: ^0.2.0  # 适用于城市选择器的Flutter插件
   flutter_colorpicker: ^0.3.4  # 一款受chrome devtools启发的HSV（HSB）/ HSL拾色器，以及用于您的flutter应用程序的材质拾色器
   permission_handler: ^5.0.1+1  # Flutter的权限插件。此插件提供了跨平台（iOS，Android）API来请求和检查权限。
@@ -80,11 +80,6 @@ dependencies:
   screenshot: ^0.2.0  # Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像。
 
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
-  zego_express_engine: ^1.15.0  # ZegoExpressEngine Flutter SDK是基于ZegoExpressEngine原生Android / iOS SDK的flutter插件包装，可提供实时视频和实时音频/视频服务
-  zego_permission:  # 即构Flutter工具插件，包含检查（摄像头、麦克风、相册）权限、授权（摄像头、麦克风、相册）操作、跳转设置页等功能。
-    git:
-      url: git://github.com/zegoim/zego-flutter-permission.git
-      ref: master
 
 
 # 说明：需要注意dependencies和dev_dependencies的区别，
@@ -117,9 +112,6 @@ flutter: # 说明：版本号 x.y.z+m 其中 m 是构建版本，可以使用 --
     - assets/icons/
     - assets/icons/svg/
     - assets/animations/
-    - resources/images/
-    - resources/images/2.0x/
-    - resources/images/3.0x/
   # 要向应用程序添加资产，请添加资产部分，如下所示：
   # assets:
   #  - images/a_dot_burr.jpeg
