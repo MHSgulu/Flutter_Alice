@@ -16,7 +16,7 @@ class NewsLoadingView extends StatelessWidget{
             borderRadius: BorderRadius.circular(4),
           ),
           width: double.infinity,
-          height: 150,
+          height: 180,
         ),
         itemCount: 4,
       ),

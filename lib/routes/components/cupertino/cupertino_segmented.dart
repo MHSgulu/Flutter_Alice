@@ -10,7 +10,8 @@ class CupertinoSegmentedControlDemo extends StatefulWidget {
       _CupertinoSegmentedControlDemoState();
 }
 
-class _CupertinoSegmentedControlDemoState extends State<CupertinoSegmentedControlDemo> {
+class _CupertinoSegmentedControlDemoState
+    extends State<CupertinoSegmentedControlDemo> {
   int currentSegment = 0;
 
   List<Widget> widgetList = [
@@ -19,7 +20,7 @@ class _CupertinoSegmentedControlDemoState extends State<CupertinoSegmentedContro
       color: Colors.cyanAccent,
     ),
     Container(
-      height: 300,
+      height: 600,
       color: Colors.teal,
     ),
     Container(
@@ -36,7 +37,7 @@ class _CupertinoSegmentedControlDemoState extends State<CupertinoSegmentedContro
 
   @override
   Widget build(BuildContext context) {
-    final segmentedControlMaxWidth = 500.0;
+    final segmentedControlMaxWidth = 200.0;
     final children = <int, Widget>{
       0: Text('靛青色'),
       1: Text('蓝绿色'),
@@ -48,6 +49,7 @@ class _CupertinoSegmentedControlDemoState extends State<CupertinoSegmentedContro
         label: '分段控件',
         onPressedBack: () => Navigator.pop(context),
       ),
+
       ///应用于没有显式样式的后代[Text]小部件的文本样式。
       ///
       /// 也可以看看：
