@@ -12,6 +12,8 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final PreferredSizeWidget bottom;
   final double elevation;
   final Color backgroundColor;
+  final Brightness brightness;
+  final double toolbarHeight;
 
   const MyAppBar({
     Key key,
@@ -22,6 +24,8 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.bottom,
     this.elevation,
     this.backgroundColor,
+    this.brightness,
+    this.toolbarHeight,
   }) : super(key: key);
 
   @override
@@ -30,7 +34,9 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   //preferredSize = Size.fromHeight(toolbarHeight ?? kToolbarHeight + (bottom?.preferredSize?.height ?? 0.0)),
   //preferredSize = Size.fromHeight(56 + (bottom?.preferredSize?.height ?? 0.0)),
   @override
-  Size get preferredSize => Size.fromHeight(56.0 + (bottom?.preferredSize?.height ?? 0.0)); //当AppBar设置bottom,AppBar的高度加上bottom的高度。
+  Size get preferredSize => Size.fromHeight(56.0 +
+      (bottom?.preferredSize?.height ??
+          0.0)); //当AppBar设置bottom,AppBar的高度加上bottom的高度。
 }
 
 class _MyAppBarState extends State<MyAppBar> {
@@ -41,19 +47,32 @@ class _MyAppBarState extends State<MyAppBar> {
       child: Consumer<AppThemeMode>(
         builder: (context, theme, child) => AppBar(
           //如果指定了昼夜主题，使用昼夜主题色，如果指定了背景色，采用背景色。
-          backgroundColor: AppThemeMode.isDark ? MyColors.appBarDarkColor : widget.backgroundColor ?? Colors.white,
-          brightness: AppThemeMode.isDark ? Brightness.dark : widget.backgroundColor == null ? Brightness.light : Brightness.dark,
-          leading: widget.leading ?? IconButton(
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: AppThemeMode.isDark ? Colors.white : widget.backgroundColor == null ? Colors.black : Colors.white,
-            ),
-            onPressed: widget.onPressedBack,
-          ),
+          backgroundColor: AppThemeMode.isDark
+              ? MyColors.appBarDarkColor
+              : widget.backgroundColor ?? Colors.white,
+          brightness: widget.brightness ?? AppThemeMode.isDark
+              ? Brightness.dark
+              : Brightness.light,
+          leading: widget.leading ??
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: AppThemeMode.isDark
+                      ? Colors.white
+                      : widget.backgroundColor == null
+                          ? Colors.black
+                          : Colors.white,
+                ),
+                onPressed: widget.onPressedBack,
+              ),
           title: Text(
             widget.label,
             style: TextStyle(
-              color: AppThemeMode.isDark ? Colors.white : widget.backgroundColor == null ? Colors.black : Colors.white,
+              color: AppThemeMode.isDark
+                  ? Colors.white
+                  : widget.backgroundColor == null
+                      ? Colors.black
+                      : Colors.white,
               fontSize: 18,
             ),
           ),
@@ -69,6 +88,7 @@ class _MyAppBarState extends State<MyAppBar> {
                 child: Container(),
                 preferredSize: Size.fromHeight(0),
               ),
+          toolbarHeight: widget.toolbarHeight ?? kToolbarHeight,
         ),
       ),
     );
