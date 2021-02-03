@@ -1,3 +1,5 @@
+import 'package:alice/common/const/arguments.dart';
+import 'package:alice/common/const/cupertino_routes.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/news_entity.dart';
@@ -40,18 +42,13 @@ class _NewsSegmentViewState extends State<NewsSegmentView> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  /*Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => NewsDetailPage(
-                        title: snapshot.data.result.result.xList[index].title,
-                        src: snapshot.data.result.result.xList[index].src,
-                        time: snapshot.data.result.result.xList[index].time,
-                        content:
-                            snapshot.data.result.result.xList[index].content,
-                      ),
+                    RouteName.newsDetailPage,
+                    arguments: NewsDetailArguments(
+                        snapshot.data.result.result.xList[index],
                     ),
-                  );*/
+                  );
                 },
                 child: MyRRectCard(
                   elevation: 0.5,

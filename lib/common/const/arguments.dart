@@ -1,5 +1,6 @@
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/model/hot_movie_entity.dart';
+import 'package:alice/model/news_entity.dart';
 
 class ScreenArguments {
   final String title;
@@ -21,6 +22,12 @@ class BirdWallpaperListScreenArguments {
   final String id;
 
   BirdWallpaperListScreenArguments(this.name, this.id);
+}
+
+class NewsDetailArguments {
+  final NewsResultResultList data;
+
+  NewsDetailArguments(this.data);
 }
 
 class MovieDetailArguments {
