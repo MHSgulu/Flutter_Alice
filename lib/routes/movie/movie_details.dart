@@ -3,6 +3,7 @@ import 'package:alice/common/const/constant.dart';
 import 'package:alice/routes/movie/details/movie_content_info_widget.dart';
 import 'package:alice/routes/movie/details/movie_rating_info_widget.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
+import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -33,9 +34,16 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    print('数据点位: movieId： ${args.movieEntity.movieId}');
-    fetchDominantColorPicture(args.movieEntity.img);
+    //print('数据点位: movieId： ${args.movieEntity.movieId}');
+    delayedBuildLayout();
     super.didChangeDependencies();
+  }
+
+  void delayedBuildLayout() {
+    Future.delayed(
+      Duration(seconds: 1),
+      () => fetchDominantColorPicture(args.movieEntity.img),
+    );
   }
 
   void fetchDominantColorPicture(String imageUrl) async {
@@ -63,9 +71,15 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
 
   Widget themeColorsLoadingView() {
     return Scaffold(
+      appBar: MyAppBar(
+        label: '',
+        leading: Container(),
+        elevation: 0,
+        backgroundColor: Colors.grey[50],
+      ),
       body: MyLoadingIndicator(
         valueColor: Colors.teal[400],
-        strokeWidth: 3,
+        strokeWidth: 2.5,
       ),
     );
   }
@@ -102,19 +116,24 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
       ),
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(8, 8, 8, 20),
-        child:Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             MovieBasicInfoWidget(args: args), //电影基础信息栏
             MovieRatingInfoWidget(args: args), //电影评分信息栏
             MovieTypeInfoWidget(args: args), //电影类型信息栏
             MovieContentInfoWidget(), //电影内容简介栏
-            MovieActorInfoWidget(valueColor: dominantColor, style: Constant.material,), //电影演员栏
-            MovieStillInfoWidget(valueColor: dominantColor, style: Constant.material,), //电影剧照栏
+            MovieActorInfoWidget(
+              valueColor: dominantColor,
+              style: Constant.material,
+            ), //电影演员栏
+            MovieStillInfoWidget(
+              valueColor: dominantColor,
+              style: Constant.material,
+            ), //电影剧照栏
           ],
         ),
       ),
     );
   }
-
 }

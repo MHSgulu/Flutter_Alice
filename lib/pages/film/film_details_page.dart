@@ -25,81 +25,101 @@ class _FilmDetailsPageState extends State<FilmDetailsPage> {
 
   @override
   void initState() {
+    //dominantColor = Colors.grey[850];
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    print('数据点位: movieId： ${args.movieEntity.movieId}');
-    fetchDominantColorPicture(args.movieEntity.img);
+    //print('数据点位: movieId： ${args.movieEntity.movieId}');
+    delayedBuildLayout();
     super.didChangeDependencies();
+  }
+
+  ///对于异步构建UI导致的错乱卡帧问题 用延时解决
+  void delayedBuildLayout() {
+    Future.delayed(
+      Duration(seconds: 1),
+      () {
+        print('点位: 延时1秒');
+        fetchDominantColorPicture(args.movieEntity.img);
+      },
+    );
   }
 
   void fetchDominantColorPicture(String imageUrl) async {
     generator = await PaletteGenerator.fromImageProvider(
       NetworkImage(imageUrl),
     );
-    if (generator == null || generator.colors.isEmpty) {
-      dominantColor = Colors.grey[850];
-    } else {
-      if (mounted) {
-        setState(() {
+    if (mounted) {
+      setState(() {
+        if (generator != null || generator.colors.isNotEmpty) {
           dominantColor = generator.dominantColor.color;
-          print('数据点位: dominantColor: ${dominantColor.toString()}');
-        });
-      }
+          //print('数据点位: dominantColor: ${dominantColor.toString()}');
+        } else {
+          dominantColor = Colors.grey[850];
+        }
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (dominantColor == null) {
-      return CupertinoPageScaffold(
-        child: MyLoadingIndicator(
-          style: Constant.cupertino,
-        ),
-      );
-    } else {
-      return CupertinoPageScaffold(
+    return dominantColor == null
+        ? CupertinoPageScaffold(
+            child: MyLoadingIndicator(
+              style: Constant.cupertino,
+            ),
+          )
+        : movieDetailsView();
+  }
+
+  Widget movieDetailsView() {
+    return CupertinoPageScaffold(
+      backgroundColor: dominantColor,
+      navigationBar: CupertinoNavigationBar(
         backgroundColor: dominantColor,
-        navigationBar: CupertinoNavigationBar(
-          backgroundColor: dominantColor,
-          leading: CupertinoButton(
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              color: Colors.white,
-            ),
-            padding: EdgeInsets.zero,
-            minSize: 24,
-            onPressed: () => Navigator.pop(context),
+        leading: CupertinoButton(
+          child: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.white,
           ),
-          middle: Text('电影', style: TextStyle(color: Colors.white)),
-          trailing: CupertinoButton(
-            child: Icon(
-              Icons.more_horiz_rounded,
-              color: Colors.white,
-            ),
-            padding: EdgeInsets.zero,
-            onPressed: () => Navigator.pop(context),
-          ),
+          padding: EdgeInsets.zero,
+          minSize: 24,
+          onPressed: () => Navigator.pop(context),
         ),
-        child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(8, 8, 8, 60),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              MovieBasicInfoWidget(args: args), //电影基础信息栏
-              MovieRatingInfoWidget(args: args), //电影评分信息栏
-              MovieTypeInfoWidget(args: args), //电影类型信息栏
-              MovieContentInfoWidget(), //电影内容简介栏
-              MovieActorInfoWidget(valueColor: dominantColor, style: Constant.cupertino,), //电影演员栏
-              MovieStillInfoWidget(valueColor: dominantColor, style: Constant.cupertino,), //电影剧照栏
-            ],
+        middle: Text('电影', style: TextStyle(color: Colors.white)),
+        trailing: CupertinoButton(
+          child: Icon(
+            Icons.more_horiz_rounded,
+            color: Colors.white,
           ),
+          padding: EdgeInsets.zero,
+          onPressed: () => Navigator.pop(context),
         ),
-      );
-    }
+      ),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(8, 8, 8, 60),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            MovieBasicInfoWidget(args: args), //电影基础信息栏
+            MovieRatingInfoWidget(args: args), //电影评分信息栏
+            MovieTypeInfoWidget(args: args), //电影类型信息栏
+            MovieContentInfoWidget(), //电影内容简介栏
+            MovieActorInfoWidget(
+              valueColor: dominantColor,
+              style: Constant.cupertino,
+            ), //电影演员栏
+            MovieStillInfoWidget(
+              valueColor: dominantColor,
+              style: Constant.cupertino,
+            ), //电影剧照栏
+          ],
+        ),
+      ),
+    );
   }
 
 }
