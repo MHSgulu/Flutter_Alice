@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-class NewsDetailPage extends StatelessWidget {
+class NewsDetailRoute extends StatelessWidget {
   final String title;
   final String src;
   final String time;
   final String content;
 
-  NewsDetailPage(
+  NewsDetailRoute(
       {Key key,
       @required this.title,
       @required this.src,

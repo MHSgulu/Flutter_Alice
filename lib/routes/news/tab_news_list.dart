@@ -7,7 +7,7 @@ import 'package:alice/widgets/loading/news_loading_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'news_detail.dart';
+import 'news_detail_route.dart';
 
 class TabNewsList extends StatefulWidget {
   final String channelName;
@@ -42,7 +42,7 @@ class _NewsListState extends State<TabNewsList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NewsDetailPage(
+                      builder: (context) => NewsDetailRoute(
                         title: snapshot.data.result.result.xList[index].title,
                         src: snapshot.data.result.result.xList[index].src,
                         time: snapshot.data.result.result.xList[index].time,
