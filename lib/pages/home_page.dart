@@ -12,13 +12,6 @@ class CupertinoHomePage extends StatefulWidget {
 }
 
 class CupertinoHomePageState extends State<CupertinoHomePage> {
-  List<String> titleList = [
-    '新闻',
-    '电影',
-    '视频',
-    '待定',
-  ];
-
   List<Widget> _widgetOptions;
 
   @override
@@ -111,21 +104,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
       //用其他[builder]重建[CupertinoTabView]不会清除其当前导航堆栈或更新其后代。 而是从其子树中的后代触发重建。 这可以通过以下方法来完成：
       // *在子孙[StatefulWidget]的[State]上调用[State.setState]
       // *修改后代将其注册为从属的[InheritedWidget]。
-      builder: (BuildContext context) {
-        //实现单个iOS应用程序页面的布局。
-        //支架将导航栏布置在顶部，并将内容布置在导航栏之间或之后。
-        return CupertinoPageScaffold(
-          //为页面创建布局，顶部带有导航栏。
-          navigationBar: CupertinoNavigationBar(
-            ///放置在导航栏开始处的小部件。
-            ///通常，正常页面的后退按钮或整页对话框的取消按钮。
-            ///如果为null且[automaticallyImplyLeading]为true，则会自动创建一个适当的按钮。
-            leading: null,
-            middle: Text(titleList[index]),
-          ),
-          child: _widgetOptions[index],
-        );
-      },
+      builder: (BuildContext context) => _widgetOptions[index],
       ///默认路由的标题。
       defaultTitle: 'Cuperitino Home',
       ///此选项卡视图的路由表。
