@@ -8,7 +8,7 @@ class FilmHomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('电影'),
+        middle: Text('热映电影'),
       ),
       child: ListView(
       children: [

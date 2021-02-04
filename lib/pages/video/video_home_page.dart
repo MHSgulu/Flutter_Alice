@@ -43,7 +43,7 @@ class _VideoHomePageState extends State<VideoHomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('视频'),
+        middle: Text('精选视频'),
       ),
       child: dataList.isEmpty
           ? VideoLoadingView()

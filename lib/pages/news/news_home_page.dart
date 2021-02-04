@@ -1,5 +1,7 @@
+import 'package:alice/common/global/theme_mode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'news_segment_view.dart';
 
@@ -10,6 +12,7 @@ class NewsHomePage extends StatefulWidget {
 
 class _NewsHomePageState extends State<NewsHomePage> {
   int currentSegment = 0;
+
   ///没加Key 之前 无法切换视图
   List<Widget> widgetList = [
     NewsSegmentView(key: UniqueKey(), channelName: '头条'),
@@ -41,23 +44,30 @@ class _NewsHomePageState extends State<NewsHomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('新闻'),
+        middle: Text('热点新闻'),
       ),
-      child: Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        bottom: PreferredSize(
-          child: cupertinoSegmented2(),
-          preferredSize: Size.fromHeight(0),
+      child: ChangeNotifierProvider(
+        create: (context) => AppThemeMode(),
+        child: Consumer<AppThemeMode>(
+          builder: (context, theme, child) {
+            return Scaffold(
+              backgroundColor: AppThemeMode.isDark ? Colors.black : Colors.white,
+              appBar: AppBar(
+                bottom: PreferredSize(
+                  child: cupertinoSegmented2(),
+                  preferredSize: Size.fromHeight(0),
+                ),
+                elevation: 0.5,
+                backgroundColor: AppThemeMode.isDark ? Colors.black : Colors.white,
+                toolbarHeight: 40,
+              ),
+              body: Container(
+                child: widgetList[currentSegment],
+              ),
+            );
+          },
         ),
-        elevation: 0.5,
-        backgroundColor: Colors.white,
-        toolbarHeight: 40,
       ),
-      body: Container(
-        child: widgetList[currentSegment],
-      ),
-    ),
     );
   }
 
