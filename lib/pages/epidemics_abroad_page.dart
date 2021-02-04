@@ -1,6 +1,7 @@
 import 'package:alice/common/const/constant.dart';
 import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/epidemics_abroad_data_entity.dart';
+import 'package:alice/widgets/custom/my_cupertino_navigationbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,8 @@ class _EpidemicsAbroadPageState extends State<EpidemicsAbroadPage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('国外疫情'),
+      navigationBar: MyCupertinoNavigationBar(
+        title: '国外疫情',
       ),
       child: dataEntity == null
           ? MyLoadingIndicator(

@@ -33,7 +33,7 @@ class SwitchCupertinoThemeState extends State<SwitchCupertinoTheme> {
 
   switchToCupertinoTheme(bool value) {
     if (value == true) {
-      Fluttertoast.showToast(msg: '进入库比蒂诺主题App');
+      Fluttertoast.showToast(msg: '切换到库比蒂诺主题');
       Navigator.push(context, CupertinoPageRoute(builder: (_) => MyCupertinoApp()));
     }
     if (mounted) {

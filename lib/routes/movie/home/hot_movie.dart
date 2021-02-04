@@ -25,7 +25,7 @@ class _HotMovieViewState extends State<HotMovieView> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 1),
       () => fetchData(),
     );
     super.initState();
