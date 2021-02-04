@@ -3,7 +3,7 @@ import 'package:alice/common/global/theme_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/// 封装  基础通用型AppBar(适用于子级页面的AppBar里)
+///尽可能通用的AppBar
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String label;
   final VoidCallback onPressedBack;
@@ -50,9 +50,12 @@ class _MyAppBarState extends State<MyAppBar> {
           backgroundColor: AppThemeMode.isDark
               ? MyColors.appBarDarkColor
               : widget.backgroundColor ?? Colors.white,
-          brightness: widget.brightness ?? AppThemeMode.isDark
+          //应用栏材料的亮度。 通常，它与[backgroundColor]，[iconTheme]，[textTheme]一起设置。
+          //如果此属性为null，则使用[ThemeData.appBarTheme]的[AppBarTheme.brightness]。
+          // 如果该值也为null，则使用[ThemeData.primaryColorBrightness]。
+          brightness: widget.brightness == null ? AppThemeMode.isDark
               ? Brightness.dark
-              : Brightness.light,
+              : Brightness.light : widget.brightness,
           leading: widget.leading ??
               IconButton(
                 icon: Icon(
@@ -84,7 +87,8 @@ class _MyAppBarState extends State<MyAppBar> {
           actions: widget.actions ?? [],
           centerTitle: true,
           elevation: widget.elevation ?? 1,
-          bottom: widget.bottom ?? PreferredSize(
+          bottom: widget.bottom ??
+              PreferredSize(
                 child: Container(),
                 preferredSize: Size.fromHeight(0),
               ),

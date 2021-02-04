@@ -40,6 +40,7 @@ class _HealthHomeState extends State<HealthHome> {
     return Scaffold(
       appBar: MyAppBar(
         backgroundColor: Colors.cyan[300],
+        brightness: Brightness.dark,
         label: '疫情数据',
         leading: Builder(
           builder: (context) => IconButton(

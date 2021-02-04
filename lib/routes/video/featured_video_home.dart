@@ -57,6 +57,7 @@ class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> with Auto
         ),
         label: '今日精选视频',
         backgroundColor: Colors.deepOrangeAccent[100],
+        brightness: Brightness.dark,
       ),
       body: dataList.isEmpty ? VideoLoadingView() : videoListView(),
       drawer: MyDrawer(),
