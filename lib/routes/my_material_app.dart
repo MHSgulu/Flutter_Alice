@@ -119,6 +119,42 @@ class MyMaterialAppDemo extends StatelessWidget {
             //与[localeResolutionCallback]相比，最好设置[localeListResolutionCallback]，因为它提供了完整的首选语言环境列表。
             //该算法应该能够处理空的语言环境，这表明Flutter尚未从平台接收到语言环境信息。
             localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) => locale,
+            ///此应用程序已本地化的语言环境列表。
+            ///
+            ///默认情况下，仅支持美国英语语言环境。应用程序应配置此列表以匹配其支持的语言环境。
+            ///
+            ///此列表不能为空。它的默认值只是`[const Locale（'en'，'US'）]``。
+            ///
+            ///列表的顺序很重要。默认的语言环境解析算法“ basicLocaleListResolution”会尝试按以下优先级进行匹配：
+            ///
+            /// 1. [Locale.languageCode]，[Locale.scriptCode]和[Locale.countryCode]
+            /// 2.仅[Locale.languageCode]和[Locale.scriptCode]
+            /// 3.仅[Locale.languageCode]和[Locale.countryCode]
+            /// 4.仅[Locale.languageCode]
+            /// 5. [Locale.countryCode]仅在所有首选语言环境均不匹配时
+            /// 6.返回[supportedLocales]的第一个元素作为后备
+            ///
+            ///如果有多个支持的语言环境与这些条件之一匹配，则仅返回第一个匹配的语言环境。
+            ///
+            ///通过提供[localeListResolutionCallback]的值，可以覆盖默认的语言环境解析算法。
+            ///提供的`basicLocaleListResolution`已针对速度进行了优化，并未实现将语言之间的距离纳入其中的完整算法
+            ///（例如[Unicode TR35]（https://unicode.org/reports/tr35/#LanguageMatching）中定义的算法）帐户。
+            ///
+            ///当支持具有多个脚本的语言时，建议明确指定[Locale.scriptCode]。也可以不使用[Locale.countryCode]来定义语言环境，以为特定脚本指定通用后备。
+            ///
+            ///具有多种脚本的完全受支持的语言应定义通用的仅语言的语言环境（例如'zh'），
+            ///仅语言+脚本的语言环境（例如'zh_Hans'和'zh_Hant'）以及任何语言+脚本+国家/地区的语言（例如“ zh_Hans_CN”）。
+            ///并非严格要求将所有这些语言环境完全定义为受支持，但是在大多数情况下，都可以使用适当的语言环境解析。
+            ///可以使用[Locale.fromSubtags]构造函数指定这些语言环境：
+            ///
+            ///忽略其中的一些后备情况可能会导致无法正确解决边缘情况，
+            ///例如，如果省略了“ zh_Hans”和“ zh_Hans_CN”，则台湾的简体中文用户（zh_Hans_TW）可能会转换为繁体中文。
+            ///
+            /// 也可以看看：
+            ///
+            /// * [MaterialApp.supportedLocales]，它设置其创建的[WidgetsApp]的`supportedLocales`。
+            /// * [localeResolutionCallback]，一个应用回调，当设备的区域设置更改时，解析应用的区域设置。
+            /// * [localizationsDelegates]，它们共同定义了此应用使用的所有本地化资源。
             supportedLocales: [
               const Locale('en', ''), // 英文，无国家/地区代码
               const Locale('fr', ''), // 法语，无国家/地区代码
