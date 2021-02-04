@@ -35,16 +35,11 @@ class _VariousRegionsPaginatedDataTableState
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return PaginatedDataTable(
       showCheckboxColumn: false,
       rowsPerPage: _currentRowsPerPage,
-      availableRowsPerPage: [8,17],
+      availableRowsPerPage: [8, 17],
       onRowsPerPageChanged: _onRowsPerPageChanged,
       header: LatoText(
         data: '各地区统计汇总分页数据表',
@@ -63,13 +58,12 @@ class _VariousRegionsPaginatedDataTableState
   }
 
   void _onRowsPerPageChanged(int value) {
-    if(mounted){
+    if (mounted) {
       setState(() {
         _currentRowsPerPage = value;
       });
     }
   }
-
 }
 
 class _Row {

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:alice/common/const/cupertino_routes.dart';
 
+import 'epidemics_abroad_page.dart';
 
 class CupertinoHomePage extends StatefulWidget {
   @override
@@ -20,9 +21,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
       NewsHomePage(),
       FilmHomePage(),
       VideoHomePage(),
-      Center(
-        child: Text('待定'),
-      ),
+      EpidemicsAbroadPage(),
     ];
     super.initState();
   }
@@ -67,7 +66,8 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
     ///
     /// * [CupertinoTabScaffold]，在底部托管[CupertinoTabBar]。
     /// * [BottomNavigationBarItem]，[CupertinoTabBar]中的一项。
-    return CupertinoTabBar(///创建iOS风格的标签栏。
+    return CupertinoTabBar(
+      ///创建iOS风格的标签栏。
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book_circle),
@@ -87,7 +87,7 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons. /*compass*/ plus_circle),
           activeIcon: Icon(CupertinoIcons.plus_circle_fill),
-          label: '更多',
+          label: '疫情',
         ),
       ],
     );
@@ -105,8 +105,10 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
       // *在子孙[StatefulWidget]的[State]上调用[State.setState]
       // *修改后代将其注册为从属的[InheritedWidget]。
       builder: (BuildContext context) => _widgetOptions[index],
+
       ///默认路由的标题。
       defaultTitle: 'Cuperitino Home',
+
       ///此选项卡视图的路由表。
       ///在此选项卡视图中使用[Navigator.pushNamed]推送命名的路线时，将在此地图中查找路线名称。
       ///如果存在该名称，则使用关联的[WidgetBuilder]构造一个[CupertinoPageRoute]，以执行到新路由的适当转换。
