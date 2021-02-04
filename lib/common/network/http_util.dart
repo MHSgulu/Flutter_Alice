@@ -3,6 +3,7 @@ import 'package:alice/common/const/strings.dart';
 import 'package:alice/generated/json/article_entity_helper.dart';
 import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart';
 import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
+import 'package:alice/generated/json/epidemics_abroad_data_entity_helper.dart';
 import 'package:alice/generated/json/eye_opening_video_daily_entity_helper.dart';
 import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/generated/json/hot_movie_entity_helper.dart';
@@ -20,6 +21,7 @@ import 'package:alice/model/article_entity.dart';
 import 'package:alice/model/bingwallpaper.dart';
 import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/model/bird_wallpaper_entity.dart';
+import 'package:alice/model/epidemics_abroad_data_entity.dart';
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/model/gif_picture_jokes_entity.dart';
 import 'package:alice/model/hot_movie_entity.dart';
@@ -135,6 +137,23 @@ class HttpUtil {
     if (response.statusCode == 200) {
       //print('数据点位： ${response.data}');
       return todayEpidemicDataEntityFromJson(TodayEpidemicDataEntity(), json.decode(response.toString()));
+    } else{
+      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+    }
+  }
+
+  ///国外疫情
+  static Future<EpidemicsAbroadDataEntity> fetchForeignCOVID_19Data() async {
+    Response response = await DioUtil.getInstance().createWwDio().get(
+      Api.foreignCOVID_19Data,
+      queryParameters: {
+        "showapi_appid": Util.wShowApiId,
+        "showapi_sign": Util.wShowApiSign,
+      },
+    );
+    if (response.statusCode == 200) {
+      //print('数据点位： ${response.data}');
+      return epidemicsAbroadDataEntityFromJson(EpidemicsAbroadDataEntity(), json.decode(response.toString()));
     } else{
       throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
     }

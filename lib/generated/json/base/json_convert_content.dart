@@ -9,18 +9,20 @@ import 'package:alice/model/mobie_phone_entity.dart';
 import 'package:alice/generated/json/mobie_phone_entity_helper.dart';
 import 'package:alice/model/wallpaper_entity.dart';
 import 'package:alice/generated/json/wallpaper_entity_helper.dart';
+import 'package:alice/model/bird_wallpaper_entity.dart';
+import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
 import 'package:alice/model/search_news_entity.dart';
 import 'package:alice/generated/json/search_news_entity_helper.dart';
+import 'package:alice/model/quotation_entity.dart';
+import 'package:alice/generated/json/quotation_entity_helper.dart';
 import 'package:alice/model/garbage_c_a_i_entity.dart';
 import 'package:alice/generated/json/garbage_c_a_i_entity_helper.dart';
 import 'package:alice/model/bird_wallpaper_category_entity.dart';
 import 'package:alice/generated/json/bird_wallpaper_category_entity_helper.dart';
 import 'package:alice/model/short_film_review_entity.dart';
 import 'package:alice/generated/json/short_film_review_entity_helper.dart';
-import 'package:alice/model/today_epidemic_data_entity.dart';
-import 'package:alice/generated/json/today_epidemic_data_entity_helper.dart';
-import 'package:alice/model/article_entity.dart';
-import 'package:alice/generated/json/article_entity_helper.dart';
+import 'package:alice/model/picture_joke_entity.dart';
+import 'package:alice/generated/json/picture_joke_entity_helper.dart';
 import 'package:alice/model/written_jokes_entity.dart';
 import 'package:alice/generated/json/written_jokes_entity_helper.dart';
 import 'package:alice/model/wallpaper_category_entity.dart';
@@ -29,22 +31,22 @@ import 'package:alice/model/m_t_movie_detail_entity.dart';
 import 'package:alice/generated/json/m_t_movie_detail_entity_helper.dart';
 import 'package:alice/model/hot_word_type_entity.dart';
 import 'package:alice/generated/json/hot_word_type_entity_helper.dart';
-import 'package:alice/model/gif_picture_jokes_entity.dart';
-import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
-import 'package:alice/model/picture_joke_entity.dart';
-import 'package:alice/generated/json/picture_joke_entity_helper.dart';
-import 'package:alice/model/quotation_entity.dart';
-import 'package:alice/generated/json/quotation_entity_helper.dart';
+import 'package:alice/model/epidemics_abroad_data_entity.dart';
+import 'package:alice/generated/json/epidemics_abroad_data_entity_helper.dart';
 import 'package:alice/model/hot_movie_entity.dart';
 import 'package:alice/generated/json/hot_movie_entity_helper.dart';
-import 'package:alice/model/bird_wallpaper_entity.dart';
-import 'package:alice/generated/json/bird_wallpaper_entity_helper.dart';
+import 'package:alice/model/article_entity.dart';
+import 'package:alice/generated/json/article_entity_helper.dart';
 import 'package:alice/model/news_entity.dart';
 import 'package:alice/generated/json/news_entity_helper.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/generated/json/real_time_hotspot_entity_helper.dart';
+import 'package:alice/model/gif_picture_jokes_entity.dart';
+import 'package:alice/generated/json/gif_picture_jokes_entity_helper.dart';
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
 import 'package:alice/generated/json/eye_opening_video_daily_entity_helper.dart';
+import 'package:alice/model/today_epidemic_data_entity.dart';
+import 'package:alice/generated/json/today_epidemic_data_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -77,6 +79,10 @@ class JsonConvert<T> {
 				return wallpaperResFromJson(data as WallpaperRes, json) as T;
 			case WallpaperResVertical:
 				return wallpaperResVerticalFromJson(data as WallpaperResVertical, json) as T;
+			case BirdWallpaperEntity:
+				return birdWallpaperEntityFromJson(data as BirdWallpaperEntity, json) as T;
+			case BirdWallpaperData:
+				return birdWallpaperDataFromJson(data as BirdWallpaperData, json) as T;
 			case SearchNewsEntity:
 				return searchNewsEntityFromJson(data as SearchNewsEntity, json) as T;
 			case SearchNewsResult:
@@ -85,6 +91,12 @@ class JsonConvert<T> {
 				return searchNewsResultResultFromJson(data as SearchNewsResultResult, json) as T;
 			case SearchNewsResultResultList:
 				return searchNewsResultResultListFromJson(data as SearchNewsResultResultList, json) as T;
+			case QuotationEntity:
+				return quotationEntityFromJson(data as QuotationEntity, json) as T;
+			case QuotationShowapiResBody:
+				return quotationShowapiResBodyFromJson(data as QuotationShowapiResBody, json) as T;
+			case QuotationShowapiResBodyData:
+				return quotationShowapiResBodyDataFromJson(data as QuotationShowapiResBodyData, json) as T;
 			case GarbageCAIEntity:
 				return garbageCAIEntityFromJson(data as GarbageCAIEntity, json) as T;
 			case GarbageCAIResult:
@@ -121,24 +133,14 @@ class JsonConvert<T> {
 				return shortFilmReviewSubjectDirectorsAvatarsFromJson(data as ShortFilmReviewSubjectDirectorsAvatars, json) as T;
 			case ShortFilmReviewSubjectImages:
 				return shortFilmReviewSubjectImagesFromJson(data as ShortFilmReviewSubjectImages, json) as T;
-			case TodayEpidemicDataEntity:
-				return todayEpidemicDataEntityFromJson(data as TodayEpidemicDataEntity, json) as T;
-			case TodayEpidemicDataShowapiResBody:
-				return todayEpidemicDataShowapiResBodyFromJson(data as TodayEpidemicDataShowapiResBody, json) as T;
-			case TodayEpidemicDataShowapiResBodyTodayDetailList:
-				return todayEpidemicDataShowapiResBodyTodayDetailListFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailList, json) as T;
-			case TodayEpidemicDataShowapiResBodyTodayDetailListCityList:
-				return todayEpidemicDataShowapiResBodyTodayDetailListCityListFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListCityList, json) as T;
-			case TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea:
-				return todayEpidemicDataShowapiResBodyTodayDetailListDangerAreaFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea, json) as T;
-			case TodayEpidemicDataShowapiResBodyTodayStatictic:
-				return todayEpidemicDataShowapiResBodyTodayStaticticFromJson(data as TodayEpidemicDataShowapiResBodyTodayStatictic, json) as T;
-			case ArticleEntity:
-				return articleEntityFromJson(data as ArticleEntity, json) as T;
-			case ArticleData:
-				return articleDataFromJson(data as ArticleData, json) as T;
-			case ArticleDataDate:
-				return articleDataDateFromJson(data as ArticleDataDate, json) as T;
+			case PictureJokeEntity:
+				return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;
+			case PictureJokeResult:
+				return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;
+			case PictureJokeResultShowapiResBody:
+				return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;
+			case PictureJokeResultShowapiResBodyContentlist:
+				return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;
 			case WrittenJokesEntity:
 				return writtenJokesEntityFromJson(data as WrittenJokesEntity, json) as T;
 			case WrittenJokesResult:
@@ -175,38 +177,28 @@ class JsonConvert<T> {
 				return hotWordTypeResultShowapiResBodyListFromJson(data as HotWordTypeResultShowapiResBodyList, json) as T;
 			case HotWordTypeResultShowapiResBodyListChildList:
 				return hotWordTypeResultShowapiResBodyListChildListFromJson(data as HotWordTypeResultShowapiResBodyListChildList, json) as T;
-			case GifPictureJokesEntity:
-				return gifPictureJokesEntityFromJson(data as GifPictureJokesEntity, json) as T;
-			case GifPictureJokesResult:
-				return gifPictureJokesResultFromJson(data as GifPictureJokesResult, json) as T;
-			case GifPictureJokesResultShowapiResBody:
-				return gifPictureJokesResultShowapiResBodyFromJson(data as GifPictureJokesResultShowapiResBody, json) as T;
-			case GifPictureJokesResultShowapiResBodyContentlist:
-				return gifPictureJokesResultShowapiResBodyContentlistFromJson(data as GifPictureJokesResultShowapiResBodyContentlist, json) as T;
-			case PictureJokeEntity:
-				return pictureJokeEntityFromJson(data as PictureJokeEntity, json) as T;
-			case PictureJokeResult:
-				return pictureJokeResultFromJson(data as PictureJokeResult, json) as T;
-			case PictureJokeResultShowapiResBody:
-				return pictureJokeResultShowapiResBodyFromJson(data as PictureJokeResultShowapiResBody, json) as T;
-			case PictureJokeResultShowapiResBodyContentlist:
-				return pictureJokeResultShowapiResBodyContentlistFromJson(data as PictureJokeResultShowapiResBodyContentlist, json) as T;
-			case QuotationEntity:
-				return quotationEntityFromJson(data as QuotationEntity, json) as T;
-			case QuotationShowapiResBody:
-				return quotationShowapiResBodyFromJson(data as QuotationShowapiResBody, json) as T;
-			case QuotationShowapiResBodyData:
-				return quotationShowapiResBodyDataFromJson(data as QuotationShowapiResBodyData, json) as T;
+			case EpidemicsAbroadDataEntity:
+				return epidemicsAbroadDataEntityFromJson(data as EpidemicsAbroadDataEntity, json) as T;
+			case EpidemicsAbroadDataShowapiResBody:
+				return epidemicsAbroadDataShowapiResBodyFromJson(data as EpidemicsAbroadDataShowapiResBody, json) as T;
+			case EpidemicsAbroadDataShowapiResBodyForeignList:
+				return epidemicsAbroadDataShowapiResBodyForeignListFromJson(data as EpidemicsAbroadDataShowapiResBodyForeignList, json) as T;
+			case EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo:
+				return epidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfoFromJson(data as EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo, json) as T;
+			case EpidemicsAbroadDataShowapiResBodyForeignListIncInfo:
+				return epidemicsAbroadDataShowapiResBodyForeignListIncInfoFromJson(data as EpidemicsAbroadDataShowapiResBodyForeignListIncInfo, json) as T;
 			case HotMovieEntity:
 				return hotMovieEntityFromJson(data as HotMovieEntity, json) as T;
 			case HotMovieM:
 				return hotMovieMFromJson(data as HotMovieM, json) as T;
 			case HotMoviePromo:
 				return hotMoviePromoFromJson(data as HotMoviePromo, json) as T;
-			case BirdWallpaperEntity:
-				return birdWallpaperEntityFromJson(data as BirdWallpaperEntity, json) as T;
-			case BirdWallpaperData:
-				return birdWallpaperDataFromJson(data as BirdWallpaperData, json) as T;
+			case ArticleEntity:
+				return articleEntityFromJson(data as ArticleEntity, json) as T;
+			case ArticleData:
+				return articleDataFromJson(data as ArticleData, json) as T;
+			case ArticleDataDate:
+				return articleDataDateFromJson(data as ArticleDataDate, json) as T;
 			case NewsEntity:
 				return newsEntityFromJson(data as NewsEntity, json) as T;
 			case NewsResult:
@@ -223,6 +215,14 @@ class JsonConvert<T> {
 				return realTimeHotspotResultShowapiResBodyFromJson(data as RealTimeHotspotResultShowapiResBody, json) as T;
 			case RealTimeHotspotResultShowapiResBodyList:
 				return realTimeHotspotResultShowapiResBodyListFromJson(data as RealTimeHotspotResultShowapiResBodyList, json) as T;
+			case GifPictureJokesEntity:
+				return gifPictureJokesEntityFromJson(data as GifPictureJokesEntity, json) as T;
+			case GifPictureJokesResult:
+				return gifPictureJokesResultFromJson(data as GifPictureJokesResult, json) as T;
+			case GifPictureJokesResultShowapiResBody:
+				return gifPictureJokesResultShowapiResBodyFromJson(data as GifPictureJokesResultShowapiResBody, json) as T;
+			case GifPictureJokesResultShowapiResBodyContentlist:
+				return gifPictureJokesResultShowapiResBodyContentlistFromJson(data as GifPictureJokesResultShowapiResBodyContentlist, json) as T;
 			case EyeOpeningVideoDailyEntity:
 				return eyeOpeningVideoDailyEntityFromJson(data as EyeOpeningVideoDailyEntity, json) as T;
 			case EyeOpeningVideoDailyItemList:
@@ -246,7 +246,19 @@ class JsonConvert<T> {
 			case EyeOpeningVideoDailyItemListDataWebUrl:
 				return eyeOpeningVideoDailyItemListDataWebUrlFromJson(data as EyeOpeningVideoDailyItemListDataWebUrl, json) as T;
 			case EyeOpeningVideoDailyItemListDataVideoPosterBean:
-				return eyeOpeningVideoDailyItemListDataVideoPosterBeanFromJson(data as EyeOpeningVideoDailyItemListDataVideoPosterBean, json) as T;    }
+				return eyeOpeningVideoDailyItemListDataVideoPosterBeanFromJson(data as EyeOpeningVideoDailyItemListDataVideoPosterBean, json) as T;
+			case TodayEpidemicDataEntity:
+				return todayEpidemicDataEntityFromJson(data as TodayEpidemicDataEntity, json) as T;
+			case TodayEpidemicDataShowapiResBody:
+				return todayEpidemicDataShowapiResBodyFromJson(data as TodayEpidemicDataShowapiResBody, json) as T;
+			case TodayEpidemicDataShowapiResBodyTodayDetailList:
+				return todayEpidemicDataShowapiResBodyTodayDetailListFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailList, json) as T;
+			case TodayEpidemicDataShowapiResBodyTodayDetailListCityList:
+				return todayEpidemicDataShowapiResBodyTodayDetailListCityListFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListCityList, json) as T;
+			case TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea:
+				return todayEpidemicDataShowapiResBodyTodayDetailListDangerAreaFromJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea, json) as T;
+			case TodayEpidemicDataShowapiResBodyTodayStatictic:
+				return todayEpidemicDataShowapiResBodyTodayStaticticFromJson(data as TodayEpidemicDataShowapiResBodyTodayStatictic, json) as T;    }
     return data as T;
   }
 
@@ -272,6 +284,10 @@ class JsonConvert<T> {
 				return wallpaperResToJson(data as WallpaperRes);
 			case WallpaperResVertical:
 				return wallpaperResVerticalToJson(data as WallpaperResVertical);
+			case BirdWallpaperEntity:
+				return birdWallpaperEntityToJson(data as BirdWallpaperEntity);
+			case BirdWallpaperData:
+				return birdWallpaperDataToJson(data as BirdWallpaperData);
 			case SearchNewsEntity:
 				return searchNewsEntityToJson(data as SearchNewsEntity);
 			case SearchNewsResult:
@@ -280,6 +296,12 @@ class JsonConvert<T> {
 				return searchNewsResultResultToJson(data as SearchNewsResultResult);
 			case SearchNewsResultResultList:
 				return searchNewsResultResultListToJson(data as SearchNewsResultResultList);
+			case QuotationEntity:
+				return quotationEntityToJson(data as QuotationEntity);
+			case QuotationShowapiResBody:
+				return quotationShowapiResBodyToJson(data as QuotationShowapiResBody);
+			case QuotationShowapiResBodyData:
+				return quotationShowapiResBodyDataToJson(data as QuotationShowapiResBodyData);
 			case GarbageCAIEntity:
 				return garbageCAIEntityToJson(data as GarbageCAIEntity);
 			case GarbageCAIResult:
@@ -316,24 +338,14 @@ class JsonConvert<T> {
 				return shortFilmReviewSubjectDirectorsAvatarsToJson(data as ShortFilmReviewSubjectDirectorsAvatars);
 			case ShortFilmReviewSubjectImages:
 				return shortFilmReviewSubjectImagesToJson(data as ShortFilmReviewSubjectImages);
-			case TodayEpidemicDataEntity:
-				return todayEpidemicDataEntityToJson(data as TodayEpidemicDataEntity);
-			case TodayEpidemicDataShowapiResBody:
-				return todayEpidemicDataShowapiResBodyToJson(data as TodayEpidemicDataShowapiResBody);
-			case TodayEpidemicDataShowapiResBodyTodayDetailList:
-				return todayEpidemicDataShowapiResBodyTodayDetailListToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailList);
-			case TodayEpidemicDataShowapiResBodyTodayDetailListCityList:
-				return todayEpidemicDataShowapiResBodyTodayDetailListCityListToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListCityList);
-			case TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea:
-				return todayEpidemicDataShowapiResBodyTodayDetailListDangerAreaToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea);
-			case TodayEpidemicDataShowapiResBodyTodayStatictic:
-				return todayEpidemicDataShowapiResBodyTodayStaticticToJson(data as TodayEpidemicDataShowapiResBodyTodayStatictic);
-			case ArticleEntity:
-				return articleEntityToJson(data as ArticleEntity);
-			case ArticleData:
-				return articleDataToJson(data as ArticleData);
-			case ArticleDataDate:
-				return articleDataDateToJson(data as ArticleDataDate);
+			case PictureJokeEntity:
+				return pictureJokeEntityToJson(data as PictureJokeEntity);
+			case PictureJokeResult:
+				return pictureJokeResultToJson(data as PictureJokeResult);
+			case PictureJokeResultShowapiResBody:
+				return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);
+			case PictureJokeResultShowapiResBodyContentlist:
+				return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);
 			case WrittenJokesEntity:
 				return writtenJokesEntityToJson(data as WrittenJokesEntity);
 			case WrittenJokesResult:
@@ -370,38 +382,28 @@ class JsonConvert<T> {
 				return hotWordTypeResultShowapiResBodyListToJson(data as HotWordTypeResultShowapiResBodyList);
 			case HotWordTypeResultShowapiResBodyListChildList:
 				return hotWordTypeResultShowapiResBodyListChildListToJson(data as HotWordTypeResultShowapiResBodyListChildList);
-			case GifPictureJokesEntity:
-				return gifPictureJokesEntityToJson(data as GifPictureJokesEntity);
-			case GifPictureJokesResult:
-				return gifPictureJokesResultToJson(data as GifPictureJokesResult);
-			case GifPictureJokesResultShowapiResBody:
-				return gifPictureJokesResultShowapiResBodyToJson(data as GifPictureJokesResultShowapiResBody);
-			case GifPictureJokesResultShowapiResBodyContentlist:
-				return gifPictureJokesResultShowapiResBodyContentlistToJson(data as GifPictureJokesResultShowapiResBodyContentlist);
-			case PictureJokeEntity:
-				return pictureJokeEntityToJson(data as PictureJokeEntity);
-			case PictureJokeResult:
-				return pictureJokeResultToJson(data as PictureJokeResult);
-			case PictureJokeResultShowapiResBody:
-				return pictureJokeResultShowapiResBodyToJson(data as PictureJokeResultShowapiResBody);
-			case PictureJokeResultShowapiResBodyContentlist:
-				return pictureJokeResultShowapiResBodyContentlistToJson(data as PictureJokeResultShowapiResBodyContentlist);
-			case QuotationEntity:
-				return quotationEntityToJson(data as QuotationEntity);
-			case QuotationShowapiResBody:
-				return quotationShowapiResBodyToJson(data as QuotationShowapiResBody);
-			case QuotationShowapiResBodyData:
-				return quotationShowapiResBodyDataToJson(data as QuotationShowapiResBodyData);
+			case EpidemicsAbroadDataEntity:
+				return epidemicsAbroadDataEntityToJson(data as EpidemicsAbroadDataEntity);
+			case EpidemicsAbroadDataShowapiResBody:
+				return epidemicsAbroadDataShowapiResBodyToJson(data as EpidemicsAbroadDataShowapiResBody);
+			case EpidemicsAbroadDataShowapiResBodyForeignList:
+				return epidemicsAbroadDataShowapiResBodyForeignListToJson(data as EpidemicsAbroadDataShowapiResBodyForeignList);
+			case EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo:
+				return epidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfoToJson(data as EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo);
+			case EpidemicsAbroadDataShowapiResBodyForeignListIncInfo:
+				return epidemicsAbroadDataShowapiResBodyForeignListIncInfoToJson(data as EpidemicsAbroadDataShowapiResBodyForeignListIncInfo);
 			case HotMovieEntity:
 				return hotMovieEntityToJson(data as HotMovieEntity);
 			case HotMovieM:
 				return hotMovieMToJson(data as HotMovieM);
 			case HotMoviePromo:
 				return hotMoviePromoToJson(data as HotMoviePromo);
-			case BirdWallpaperEntity:
-				return birdWallpaperEntityToJson(data as BirdWallpaperEntity);
-			case BirdWallpaperData:
-				return birdWallpaperDataToJson(data as BirdWallpaperData);
+			case ArticleEntity:
+				return articleEntityToJson(data as ArticleEntity);
+			case ArticleData:
+				return articleDataToJson(data as ArticleData);
+			case ArticleDataDate:
+				return articleDataDateToJson(data as ArticleDataDate);
 			case NewsEntity:
 				return newsEntityToJson(data as NewsEntity);
 			case NewsResult:
@@ -418,6 +420,14 @@ class JsonConvert<T> {
 				return realTimeHotspotResultShowapiResBodyToJson(data as RealTimeHotspotResultShowapiResBody);
 			case RealTimeHotspotResultShowapiResBodyList:
 				return realTimeHotspotResultShowapiResBodyListToJson(data as RealTimeHotspotResultShowapiResBodyList);
+			case GifPictureJokesEntity:
+				return gifPictureJokesEntityToJson(data as GifPictureJokesEntity);
+			case GifPictureJokesResult:
+				return gifPictureJokesResultToJson(data as GifPictureJokesResult);
+			case GifPictureJokesResultShowapiResBody:
+				return gifPictureJokesResultShowapiResBodyToJson(data as GifPictureJokesResultShowapiResBody);
+			case GifPictureJokesResultShowapiResBodyContentlist:
+				return gifPictureJokesResultShowapiResBodyContentlistToJson(data as GifPictureJokesResultShowapiResBodyContentlist);
 			case EyeOpeningVideoDailyEntity:
 				return eyeOpeningVideoDailyEntityToJson(data as EyeOpeningVideoDailyEntity);
 			case EyeOpeningVideoDailyItemList:
@@ -442,6 +452,18 @@ class JsonConvert<T> {
 				return eyeOpeningVideoDailyItemListDataWebUrlToJson(data as EyeOpeningVideoDailyItemListDataWebUrl);
 			case EyeOpeningVideoDailyItemListDataVideoPosterBean:
 				return eyeOpeningVideoDailyItemListDataVideoPosterBeanToJson(data as EyeOpeningVideoDailyItemListDataVideoPosterBean);
+			case TodayEpidemicDataEntity:
+				return todayEpidemicDataEntityToJson(data as TodayEpidemicDataEntity);
+			case TodayEpidemicDataShowapiResBody:
+				return todayEpidemicDataShowapiResBodyToJson(data as TodayEpidemicDataShowapiResBody);
+			case TodayEpidemicDataShowapiResBodyTodayDetailList:
+				return todayEpidemicDataShowapiResBodyTodayDetailListToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailList);
+			case TodayEpidemicDataShowapiResBodyTodayDetailListCityList:
+				return todayEpidemicDataShowapiResBodyTodayDetailListCityListToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListCityList);
+			case TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea:
+				return todayEpidemicDataShowapiResBodyTodayDetailListDangerAreaToJson(data as TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea);
+			case TodayEpidemicDataShowapiResBodyTodayStatictic:
+				return todayEpidemicDataShowapiResBodyTodayStaticticToJson(data as TodayEpidemicDataShowapiResBodyTodayStatictic);
 			}
 			return data as T;
 		}
@@ -468,6 +490,10 @@ class JsonConvert<T> {
 			return WallpaperRes().fromJson(json);
 		}	else if(type == (WallpaperResVertical).toString()){
 			return WallpaperResVertical().fromJson(json);
+		}	else if(type == (BirdWallpaperEntity).toString()){
+			return BirdWallpaperEntity().fromJson(json);
+		}	else if(type == (BirdWallpaperData).toString()){
+			return BirdWallpaperData().fromJson(json);
 		}	else if(type == (SearchNewsEntity).toString()){
 			return SearchNewsEntity().fromJson(json);
 		}	else if(type == (SearchNewsResult).toString()){
@@ -476,6 +502,12 @@ class JsonConvert<T> {
 			return SearchNewsResultResult().fromJson(json);
 		}	else if(type == (SearchNewsResultResultList).toString()){
 			return SearchNewsResultResultList().fromJson(json);
+		}	else if(type == (QuotationEntity).toString()){
+			return QuotationEntity().fromJson(json);
+		}	else if(type == (QuotationShowapiResBody).toString()){
+			return QuotationShowapiResBody().fromJson(json);
+		}	else if(type == (QuotationShowapiResBodyData).toString()){
+			return QuotationShowapiResBodyData().fromJson(json);
 		}	else if(type == (GarbageCAIEntity).toString()){
 			return GarbageCAIEntity().fromJson(json);
 		}	else if(type == (GarbageCAIResult).toString()){
@@ -512,24 +544,14 @@ class JsonConvert<T> {
 			return ShortFilmReviewSubjectDirectorsAvatars().fromJson(json);
 		}	else if(type == (ShortFilmReviewSubjectImages).toString()){
 			return ShortFilmReviewSubjectImages().fromJson(json);
-		}	else if(type == (TodayEpidemicDataEntity).toString()){
-			return TodayEpidemicDataEntity().fromJson(json);
-		}	else if(type == (TodayEpidemicDataShowapiResBody).toString()){
-			return TodayEpidemicDataShowapiResBody().fromJson(json);
-		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailList).toString()){
-			return TodayEpidemicDataShowapiResBodyTodayDetailList().fromJson(json);
-		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailListCityList).toString()){
-			return TodayEpidemicDataShowapiResBodyTodayDetailListCityList().fromJson(json);
-		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea).toString()){
-			return TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea().fromJson(json);
-		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayStatictic).toString()){
-			return TodayEpidemicDataShowapiResBodyTodayStatictic().fromJson(json);
-		}	else if(type == (ArticleEntity).toString()){
-			return ArticleEntity().fromJson(json);
-		}	else if(type == (ArticleData).toString()){
-			return ArticleData().fromJson(json);
-		}	else if(type == (ArticleDataDate).toString()){
-			return ArticleDataDate().fromJson(json);
+		}	else if(type == (PictureJokeEntity).toString()){
+			return PictureJokeEntity().fromJson(json);
+		}	else if(type == (PictureJokeResult).toString()){
+			return PictureJokeResult().fromJson(json);
+		}	else if(type == (PictureJokeResultShowapiResBody).toString()){
+			return PictureJokeResultShowapiResBody().fromJson(json);
+		}	else if(type == (PictureJokeResultShowapiResBodyContentlist).toString()){
+			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);
 		}	else if(type == (WrittenJokesEntity).toString()){
 			return WrittenJokesEntity().fromJson(json);
 		}	else if(type == (WrittenJokesResult).toString()){
@@ -566,38 +588,28 @@ class JsonConvert<T> {
 			return HotWordTypeResultShowapiResBodyList().fromJson(json);
 		}	else if(type == (HotWordTypeResultShowapiResBodyListChildList).toString()){
 			return HotWordTypeResultShowapiResBodyListChildList().fromJson(json);
-		}	else if(type == (GifPictureJokesEntity).toString()){
-			return GifPictureJokesEntity().fromJson(json);
-		}	else if(type == (GifPictureJokesResult).toString()){
-			return GifPictureJokesResult().fromJson(json);
-		}	else if(type == (GifPictureJokesResultShowapiResBody).toString()){
-			return GifPictureJokesResultShowapiResBody().fromJson(json);
-		}	else if(type == (GifPictureJokesResultShowapiResBodyContentlist).toString()){
-			return GifPictureJokesResultShowapiResBodyContentlist().fromJson(json);
-		}	else if(type == (PictureJokeEntity).toString()){
-			return PictureJokeEntity().fromJson(json);
-		}	else if(type == (PictureJokeResult).toString()){
-			return PictureJokeResult().fromJson(json);
-		}	else if(type == (PictureJokeResultShowapiResBody).toString()){
-			return PictureJokeResultShowapiResBody().fromJson(json);
-		}	else if(type == (PictureJokeResultShowapiResBodyContentlist).toString()){
-			return PictureJokeResultShowapiResBodyContentlist().fromJson(json);
-		}	else if(type == (QuotationEntity).toString()){
-			return QuotationEntity().fromJson(json);
-		}	else if(type == (QuotationShowapiResBody).toString()){
-			return QuotationShowapiResBody().fromJson(json);
-		}	else if(type == (QuotationShowapiResBodyData).toString()){
-			return QuotationShowapiResBodyData().fromJson(json);
+		}	else if(type == (EpidemicsAbroadDataEntity).toString()){
+			return EpidemicsAbroadDataEntity().fromJson(json);
+		}	else if(type == (EpidemicsAbroadDataShowapiResBody).toString()){
+			return EpidemicsAbroadDataShowapiResBody().fromJson(json);
+		}	else if(type == (EpidemicsAbroadDataShowapiResBodyForeignList).toString()){
+			return EpidemicsAbroadDataShowapiResBodyForeignList().fromJson(json);
+		}	else if(type == (EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo).toString()){
+			return EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo().fromJson(json);
+		}	else if(type == (EpidemicsAbroadDataShowapiResBodyForeignListIncInfo).toString()){
+			return EpidemicsAbroadDataShowapiResBodyForeignListIncInfo().fromJson(json);
 		}	else if(type == (HotMovieEntity).toString()){
 			return HotMovieEntity().fromJson(json);
 		}	else if(type == (HotMovieM).toString()){
 			return HotMovieM().fromJson(json);
 		}	else if(type == (HotMoviePromo).toString()){
 			return HotMoviePromo().fromJson(json);
-		}	else if(type == (BirdWallpaperEntity).toString()){
-			return BirdWallpaperEntity().fromJson(json);
-		}	else if(type == (BirdWallpaperData).toString()){
-			return BirdWallpaperData().fromJson(json);
+		}	else if(type == (ArticleEntity).toString()){
+			return ArticleEntity().fromJson(json);
+		}	else if(type == (ArticleData).toString()){
+			return ArticleData().fromJson(json);
+		}	else if(type == (ArticleDataDate).toString()){
+			return ArticleDataDate().fromJson(json);
 		}	else if(type == (NewsEntity).toString()){
 			return NewsEntity().fromJson(json);
 		}	else if(type == (NewsResult).toString()){
@@ -614,6 +626,14 @@ class JsonConvert<T> {
 			return RealTimeHotspotResultShowapiResBody().fromJson(json);
 		}	else if(type == (RealTimeHotspotResultShowapiResBodyList).toString()){
 			return RealTimeHotspotResultShowapiResBodyList().fromJson(json);
+		}	else if(type == (GifPictureJokesEntity).toString()){
+			return GifPictureJokesEntity().fromJson(json);
+		}	else if(type == (GifPictureJokesResult).toString()){
+			return GifPictureJokesResult().fromJson(json);
+		}	else if(type == (GifPictureJokesResultShowapiResBody).toString()){
+			return GifPictureJokesResultShowapiResBody().fromJson(json);
+		}	else if(type == (GifPictureJokesResultShowapiResBodyContentlist).toString()){
+			return GifPictureJokesResultShowapiResBodyContentlist().fromJson(json);
 		}	else if(type == (EyeOpeningVideoDailyEntity).toString()){
 			return EyeOpeningVideoDailyEntity().fromJson(json);
 		}	else if(type == (EyeOpeningVideoDailyItemList).toString()){
@@ -638,6 +658,18 @@ class JsonConvert<T> {
 			return EyeOpeningVideoDailyItemListDataWebUrl().fromJson(json);
 		}	else if(type == (EyeOpeningVideoDailyItemListDataVideoPosterBean).toString()){
 			return EyeOpeningVideoDailyItemListDataVideoPosterBean().fromJson(json);
+		}	else if(type == (TodayEpidemicDataEntity).toString()){
+			return TodayEpidemicDataEntity().fromJson(json);
+		}	else if(type == (TodayEpidemicDataShowapiResBody).toString()){
+			return TodayEpidemicDataShowapiResBody().fromJson(json);
+		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailList).toString()){
+			return TodayEpidemicDataShowapiResBodyTodayDetailList().fromJson(json);
+		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailListCityList).toString()){
+			return TodayEpidemicDataShowapiResBodyTodayDetailListCityList().fromJson(json);
+		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea).toString()){
+			return TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea().fromJson(json);
+		}	else if(type == (TodayEpidemicDataShowapiResBodyTodayStatictic).toString()){
+			return TodayEpidemicDataShowapiResBodyTodayStatictic().fromJson(json);
 		}	
 		return null;
 	}
@@ -664,6 +696,10 @@ class JsonConvert<T> {
 			return data.map<WallpaperRes>((e) => WallpaperRes().fromJson(e)).toList() as M;
 		}	else if(List<WallpaperResVertical>() is M){
 			return data.map<WallpaperResVertical>((e) => WallpaperResVertical().fromJson(e)).toList() as M;
+		}	else if(List<BirdWallpaperEntity>() is M){
+			return data.map<BirdWallpaperEntity>((e) => BirdWallpaperEntity().fromJson(e)).toList() as M;
+		}	else if(List<BirdWallpaperData>() is M){
+			return data.map<BirdWallpaperData>((e) => BirdWallpaperData().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsEntity>() is M){
 			return data.map<SearchNewsEntity>((e) => SearchNewsEntity().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsResult>() is M){
@@ -672,6 +708,12 @@ class JsonConvert<T> {
 			return data.map<SearchNewsResultResult>((e) => SearchNewsResultResult().fromJson(e)).toList() as M;
 		}	else if(List<SearchNewsResultResultList>() is M){
 			return data.map<SearchNewsResultResultList>((e) => SearchNewsResultResultList().fromJson(e)).toList() as M;
+		}	else if(List<QuotationEntity>() is M){
+			return data.map<QuotationEntity>((e) => QuotationEntity().fromJson(e)).toList() as M;
+		}	else if(List<QuotationShowapiResBody>() is M){
+			return data.map<QuotationShowapiResBody>((e) => QuotationShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<QuotationShowapiResBodyData>() is M){
+			return data.map<QuotationShowapiResBodyData>((e) => QuotationShowapiResBodyData().fromJson(e)).toList() as M;
 		}	else if(List<GarbageCAIEntity>() is M){
 			return data.map<GarbageCAIEntity>((e) => GarbageCAIEntity().fromJson(e)).toList() as M;
 		}	else if(List<GarbageCAIResult>() is M){
@@ -708,24 +750,14 @@ class JsonConvert<T> {
 			return data.map<ShortFilmReviewSubjectDirectorsAvatars>((e) => ShortFilmReviewSubjectDirectorsAvatars().fromJson(e)).toList() as M;
 		}	else if(List<ShortFilmReviewSubjectImages>() is M){
 			return data.map<ShortFilmReviewSubjectImages>((e) => ShortFilmReviewSubjectImages().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataEntity>() is M){
-			return data.map<TodayEpidemicDataEntity>((e) => TodayEpidemicDataEntity().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataShowapiResBody>() is M){
-			return data.map<TodayEpidemicDataShowapiResBody>((e) => TodayEpidemicDataShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailList>() is M){
-			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailList>((e) => TodayEpidemicDataShowapiResBodyTodayDetailList().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailListCityList>() is M){
-			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailListCityList>((e) => TodayEpidemicDataShowapiResBodyTodayDetailListCityList().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>() is M){
-			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>((e) => TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea().fromJson(e)).toList() as M;
-		}	else if(List<TodayEpidemicDataShowapiResBodyTodayStatictic>() is M){
-			return data.map<TodayEpidemicDataShowapiResBodyTodayStatictic>((e) => TodayEpidemicDataShowapiResBodyTodayStatictic().fromJson(e)).toList() as M;
-		}	else if(List<ArticleEntity>() is M){
-			return data.map<ArticleEntity>((e) => ArticleEntity().fromJson(e)).toList() as M;
-		}	else if(List<ArticleData>() is M){
-			return data.map<ArticleData>((e) => ArticleData().fromJson(e)).toList() as M;
-		}	else if(List<ArticleDataDate>() is M){
-			return data.map<ArticleDataDate>((e) => ArticleDataDate().fromJson(e)).toList() as M;
+		}	else if(List<PictureJokeEntity>() is M){
+			return data.map<PictureJokeEntity>((e) => PictureJokeEntity().fromJson(e)).toList() as M;
+		}	else if(List<PictureJokeResult>() is M){
+			return data.map<PictureJokeResult>((e) => PictureJokeResult().fromJson(e)).toList() as M;
+		}	else if(List<PictureJokeResultShowapiResBody>() is M){
+			return data.map<PictureJokeResultShowapiResBody>((e) => PictureJokeResultShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<PictureJokeResultShowapiResBodyContentlist>() is M){
+			return data.map<PictureJokeResultShowapiResBodyContentlist>((e) => PictureJokeResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
 		}	else if(List<WrittenJokesEntity>() is M){
 			return data.map<WrittenJokesEntity>((e) => WrittenJokesEntity().fromJson(e)).toList() as M;
 		}	else if(List<WrittenJokesResult>() is M){
@@ -762,38 +794,28 @@ class JsonConvert<T> {
 			return data.map<HotWordTypeResultShowapiResBodyList>((e) => HotWordTypeResultShowapiResBodyList().fromJson(e)).toList() as M;
 		}	else if(List<HotWordTypeResultShowapiResBodyListChildList>() is M){
 			return data.map<HotWordTypeResultShowapiResBodyListChildList>((e) => HotWordTypeResultShowapiResBodyListChildList().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesEntity>() is M){
-			return data.map<GifPictureJokesEntity>((e) => GifPictureJokesEntity().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResult>() is M){
-			return data.map<GifPictureJokesResult>((e) => GifPictureJokesResult().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResultShowapiResBody>() is M){
-			return data.map<GifPictureJokesResultShowapiResBody>((e) => GifPictureJokesResultShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<GifPictureJokesResultShowapiResBodyContentlist>() is M){
-			return data.map<GifPictureJokesResultShowapiResBodyContentlist>((e) => GifPictureJokesResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
-		}	else if(List<PictureJokeEntity>() is M){
-			return data.map<PictureJokeEntity>((e) => PictureJokeEntity().fromJson(e)).toList() as M;
-		}	else if(List<PictureJokeResult>() is M){
-			return data.map<PictureJokeResult>((e) => PictureJokeResult().fromJson(e)).toList() as M;
-		}	else if(List<PictureJokeResultShowapiResBody>() is M){
-			return data.map<PictureJokeResultShowapiResBody>((e) => PictureJokeResultShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<PictureJokeResultShowapiResBodyContentlist>() is M){
-			return data.map<PictureJokeResultShowapiResBodyContentlist>((e) => PictureJokeResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
-		}	else if(List<QuotationEntity>() is M){
-			return data.map<QuotationEntity>((e) => QuotationEntity().fromJson(e)).toList() as M;
-		}	else if(List<QuotationShowapiResBody>() is M){
-			return data.map<QuotationShowapiResBody>((e) => QuotationShowapiResBody().fromJson(e)).toList() as M;
-		}	else if(List<QuotationShowapiResBodyData>() is M){
-			return data.map<QuotationShowapiResBodyData>((e) => QuotationShowapiResBodyData().fromJson(e)).toList() as M;
+		}	else if(List<EpidemicsAbroadDataEntity>() is M){
+			return data.map<EpidemicsAbroadDataEntity>((e) => EpidemicsAbroadDataEntity().fromJson(e)).toList() as M;
+		}	else if(List<EpidemicsAbroadDataShowapiResBody>() is M){
+			return data.map<EpidemicsAbroadDataShowapiResBody>((e) => EpidemicsAbroadDataShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<EpidemicsAbroadDataShowapiResBodyForeignList>() is M){
+			return data.map<EpidemicsAbroadDataShowapiResBodyForeignList>((e) => EpidemicsAbroadDataShowapiResBodyForeignList().fromJson(e)).toList() as M;
+		}	else if(List<EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo>() is M){
+			return data.map<EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo>((e) => EpidemicsAbroadDataShowapiResBodyForeignListYesterdayIncInfo().fromJson(e)).toList() as M;
+		}	else if(List<EpidemicsAbroadDataShowapiResBodyForeignListIncInfo>() is M){
+			return data.map<EpidemicsAbroadDataShowapiResBodyForeignListIncInfo>((e) => EpidemicsAbroadDataShowapiResBodyForeignListIncInfo().fromJson(e)).toList() as M;
 		}	else if(List<HotMovieEntity>() is M){
 			return data.map<HotMovieEntity>((e) => HotMovieEntity().fromJson(e)).toList() as M;
 		}	else if(List<HotMovieM>() is M){
 			return data.map<HotMovieM>((e) => HotMovieM().fromJson(e)).toList() as M;
 		}	else if(List<HotMoviePromo>() is M){
 			return data.map<HotMoviePromo>((e) => HotMoviePromo().fromJson(e)).toList() as M;
-		}	else if(List<BirdWallpaperEntity>() is M){
-			return data.map<BirdWallpaperEntity>((e) => BirdWallpaperEntity().fromJson(e)).toList() as M;
-		}	else if(List<BirdWallpaperData>() is M){
-			return data.map<BirdWallpaperData>((e) => BirdWallpaperData().fromJson(e)).toList() as M;
+		}	else if(List<ArticleEntity>() is M){
+			return data.map<ArticleEntity>((e) => ArticleEntity().fromJson(e)).toList() as M;
+		}	else if(List<ArticleData>() is M){
+			return data.map<ArticleData>((e) => ArticleData().fromJson(e)).toList() as M;
+		}	else if(List<ArticleDataDate>() is M){
+			return data.map<ArticleDataDate>((e) => ArticleDataDate().fromJson(e)).toList() as M;
 		}	else if(List<NewsEntity>() is M){
 			return data.map<NewsEntity>((e) => NewsEntity().fromJson(e)).toList() as M;
 		}	else if(List<NewsResult>() is M){
@@ -810,6 +832,14 @@ class JsonConvert<T> {
 			return data.map<RealTimeHotspotResultShowapiResBody>((e) => RealTimeHotspotResultShowapiResBody().fromJson(e)).toList() as M;
 		}	else if(List<RealTimeHotspotResultShowapiResBodyList>() is M){
 			return data.map<RealTimeHotspotResultShowapiResBodyList>((e) => RealTimeHotspotResultShowapiResBodyList().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesEntity>() is M){
+			return data.map<GifPictureJokesEntity>((e) => GifPictureJokesEntity().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResult>() is M){
+			return data.map<GifPictureJokesResult>((e) => GifPictureJokesResult().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResultShowapiResBody>() is M){
+			return data.map<GifPictureJokesResultShowapiResBody>((e) => GifPictureJokesResultShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<GifPictureJokesResultShowapiResBodyContentlist>() is M){
+			return data.map<GifPictureJokesResultShowapiResBodyContentlist>((e) => GifPictureJokesResultShowapiResBodyContentlist().fromJson(e)).toList() as M;
 		}	else if(List<EyeOpeningVideoDailyEntity>() is M){
 			return data.map<EyeOpeningVideoDailyEntity>((e) => EyeOpeningVideoDailyEntity().fromJson(e)).toList() as M;
 		}	else if(List<EyeOpeningVideoDailyItemList>() is M){
@@ -834,6 +864,18 @@ class JsonConvert<T> {
 			return data.map<EyeOpeningVideoDailyItemListDataWebUrl>((e) => EyeOpeningVideoDailyItemListDataWebUrl().fromJson(e)).toList() as M;
 		}	else if(List<EyeOpeningVideoDailyItemListDataVideoPosterBean>() is M){
 			return data.map<EyeOpeningVideoDailyItemListDataVideoPosterBean>((e) => EyeOpeningVideoDailyItemListDataVideoPosterBean().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataEntity>() is M){
+			return data.map<TodayEpidemicDataEntity>((e) => TodayEpidemicDataEntity().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataShowapiResBody>() is M){
+			return data.map<TodayEpidemicDataShowapiResBody>((e) => TodayEpidemicDataShowapiResBody().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailList>() is M){
+			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailList>((e) => TodayEpidemicDataShowapiResBodyTodayDetailList().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailListCityList>() is M){
+			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailListCityList>((e) => TodayEpidemicDataShowapiResBodyTodayDetailListCityList().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>() is M){
+			return data.map<TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>((e) => TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea().fromJson(e)).toList() as M;
+		}	else if(List<TodayEpidemicDataShowapiResBodyTodayStatictic>() is M){
+			return data.map<TodayEpidemicDataShowapiResBodyTodayStatictic>((e) => TodayEpidemicDataShowapiResBodyTodayStatictic().fromJson(e)).toList() as M;
 		}
 		return null;
 	}
