@@ -57,7 +57,7 @@ class _VideoHomePageState extends State<VideoHomePage> {
                   return GestureDetector(
                     onTap: () => Navigator.pushNamed(
                       context,
-                      RouteName.playVideoPage,
+                      PageName.playVideoPage,
                       arguments: VideoInfoArguments(dataList[index].data),
                     ),
                     child: Container(

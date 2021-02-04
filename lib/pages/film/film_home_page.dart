@@ -1,4 +1,5 @@
-import 'package:alice/pages/film/view/hot_film_view.dart';
+import 'package:alice/common/const/constant.dart';
+import 'package:alice/routes/movie/home/hot_movie.dart';
 import 'package:alice/routes/movie/home/movie_carousel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class FilmHomePage extends StatelessWidget{
       child: ListView(
       children: [
         MovieCarouselView(),
-        HotFilmView(),
+        HotMovieView(style: Constant.cupertino,),
       ],
     ),
     );

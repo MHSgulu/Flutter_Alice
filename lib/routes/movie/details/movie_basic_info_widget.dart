@@ -1,13 +1,8 @@
-import 'package:alice/common/const/arguments.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
 import 'package:flutter/material.dart';
 
 class MovieBasicInfoWidget extends StatelessWidget{
-  final MovieDetailArguments args;
-
-  const MovieBasicInfoWidget({Key key, @required this.args}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -44,7 +44,7 @@ class _NewsSegmentViewState extends State<NewsSegmentView> {
                 onTap: () {
                   Navigator.pushNamed(
                     context,
-                    RouteName.newsDetailPage,
+                    PageName.newsDetailPage,
                     arguments: NewsDetailArguments(
                         snapshot.data.result.result.xList[index],
                     ),

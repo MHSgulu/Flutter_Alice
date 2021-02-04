@@ -1,4 +1,5 @@
 import 'package:alice/common/const/colors.dart';
+import 'package:alice/common/const/constant.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:alice/routes/drawer/my_drawer.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
@@ -77,7 +78,7 @@ class _MovieHomePageState extends State<MovieHomePage> with AutomaticKeepAliveCl
                   child: Column(
                     children: <Widget>[
                       MovieCarouselView(), //轮播图
-                      HotMovieView(), //正在热映
+                      HotMovieView(style: Constant.material,), //正在热映
                     ],
                   ),
                 )),

@@ -1,5 +1,4 @@
 import 'package:alice/model/eye_opening_video_daily_entity.dart';
-import 'package:alice/model/hot_movie_entity.dart';
 import 'package:alice/model/news_entity.dart';
 
 class ScreenArguments {
@@ -31,9 +30,9 @@ class NewsDetailArguments {
 }
 
 class MovieDetailArguments {
-  final HotMovieM movieEntity;
+  final String moviePictureUrl;
 
-  MovieDetailArguments(this.movieEntity);
+  MovieDetailArguments(this.moviePictureUrl);
 }
 
 class VideoInfoArguments {

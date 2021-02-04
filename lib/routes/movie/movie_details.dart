@@ -34,7 +34,6 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void didChangeDependencies() {
     args = ModalRoute.of(context).settings.arguments;
-    //print('数据点位: movieId： ${args.movieEntity.movieId}');
     delayedBuildLayout();
     super.didChangeDependencies();
   }
@@ -42,7 +41,7 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
   void delayedBuildLayout() {
     Future.delayed(
       Duration(seconds: 1),
-      () => fetchDominantColorPicture(args.movieEntity.img),
+      () => fetchDominantColorPicture(args.moviePictureUrl),
     );
   }
 
@@ -119,9 +118,9 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            MovieBasicInfoWidget(args: args), //电影基础信息栏
-            MovieRatingInfoWidget(args: args), //电影评分信息栏
-            MovieTypeInfoWidget(args: args), //电影类型信息栏
+            MovieBasicInfoWidget(), //电影基础信息栏
+            MovieRatingInfoWidget(), //电影评分信息栏
+            MovieTypeInfoWidget(), //电影类型信息栏
             MovieContentInfoWidget(), //电影内容简介栏
             MovieActorInfoWidget(
               valueColor: dominantColor,

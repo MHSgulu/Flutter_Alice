@@ -1,12 +1,7 @@
-import 'package:alice/common/const/arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class MovieRatingInfoWidget extends StatelessWidget{
-  final MovieDetailArguments args;
-
-  const MovieRatingInfoWidget({Key key, @required this.args}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,11 +24,7 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               RatingBarIndicator(
-                rating: args.movieEntity.r >
-                    0
-                    ? args.movieEntity.r /
-                    2.0
-                    : 0,
+                rating: 9.0 / 2.0,
                 itemSize: 13,
                 itemBuilder: (context, index) {
                   return Icon(
@@ -44,16 +35,10 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               Text(
-                args.movieEntity.r < 0
-                    ? '暂未上映'
-                    : '${args.movieEntity.r}',
+                '9.5',
                 style: TextStyle(
-                  fontSize: args.movieEntity.r < 0
-                      ? 12
-                      : 14,
-                  color: args.movieEntity.r < 0
-                      ? Colors.white60
-                      : Colors.white,
+                  fontSize: 14,
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -70,7 +55,7 @@ class MovieRatingInfoWidget extends StatelessWidget{
               ),
               Container(width: 10),
               Text(
-                '${args.movieEntity.wantedCount}人想看',
+                '888人想看',
                 style: TextStyle(
                   color: Colors.white54,
                   fontSize: 11,
