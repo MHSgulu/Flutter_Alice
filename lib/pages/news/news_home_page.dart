@@ -1,7 +1,5 @@
-import 'package:alice/common/global/theme_mode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'news_segment_view.dart';
 
@@ -45,27 +43,21 @@ class _NewsHomePageState extends State<NewsHomePage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('热点新闻'),
+        transitionBetweenRoutes: false,
       ),
-      child: ChangeNotifierProvider(
-        create: (context) => AppThemeMode(),
-        child: Consumer<AppThemeMode>(
-          builder: (context, theme, child) {
-            return Scaffold(
-              backgroundColor: AppThemeMode.isDark ? Colors.black : Colors.white,
-              appBar: AppBar(
-                bottom: PreferredSize(
-                  child: cupertinoSegmented2(),
-                  preferredSize: Size.fromHeight(0),
-                ),
-                elevation: 0.5,
-                backgroundColor: AppThemeMode.isDark ? Colors.black : Colors.white,
-                toolbarHeight: 40,
-              ),
-              body: Container(
-                child: widgetList[currentSegment],
-              ),
-            );
-          },
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: DefaultTextStyle(
+            style: CupertinoTheme.of(context)
+                .textTheme
+                .textStyle
+                .copyWith(fontSize: 14),
+            child: cupertinoSegmented2(),
+          ),
+          transitionBetweenRoutes: false,
+        ),
+        child: SafeArea(
+          child: widgetList[currentSegment],
         ),
       ),
     );
