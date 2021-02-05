@@ -37,7 +37,7 @@ class _NewsSegmentViewState extends State<NewsSegmentView> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-            padding: EdgeInsets.fromLTRB(4, 4, 4, 60),
+            padding: EdgeInsets.fromLTRB(4, 0, 4, 8),
             itemCount: snapshot.data.result.result.xList.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
@@ -46,7 +46,7 @@ class _NewsSegmentViewState extends State<NewsSegmentView> {
                     context,
                     PageName.newsDetailPage,
                     arguments: NewsDetailArguments(
-                        snapshot.data.result.result.xList[index],
+                      snapshot.data.result.result.xList[index],
                     ),
                   );
                 },

@@ -53,6 +53,7 @@ class _NewsListState extends State<TabNewsList> {
                   );
                 },
                 child: MyRRectCard(
+                  elevation: 0.5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
