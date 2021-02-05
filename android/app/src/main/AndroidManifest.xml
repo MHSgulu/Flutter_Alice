@@ -1,8 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ow.alice"
-    android:versionCode="TODO"
-    android:versionName="TODO">
+    package="com.ow.alice">
 
     <!--io.flutter.app.FlutterApplication是一个android.app.Application调用FlutterMain.startInitialization（this）; 在其onCreate方法中。
     在大多数情况下，您可以保持原样，但是如果您想提供其他功能，可以继承或重新实现FlutterApplication，然后将自定义类放在此处即可-->
