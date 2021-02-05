@@ -4,6 +4,7 @@ import 'package:alice/pages/video/video_home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:alice/common/const/cupertino_routes.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'epidemics_abroad_page.dart';
 
@@ -14,6 +15,7 @@ class CupertinoHomePage extends StatefulWidget {
 
 class CupertinoHomePageState extends State<CupertinoHomePage> {
   List<Widget> _widgetOptions;
+  DateTime lastClickTime;
 
   @override
   void initState() {
@@ -28,6 +30,22 @@ class CupertinoHomePageState extends State<CupertinoHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    return WillPopScope(
+        child: cupertinoHome(),
+        onWillPop: () async {
+          if (lastClickTime == null || DateTime.now().difference(lastClickTime) > Duration(seconds: 1)) {
+            Fluttertoast.showToast(msg: '再按一次退出');
+            lastClickTime = DateTime.now();
+            return false;
+          } else {
+            return true;
+          }
+        },
+    );
+  }
+
+  
+  Widget cupertinoHome() {
     //实现选项卡式iOS应用程序的根布局和行为结构。
     return CupertinoTabScaffold(
       //tabBar和tabBuilder是必需的。

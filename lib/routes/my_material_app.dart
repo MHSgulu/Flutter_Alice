@@ -179,18 +179,6 @@ class MyMaterialAppDemo extends StatelessWidget {
 
 ///从Dart 2开始，new关键字是可选的
 
-///将给定的路由推到最紧密地包围给定上下文的导航器上，然后删除所有先前的路由，直到“predicate”返回true。
-///   Navigator.pushAndRemoveUntil(
-///     context,
-///     MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
-///     ModalRoute.withName('/'),
-///   );
-
-///ModalRoute   阻止与以前的路由交互的路由。
-///[ModalRoute]覆盖整个[Navigator]。他们不一定[不透明]，例如，一个弹出菜单使用了一个[ModalRoute]，但是只在一个小框中显示菜单，与前面的路径重叠。
-
-///withName  如果路由具有指定的名称并且如果弹出路线不会产生相同的路线，即，如果路线的[willHandlePopInternally]属性为false。此函数通常与[Navigator.popntil导航器()].
-
 ///使用材料设计的应用程序。
 ///
 ///一个方便的小部件，其中包装了材料设计应用程序通常需要的许多小部件。它通过添加特定于材料设计的功能（例如[AnimatedTheme]和[GridPaper]），以[WidgetsApp]为基础。

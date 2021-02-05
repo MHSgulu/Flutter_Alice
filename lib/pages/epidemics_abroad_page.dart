@@ -46,6 +46,12 @@ class _EpidemicsAbroadPageState extends State<EpidemicsAbroadPage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: MyCupertinoNavigationBar(
+        /*leading: CupertinoButton(
+          child: Icon(Icons.menu_rounded),
+          padding: EdgeInsets.zero,
+          minSize: 24,
+          onPressed: () => Navigator.pushNamed(context, PageName.settingsPage),
+        ),*/
         title: '国外疫情',
       ),
       child: dataEntity == null
