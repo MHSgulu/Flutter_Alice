@@ -80,6 +80,7 @@ dependencies:
   screenshot: ^0.2.0  # Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像。
 
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
+  # sentry_flutter: ^4.0.4  # 该软件包包括通过Sentry的本机SDK支持本机崩溃的功能：（Android和iOS）。它将捕获本机层中的错误，需要支持kotlin
 
 
 # 说明：需要注意dependencies和dev_dependencies的区别，
