@@ -66,6 +66,16 @@ class MyMaterialAppDemo extends StatelessWidget {
           //布尔参数[routes]和[navigatorObservers]不能为null。
           return MaterialApp(
             //debugShowCheckedModeBanner: false,  //通过启动应用程序时显示的[home]路由禁用“ debug”横幅。
+            ///定义一个自定义的 error widget，以当 builder 构建 widget 失败时显示，请使用 MaterialApp.builder。
+            /*builder: (BuildContext context, Widget widget) {
+              Widget error = Text('...rendering error...');
+              if (widget is Scaffold || widget is Navigator)
+                error = Scaffold(body: Center(child: error));
+              ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+                return error;
+              };
+              return widget;
+            },*/
             ///设备用于识别用户应用程序的单行描述。
             ///在Android上，标题显示在任务管理器的应用程序快照上方，当用户按下“最近的应用程序”按钮时，将显示这些标题。
             ///在iOS上，无法使用此值。 应用程序的“ Info.plist”中的“ CFBundleDisplayName”将在存在时被引用，否则，将被“ CFBundleName”引用。
