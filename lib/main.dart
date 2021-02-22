@@ -19,9 +19,10 @@ Future<void> main() async{
       FlutterError.dumpErrorToConsole(details,forceReport: true);
       // 顶级kReleaseMode常量指示应用程序是否在发布模式下编译。kReleaseMode 如果在发布模式下编译应用程序，则为true的常量。kProfileMode 如果应用程序是在调试模式下编译的，则为true的常量。
       if (kReleaseMode || kProfileMode){
+        print('onError: 捕获运行期间的错误');
         ///使用给定的退出代码立即退出Dart VM进程。
-        print('onError: 捕获运行期间的错误，立即退出应用');
-        exit(1);
+        //print('onError: 捕获运行期间的错误，立即退出应用');
+        //exit(1);
       }
     };
     runApp(MyMaterialApp());
