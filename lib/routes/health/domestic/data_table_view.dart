@@ -15,7 +15,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
       columns: [
         DataColumn(label: Text('类型')),
         DataColumn(label: Text('总数')),
-        DataColumn(label: Text('昨日+')),
+        DataColumn(label: Text('昨日')),
       ],
       rows: [
         DataRow(
@@ -27,7 +27,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
             )),
             DataCell(
               Text(
-                '${data.confirmedIncr == null ? -1 : data.confirmedIncr - data.curedIncr - data.deadIncr}',
+                '${data.confirmedIncr == null ? -1 : data.confirmedIncr - data.curedIncr}',
                 style: TextStyle(color: Color(0xFFFF6A57)),
               ),
             ),
@@ -46,7 +46,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
             )),
           ],
         ),
-        DataRow(
+        /*DataRow(
           cells: <DataCell>[
             DataCell(Text('现有疑似')),
             DataCell(Text(
@@ -58,8 +58,8 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFFEC9217)),
             )),
           ],
-        ),
-        DataRow(
+        ),*/
+        /*DataRow(
           cells: <DataCell>[
             DataCell(Text('现有重症')),
             DataCell(Text(
@@ -71,7 +71,7 @@ class DomesticEpidemicsSummaryDataView extends StatelessWidget{
               style: TextStyle(color: Color(0xFF545499)),
             )),
           ],
-        ),
+        ),*/
         DataRow(
           cells: <DataCell>[
             DataCell(Text('境外输入')),
