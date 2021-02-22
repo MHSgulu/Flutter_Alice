@@ -42,6 +42,16 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
+	<key>NSPhotoLibraryUsageDescription</key>
+	     <string>描述为什么您的应用需要照片库的权限。在视觉编辑器中，这称为“隐私-照片库使用说明”</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+        <string>描述为什么您的应用需要访问相机。在视觉编辑器中，这称为“隐私-相机使用说明”</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+         <string>说明您要录制视频的原因，为什么您的应用需要使用麦克风。在可视编辑器中，这称为“隐私-麦克风使用说明”</string>
+
+
 	<key>NSFaceIDUsageDescription</key>
     <string>Because of that, scientific truth.</string>
 
