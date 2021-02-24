@@ -25,8 +25,8 @@ class _GameRoomViewState extends State<GameRoomView> {
   ];
 
   List<String> leftPlayerLocation = [
-    '打野',
-    '射手',
+    '打野/游走/发育',
+    '射手/法师',
     '',
     '全能',
     '',
@@ -67,7 +67,7 @@ class _GameRoomViewState extends State<GameRoomView> {
   List<String> rightPlayerLocation = [
     '',
     '',
-    '战士',
+    '战士/坦克',
     '',
     '全能',
   ];
@@ -140,7 +140,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Fluttertoast.showToast(msg: '你选了蓝色方第${index + 1}的位置');
+                          Fluttertoast.showToast(msg: '你选了蓝色方第${index + 1}个位置');
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -191,7 +191,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                           SizedBox(height: 4),
                           Wrap(
                             children: List<Widget>.generate(
-                              1,
+                              leftPlayerLocation[index].split('/').length,
                               (int index2) {
                                 return Container(
                                   margin: EdgeInsets.only(right: 4),
@@ -201,7 +201,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                                     borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: Text(
-                                    '${leftPlayerLocation[index]}',
+                                    '${leftPlayerLocation[index].split('/')[index2]}',
                                     style: TextStyle(
                                       color: Colors.white70,
                                       fontSize: 9,
@@ -283,7 +283,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                             SizedBox(height: 4),
                             Wrap(
                               children: List<Widget>.generate(
-                                1,
+                                rightPlayerLocation[index].split('/').length,
                                 (int index2) {
                                   return Container(
                                     margin: EdgeInsets.only(left: 4),
@@ -293,7 +293,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                                       borderRadius: BorderRadius.circular(2),
                                     ),
                                     child: Text(
-                                      '${rightPlayerLocation[index]}',
+                                      '${rightPlayerLocation[index].split('/')[index2]}',
                                       style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 9,
@@ -309,7 +309,7 @@ class _GameRoomViewState extends State<GameRoomView> {
                         GestureDetector(
                           onTap: () {
                             Fluttertoast.showToast(
-                                msg: '你选了红色方第${index + 1}的位置');
+                                msg: '你选了红色方第${index + 1}个位置');
                           },
                           child: Container(
                             decoration: BoxDecoration(
