@@ -1,4 +1,5 @@
 import 'package:alice/common/const/routes.dart';
+import 'package:alice/routes/example/demo/layout_demo_route.dart';
 import 'package:alice/widgets/custom/custom_scroll_behavior.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_list_tile_card.dart';
@@ -75,14 +76,10 @@ class GuideExampleRoute extends StatelessWidget {
                   text: 'Rive 动画',
                   onTap: () => Navigator.pushNamed(context, RouteName.guideRiveRoute),
                 ),
-                /*MyCardTile(
-                  text: '插件——获取手机电量',
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetBattery())),
-                ),*/
-                /*MyCardTile(
-                  text: '插件——获取手机安卓系统版本',
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PluginGetVersion())),
-                ),*/
+                MyCardTile(
+                  text: '布局演示',
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutDemoRoute())),
+                ),
               ],
             ),
           ),
