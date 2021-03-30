@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<?xml version="1.0" encoding="utf-8"?><!-- 修改此文件以自定义启动启动屏幕 -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@android:color/white" />
 
-    <!-- You can insert your own image assets here -->
-     <item>
+    <!-- 您可以在此处插入自己的图片资源 -->
+    <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/alice_start" />
+            android:src="@mipmap/alice_start" /><!--红米7测试机上使用时xhdpi下的图片 效果满意-->
     </item>
 </layer-list>
