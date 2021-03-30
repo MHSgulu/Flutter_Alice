@@ -700,6 +700,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.0"
+  ota_update:
+    dependency: "direct main"
+    description:
+      name: ota_update
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.4.1"
   package_config:
     dependency: transitive
     description:

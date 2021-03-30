@@ -78,6 +78,8 @@ dependencies:
   sticky_headers: ^0.1.8+1  # Flutter粘性标头-使您可以将标头放在可滚动的内容上，当内容滚动时，这些内容将粘在容器的顶部。
   qr_flutter: ^3.2.0  # QR.Flutter是一个Flutter库，用于通过Widget或自定义画图器简单，快速地渲染QR代码。
   screenshot: ^0.2.0  # Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像。
+  ota_update: ^2.4.1  # Flutter插件可为Android和iOS提供ota更新以及下载进度（仅适用于Android）
+
 
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
   # sentry_flutter: ^4.0.4  # 该软件包包括通过Sentry的本机SDK支持本机崩溃的功能：（Android和iOS）。它将捕获本机层中的错误，需要支持kotlin

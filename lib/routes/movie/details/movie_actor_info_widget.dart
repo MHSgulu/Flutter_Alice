@@ -3,7 +3,7 @@ import 'package:alice/model/movie_actor_entity.dart';
 import 'package:alice/pages/film/view/film_actor_draggable_view.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
-import 'package:alice/widgets/photo_view_single.dart';
+import 'package:alice/widgets/view/photo_view_single.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

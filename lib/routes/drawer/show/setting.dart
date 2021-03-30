@@ -1,3 +1,4 @@
+import 'package:alice/common/const/routes.dart';
 import 'package:alice/routes/more/setting/switch_cupertino.dart';
 import 'package:alice/routes/more/setting/switch_drak.dart';
 import 'package:alice/routes/more/setting/switch_material.dart';
@@ -24,7 +25,7 @@ class SettingPage extends StatelessWidget {
               SwitchMaterialTheme(),
               SwitchCupertinoTheme(),
               GestureDetector(
-                onTap: ()=> Navigator.pushNamed(context, '/multiLanguage'),
+                onTap: ()=> Navigator.pushNamed(context, RouteName.multiLanguage),
                 child: Card(
                   child: Container(
                     height: 50,
@@ -38,6 +39,22 @@ class SettingPage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
+              GestureDetector(
+                child: Card(
+                  child: Container(
+                    height: 50,
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    child: Row(
+                      children: [
+                        Text('应用更新'),
+                        Expanded(child: Container()),
+                        Icon(Icons.arrow_forward_ios_rounded,size: 16,),
+                      ],
+                    ),
+                  ),
+                ),
+                onTap: ()=> Navigator.pushNamed(context, RouteName.appUpdateRoute),
               ),
             ],
           ),

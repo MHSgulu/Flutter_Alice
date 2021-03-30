@@ -23,7 +23,6 @@ class _MaterialSelectState extends State<MaterialSelect> {
         child: Column(
           children: [
             Text('单选按钮'),
-
             ///以下示例显示了禁用最后一行的列表中使用的单选按钮。
             Column(
               children: <Widget>[
@@ -80,7 +79,6 @@ class _MaterialSelectState extends State<MaterialSelect> {
             ),
             SizedBox(height: 20),
             Text('开关'),
-
             ///材料设计开关。
             ///
             ///用于切换单个设置的开/关状态。

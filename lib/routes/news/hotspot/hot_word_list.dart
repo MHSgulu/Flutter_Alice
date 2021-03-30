@@ -2,10 +2,9 @@ import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/real_time_hotspot_entity.dart';
 import 'package:alice/routes/news/search_news_screen.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
+import 'package:alice/widgets/view/http_error_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
 
 class HotWordList extends StatefulWidget {
   final String id;
@@ -25,7 +24,7 @@ class HotWordListState extends State<HotWordList>
 
   @override
   void initState() {
-    print('当前页面初始化： 热点词汇ID:${widget.id}');
+    print('当前页面初始化：热点词ID:${widget.id}');
     _futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
     super.initState();
   }
@@ -137,28 +136,16 @@ class HotWordListState extends State<HotWordList>
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("${snapshot.error}"),
-              Container(
-                height: 20,
-              ),
+              HttpErrorView(errorText: '${snapshot.error}'),
+              SizedBox(height: 20),
               RaisedButton(
                 onPressed: () => reload(),
                 child: Text('刷新'),
               ),
-              Container(
-                height: 10,
-              ),
-              Text(
-                '如若点击多次没反应，请尝试重新进入',
-                style: TextStyle(color: Colors.black38, fontSize: 12),
-              ),
             ],
           );
         }
-        return MyLoadingIndicator(
-          valueColor: Colors.blueAccent[200],
-          strokeWidth: 3,
-        );
+        return MyLoadingIndicator(valueColor: Colors.blueAccent[200]);
       },
     );
   }

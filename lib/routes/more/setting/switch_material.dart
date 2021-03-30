@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
-class SwitchMaterialTheme extends StatefulWidget{
+class SwitchMaterialTheme extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => SwitchMaterialThemeState();
-
 }
 
-class SwitchMaterialThemeState extends State<SwitchMaterialTheme>{
+class SwitchMaterialThemeState extends State<SwitchMaterialTheme> {
   bool isMaterial = true;
 
   @override
@@ -31,17 +29,16 @@ class SwitchMaterialThemeState extends State<SwitchMaterialTheme>{
     );
   }
 
-  switchToMaterialTheme(bool value){
-    if(value == true){
+  switchToMaterialTheme(bool value) {
+    if (value == true) {
       Fluttertoast.showToast(msg: '当前主题已为Material');
-    }else{
+    } else {
       Fluttertoast.showToast(msg: '默认主题就这样了，o(╯□╰)o');
     }
-    if(mounted){
+    if (mounted) {
       setState(() {
         isMaterial = value;
       });
     }
   }
-
 }

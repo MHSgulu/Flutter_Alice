@@ -5,6 +5,8 @@ class SharedPreferencesUtil {
   static final _instance = SharedPreferencesUtil._init();
   SharedPreferencesUtil._init();
 
+  //storage
+
   //登录时存储 账号数据
   Future<void> saveAccountInfo(String token,String account,String password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -44,13 +44,15 @@ class BackdropFilterDemo extends StatelessWidget {
           children: [
             Center(
               child: ElevatedButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => BackdropFilterDemo1())),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => BackdropFilterDemo1())),
                 child: Text('演示1'),
               ),
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => BackdropFilterDemo2())),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => BackdropFilterDemo2())),
                 child: Text('演示2'),
               ),
             ),
@@ -63,36 +65,37 @@ class BackdropFilterDemo1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppBar(
-          label: 'BackdropFilter',
-          onPressedBack: () => Navigator.pop(context),
-        ),
-        //如果需要将BackdropFilter应用于与其子项完全匹配的区域，请使用完全裁剪到该子项的clip小部件包装BackdropFilter。
-        body: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Text('0' * 10000),
-            Center(
-              child: ClipRect(  // <-剪辑到下面的200x200 [Container]
-                ///创建一个背景滤镜。
-                /// [filter]参数不能为null。
-                child: BackdropFilter(
-                  //创建一个应用高斯模糊的图像滤镜。
-                  filter: ImageFilter.blur(
-                    sigmaX: 5.0,
-                    sigmaY: 5.0,
-                  ),
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 200.0,
-                    height: 200.0,
-                    child: Text('Hello World'),
-                  ),
+      appBar: MyAppBar(
+        label: 'BackdropFilter',
+        onPressedBack: () => Navigator.pop(context),
+      ),
+      //如果需要将BackdropFilter应用于与其子项完全匹配的区域，请使用完全裁剪到该子项的clip小部件包装BackdropFilter。
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Text('0' * 10000),
+          Center(
+            child: ClipRect(
+              // <-剪辑到下面的200x200 [Container]
+              ///创建一个背景滤镜。
+              /// [filter]参数不能为null。
+              child: BackdropFilter(
+                //创建一个应用高斯模糊的图像滤镜。
+                filter: ImageFilter.blur(
+                  sigmaX: 5.0,
+                  sigmaY: 5.0,
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 200.0,
+                  height: 200.0,
+                  child: Text('Hello World'),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -111,15 +114,15 @@ class BackdropFilterDemo2 extends StatelessWidget {
           Image.asset('assets/images/bg_alice.png'),
           Positioned.fill(
             child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 5.0,
-              sigmaY: 5.0,
+              filter: ImageFilter.blur(
+                sigmaX: 5.0,
+                sigmaY: 5.0,
+              ),
+              child: Container(
+                alignment: Alignment.center,
+                child: Text('高斯模糊'),
+              ),
             ),
-            child: Container(
-              alignment: Alignment.center,
-              child: Text('高斯模糊'),
-            ),
-          ),
           ),
         ],
       ),

@@ -1,7 +1,7 @@
 import 'package:alice/model/movie_actor_entity.dart';
 import 'package:alice/widgets/custom/my_fade_in_image.dart';
 import 'package:alice/widgets/custom/my_rounded_rectang_card.dart';
-import 'package:alice/widgets/photo_view_gallry.dart';
+import 'package:alice/widgets/view/photo_view_gallry.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';

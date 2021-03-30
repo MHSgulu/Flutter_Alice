@@ -3,7 +3,7 @@ import 'package:alice/common/network/http_util.dart';
 import 'package:alice/model/wallpaper_entity.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:alice/widgets/custom/my_loading_indicator.dart';
-import 'package:alice/widgets/photo_view_single.dart';
+import 'package:alice/widgets/view/photo_view_single.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

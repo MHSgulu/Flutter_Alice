@@ -11,6 +11,7 @@ import 'package:alice/routes/more/guide/guide_dynamic_effect.dart';
 import 'package:alice/routes/more/guide/guide_flutter_favorite.dart';
 import 'package:alice/routes/more/guide/guide_state_route.dart';
 import 'package:alice/routes/more/guide/guide_week_widget_route.dart';
+import 'package:alice/routes/more/setting/app_update_view.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper.dart';
 import 'package:alice/routes/more/wallpaper/computer/computer_wallpaper_list.dart';
 import 'package:alice/routes/more/wallpaper/computer/popular_searches.dart';
@@ -66,7 +67,8 @@ Map<String, WidgetBuilder> routes = {
   RouteName.computerWallpaperList: (context) => ComputerWallpaperList(), //电脑壁纸列表
   RouteName.wallpaperPopularSearches: (context) => WallpaperPopularSearches(), //电脑壁纸搜索页
   //设置模块
-  RouteName.multiLanguage: (context) => MultiLanguage(), //设置页面
+  RouteName.multiLanguage: (context) => MultiLanguage(), //多语言
+  RouteName.appUpdateRoute: (context) => AppUpdateRoute(), //应用更新
   //示例模块
   RouteName.guideMaterialWidgetRoute: (context) => GuideMaterialWidgetRoute(), //材料设计风格组件
   RouteName.guideCupertinoWidgetRoute: (context) => GuideCupertinoWidgetRoute(), //iOS风格组件
@@ -115,7 +117,8 @@ class RouteName {
   static final String computerWallpaperList = '/computerWallpaperList';
   static final String wallpaperPopularSearches = '/wallpaperPopularSearches';
   //设置模块
-  static final String multiLanguage = '/multiLanguage';
+  static final String multiLanguage = '/multiLanguage'; 
+  static final String appUpdateRoute = '/appUpdateRoute'; 
   //示例模块
   static final String guideMaterialWidgetRoute = '/guideMaterialWidgetRoute';
   static final String guideCupertinoWidgetRoute = '/guideCupertinoWidgetRoute';

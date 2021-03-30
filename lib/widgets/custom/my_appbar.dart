@@ -34,9 +34,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   //preferredSize = Size.fromHeight(toolbarHeight ?? kToolbarHeight + (bottom?.preferredSize?.height ?? 0.0)),
   //preferredSize = Size.fromHeight(56 + (bottom?.preferredSize?.height ?? 0.0)),
   @override
-  Size get preferredSize => Size.fromHeight(56.0 +
-      (bottom?.preferredSize?.height ??
-          0.0)); //当AppBar设置bottom,AppBar的高度加上bottom的高度。
+  Size get preferredSize => Size.fromHeight(56.0 + (bottom?.preferredSize?.height ?? 0.0)); //当AppBar设置bottom,AppBar的高度加上bottom的高度。
 }
 
 class _MyAppBarState extends State<MyAppBar> {

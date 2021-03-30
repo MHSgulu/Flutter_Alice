@@ -1,5 +1,5 @@
-import 'file:///E:/Alice_flutter/alice/lib/common/l10n/Localizations.dart';
 import 'package:alice/common/global/theme_mode.dart';
+import 'package:alice/common/l10n/Localizations.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +31,8 @@ class _MultiLanguageState extends State<MultiLanguage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
     myLocale = Localizations.localeOf(context);
-
     languageList = [
       MyLocalizations.of(context).zhl,
       MyLocalizations.of(context).zhlHant,
@@ -41,7 +40,11 @@ class _MultiLanguageState extends State<MultiLanguage> {
       MyLocalizations.of(context).frl,
       MyLocalizations.of(context).jal,
     ];
+    super.didChangeDependencies();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
         label: MyLocalizations.of(context).intlPageTitle,
@@ -53,13 +56,21 @@ class _MultiLanguageState extends State<MultiLanguage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('当前主要语言标签: ${myLocale.languageCode}'), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
+            Text(
+              '当前主要语言标签: ${myLocale.languageCode}',
+            ), //语言环境的主要语言子标签。 不能为空。 它可能是“ und”，代表“ undefined”(未定义)。
             SizedBox(height: 8),
-            Text('当前语言环境的区域标签: ${myLocale.countryCode}'), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
+            Text(
+              '当前语言环境的区域标签: ${myLocale.countryCode}',
+            ), //语言环境的区域子标签。可以为null，表示没有指定的区域子标签。
             SizedBox(height: 8),
-            Text('当前语言环境标识符: ${myLocale.toLanguageTag()}'), //返回语法上有效的Unicode BCP47语言环境标识符。
+            Text(
+              '当前语言环境标识符: ${myLocale.toLanguageTag()}',
+            ), //返回语法上有效的Unicode BCP47语言环境标识符。
             SizedBox(height: 8),
-            Text('当前语言环境: ${myLocale.toString()}'), //返回表示语言环境的字符串。
+            Text(
+              '当前语言环境: ${myLocale.toString()}',
+            ), //返回表示语言环境的字符串。
             SizedBox(height: 20),
             Wrap(
               children: List<Widget>.generate(

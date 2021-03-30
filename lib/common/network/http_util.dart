@@ -121,7 +121,7 @@ class HttpUtil {
       return quotationEntityFromJson(QuotationEntity(), json.decode(response.body));
     } else {
       //如果服务器没有返回200 OK响应,然后抛出一个异常。
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -138,7 +138,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return todayEpidemicDataEntityFromJson(TodayEpidemicDataEntity(), json.decode(response.toString()));
     } else{
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -155,7 +155,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return epidemicsAbroadDataEntityFromJson(EpidemicsAbroadDataEntity(), json.decode(response.toString()));
     } else{
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -165,7 +165,7 @@ class HttpUtil {
     if (response.statusCode == 200) {
       return BingWallpaper.fromJson(json.decode(response.body));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -175,7 +175,7 @@ class HttpUtil {
     if (response.statusCode == 200) {
       return realTimeHotspotEntityFromJson(RealTimeHotspotEntity(), json.decode(response.body));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -191,7 +191,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return hotWordTypeEntityFromJson(HotWordTypeEntity(), jsonDecode(response.toString()));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -210,7 +210,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return newsEntityFromJson(NewsEntity(), jsonDecode(response.toString()));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -229,7 +229,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return hotMovieEntityFromJson(HotMovieEntity(), jsonDecode(response.toString()));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -240,7 +240,7 @@ class HttpUtil {
       //print('数据点位： ${response.data}');
       return eyeOpeningVideoDailyEntityFromJson(EyeOpeningVideoDailyEntity(), jsonDecode(response.toString()));
     } else {
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -270,7 +270,7 @@ class HttpUtil {
     //expires: Tue, 01 Dec 2020 01:52:37 GMT
     print('数据点位: response.headers: ${response.headers}'); ///响应头。
     //200
-    print('数据点位: response.statusCode: ${response.statusCode}'); /// Http状态码。
+    print('数据点位: response.HTTP状态码:${response.statusCode}'); /// Http状态码。
     //OK
     print('数据点位: response.statusMessage: ${response.statusMessage}');  ///返回与状态码关联的原因短语。必须在写入正文之前设置原因短语。写入正文后设置原因短语。
     //{}
@@ -284,8 +284,8 @@ class HttpUtil {
     if(response.statusCode == 200){
       return jsonDecode(response.toString());
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      //throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      //throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -306,8 +306,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return gifPictureJokesEntityFromJson(GifPictureJokesEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -328,8 +328,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return pictureJokeEntityFromJson(PictureJokeEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -352,8 +352,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return writtenJokesEntityFromJson(WrittenJokesEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -367,8 +367,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return articleEntityFromJson(ArticleEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -381,8 +381,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return articleEntityFromJson(ArticleEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -396,8 +396,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return articleEntityFromJson(ArticleEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -410,8 +410,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return wallpaperCategoryEntityFromJson(WallpaperCategoryEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -440,8 +440,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return wallpaperEntityFromJson(WallpaperEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -455,8 +455,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return birdWallpaperCategoryEntityFromJson(BirdWallpaperCategoryEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -483,8 +483,8 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return birdWallpaperEntityFromJson(BirdWallpaperEntity(),json);
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
-      throw Exception('服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
+      throw Exception(' HTTP状态码:${response.statusCode}');
     }
   }
 
@@ -506,7 +506,7 @@ class HttpUtil {
       var json = jsonDecode(response.toString());
       return json;
     }else{
-      Fluttertoast.showToast(msg: '服务器响应失败: statusCode: ${response.statusCode}');
+      Fluttertoast.showToast(msg: ' HTTP状态码:${response.statusCode}');
     }
   }
 

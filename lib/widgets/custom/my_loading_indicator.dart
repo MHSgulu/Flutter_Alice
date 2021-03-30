@@ -57,7 +57,7 @@ class MyLoadingIndicator extends StatelessWidget {
               valueColor: AlwaysStoppedAnimation<Color>(
                 valueColor ?? Theme.of(context).accentColor,
               ),
-              strokeWidth: strokeWidth ?? 3.0,  //用于画圆的线的宽度。
+              strokeWidth: strokeWidth ?? 3.0, //用于画圆的线的宽度。
               ///此值指示进度条的用途，屏幕阅读器将读出该值以指示此进度指示器的用途。
               //semanticsLabel:  semanticsLabel ?? '加载指示器',
               ///通过屏幕阅读软件，它将与[semanticsLabel]结合使用以标识小部件，并且主要用于确定进度指示器以宣布其进展情况。
