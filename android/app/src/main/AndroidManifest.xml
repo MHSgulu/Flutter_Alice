@@ -64,7 +64,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:icon="@mipmap/app_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
