@@ -6,6 +6,8 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/alice_start" /><!--红米7测试机上使用时xhdpi下的图片 效果满意-->
+            android:src="@mipmap/alice_start" />
+        <!--红米7 1520x720分辨率 19:9 使用的是xhdpi下的图片 效果满意-->
+        <!--鉴于 主流机型最低也就720x1280(xhdpi) 所以启动图从hdpo(对应480x800)开始适配，再低不管了-->
     </item>
 </layer-list>
