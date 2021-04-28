@@ -2,6 +2,7 @@ import 'package:alice/routes/example/official/plugins/example_battery.dart';
 import 'package:alice/routes/example/official/plugins/example_connectivity.dart';
 import 'package:alice/routes/example/official/plugins/example_device_info.dart';
 import 'package:alice/routes/example/official/plugins/example_image_picker.dart';
+import 'package:alice/routes/example/official/plugins/example_in_app_purchase.dart';
 import 'package:alice/routes/example/official/plugins/example_local_auth.dart';
 import 'package:alice/routes/example/official/plugins/example_package_info.dart';
 import 'package:alice/routes/example/official/plugins/example_video_play.dart';
@@ -26,6 +27,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'connectivity',
     'battery',
     'video_player',
+    'in_app_purchase ',
   ];
 
   List<String> subTitleList = [
@@ -37,6 +39,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
     'Flutter插件，用于发现Android和iOS上的网络（WiFi和移动/蜂窝）连接状态。',
     'Flutter插件，用于在Android和iOS上访问有关电池状态（充满，充电，放电）的信息。',
     'Flutter插件，用于与Android，iOS和Web上的其他Flutter小部件一起显示嵌入式视频。',
+    '应用内购买的Flutter插件。公开用于通过App Store和Google Play进行应用内购买的API',
   ];
 
   @override
@@ -103,6 +106,9 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
         break;
       case 7:
         Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleVideoPlay()));
+        break;
+      case 8:
+        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleInAppPurchase()));
         break;
     }
   }

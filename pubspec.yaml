@@ -42,7 +42,7 @@ dependencies:
   transparent_image: ^1.0.0  # Dart代码中的透明图像，表示为Uint8List。
   cached_network_image: ^2.5.0  # Flutter库可加载和缓存网络图像。也可以与占位符和错误小部件一起使用
   fluttertoast: ^7.1.6  # 用于Flutter的Toast库，可在单行代码中轻松创建Toast消息
-  pull_to_refresh: ^1.6.2  # 提供给Flutter滚动组件的小部件可下拉刷新并上拉负载。
+  pull_to_refresh: 1.6.3  # 提供给Flutter滚动组件的小部件可下拉刷新并上拉负载。  //1.6.5 flutter sdk得2.0   1.6.4有bug  需要精准指定版本
   flutter_html: ^1.1.1  # Flutter小部件，将静态HTML和CSS呈现为Flutter小部件
   flutter_swiper: ^1.1.6  # 最好的拍打器（轮播），具有多种布局，无限循环。与Android和iOS兼容。
   palette_generator: ^0.2.3  # Flutter软件包,用于从源图像生成调色板颜色。
@@ -79,6 +79,7 @@ dependencies:
   qr_flutter: ^3.2.0  # QR.Flutter是一个Flutter库，用于通过Widget或自定义画图器简单，快速地渲染QR代码。
   screenshot: ^0.2.0  # Flutter屏幕截图程序包（运行时）。将任何小部件捕获为图像。
   ota_update: ^2.4.1  # Flutter插件可为Android和iOS提供ota更新以及下载进度（仅适用于Android）
+  in_app_purchase: ^0.3.5 # 应用内购买的Flutter插件。公开用于通过App Store和Google Play进行应用内购买的API。
 
 
   flutter_bmflocation: ^1.0.3  # Flutter的百度地图定位插件。该插件提供了跨平台（iOS，Android）API来请求位置
