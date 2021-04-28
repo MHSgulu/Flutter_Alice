@@ -46,11 +46,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'flutter_alice_key'
+            keyPassword '123456'
+            storeFile file('../flutter_alice_keystore.jks')
+            storePassword '123456'
+        }
+    }
+
     buildTypes {
         release {
-            // TODO：为发布版本添加您自己的签名配置。
-            // 现在使用调试键进行签名，因此`flutter run --release`可以正常工作。
-            signingConfig signingConfigs.debug
+            // 为发布版本添加您自己的签名配置。
+            // 初始时使用调试键进行签名，因此`flutter run --release`可以正常工作。
+            signingConfig signingConfigs.release
         }
     }
 }
