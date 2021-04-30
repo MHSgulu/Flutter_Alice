@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 
@@ -436,23 +435,23 @@ class ConsumableStore {
   static const String _kPrefKey = 'consumables';
   static Future<void> _writes = Future.value();
 
-  /// Adds a consumable with ID `id` to the store.
+  /// 向商店添加ID为“ id”的消耗品。
   ///
-  /// The consumable is only added after the returned Future is complete.
+  /// 仅在返回的Future完成后才添加消耗品。
   static Future<void> save(String id) {
     _writes = _writes.then((void _) => _doSave(id));
     return _writes;
   }
 
-  /// Consumes a consumable with ID `id` from the store.
+  /// 从商店消费ID为“ id”的消耗品。
   ///
-  /// The consumable was only consumed after the returned Future is complete.
+  /// 仅在返回的Future完成后才消耗消耗品。
   static Future<void> consume(String id) {
     _writes = _writes.then((void _) => _doConsume(id));
     return _writes;
   }
 
-  /// Returns the list of consumables from the store.
+  /// 返回商店中的消耗品列表。
   static Future<List<String>> load() async {
     return (await SharedPreferences.getInstance()).getStringList(_kPrefKey) ??
         [];
