@@ -34,11 +34,16 @@ class _MultiLanguageState extends State<MultiLanguage> {
   void didChangeDependencies() {
     myLocale = Localizations.localeOf(context);
     languageList = [
-      MyLocalizations.of(context).zhl,
+      /*MyLocalizations.of(context).zhl,
       MyLocalizations.of(context).zhlHant,
       MyLocalizations.of(context).enl,
       MyLocalizations.of(context).frl,
-      MyLocalizations.of(context).jal,
+      MyLocalizations.of(context).jal,*/
+      '中文简体',
+      '中文繁体',
+      '英文',
+      '法文',
+      '日文',
     ];
     super.didChangeDependencies();
   }
@@ -47,7 +52,7 @@ class _MultiLanguageState extends State<MultiLanguage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        label: MyLocalizations.of(context).intlPageTitle,
+        label: /*MyLocalizations.of(context).intlPageTitle*/'多语言',
         onPressedBack: () => Navigator.pop(context),
       ),
       body: Container(
