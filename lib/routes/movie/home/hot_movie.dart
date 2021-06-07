@@ -60,7 +60,7 @@ class _HotMovieViewState extends State<HotMovieView> {
               ),
               Expanded(child: Container()),
               GestureDetector(
-                onTap: () => Fluttertoast.showToast(msg: '全部电影'),
+                onTap: () => Fluttertoast.showToast(msg: '固定数据集，凑合着看吧'),
                 child: Row(
                   children: <Widget>[
                     Text(

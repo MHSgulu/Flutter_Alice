@@ -46,27 +46,32 @@ class _MovieHomePageState extends State<MovieHomePage> with AutomaticKeepAliveCl
                   ),
                 ),
               ),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(left: 8),
-                    child: Image.asset('assets/icons/icon_search_movie.png',width: 24,),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Text(
-                      '搜索你想了解的电影',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 13.5),
+              child: GestureDetector(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 8),
+                      child: Image.asset('assets/icons/icon_search_movie.png',width: 24,),
                     ),
-                  ),
-                ],
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Text(
+                        '搜索你想了解的电影',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 13.5),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: (){
+                  Fluttertoast.showToast(msg: '没这功能，就是玩，嘿嘿');
+                },
               ),
             ),
             actions: <Widget>[
               IconButton(
                 color: Colors.white,
                 icon: Icon(Icons.movie_filter),
-                onPressed: () => Fluttertoast.showToast(msg: '期待不如等待'),
+                onPressed: () => Fluttertoast.showToast(msg: '别点了，没这功能'),
               )
             ],
             elevation: 1,
