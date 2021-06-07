@@ -50,16 +50,16 @@ class ShowMoreRouteState extends State<ShowMoreRoute> {
               asset: 'assets/icons/icon_wallpaper.png',
               onTap: ()=> showDialogBox(),
             ),
-            MyFunctionCard(
+            /*MyFunctionCard(
               title: '淘女郎模特',
               asset: 'assets/icons/icon_account.png',
               onTap: ()=> Navigator.pushNamed(context, RouteName.taoModel),
-            ),
-            MyFunctionCard(
+            ),*/
+            /*MyFunctionCard(
               title: '菜谱大全',
               asset: 'assets/icons/icon_food.png',
               onTap: ()=> Navigator.pushNamed(context, RouteName.recipesRoute),
-            ),
+            ),*/
             MyFunctionCard(
               title: '垃圾分类',
               asset: 'assets/icons/icon_shopping_cart.png',
