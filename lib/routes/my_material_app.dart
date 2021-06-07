@@ -13,51 +13,6 @@ class MyMaterialApp extends StatelessWidget {
       create: (context) => AppThemeMode(),
       child: Consumer<AppThemeMode>(
         builder: (context, theme, child) {
-          return MaterialApp(
-            title: 'Material Alice',
-            home: WillPopScopeHome(),
-            routes: routes,
-            //onGenerateTitle: (context) => MyLocalizations.of(context).appTitle,
-            theme: ThemeData(
-              brightness: AppThemeMode.isDark ? Brightness.dark : Brightness.light,
-              primarySwatch: Colors.blue,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-              scaffoldBackgroundColor: AppThemeMode.isDark ? Colors.grey[850] : Colors.grey[50],
-            ),
-            locale: Locale.fromSubtags(languageCode: AppThemeMode.language, scriptCode: AppThemeMode.script.isEmpty ? null : AppThemeMode.script),
-            localizationsDelegates: [
-              const MyLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) => locale,
-            supportedLocales: [
-              const Locale('en', ''),
-              const Locale('fr', ''),
-              const Locale('ja', ''),
-              const Locale('ko', ''),
-              const Locale.fromSubtags(languageCode: 'zh'),
-              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
-              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
-              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans', countryCode: 'CN'),
-              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'),
-              const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'HK'),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-
-class MyMaterialAppDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AppThemeMode(),
-      child: Consumer<AppThemeMode>(
-        builder: (context, theme, child) {
           //创建一个MaterialApp。
           //[home]，[routes]，[onGenerateRoute]或[builder]中的至少一个必须为非null。
           //如果仅给出[routes]，则它必须包含[Navigator.defaultRouteName]（`/`）的条目，
