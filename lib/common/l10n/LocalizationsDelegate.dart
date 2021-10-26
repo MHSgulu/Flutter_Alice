@@ -1,6 +1,7 @@
-import 'file:///E:/Alice_flutter/alice/lib/common/l10n/Localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'Localizations.dart';
 
 class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {
   const MyLocalizationsDelegate();

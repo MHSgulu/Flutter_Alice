@@ -1,4 +1,4 @@
-import 'file:///E:/Alice_flutter/alice/lib/widgets/library/icons.dart';
+import 'package:alice/widgets/library/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

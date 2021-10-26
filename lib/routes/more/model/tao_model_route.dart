@@ -1,9 +1,10 @@
 import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
-import 'file:///E:/Alice_flutter/alice/lib/routes/more/model/tao_model_paging.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'tao_model_paging.dart';
 
 class TaoModel extends StatefulWidget {
   TaoModel({Key key}) : super(key: key);

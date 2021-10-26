@@ -1,12 +1,13 @@
 import 'package:alice/common/const/api.dart';
 import 'package:alice/common/const/strings.dart';
-import 'file:///E:/Alice_flutter/alice/lib/common/network/dio_util.dart';
-import 'file:///E:/Alice_flutter/alice/lib/routes/more/model/tao_model_details_route.dart';
+import 'package:alice/common/network/dio_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import 'tao_model_details_route.dart';
 
 ///第三版   请求列表分页数据  目前 实际项目可以运用  解决思路 和android原生类似 结合第三方上拉加载进行页数判断，列表持续的添加数据。
 
