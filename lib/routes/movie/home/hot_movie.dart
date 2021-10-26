@@ -52,7 +52,7 @@ class _HotMovieViewState extends State<HotMovieView> {
           child: Row(
             children: <Widget>[
               Text(
-                '正在热映',
+                '近期观看',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

@@ -6,34 +6,34 @@ class Constant {
 
   static final List<Movie> movieDataList = [
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2629056068.webp',
-      '你好，李焕英',
-      8.2,
+      'https://img1.doubanio.com/view/subject/s/public/s29652928.jpg',
+      '活着',
+      9.4,
     ),
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2622388983.webp',
-      '唐人街探案3',
-      5.7,
+      'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2624050592.webp',
+      '弥留之国的爱丽丝',
+      8.0,
     ),
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628440875.webp',
-      '刺杀小说家',
-      7.0,
+      'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2677934359.webp',
+      '鱿鱼游戏',
+      7.6,
     ),
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2632862664.webp',
-      '人潮汹涌',
+      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2623884456.webp',
+      '扫黑风暴',
       7.2,
     ),
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2631711326.webp',
-      '新神榜：哪吒重生',
-      7.4,
+      'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520568437.webp',
+      '我的大叔',
+      9.4,
     ),
     Movie(
-      'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2629260713.webp',
-      '侍神令',
-      5.9,
+      'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2595123270.webp',
+      '鬼灭之刃 剧场版 无限列车篇',
+      7.9,
     ),
   ];
 }
