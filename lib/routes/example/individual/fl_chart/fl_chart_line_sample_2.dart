@@ -39,7 +39,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           SizedBox(
             width: 60,
             height: 34,
-            child: FlatButton(
+            child: TextButton(
               onPressed: () {
                 setState(() {
                   showAvg = !showAvg;

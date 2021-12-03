@@ -56,7 +56,7 @@ class _ScreenshotDemoState extends State<ScreenshotDemo> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _incrementCounter();
+          /*_incrementCounter();
           _imageFile = null;
           screenshotController
               .capture(delay: Duration(milliseconds: 10))
@@ -67,10 +67,11 @@ class _ScreenshotDemoState extends State<ScreenshotDemo> {
             });
             final result =
                 await ImageGallerySaver.saveImage(image.readAsBytesSync());
+            print("result: " + result);
             print("文件已保存到图库");
           }).catchError((onError) {
             print(onError);
-          });
+          });*/
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
@@ -78,8 +79,9 @@ class _ScreenshotDemoState extends State<ScreenshotDemo> {
     );
   }
 
-  _saved(File image) async {
+/*_saved(File image) async {
     final result = await ImageGallerySaver.saveImage(image.readAsBytesSync());
+    print("result: " + result);
     print("File Saved to Gallery");
-  }
+  }*/
 }

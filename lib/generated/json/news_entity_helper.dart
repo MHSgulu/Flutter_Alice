@@ -1,5 +1,4 @@
 import 'package:alice/model/news_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 newsEntityFromJson(NewsEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -63,7 +62,7 @@ newsResultResultFromJson(NewsResultResult data, Map<String, dynamic> json) {
 				: json['num'].toInt();
 	}
 	if (json['list'] != null) {
-		data.xList = new List<NewsResultResultList>();
+		data.xList = <NewsResultResultList>[];
 		(json['list'] as List).forEach((v) {
 			data.xList.add(new NewsResultResultList().fromJson(v));
 		});

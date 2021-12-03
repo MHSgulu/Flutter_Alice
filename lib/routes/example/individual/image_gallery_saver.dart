@@ -43,7 +43,7 @@ class _ExampleImageGallerySaverState extends State<ExampleImageGallerySaver> {
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _saveScreen,
                   child: Text("Save Local Image"),
                 ),
@@ -52,7 +52,7 @@ class _ExampleImageGallerySaverState extends State<ExampleImageGallerySaver> {
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _getHttp,
                   child: Text("Save network image"),
                 ),
@@ -61,7 +61,7 @@ class _ExampleImageGallerySaverState extends State<ExampleImageGallerySaver> {
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _saveVideo,
                   child: Text("Save network video"),
                 ),
@@ -70,7 +70,7 @@ class _ExampleImageGallerySaverState extends State<ExampleImageGallerySaver> {
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: _saveGif,
                   child: Text("Save Gif to gallery"),
                 ),

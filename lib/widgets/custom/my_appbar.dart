@@ -1,6 +1,7 @@
 import 'package:alice/common/const/colors.dart';
 import 'package:alice/common/global/theme_mode.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 ///尽可能通用的AppBar
@@ -51,9 +52,15 @@ class _MyAppBarState extends State<MyAppBar> {
           //应用栏材料的亮度。 通常，它与[backgroundColor]，[iconTheme]，[textTheme]一起设置。
           //如果此属性为null，则使用[ThemeData.appBarTheme]的[AppBarTheme.brightness]。
           // 如果该值也为null，则使用[ThemeData.primaryColorBrightness]。
-          brightness: widget.brightness == null ? AppThemeMode.isDark
+          /*brightness: widget.brightness == null ? AppThemeMode.isDark
               ? Brightness.dark
-              : Brightness.light : widget.brightness,
+              : Brightness.light : widget.brightness,*/
+          systemOverlayStyle: SystemUiOverlayStyle(
+            /// 顶部状态栏的亮度.
+            ///
+            /// 仅支持iOS.
+            //statusBarBrightness: Brightness.light,
+          ),
           leading: widget.leading ??
               IconButton(
                 icon: Icon(

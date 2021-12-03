@@ -55,7 +55,7 @@ class _TaoModelState extends State<TaoModel>
         });
     print(response.data);
 
-    var allTypeList = List();
+    var allTypeList = [];
     allTypeList = response.data['showapi_res_body']['allTypeList'];
     print(allTypeList);
 
@@ -83,7 +83,7 @@ class _TaoModelState extends State<TaoModel>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        brightness: Brightness.light,
+        //brightness: Brightness.light,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,

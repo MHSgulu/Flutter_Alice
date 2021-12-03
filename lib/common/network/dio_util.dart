@@ -11,7 +11,7 @@ class DioUtil{
   static Dio _mTimeMovieDio;
   static Dio _eyeOpenVideoDio;
 
-  BaseOptions _sampleOptions;
+  //BaseOptions _sampleOptions;
   BaseOptions _wwOptions;
   BaseOptions _qykOptions;
   BaseOptions _jdWxOptions;
@@ -26,7 +26,7 @@ class DioUtil{
 
     _dio = Dio();
 
-    _sampleOptions = BaseOptions(
+    /*_sampleOptions = BaseOptions(
       method: 'get', ///Http方法。
       ///Http请求头。初始头的键将被转换为小写，
       ///例如，“内容类型”将转换为“内容类型”。
@@ -50,7 +50,7 @@ class DioUtil{
         /// 如果想以文本(字符串)格式接收响应数据，请使用 `PLAIN`.
       responseType: ResponseType.json,
 
-    );
+    );*/
 
     ///万维易源
     _wwOptions = BaseOptions(
@@ -151,10 +151,10 @@ class DioUtil{
 
 class Singleton {
 
-  static Dio _dio;
+  //static Dio _dio;
 
   Singleton._(){
-    _dio = new Dio();
+    //_dio = new Dio();
   }
 
   static final _instance = Singleton._();

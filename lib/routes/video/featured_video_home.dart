@@ -19,7 +19,7 @@ class FeaturedVideoHomePage extends StatefulWidget {
 
 class _FeaturedVideoHomePageState extends State<FeaturedVideoHomePage> with AutomaticKeepAliveClientMixin{
   EyeOpeningVideoDailyEntity entity;
-  List<EyeOpeningVideoDailyItemList> dataList = List();
+  List<EyeOpeningVideoDailyItemList> dataList = [];
 
   @override
   void initState() {

@@ -152,7 +152,7 @@ class _ShowFullPageCityPickerState extends State<ShowFullPageCityPicker> {
           AttrItemContainer(title: '是否采用自定义数据', editor: _buildCustomerMeta()),
           AttrItemContainer(
               title: '选择结果', editor: Text("${result.toString()}")),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () async {
               print("locationCode $resultAttr");
               Result tempResult = await CityPickers.showFullPageCityPicker(

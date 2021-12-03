@@ -62,7 +62,8 @@ class _PermissionState extends State<PermissionWidget> {
   _PermissionState(this._permission);
 
   final Permission _permission;
-  PermissionStatus _permissionStatus = PermissionStatus.undetermined;
+  //TODO
+  PermissionStatus _permissionStatus = PermissionStatus./*undetermined*/denied;
 
   @override
   void initState() {
@@ -107,7 +108,7 @@ class _PermissionState extends State<PermissionWidget> {
   }
 
   void checkServiceStatus(BuildContext context, Permission permission) async {
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text((await permission.status).toString()),
     ));
   }

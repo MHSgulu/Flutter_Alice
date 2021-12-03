@@ -16,7 +16,7 @@ hotMovieEntityFromJson(HotMovieEntity data, Map<String, dynamic> json) {
 				: json['lid'].toInt();
 	}
 	if (json['ms'] != null) {
-		data.ms = new List<HotMovieM>();
+		data.ms = <HotMovieM>[];
 		(json['ms'] as List).forEach((v) {
 			data.ms.add(new HotMovieM().fromJson(v));
 		});
@@ -192,7 +192,7 @@ hotMovieMFromJson(HotMovieM data, Map<String, dynamic> json) {
 				: json['ua'].toInt();
 	}
 	if (json['versions'] != null) {
-		data.versions = new List<dynamic>();
+		data.versions = <dynamic>[];
 		data.versions.addAll(json['versions']);
 	}
 	if (json['wantedCount'] != null) {

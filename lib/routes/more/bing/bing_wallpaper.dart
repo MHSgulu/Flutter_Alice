@@ -13,11 +13,11 @@ class BingWallpaperRoute extends StatefulWidget {
 
 class BingWallpaperRouteState extends State<BingWallpaperRoute> {
   Future<BingWallpaper> futureBingWallpaperList;
-  List<String> imageList = List();
+  List<String> imageList = [];
 
   @override
   void initState() {
-    futureBingWallpaperList = HttpUtil.fetchBingWallpaper(8);
+    //futureBingWallpaperList = HttpUtil.fetchBingWallpaper(8);
     super.initState();
   }
 

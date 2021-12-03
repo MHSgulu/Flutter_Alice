@@ -3,19 +3,17 @@ import 'package:flutter/widgets.dart';
 
 import 'template/globals.dart';
 
-
-
 ///展示此插件功能的Flutter应用程序
 class ExampleCachedNetworkImage extends StatelessWidget {
   ///要在应用程序[ThemeData]中使用的[MaterialColor]
   final MaterialColor themeMaterialColor =
-  createMaterialColor(const Color.fromRGBO(48, 49, 60, 1));
+      createMaterialColor(const Color.fromRGBO(48, 49, 60, 1));
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        accentColor: Colors.white60,
+        //accentColor: Colors.white60,
         backgroundColor: const Color.fromRGBO(48, 49, 60, 0.8),
         buttonTheme: ButtonThemeData(
           buttonColor: themeMaterialColor.shade500,
@@ -141,6 +139,6 @@ class _AppHomeState extends State<AppHome> {
   }
 
   Color _bottomAppBarIconColor(int page) {
-    return _currentPage == page ? Colors.white : Theme.of(context).accentColor;
+    return _currentPage == page ? Colors.white : Colors.blue;
   }
 }

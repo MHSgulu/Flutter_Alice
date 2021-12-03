@@ -46,7 +46,7 @@ class _MyHomePageState extends State<BatteryDemo> {
             builder: (_) => AlertDialog(
               content: Text('Battery: $batteryLevel%'),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                   child: Text('OK'),
                   onPressed: () => Navigator.pop(context),
                 )

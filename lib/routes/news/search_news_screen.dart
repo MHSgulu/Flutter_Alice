@@ -97,11 +97,11 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
                       margin: EdgeInsets.fromLTRB(0,16,8,0),
                       child: Align(
                         alignment: Alignment.bottomRight,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: (){
                             if(_controller.text.trim() == ''){
-                              Scaffold.of(context).hideCurrentSnackBar();
-                              Scaffold.of(context).showSnackBar(
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('关键词不能为空'),
                                     behavior: SnackBarBehavior.floating,
@@ -110,8 +110,8 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
                               );
                             }
                             if(_controller.text.length > 8){
-                              Scaffold.of(context).hideCurrentSnackBar();
-                              Scaffold.of(context).showSnackBar(
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('关键词长度超出限制，请删减'),
                                     behavior: SnackBarBehavior.floating,

@@ -6,7 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:sqflite/sqflite.dart';
+// ignore: implementation_imports
 import 'package:sqflite/src/database_mixin.dart' show SqfliteDatabaseMixin;
+// ignore: implementation_imports
 import 'package:sqflite/src/factory_mixin.dart' show SqfliteDatabaseFactoryMixin;
 import 'database/database.dart';
 import 'src/dev_utils.dart';

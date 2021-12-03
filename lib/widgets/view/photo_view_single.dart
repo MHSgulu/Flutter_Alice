@@ -94,9 +94,9 @@ class PhotoSingleView extends StatelessWidget {
   void checkPermissions() async {
     var status = await Permission.storage.status;
     //如果之前从未申请过许可。
-    if (status.isUndetermined) {
+    /*if (status.isUndetermined) {
       Permission.storage.request();
-    } else if (status.isGranted) {
+    } else*/ if (status.isGranted) {
       //如果用户授予对请求的功能的访问权。
       downloadPicture();
     } else if (status.isDenied) {

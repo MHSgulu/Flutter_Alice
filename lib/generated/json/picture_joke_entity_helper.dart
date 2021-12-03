@@ -1,5 +1,4 @@
 import 'package:alice/model/picture_joke_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 pictureJokeEntityFromJson(PictureJokeEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -69,7 +68,7 @@ pictureJokeResultShowapiResBodyFromJson(PictureJokeResultShowapiResBody data, Ma
 				: json['ret_code'].toInt();
 	}
 	if (json['contentlist'] != null) {
-		data.contentlist = new List<PictureJokeResultShowapiResBodyContentlist>();
+		data.contentlist = <PictureJokeResultShowapiResBodyContentlist>[];
 		(json['contentlist'] as List).forEach((v) {
 			data.contentlist.add(new PictureJokeResultShowapiResBodyContentlist().fromJson(v));
 		});

@@ -44,7 +44,6 @@ class _CupertinoRefreshControlDemoState
   RefreshIndicatorMode _refreshState;
   double _pulledExtent;
   double _refreshTriggerPullDistance;
-  double _refreshIndicatorExtent;
   double _successTime = 0.0;
   double _loadingTime = 0.0;
   double _cometTime = 0.0;
@@ -107,7 +106,6 @@ class _CupertinoRefreshControlDemoState
     _refreshState = refreshState;
     _pulledExtent = pulledExtent;
     _refreshTriggerPullDistance = refreshTriggerPullDistance;
-    _refreshIndicatorExtent = refreshIndicatorExtent;
 
     return FlareActor("assets/animations/space_demo.flr",
         alignment: Alignment.center,

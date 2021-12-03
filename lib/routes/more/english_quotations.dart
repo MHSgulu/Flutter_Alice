@@ -22,7 +22,7 @@ class _EnglishQuotationsState extends State<EnglishQuotations> {
   @override
   void initState() {
     _refreshController = RefreshController(initialRefresh: false);
-    _futureQuotationEntity = HttpUtil.fetchQuotationList();
+    //_futureQuotationEntity = HttpUtil.fetchQuotationList();
     super.initState();
   }
 
@@ -113,7 +113,7 @@ class _EnglishQuotationsState extends State<EnglishQuotations> {
     await Future.delayed(Duration(milliseconds: 1000));
     if (mounted)
       setState(() {
-        _futureQuotationEntity = HttpUtil.fetchQuotationList();
+        //_futureQuotationEntity = HttpUtil.fetchQuotationList();
       });
     _refreshController.refreshCompleted();
   }

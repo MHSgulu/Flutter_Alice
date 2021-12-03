@@ -297,7 +297,7 @@ class _ShowCityPickerState extends State<ShowCityPicker> {
             AttrItemContainer(title: '主题选择', editor: _buildTheme()),
             AttrItemContainer(
                 title: '选择结果', editor: Text("${result.toString()}")),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 print("locationCode $resultAttr");
                 Result tempResult = await CityPickers.showCityPicker(

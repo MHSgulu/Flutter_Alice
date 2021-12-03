@@ -1,5 +1,4 @@
 import 'package:alice/model/real_time_hotspot_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 realTimeHotspotEntityFromJson(RealTimeHotspotEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -64,7 +63,7 @@ realTimeHotspotResultShowapiResBodyFromJson(RealTimeHotspotResultShowapiResBody 
 				: json['ret_code'].toInt();
 	}
 	if (json['list'] != null) {
-		data.xList = new List<RealTimeHotspotResultShowapiResBodyList>();
+		data.xList = <RealTimeHotspotResultShowapiResBodyList>[];
 		(json['list'] as List).forEach((v) {
 			data.xList.add(new RealTimeHotspotResultShowapiResBodyList().fromJson(v));
 		});

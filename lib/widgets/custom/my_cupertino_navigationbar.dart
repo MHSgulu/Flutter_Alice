@@ -152,7 +152,7 @@ class _MyCupertinoNavigationBarState extends State<MyCupertinoNavigationBar> {
       // '使用CupertinoTheme和primaryColor传播颜色。 '
       //  “ v1.1.2之后不推荐使用此功能。”
       // ）
-      actionsForegroundColor: null,
+      //actionsForegroundColor: null,
       //是否在导航栏之间过渡。
       //当[transitionBetweenRoutes]为true时，如果要转换到的路由也具有[CupertinoNavigationBar]或[CupertinoSliverNavigationBar]且[transitionBetweenRoutes]设置为true，则此导航栏将在路径顶部而不是内部进行转换。
       //这种过渡也将发生在边缘向后滑动手势上，例如在iOS上，但前提是下面的上一页在[PageRoute]上将`maintainState`设置为true。

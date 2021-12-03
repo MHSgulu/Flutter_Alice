@@ -114,13 +114,13 @@ class _MaterialDialogState extends State<MaterialDialog> {
           title: Text('重置设置？'),
           content: Text('这会将设备重置为出厂默认设置'),
           actions: [
-            FlatButton(
-              textColor: Color(0xFF6200EE),
+            TextButton(
+              //textColor: Color(0xFF6200EE),
               onPressed: () => Navigator.pop(context),
               child: Text('取消'),
             ),
-            FlatButton(
-              textColor: Color(0xFF6200EE),
+            TextButton(
+             //textColor: Color(0xFF6200EE),
               onPressed: () => Navigator.pop(context),
               child: Text('确定'),
             ),
@@ -203,11 +203,11 @@ class _MaterialDialogState extends State<MaterialDialog> {
               ],
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text('取消'),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text('确定'),
               ),

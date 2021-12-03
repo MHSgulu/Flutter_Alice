@@ -23,7 +23,7 @@ class MovieAllActorDraggableWidget extends StatefulWidget {
 
 class _MovieAllActorDraggableWidgetState
     extends State<MovieAllActorDraggableWidget> {
-  List<String> actorPictureList = List();
+  List<String> actorPictureList = [];
 
   @override
   void initState() {
@@ -62,7 +62,7 @@ class _MovieAllActorDraggableWidgetState
           ),
           elevation: 0,
           backgroundColor: Colors.white,
-          brightness: Brightness.light,
+          //brightness: Brightness.light,
           centerTitle: true,
         ),
         body: ScrollConfiguration(

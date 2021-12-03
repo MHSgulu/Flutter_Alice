@@ -25,7 +25,7 @@ class _ExampleRivePageState extends State<ExampleRivePage> with SingleTickerProv
     super.initState();
 
     // 从包中加载动画文件，请注意，您也可以下载它。 RiveFile只需要一个字节列表。
-    rootBundle.load('assets/animations/off_road_car.riv').then(
+    /*rootBundle.load('assets/animations/off_road_car.riv').then(
           (data) async {
         var file = RiveFile();
 
@@ -44,7 +44,7 @@ class _ExampleRivePageState extends State<ExampleRivePage> with SingleTickerProv
           });
         }
       },
-    );
+    );*/
   }
 
   @override

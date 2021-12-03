@@ -123,7 +123,7 @@ class _PlayEyeOpeningVideoState extends State<PlayEyeOpeningVideo> {
   Widget videoPlayView() {
     return AspectRatio(
       aspectRatio: 16.0 / 9.0, //视频宽高比 基本1.7
-      child: _chewieController != null && _chewieController.videoPlayerController.value.initialized
+      child: _chewieController != null /*&& _chewieController.videoPlayerController.value.initialized*/
           ? Chewie(
               controller: _chewieController,
             )

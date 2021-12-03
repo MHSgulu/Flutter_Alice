@@ -3,14 +3,13 @@
 // messages from the main program should be duplicated here with the same
 // function name.
 
-import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
 final messages = MessageLookup();
 
-final _keepAnalysisHappy = Intl.defaultLocale;
+//final _keepAnalysisHappy = Intl.defaultLocale;
 
-typedef MessageIfAbsent(String message_str, List args);
+typedef MessageIfAbsent(String messageStr, List args);
 
 class MessageLookup extends MessageLookupByLibrary {
   get localeName => 'en';

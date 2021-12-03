@@ -2,7 +2,7 @@ import 'package:alice/model/eye_opening_video_daily_entity.dart';
 
 eyeOpeningVideoDailyEntityFromJson(EyeOpeningVideoDailyEntity data, Map<String, dynamic> json) {
 	if (json['itemList'] != null) {
-		data.itemList = new List<EyeOpeningVideoDailyItemList>();
+		data.itemList = <EyeOpeningVideoDailyItemList>[];
 		(json['itemList'] as List).forEach((v) {
 			data.itemList.add(new EyeOpeningVideoDailyItemList().fromJson(v));
 		});
@@ -128,7 +128,7 @@ eyeOpeningVideoDailyItemListDataFromJson(EyeOpeningVideoDailyItemListData data, 
 		data.xLibrary = json['library'].toString();
 	}
 	if (json['tags'] != null) {
-		data.tags = new List<EyeOpeningVideoDailyItemListDataTag>();
+		data.tags = <EyeOpeningVideoDailyItemListDataTag>[];
 		(json['tags'] as List).forEach((v) {
 			data.tags.add(new EyeOpeningVideoDailyItemListDataTag().fromJson(v));
 		});
@@ -174,7 +174,7 @@ eyeOpeningVideoDailyItemListDataFromJson(EyeOpeningVideoDailyItemListData data, 
 				: json['releaseTime'].toInt();
 	}
 	if (json['playInfo'] != null) {
-		data.playInfo = new List<dynamic>();
+		data.playInfo = <dynamic>[];
 		data.playInfo.addAll(json['playInfo']);
 	}
 	if (json['campaign'] != null) {
@@ -187,7 +187,7 @@ eyeOpeningVideoDailyItemListDataFromJson(EyeOpeningVideoDailyItemListData data, 
 		data.ad = json['ad'];
 	}
 	if (json['adTrack'] != null) {
-		data.adTrack = new List<dynamic>();
+		data.adTrack = <dynamic>[];
 		data.adTrack.addAll(json['adTrack']);
 	}
 	if (json['type'] != null) {
@@ -242,7 +242,7 @@ eyeOpeningVideoDailyItemListDataFromJson(EyeOpeningVideoDailyItemListData data, 
 		data.label = json['label'];
 	}
 	if (json['labelList'] != null) {
-		data.labelList = new List<dynamic>();
+		data.labelList = <dynamic>[];
 		data.labelList.addAll(json['labelList']);
 	}
 	if (json['descriptionEditor'] != null) {
@@ -258,7 +258,7 @@ eyeOpeningVideoDailyItemListDataFromJson(EyeOpeningVideoDailyItemListData data, 
 		data.played = json['played'];
 	}
 	if (json['subtitles'] != null) {
-		data.subtitles = new List<dynamic>();
+		data.subtitles = <dynamic>[];
 		data.subtitles.addAll(json['subtitles']);
 	}
 	if (json['lastViewTime'] != null) {

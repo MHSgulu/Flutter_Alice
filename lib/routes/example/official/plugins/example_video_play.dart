@@ -109,13 +109,13 @@ class _ExampleCard extends StatelessWidget {
           ),
           ButtonBar(
             children: <Widget>[
-              FlatButton(
+              TextButton(
                 child: const Text('BUY TICKETS'),
                 onPressed: () {
                   /* ... */
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: const Text('SELL TICKETS'),
                 onPressed: () {
                   /* ... */
@@ -193,10 +193,10 @@ class _BumbleBeeRemoteVideo extends StatefulWidget {
 class _BumbleBeeRemoteVideoState extends State<_BumbleBeeRemoteVideo> {
   VideoPlayerController _controller;
 
-  Future<ClosedCaptionFile> _loadCaptions() async {
+  /*Future<ClosedCaptionFile> _loadCaptions() async {
     final String fileContents = await DefaultAssetBundle.of(context).loadString('assets/bumble_bee_captions.srt');
     return SubRipCaptionFile(fileContents);
-  }
+  }*/
 
   @override
   void initState() {

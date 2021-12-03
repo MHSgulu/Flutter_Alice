@@ -1,5 +1,4 @@
 import 'package:alice/model/gif_picture_jokes_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 gifPictureJokesEntityFromJson(GifPictureJokesEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -69,7 +68,7 @@ gifPictureJokesResultShowapiResBodyFromJson(GifPictureJokesResultShowapiResBody 
 				: json['ret_code'].toInt();
 	}
 	if (json['contentlist'] != null) {
-		data.contentlist = new List<GifPictureJokesResultShowapiResBodyContentlist>();
+		data.contentlist = <GifPictureJokesResultShowapiResBodyContentlist>[];
 		(json['contentlist'] as List).forEach((v) {
 			data.contentlist.add(new GifPictureJokesResultShowapiResBodyContentlist().fromJson(v));
 		});

@@ -69,12 +69,12 @@ class _ExampleLocalAuthState extends State<ExampleLocalAuth> {
         stickyAuth: true,
         ///如果要自定义对话框中的消息，请构造[AndroidAuthStrings]和[IOSAuthStrings]。
         androidAuthStrings: AndroidAuthMessages(
-          fingerprintHint: '触控感应器',
-          fingerprintNotRecognized: '无法识别指纹,请再次尝试',
-          fingerprintSuccess: '指纹识别',
+          //fingerprintHint: '触控感应器',
+          //fingerprintNotRecognized: '无法识别指纹,请再次尝试',
+          //fingerprintSuccess: '指纹识别',
           cancelButton: '取消',
           signInTitle: '指纹认证',
-          fingerprintRequiredTitle: '需要指纹',
+          //fingerprintRequiredTitle: '需要指纹',
           goToSettingsButton: '前往设置',
           goToSettingsDescription: '您的设备上未设置指纹.转到\'Settings > Security\' 添加指纹',
         ),
@@ -120,17 +120,17 @@ class _ExampleLocalAuthState extends State<ExampleLocalAuth> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Text('可以检查生物特征: $_canCheckBiometrics\n'),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('检查生物特征'),
                   onPressed: _checkBiometrics,
                 ),
                 Text('可用的生物识别: $_availableBiometrics\n'),
-                RaisedButton(
+                ElevatedButton(
                   child: const Text('获取可用的生物识别'),
                   onPressed: _getAvailableBiometrics,
                 ),
                 Text('当前状态: $_authorized\n'),
-                RaisedButton(
+                ElevatedButton(
                   child: Text(_isAuthenticating ? '取消' : '认证'),
                   onPressed:
                       _isAuthenticating ? _cancelAuthentication : _authenticate,

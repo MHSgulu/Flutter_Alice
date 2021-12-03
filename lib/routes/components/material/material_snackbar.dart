@@ -36,7 +36,7 @@ class MaterialSnackDemo extends StatelessWidget{
               );
 
               //在小部件树中找到脚手架，并使用它显示SnackBar。
-              Scaffold.of(context).showSnackBar(snackBar);
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             child: Text('Show SnackBar'),
           ),

@@ -1,5 +1,4 @@
 import 'package:alice/common/global/theme_mode.dart';
-import 'package:alice/common/l10n/Localizations.dart';
 import 'package:alice/widgets/custom/my_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

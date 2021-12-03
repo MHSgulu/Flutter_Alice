@@ -19,8 +19,8 @@ class HotWordTab extends StatefulWidget {
 }
 
 class HotWordTabState extends State<HotWordTab> {
-  List<Tab> myTabs = List();
-  List<String> typeId = List();
+  List<Tab> myTabs = [];
+  List<String> typeId = [];
 
   @override
   void initState() {

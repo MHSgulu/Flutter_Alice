@@ -69,7 +69,7 @@ class GuideCupertinoWidgetRouteState extends State<GuideCupertinoWidgetRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoProgressIndicatorDemo()));
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDialogRoute()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoDialogDemoRoute()));
         break;
       case 2:
         Navigator.push(context, MaterialPageRoute(builder: (_) => CupertinoButtonRoute()));

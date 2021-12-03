@@ -33,7 +33,7 @@ class ChatRobotList extends StatefulWidget {
 class ChatRobotListState extends State<ChatRobotList> {
   ScrollController _scrollController;
   TextEditingController _controller;
-  List<Message> messageList = List();
+  List<Message> messageList = [];
   ChatMessage chatMessage;
   Database db;
   String chatBgImagePath;

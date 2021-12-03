@@ -76,9 +76,8 @@ class _ChewieDemoState extends State<ChewieDemo> {
           children: <Widget>[
             Expanded(
               child: Center(
-                child: _chewieController != null &&
-                        _chewieController
-                            .videoPlayerController.value.initialized
+                child: _chewieController != null /*&&
+                        _chewieController.videoPlayerController.value.initialized*/
                     ? Chewie(
                         controller: _chewieController,
                       )
@@ -92,7 +91,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
                       ),
               ),
             ),
-            FlatButton(
+            TextButton(
               onPressed: () {
                 _chewieController.enterFullScreen();
               },
@@ -101,7 +100,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () {
                       setState(() {
                         _chewieController.dispose();
@@ -121,7 +120,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
                   ),
                 ),
                 Expanded(
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () {
                       setState(() {
                         _chewieController.dispose();
@@ -145,7 +144,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () {
                       setState(() {
                         _platform = TargetPlatform.android;
@@ -158,7 +157,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
                   ),
                 ),
                 Expanded(
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () {
                       setState(() {
                         _platform = TargetPlatform.iOS;

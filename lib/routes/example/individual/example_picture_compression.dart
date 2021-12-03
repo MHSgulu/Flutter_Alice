@@ -76,47 +76,47 @@ class _MyAppState extends State<ExamplePictureCompression> {
             ),
             aspectRatio: 1 / 1,
           ),
-          FlatButton(
+          TextButton(
             child: Text('CompressFile and rotate 180(压缩文件并旋转180度)'),
             onPressed: _testCompressFile,
           ),
-          FlatButton(
+          TextButton(
             child: Text('CompressAndGetFile and rotate 90(压缩和获取文件并旋转90度)'),
             onPressed: getFileImage,
           ),
-          FlatButton(
+          TextButton(
             child: Text('CompressAsset and rotate 135(压缩资产文件并旋转135度)'),
             onPressed: () => testCompressAsset("assets/images/img_copertina.jpg"),
           ),
-          FlatButton(
+          TextButton(
             child: Text('CompressList and rotate 270'),
             onPressed: compressListExample,
           ),
-          FlatButton(
+          TextButton(
             child: Text('test compress auto angle(测试压缩自动角度)'),
             onPressed: _compressAssetAndAutoRotate,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Test png '),
             onPressed: _compressPngImage,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Format transparent PNG'),
             onPressed: _compressTransPNG,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Restore transparent PNG'),
             onPressed: _restoreTransPNG,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Keep exif image'),
             onPressed: _compressImageAndKeepExif,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Convert to heic format and print the file url'),
             onPressed: _compressHeicExample,
           ),
-          FlatButton(
+          TextButton(
             child: Text('Convert to webp format, Just support android'),
             onPressed: _compressAndroidWebpExample,
           ),

@@ -36,7 +36,7 @@ todayEpidemicDataShowapiResBodyFromJson(TodayEpidemicDataShowapiResBody data, Ma
 				: json['ret_code'].toInt();
 	}
 	if (json['todayDetailList'] != null) {
-		data.todayDetailList = new List<TodayEpidemicDataShowapiResBodyTodayDetailList>();
+		data.todayDetailList = <TodayEpidemicDataShowapiResBodyTodayDetailList>[];
 		(json['todayDetailList'] as List).forEach((v) {
 			data.todayDetailList.add(new TodayEpidemicDataShowapiResBodyTodayDetailList().fromJson(v));
 		});
@@ -65,7 +65,7 @@ Map<String, dynamic> todayEpidemicDataShowapiResBodyToJson(TodayEpidemicDataShow
 
 todayEpidemicDataShowapiResBodyTodayDetailListFromJson(TodayEpidemicDataShowapiResBodyTodayDetailList data, Map<String, dynamic> json) {
 	if (json['cityList'] != null) {
-		data.cityList = new List<TodayEpidemicDataShowapiResBodyTodayDetailListCityList>();
+		data.cityList = <TodayEpidemicDataShowapiResBodyTodayDetailListCityList>[];
 		(json['cityList'] as List).forEach((v) {
 			data.cityList.add(new TodayEpidemicDataShowapiResBodyTodayDetailListCityList().fromJson(v));
 		});
@@ -102,7 +102,7 @@ todayEpidemicDataShowapiResBodyTodayDetailListFromJson(TodayEpidemicDataShowapiR
 		data.statisticsData = json['statisticsData'].toString();
 	}
 	if (json['dangerAreas'] != null) {
-		data.dangerAreas = new List<TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>();
+		data.dangerAreas = <TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea>[];
 		(json['dangerAreas'] as List).forEach((v) {
 			data.dangerAreas.add(new TodayEpidemicDataShowapiResBodyTodayDetailListDangerArea().fromJson(v));
 		});

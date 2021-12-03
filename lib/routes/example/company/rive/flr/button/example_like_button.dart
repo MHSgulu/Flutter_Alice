@@ -176,18 +176,18 @@ Cheyenne travels home via airplane (something he had previously had a strong pho
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             Container(
                 margin: const EdgeInsets.only(top: 18),
-                child: RaisedButton(
-                    onPressed: () => {},
-                    elevation: 0,
-                    child: Text("Read Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Montserrat",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 18),
-                    color: const Color.fromARGB(255, 2, 101, 252)))
+                child: ElevatedButton(
+                  onPressed: () => {},
+                  //elevation: 0,
+                  child: Text("Read Now",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13)),
+                  //padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 18),
+                  //color: Color.fromARGB(255, 2, 101, 252),
+                ))
           ])
         ]));
   }

@@ -75,7 +75,7 @@ class _GarbageClassificationState extends State<GarbageClassification> {
                 margin: EdgeInsets.fromLTRB(0, 16, 8, 0),
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: () => queryClassification(context),
                     child: Text('查询'),
                   ),
@@ -95,8 +95,8 @@ class _GarbageClassificationState extends State<GarbageClassification> {
       var json = await HttpUtil.queryGarbageClassification(_controller.text);
       if(json['result']['result']['status'] == 0) {
         entity = garbageCAIEntityFromJson(GarbageCAIEntity(), json);
-        Scaffold.of(context).hideCurrentSnackBar();
-        Scaffold.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('${entity.result.result.garbageInfo[0].cateName}'),
           behavior: SnackBarBehavior.floating,
         ));

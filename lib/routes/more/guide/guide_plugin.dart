@@ -25,7 +25,7 @@ class GuidePlugin extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => BasicLoc()));
+                      //Navigator.push(context, MaterialPageRoute(builder: (context) => BasicLoc()));
                     },
                     splashColor: Colors.blueGrey[100],
                     child: ListTile(

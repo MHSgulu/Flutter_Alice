@@ -26,7 +26,7 @@ class MovieActorInfoWidget extends StatefulWidget {
 
 class _MovieActorInfoWidgetState extends State<MovieActorInfoWidget> {
   MovieActorEntity entity;
-  List<MovieActorEntity> actorList = List();
+  List<MovieActorEntity> actorList = [];
 
   @override
   void initState() {

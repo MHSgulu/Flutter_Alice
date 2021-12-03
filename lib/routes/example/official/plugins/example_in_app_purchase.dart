@@ -25,14 +25,14 @@ const List<String> _kProductIds = <String>[
   _kGoldSubscriptionId,
 ];
 
-class ExampleInAppPurchase extends StatefulWidget {
+/*class ExampleInAppPurchase extends StatefulWidget {
   @override
   _ExampleInAppPurchaseState createState() => _ExampleInAppPurchaseState();
-}
+}*/
 
-class _ExampleInAppPurchaseState extends State<ExampleInAppPurchase> {
+/*class _ExampleInAppPurchaseState extends State<ExampleInAppPurchase> {
   final InAppPurchaseConnection _connection = InAppPurchaseConnection.instance;
-  /*late*/ StreamSubscription<List<PurchaseDetails>> _subscription;
+  *//*late*//* StreamSubscription<List<PurchaseDetails>> _subscription;
   List<String> _notFoundIds = [];
   List<ProductDetails> _products = [];
   List<PurchaseDetails> _purchases = [];
@@ -260,19 +260,19 @@ class _ExampleInAppPurchaseState extends State<ExampleInAppPurchase> {
                       // verify the latest status of you your subscription by using server side receipt validation
                       // and update the UI accordingly. The subscription purchase status shown
                       // inside the app may not be accurate.
-                      final oldSubscription =
-                          _getOldSubscription(productDetails, purchases);
+                      final oldSubscription = _getOldSubscription(productDetails, purchases);
+                      print("oldSubscription :  " + oldSubscription.toString());
                       PurchaseParam purchaseParam = PurchaseParam(
                         productDetails: productDetails,
                         applicationUserName: null,
-                        /*changeSubscriptionParam: Platform.isAndroid &&
+                        *//*changeSubscriptionParam: Platform.isAndroid &&
                                 oldSubscription != null
                             ? ChangeSubscriptionParam(
                                 oldPurchaseDetails: oldSubscription,
                                 prorationMode:
                                     ProrationMode.immediateWithTimeProration,
                               )
-                            : null,*/
+                            : null,*//*
                       );
                       if (productDetails.id == _kConsumableId) {
                         _connection.buyConsumable(
@@ -425,7 +425,7 @@ class _ExampleInAppPurchaseState extends State<ExampleInAppPurchase> {
     }
     return oldSubscription;
   }
-}
+}*/
 
 /// 易耗品商店。
 ///

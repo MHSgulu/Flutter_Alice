@@ -15,7 +15,7 @@ class VariousRegionsPaginatedDataTable extends StatefulWidget {
 
 class _VariousRegionsPaginatedDataTableState
     extends State<VariousRegionsPaginatedDataTable> {
-  List<_Row> _rows = List();
+  List<_Row> _rows = [];
 
   int _currentRowsPerPage = 8; //当前行数
 

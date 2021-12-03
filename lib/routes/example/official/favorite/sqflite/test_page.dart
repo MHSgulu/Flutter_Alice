@@ -32,12 +32,14 @@ class TestPage extends StatefulWidget {
 
   /// define a solo test.
   @Deprecated('SOLO_TEST - On purpose to remove before checkin')
+  // ignore: non_constant_identifier_names
   void solo_test(String name, FutureOr Function() fn) {
     tests.add(Test(name, fn, solo: true));
   }
 
   /// skip a test.
   @Deprecated('SKIP_TEST - On purpose to remove before checkin')
+  // ignore: non_constant_identifier_names
   void skip_test(String name, FutureOr Function() fn) {
     tests.add(Test(name, fn, skip: true));
   }

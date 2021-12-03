@@ -10,7 +10,7 @@ import 'house_controller.dart';
 
 
 void main() {
-  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+  //SystemChrome.setEnabledSystemUIMode();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   //runApp(ExampleSliderPage());
 }

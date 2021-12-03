@@ -14,7 +14,7 @@ birdWallpaperCategoryEntityFromJson(BirdWallpaperCategoryEntity data, Map<String
 		data.total = json['total'].toString();
 	}
 	if (json['data'] != null) {
-		data.data = new List<BirdWallpaperCategoryData>();
+		data.data = <BirdWallpaperCategoryData>[];
 		(json['data'] as List).forEach((v) {
 			data.data.add(new BirdWallpaperCategoryData().fromJson(v));
 		});

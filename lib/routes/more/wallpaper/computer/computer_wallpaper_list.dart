@@ -17,7 +17,7 @@ class ComputerWallpaperList extends StatefulWidget {
 class _ComputerWallpaperListState extends State<ComputerWallpaperList> {
   BirdWallpaperListScreenArguments args;
   BirdWallpaperEntity entity;
-  List<BirdWallpaperData> dataList = List();
+  List<BirdWallpaperData> dataList = [];
   RefreshController _refreshController;
   int start = 0;
 

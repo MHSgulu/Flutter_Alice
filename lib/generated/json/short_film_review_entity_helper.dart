@@ -1,5 +1,4 @@
 import 'package:alice/model/short_film_review_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 shortFilmReviewEntityFromJson(ShortFilmReviewEntity data, Map<String, dynamic> json) {
 	if (json['count'] != null) {
@@ -8,7 +7,7 @@ shortFilmReviewEntityFromJson(ShortFilmReviewEntity data, Map<String, dynamic> j
 				: json['count'].toInt();
 	}
 	if (json['comments'] != null) {
-		data.comments = new List<ShortFilmReviewCommants>();
+		data.comments = <ShortFilmReviewCommants>[];
 		(json['comments'] as List).forEach((v) {
 			data.comments.add(new ShortFilmReviewCommants().fromJson(v));
 		});
@@ -163,7 +162,7 @@ shortFilmReviewSubjectFromJson(ShortFilmReviewSubject data, Map<String, dynamic>
 		data.title = json['title'].toString();
 	}
 	if (json['casts'] != null) {
-		data.casts = new List<ShortFilmReviewSubjectCast>();
+		data.casts = <ShortFilmReviewSubjectCast>[];
 		(json['casts'] as List).forEach((v) {
 			data.casts.add(new ShortFilmReviewSubjectCast().fromJson(v));
 		});
@@ -189,7 +188,7 @@ shortFilmReviewSubjectFromJson(ShortFilmReviewSubject data, Map<String, dynamic>
 		data.subtype = json['subtype'].toString();
 	}
 	if (json['directors'] != null) {
-		data.directors = new List<ShortFilmReviewSubjectDirector>();
+		data.directors = <ShortFilmReviewSubjectDirector>[];
 		(json['directors'] as List).forEach((v) {
 			data.directors.add(new ShortFilmReviewSubjectDirector().fromJson(v));
 		});

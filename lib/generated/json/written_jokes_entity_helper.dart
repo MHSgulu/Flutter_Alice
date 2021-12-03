@@ -1,5 +1,4 @@
 import 'package:alice/model/written_jokes_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 writtenJokesEntityFromJson(WrittenJokesEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -59,7 +58,7 @@ Map<String, dynamic> writtenJokesResultToJson(WrittenJokesResult entity) {
 
 writtenJokesResultShowapiResBodyFromJson(WrittenJokesResultShowapiResBody data, Map<String, dynamic> json) {
 	if (json['contentlist'] != null) {
-		data.contentlist = new List<WrittenJokesResultShowapiResBodyContentlist>();
+		data.contentlist = <WrittenJokesResultShowapiResBodyContentlist>[];
 		(json['contentlist'] as List).forEach((v) {
 			data.contentlist.add(new WrittenJokesResultShowapiResBodyContentlist().fromJson(v));
 		});

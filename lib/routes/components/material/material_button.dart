@@ -136,45 +136,6 @@ class _MaterialButtonRouteState extends State<MaterialButtonRoute> {
             SizedBox(height: 20),
             Text('文字、轮廓、包含按钮'),
             SizedBox(height: 10),
-            Center(
-              child: FlatButton(
-                onPressed: () {},
-                child: Text('FlatButton'),
-              ),
-            ),
-            Center(
-              child: FlatButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.add),
-                label: Text('FlatButton'),
-              ),
-            ),
-            Center(
-              child: OutlineButton(
-                onPressed: () {},
-                child: Text('OutlineButton'),
-              ),
-            ),
-            Center(
-              child: OutlineButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.add),
-                label: Text('OutlineButton'),
-              ),
-            ),
-            Center(
-              child: RaisedButton(
-                onPressed: () {},
-                child: Text('RaisedButton'),
-              ),
-            ),
-            Center(
-              child: RaisedButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.add),
-                label: Text('RaisedButton'),
-              ),
-            ),
             SizedBox(
               height: 20,
             ),

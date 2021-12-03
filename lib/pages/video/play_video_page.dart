@@ -64,15 +64,15 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
             Container(
               //color: Colors.grey[800],
               padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
-              child:  Row(
+              child: Row(
                 children: [
                   Container(
                     width: 45,
                     height: 45,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        //color: Colors.grey[300],
-                      ),
+                          //color: Colors.grey[300],
+                          ),
                       shape: BoxShape.circle,
                     ),
                     child: ClipOval(
@@ -99,8 +99,8 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
                         Text(
                           '${arg.data.author.description}',
                           style: TextStyle(
-                              //color: Colors.white60,
-                              fontSize: 12,
+                            //color: Colors.white60,
+                            fontSize: 12,
                           ),
                         ),
                       ],
@@ -128,10 +128,11 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
       radius: 2,
       child: AspectRatio(
         aspectRatio: 16.0 / 9.0, //视频宽高比 基本1.7
-        child: _chewieController != null && _chewieController.videoPlayerController.value.initialized
+        child: _chewieController != null /*&&
+                _chewieController.videoPlayerController.value.initialized*/
             ? Chewie(
-          controller: _chewieController,
-        )
+                controller: _chewieController,
+              )
             : MyLoadingIndicator(),
       ),
     );
@@ -155,12 +156,12 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
           ),
           Text(
             '#${arg.data.category} / ${arg.data.author.name}',
-            style: TextStyle(/*color: Colors.white70, */fontSize: 12),
+            style: TextStyle(/*color: Colors.white70, */ fontSize: 12),
           ),
           SizedBox(height: 8),
           Text(
             '#${arg.data.description}',
-            style: TextStyle(/*color: Colors.white70, */fontSize: 13),
+            style: TextStyle(/*color: Colors.white70, */ fontSize: 13),
           ),
         ],
       ),

@@ -36,7 +36,7 @@ epidemicsAbroadDataShowapiResBodyFromJson(EpidemicsAbroadDataShowapiResBody data
 				: json['ret_code'].toInt();
 	}
 	if (json['foreignList'] != null) {
-		data.foreignList = new List<EpidemicsAbroadDataShowapiResBodyForeignList>();
+		data.foreignList = <EpidemicsAbroadDataShowapiResBodyForeignList>[];
 		(json['foreignList'] as List).forEach((v) {
 			data.foreignList.add(new EpidemicsAbroadDataShowapiResBodyForeignList().fromJson(v));
 		});

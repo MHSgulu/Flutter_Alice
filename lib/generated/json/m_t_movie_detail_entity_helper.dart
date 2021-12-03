@@ -61,7 +61,7 @@ mTMovieDetailEntityFromJson(MTMovieDetailEntity data, Map<String, dynamic> json)
 		data.director = new MTMovieDetailDirector().fromJson(json['director']);
 	}
 	if (json['actorList'] != null) {
-		data.actorList = new List<MTMovieDetailActorList>();
+		data.actorList = <MTMovieDetailActorList>[];
 		(json['actorList'] as List).forEach((v) {
 			data.actorList.add(new MTMovieDetailActorList().fromJson(v));
 		});
@@ -100,11 +100,11 @@ mTMovieDetailEntityFromJson(MTMovieDetailEntity data, Map<String, dynamic> json)
 		data.isDMAX = json['isDMAX'];
 	}
 	if (json['festivals'] != null) {
-		data.festivals = new List<dynamic>();
+		data.festivals = <dynamic>[];
 		data.festivals.addAll(json['festivals']);
 	}
 	if (json['awards'] != null) {
-		data.awards = new List<dynamic>();
+		data.awards = <dynamic>[];
 		data.awards.addAll(json['awards']);
 	}
 	if (json['totalWinAward'] != null) {
@@ -148,7 +148,7 @@ mTMovieDetailEntityFromJson(MTMovieDetailEntity data, Map<String, dynamic> json)
 				: json['videoCount'].toInt();
 	}
 	if (json['videos'] != null) {
-		data.videos = new List<MTMovieDetailVideo>();
+		data.videos = <MTMovieDetailVideo>[];
 		(json['videos'] as List).forEach((v) {
 			data.videos.add(new MTMovieDetailVideo().fromJson(v));
 		});

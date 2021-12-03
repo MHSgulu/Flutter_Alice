@@ -2,18 +2,18 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bmflocation/bdmap_location_flutter_plugin.dart';
-import 'package:flutter_bmflocation/flutter_baidu_location.dart';
-import 'package:flutter_bmflocation/flutter_baidu_location_android_option.dart';
-import 'package:flutter_bmflocation/flutter_baidu_location_ios_option.dart';
+//import 'package:flutter_bmflocation/bdmap_location_flutter_plugin.dart';
+//import 'package:flutter_bmflocation/flutter_baidu_location.dart';
+//import 'package:flutter_bmflocation/flutter_baidu_location_android_option.dart';
+//import 'package:flutter_bmflocation/flutter_baidu_location_ios_option.dart';
 
 // 基础定位
-class BasicLoc extends StatefulWidget {
+/*class BasicLoc extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
-}
+}*/
 
-class _MyAppState extends State<BasicLoc> {
+/*class _MyAppState extends State<BasicLoc> {
   Map<String, Object> _loationResult;
   BaiduLocation _baiduLocation; // 定位结果
 
@@ -112,18 +112,18 @@ class _MyAppState extends State<BasicLoc> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          RaisedButton(
+          ElevatedButton(
             onPressed: _startLocation,
             child: Text('开始定位'),
-            color: Colors.blue,
-            textColor: Colors.white,
+            //color: Colors.blue,
+            //textColor: Colors.white,
           ),
           Container(width: 20.0),
-          RaisedButton(
+          ElevatedButton(
             onPressed: _stopLocation,
             child: Text('停止定位'),
-            color: Colors.blue,
-            textColor: Colors.white,
+            //color: Colors.blue,
+            //textColor: Colors.white,
           )
         ],
       ),
@@ -144,7 +144,7 @@ class _MyAppState extends State<BasicLoc> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> widgets = List();
+    List<Widget> widgets = [];
 
     if (_loationResult != null) {
       _loationResult.forEach((key, value) {
@@ -165,4 +165,4 @@ class _MyAppState extends State<BasicLoc> {
       ),
     ));
   }
-}
+}*/

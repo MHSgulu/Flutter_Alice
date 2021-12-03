@@ -88,7 +88,7 @@ class _ColorPickersState extends State<ColorPickers> {
                       ),
                     ),
                     actions: <Widget>[
-                      FlatButton(
+                      TextButton(
                         child: const Text('Got it'),
                         onPressed: () {
                           setState(() => currentColor = pickerColor);

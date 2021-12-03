@@ -37,7 +37,7 @@ recipeClassificationResultFromJson(RecipeClassificationResult data, Map<String, 
 		data.msg = json['msg'].toString();
 	}
 	if (json['result'] != null) {
-		data.result = new List<RecipeClassificationResultResult>();
+		data.result = <RecipeClassificationResultResult>[];
 		(json['result'] as List).forEach((v) {
 			data.result.add(new RecipeClassificationResultResult().fromJson(v));
 		});
@@ -70,7 +70,7 @@ recipeClassificationResultResultFromJson(RecipeClassificationResultResult data, 
 				: json['parentid'].toInt();
 	}
 	if (json['list'] != null) {
-		data.xList = new List<RecipeClassificationResultResultList>();
+		data.xList = <RecipeClassificationResultResultList>[];
 		(json['list'] as List).forEach((v) {
 			data.xList.add(new RecipeClassificationResultResultList().fromJson(v));
 		});

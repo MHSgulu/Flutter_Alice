@@ -1,16 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:quill_delta/quill_delta.dart';
-import 'package:zefyr/zefyr.dart';
 
 import 'full_page.dart';
-import 'images.dart';
 
-class ViewScreen extends StatefulWidget {
+/*class ViewScreen extends StatefulWidget {
   @override
   _ViewScreen createState() => _ViewScreen();
-}
+}*/
 
 final doc =
     r'[{"insert":"Zefyr"},{"insert":"\n","attributes":{"heading":1}},{"insert":"Soft and gentle rich text editing for Flutter applications.","attributes":{"i":true}},{"insert":"\n"},{"insert":"​","attributes":{"embed":{"type":"image","source":"asset://assets/images/breeze.jpg"}}},{"insert":"\n"},{"insert":"Photo by Hiroyuki Takeda.","attributes":{"i":true}},{"insert":"\nZefyr is currently in "},{"insert":"early preview","attributes":{"b":true}},{"insert":". If you have a feature request or found a bug, please file it at the "},{"insert":"issue tracker","attributes":{"a":"https://github.com/memspace/zefyr/issues"}},{"insert":'
@@ -20,6 +17,7 @@ final doc =
     r'g":2}},{"insert":"Of course:\nimport ‘package:flutter/material.dart’;"},{"insert":"\n","attributes":{"block":"code"}},{"insert":"import ‘package:zefyr/zefyr.dart’;"},{"insert":"\n\n","attributes":{"block":"code"}},{"insert":"void main() {"},{"insert":"\n","attributes":{"block":"code"}},{"insert":" runApp(MyZefyrApp());"},{"insert":"\n","attributes":{"block":"code"}},{"insert":"}"},{"insert":"\n","attributes":{"block":"code"}},{"insert":"\n\n\n"}]';
 
 
+/*
 Delta getDelta() {
   return Delta.fromJson(json.decode(doc) as List);
 }
@@ -30,7 +28,7 @@ class _ViewScreen extends State<ViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(title: ZefyrLogo()),
       body: ListView(
         children: <Widget>[
@@ -53,4 +51,4 @@ class _ViewScreen extends State<ViewScreen> {
       ),
     );
   }
-}
+}*/

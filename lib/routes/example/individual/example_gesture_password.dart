@@ -12,7 +12,7 @@ class GesturePasswordWidgetDemo extends StatefulWidget {
 
 class _GesturePasswordWidgetDemoState extends State<GesturePasswordWidgetDemo> {
   //String result;
-  List<int> result = List();
+  List<int> result = [];
   List<int> answer = [0,1,2,4,7];
 
 

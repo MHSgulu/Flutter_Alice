@@ -69,7 +69,9 @@ class _TrackingTextInputState extends State<TrackingTextInput> {
           key: _fieldKey,
           controller: _textController,
           obscureText: widget.isObscured,
-          validator: (value) {}),
+          validator: (value) {
+            return null;
+          }),
     );
   }
 }

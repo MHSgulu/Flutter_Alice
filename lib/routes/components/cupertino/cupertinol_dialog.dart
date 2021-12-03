@@ -23,12 +23,12 @@ import 'package:flutter/material.dart';
 /// * [showDialog]，显示材质样式对话框。
 /// * [showGeneralDialog]，它允许自定义对话框弹出窗口。
 
-class CupertinoDialogRoute extends StatefulWidget {
+class CupertinoDialogDemoRoute extends StatefulWidget {
   @override
   _CupertinoDialogRouteState createState() => _CupertinoDialogRouteState();
 }
 
-class _CupertinoDialogRouteState extends State<CupertinoDialogRoute> {
+class _CupertinoDialogRouteState extends State<CupertinoDialogDemoRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

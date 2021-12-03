@@ -1,5 +1,4 @@
 import 'package:alice/model/quotation_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 quotationEntityFromJson(QuotationEntity data, Map<String, dynamic> json) {
 	if (json['showapi_res_error'] != null) {
@@ -40,7 +39,7 @@ quotationShowapiResBodyFromJson(QuotationShowapiResBody data, Map<String, dynami
 		data.retMessage = json['ret_message'].toString();
 	}
 	if (json['data'] != null) {
-		data.data = new List<QuotationShowapiResBodyData>();
+		data.data = <QuotationShowapiResBodyData>[];
 		(json['data'] as List).forEach((v) {
 			data.data.add(new QuotationShowapiResBodyData().fromJson(v));
 		});

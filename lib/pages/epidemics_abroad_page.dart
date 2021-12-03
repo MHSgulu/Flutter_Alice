@@ -13,7 +13,7 @@ class EpidemicsAbroadPage extends StatefulWidget {
 
 class _EpidemicsAbroadPageState extends State<EpidemicsAbroadPage> {
   EpidemicsAbroadDataShowapiResBody dataEntity;
-  List<_Row> _rows = List();
+  List<_Row> _rows = [];
 
   @override
   void initState() {

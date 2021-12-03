@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:zefyr/zefyr.dart';
 
 import 'full_page.dart';
 import 'images.dart';
 
 enum _Options { darkTheme }
 
-class FormEmbeddedScreen extends StatefulWidget {
+/*class FormEmbeddedScreen extends StatefulWidget {
   @override
   _FormEmbeddedScreenState createState() => _FormEmbeddedScreenState();
-}
+}*/
 
+/*
 class _FormEmbeddedScreenState extends State<FormEmbeddedScreen> {
   final ZefyrController _controller = ZefyrController(NotusDocument());
   final FocusNode _focusNode = FocusNode();
@@ -31,7 +31,7 @@ class _FormEmbeddedScreenState extends State<FormEmbeddedScreen> {
     );
 
     final result = Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: ZefyrLogo(),
         actions: [
@@ -85,4 +85,4 @@ class _FormEmbeddedScreenState extends State<FormEmbeddedScreen> {
       ),
     ];
   }
-}
+}*/

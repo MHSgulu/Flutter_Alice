@@ -14,7 +14,7 @@ class ComputerWallpaperRoute extends StatefulWidget {
 
 class _ComputerWallpaperRouteState extends State<ComputerWallpaperRoute> {
   BirdWallpaperCategoryEntity entity;
-  List<BirdWallpaperCategoryData> dataList = List();
+  List<BirdWallpaperCategoryData> dataList = [];
 
   @override
   void initState() {

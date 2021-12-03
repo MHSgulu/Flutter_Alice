@@ -20,7 +20,7 @@ class HotMovieView extends StatefulWidget {
 }
 
 class _HotMovieViewState extends State<HotMovieView> {
-  List<Movie> movieDataList = List();
+  List<Movie> movieDataList = [];
 
   @override
   void initState() {

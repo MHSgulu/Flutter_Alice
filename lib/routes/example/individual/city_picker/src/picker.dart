@@ -95,7 +95,7 @@ class _PickerState extends State<Picker> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              FlatButton(
+                              TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -106,7 +106,7 @@ class _PickerState extends State<Picker> {
                                   ),
                                 ),
                               ),
-                              FlatButton(
+                              TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop(result);
                                 },

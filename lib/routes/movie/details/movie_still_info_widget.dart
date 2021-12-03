@@ -21,7 +21,7 @@ class MovieStillInfoWidget extends StatefulWidget {
 }
 
 class _MovieStillInfoWidgetState extends State<MovieStillInfoWidget> {
-  List<String> myMovieStillList = List();
+  List<String> myMovieStillList = [];
 
   @override
   void initState() {

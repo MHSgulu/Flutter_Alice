@@ -37,7 +37,7 @@ class _TaoModelDetailsState extends State<TaoModelDetails> {
             //title: Text('淘女郎'),
             pinned: true,
             backgroundColor: Colors.black54,
-            brightness: Brightness.dark,
+            //brightness: Brightness.dark,
             expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(widget.modelName),

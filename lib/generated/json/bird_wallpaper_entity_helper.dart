@@ -14,7 +14,7 @@ birdWallpaperEntityFromJson(BirdWallpaperEntity data, Map<String, dynamic> json)
 		data.total = json['total'].toString();
 	}
 	if (json['data'] != null) {
-		data.data = new List<BirdWallpaperData>();
+		data.data = <BirdWallpaperData>[];
 		(json['data'] as List).forEach((v) {
 			data.data.add(new BirdWallpaperData().fromJson(v));
 		});
@@ -96,7 +96,7 @@ birdWallpaperDataFromJson(BirdWallpaperData data, Map<String, dynamic> json) {
 		data.tempdata = json['tempdata'].toString();
 	}
 	if (json['rdata'] != null) {
-		data.rdata = new List<dynamic>();
+		data.rdata = <dynamic>[];
 		data.rdata.addAll(json['rdata']);
 	}
 	if (json['img_1600_900'] != null) {

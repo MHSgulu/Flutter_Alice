@@ -46,7 +46,7 @@ class _PluginGetVersionState extends State<PluginGetVersion> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            new RaisedButton(
+            new ElevatedButton(
               child: new Text('点击获取安卓版本'),
               onPressed: _getAndroidVersion,
             ),

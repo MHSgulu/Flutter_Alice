@@ -94,8 +94,8 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
   PersonData person = PersonData();
 
   void showInSnackBar(String value) {
-    Scaffold.of(context).hideCurrentSnackBar();
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(value),
     ));
   }
@@ -195,7 +195,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                     person.phoneNumber = value;
                   },
                   maxLength: 14,
-                  maxLengthEnforced: false,
+                  //maxLengthEnforced: false,
                   validator: _validatePhoneNumber,
                   // TextInputFormatters are applied in sequence.
                   inputFormatters: <TextInputFormatter>[

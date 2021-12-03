@@ -1,5 +1,4 @@
 import 'package:alice/model/search_news_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 searchNewsEntityFromJson(SearchNewsEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -63,7 +62,7 @@ searchNewsResultResultFromJson(SearchNewsResultResult data, Map<String, dynamic>
 				: json['num'].toInt();
 	}
 	if (json['list'] != null) {
-		data.xList = new List<SearchNewsResultResultList>();
+		data.xList = <SearchNewsResultResultList>[];
 		(json['list'] as List).forEach((v) {
 			data.xList.add(new SearchNewsResultResultList().fromJson(v));
 		});

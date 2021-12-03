@@ -1,5 +1,4 @@
 import 'package:alice/model/hot_word_type_entity.dart';
-import 'package:alice/generated/json/base/json_filed.dart';
 
 hotWordTypeEntityFromJson(HotWordTypeEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
@@ -64,7 +63,7 @@ hotWordTypeResultShowapiResBodyFromJson(HotWordTypeResultShowapiResBody data, Ma
 				: json['ret_code'].toInt();
 	}
 	if (json['list'] != null) {
-		data.xList = new List<HotWordTypeResultShowapiResBodyList>();
+		data.xList = <HotWordTypeResultShowapiResBodyList>[];
 		(json['list'] as List).forEach((v) {
 			data.xList.add(new HotWordTypeResultShowapiResBodyList().fromJson(v));
 		});
@@ -86,7 +85,7 @@ hotWordTypeResultShowapiResBodyListFromJson(HotWordTypeResultShowapiResBodyList 
 		data.name = json['name'].toString();
 	}
 	if (json['childList'] != null) {
-		data.childList = new List<HotWordTypeResultShowapiResBodyListChildList>();
+		data.childList = <HotWordTypeResultShowapiResBodyListChildList>[];
 		(json['childList'] as List).forEach((v) {
 			data.childList.add(new HotWordTypeResultShowapiResBodyListChildList().fromJson(v));
 		});

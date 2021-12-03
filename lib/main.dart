@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
 
 Future<void> main() async{
   /// 返回[WidgetsBinding]的实例，必要时创建并初始化它。 如果创建了一个，它将是一个[WidgetsFlutterBinding]。
@@ -29,7 +28,7 @@ Future<void> main() async{
     // 对于Android上的play billing library 2.0，在初始化应用程序时必须调用[enablePendingPurchases]。
     // 通知插件此应用程序支持Android上的待处理购买。如果您在没有调用的情况下访问插件“ instance”，则会在Android上发生错误。
     // 在iOS上，此操作不可操作。
-    InAppPurchaseConnection.enablePendingPurchases();
+    //InAppPurchaseConnection.enablePendingPurchases();
     runApp(MyMaterialApp());
   });
   if (Platform.isAndroid) {

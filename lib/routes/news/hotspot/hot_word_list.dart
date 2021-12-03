@@ -25,7 +25,7 @@ class HotWordListState extends State<HotWordList>
   @override
   void initState() {
     print('当前页面初始化：热点词ID:${widget.id}');
-    _futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
+    //_futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
     super.initState();
   }
 
@@ -34,7 +34,7 @@ class HotWordListState extends State<HotWordList>
     if (mounted) {
       setState(() {
         print('当前页面重新加载： 热点词汇ID:${widget.id}');
-        _futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
+        //_futureRealTimeHotspotEntity = HttpUtil.fetchHotNewsData(widget.id);
       });
     }
   }
@@ -138,7 +138,7 @@ class HotWordListState extends State<HotWordList>
             children: [
               HttpErrorView(errorText: '${snapshot.error}'),
               SizedBox(height: 20),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => reload(),
                 child: Text('刷新'),
               ),

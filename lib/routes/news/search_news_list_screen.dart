@@ -12,16 +12,16 @@ import 'news_detail_route.dart';
 
 
 /*异步网络操作*/
-Future<SearchNewsEntity> queryNews(String keyword) async {
+/*Future<SearchNewsEntity> queryNews(String keyword) async {
   final http.Response response = await http.post(
-    'https://way.jd.com/jisuapi/newSearch?keyword=${keyword}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
+    'https://way.jd.com/jisuapi/newSearch?keyword=$keyword&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
   );
   if (response.statusCode == 200) {
     return searchNewsEntityFromJson(SearchNewsEntity(),json.decode(response.body));
   } else {
     throw Exception('服务器未响应成功');
   }
-}
+}*/
 
 
 class SearchNewsListScreen extends StatefulWidget{
@@ -44,7 +44,7 @@ class SearchNewsListScreenState extends State<SearchNewsListScreen> {
   @override
   void initState() {
     super.initState();
-    _futureSearchNewsEntity = queryNews(widget.keyword);
+    //_futureSearchNewsEntity = queryNews(widget.keyword);
   }
 
 

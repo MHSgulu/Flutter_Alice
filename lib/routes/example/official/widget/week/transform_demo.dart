@@ -126,7 +126,7 @@ class _TransformDemo2State extends State<TransformDemo2> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ],
         ),
@@ -188,7 +188,7 @@ class _TransformDemo3State extends State<TransformDemo3> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),

@@ -23,7 +23,7 @@ class _MyRiveAnimationState extends State<MyRiveAnimation> {
   // 加载Rive文件
   void _loadRiveFile() async {
     final bytes = await rootBundle.load(riveFileName);
-    final file = RiveFile();
+    /*final file = RiveFile();
     if (file.import(bytes)) {
       // 按名称选择动画
       setState(() {
@@ -32,7 +32,7 @@ class _MyRiveAnimationState extends State<MyRiveAnimation> {
             SimpleAnimation('idle'),
           );
       });
-    }
+    }*/
   }
 
   void _wipersChange(bool wipersOn) {

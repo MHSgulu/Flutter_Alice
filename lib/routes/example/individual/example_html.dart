@@ -148,7 +148,7 @@ class _HtmlExamplePageState extends State<HtmlExamplePage> {
             ),
             "var": Style(fontFamily: 'serif'),
           },
-          customRender: {
+          /*customRender: {
             "flutter": (RenderContext context, Widget child, attributes, _) {
               return FlutterLogo(
                 style: (attributes['horizontal'] != null)
@@ -164,7 +164,7 @@ class _HtmlExamplePageState extends State<HtmlExamplePage> {
           },
           onImageTap: (src) {
             print(src);
-          },
+          },*/
           onImageError: (exception, stackTrace) {
             print(exception);
           },

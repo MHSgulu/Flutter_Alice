@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'form.dart';
 import 'full_page.dart';
 import 'text_field_page.dart';
-import 'view.dart';
 
 // 创建什么都不做的焦点意图
 class FakeFocusIntent extends Intent {
@@ -37,15 +35,15 @@ class ZefyrApp extends StatelessWidget {
   }
 
   Widget buildFullPage(BuildContext context) {
-    return FullPageEditorScreen();
+    return /*FullPageEditorScreen()*/Text("空视图");
   }
 
   Widget buildFormPage(BuildContext context) {
-    return FormEmbeddedScreen();
+    return /*FormEmbeddedScreen()*/Text("无");
   }
 
   Widget buildViewPage(BuildContext context) {
-    return ViewScreen();
+    return /*ViewScreen()*/Text("空视图");
   }
 
   Widget buildTextFieldPage(BuildContext context) {
@@ -62,19 +60,19 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(child: Container()),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () => nav.pushNamed('/fullPage'),
             child: Text('全页编辑器'),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () => nav.pushNamed('/form'),
             child: Text('嵌入表格'),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () => nav.pushNamed('/view'),
             child: Text('只读可嵌入视图'),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () => nav.pushNamed('/textinput'),
             child: Text('基本文字输入'),
           ),

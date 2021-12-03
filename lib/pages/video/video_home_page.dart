@@ -17,7 +17,7 @@ class VideoHomePage extends StatefulWidget {
 
 class _VideoHomePageState extends State<VideoHomePage> {
   EyeOpeningVideoDailyEntity entity;
-  List<EyeOpeningVideoDailyItemList> dataList = List();
+  List<EyeOpeningVideoDailyItemList> dataList = [];
 
   @override
   void initState() {

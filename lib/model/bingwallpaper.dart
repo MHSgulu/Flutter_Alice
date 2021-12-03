@@ -12,7 +12,7 @@ class BingWallpaper {
 
   BingWallpaper.fromJson(Map<String, dynamic> json) {
     if (json['images'] != null) {
-      images = new List<Images>();
+      images = <Images>[];
       json['images'].forEach((v) {
         images.add(new Images.fromJson(v));
       });

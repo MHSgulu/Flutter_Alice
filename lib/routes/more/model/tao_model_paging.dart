@@ -45,10 +45,10 @@ class _TaoModelListState extends State<TaoModelPaging> {
   int _allPages;
 
   //接收网络数据的列表
-  List<String> modelAvatarUrlList = List();
-  List<String> modelNameList = List();
-  List<String> modelLinkList = List();
-  List<List<dynamic>> modelImgList = List();
+  List<String> modelAvatarUrlList = [];
+  List<String> modelNameList = [];
+  List<String> modelLinkList = [];
+  List<List<dynamic>> modelImgList = [];
 
   /*下拉刷新*/
   void _onRefresh() async {
@@ -85,7 +85,7 @@ class _TaoModelListState extends State<TaoModelPaging> {
     //print('当前页数：$_currentPage');
     _allPages = response.data['showapi_res_body']['pagebean']['allPages'];
     //print('总页数：$_allPages');
-    var contentList = List();
+    var contentList = [];
     contentList = response.data['showapi_res_body']['pagebean']['contentlist'];
     //print(contentList);
     if (mounted) {

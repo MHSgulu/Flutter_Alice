@@ -193,6 +193,7 @@ class CountdownClockPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ReverseCountdown extends StatelessWidget {
   //when using reverse countdown in your own app, change debugMode to false and provide the requied dDay values.
   final bool debugMode = true;

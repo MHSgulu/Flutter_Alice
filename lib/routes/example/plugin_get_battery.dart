@@ -37,7 +37,7 @@ class _PluginGetBatteryState extends State<PluginGetBattery> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            RaisedButton(
+            ElevatedButton(
               child: Text('点击获取手机电量'),
               onPressed: _getBatteryLevel,
             ),

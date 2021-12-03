@@ -42,11 +42,11 @@ class _ExampleSwitchPageState extends State<ExampleSwitchPage> {
                   // 通常实现为List.castFrom <E，R>（this）。
                   .cast<Widget>() +
               [
-                FlatButton(
+                TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  color: Colors.pinkAccent,
+                  //color: Colors.pinkAccent,
                   child: const Text('Back'),
                 )
               ],

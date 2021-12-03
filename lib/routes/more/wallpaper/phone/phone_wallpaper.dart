@@ -15,7 +15,7 @@ class PhoneWallpaperRoute extends StatefulWidget {
 
 class _PhoneWallpaperRouteState extends State<PhoneWallpaperRoute> {
   WallpaperCategoryEntity entity;
-  List<WallpaperCategoryResCategory> dataList = List();
+  List<WallpaperCategoryResCategory> dataList = [];
 
   @override
   void initState() {

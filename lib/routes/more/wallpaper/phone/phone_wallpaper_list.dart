@@ -18,7 +18,7 @@ class PhoneWallpaperList extends StatefulWidget {
 class _PhoneWallpaperListState extends State<PhoneWallpaperList> {
   WallpaperListScreenArguments args;
   WallpaperEntity entity;
-  List<WallpaperResVertical> dataList = List();
+  List<WallpaperResVertical> dataList = [];
   RefreshController _refreshController;
   int num = 0;
   ScrollController controller;

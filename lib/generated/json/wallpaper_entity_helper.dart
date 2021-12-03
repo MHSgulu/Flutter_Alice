@@ -27,7 +27,7 @@ Map<String, dynamic> wallpaperEntityToJson(WallpaperEntity entity) {
 
 wallpaperResFromJson(WallpaperRes data, Map<String, dynamic> json) {
 	if (json['vertical'] != null) {
-		data.vertical = new List<WallpaperResVertical>();
+		data.vertical = <WallpaperResVertical>[];
 		(json['vertical'] as List).forEach((v) {
 			data.vertical.add(new WallpaperResVertical().fromJson(v));
 		});
@@ -63,7 +63,7 @@ wallpaperResVerticalFromJson(WallpaperResVertical data, Map<String, dynamic> jso
 		data.sourceType = json['source_type'].toString();
 	}
 	if (json['tag'] != null) {
-		data.tag = new List<dynamic>();
+		data.tag = <dynamic>[];
 		data.tag.addAll(json['tag']);
 	}
 	if (json['wp'] != null) {
@@ -101,7 +101,7 @@ wallpaperResVerticalFromJson(WallpaperResVertical data, Map<String, dynamic> jso
 		data.cid = json['cid']?.map((v) => v.toString())?.toList()?.cast<String>();
 	}
 	if (json['url'] != null) {
-		data.url = new List<dynamic>();
+		data.url = <dynamic>[];
 		data.url.addAll(json['url']);
 	}
 	if (json['rule'] != null) {

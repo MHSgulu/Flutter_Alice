@@ -15,7 +15,7 @@ class StaticPictureList extends StatefulWidget {
 
 class _StaticPictureListState extends State<StaticPictureList> with AutomaticKeepAliveClientMixin{
   PictureJokeEntity entity;
-  List<PictureJokeResultShowapiResBodyContentlist> dataList = List();
+  List<PictureJokeResultShowapiResBodyContentlist> dataList = [];
   RefreshController _refreshController;
 
   @override

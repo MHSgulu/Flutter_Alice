@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:zefyr/zefyr.dart';
 
 /// Custom image delegate used by this example to load image from application
 /// assets.
-class CustomImageDelegate implements ZefyrImageDelegate<ImageSource> {
+/*class CustomImageDelegate implements ZefyrImageDelegate<ImageSource> {
   @override
   ImageSource get cameraSource => ImageSource.camera;
 
@@ -34,4 +33,4 @@ class CustomImageDelegate implements ZefyrImageDelegate<ImageSource> {
       return Image(image: image);
     }
   }
-}
+}*/

@@ -321,13 +321,13 @@ class _MyHomePageState extends State<ExampleImagePicker> {
               ],
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: const Text('取消'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
-              FlatButton(
+              TextButton(
                   child: const Text('挑选'),
                   onPressed: () {
                     double width = maxWidthController.text.isNotEmpty
@@ -368,10 +368,10 @@ class AspectRatioVideoState extends State<AspectRatioVideo> {
     if (!mounted) {
       return;
     }
-    if (initialized != controller.value.initialized) {
+    /*if (initialized != controller.value.initialized) {
       initialized = controller.value.initialized;
       setState(() {});
-    }
+    }*/
   }
 
   @override

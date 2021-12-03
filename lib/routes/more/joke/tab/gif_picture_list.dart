@@ -15,7 +15,7 @@ class GifPictureList extends StatefulWidget {
 
 class _GifPictureListState extends State<GifPictureList> with AutomaticKeepAliveClientMixin{
   GifPictureJokesEntity entity;
-  List<GifPictureJokesResultShowapiResBodyContentlist> dataList = List();
+  List<GifPictureJokesResultShowapiResBodyContentlist> dataList = [];
   RefreshController _refreshController;
 
   @override

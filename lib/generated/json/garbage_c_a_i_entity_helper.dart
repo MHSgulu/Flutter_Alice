@@ -82,7 +82,7 @@ garbageCAIResultResultFromJson(GarbageCAIResultResult data, Map<String, dynamic>
 		data.message = json['message'].toString();
 	}
 	if (json['garbage_info'] != null) {
-		data.garbageInfo = new List<GarbageCAIResultResultGarbageInfo>();
+		data.garbageInfo = <GarbageCAIResultResultGarbageInfo>[];
 		(json['garbage_info'] as List).forEach((v) {
 			data.garbageInfo.add(new GarbageCAIResultResultGarbageInfo().fromJson(v));
 		});

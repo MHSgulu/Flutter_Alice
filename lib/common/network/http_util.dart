@@ -69,10 +69,8 @@ class HttpUtil {
   ///json.decode
 
   ///查询手机号码归属地
-  static Future<MobiePhoneEntity> query(String phone) async {
-    final http.Response response = await http.post(
-      'https://way.jd.com/jisuapi/query4?shouji=${phone}&appkey=bd1ee420d53dcd93f21d338cd6bebba3',
-    );
+  /*static Future<MobiePhoneEntity> query(String phone) async {
+    final http.Response response = await http.post('https://way.jd.com/jisuapi/query4?shouji=$phone&appkey=bd1ee420d53dcd93f21d338cd6bebba3',);
     print('数据点位: response: $response'); ////内容无法打印 Instance of 'Response'
     print('数据点位: response.toString(): ${response.toString()}'); //内容无法打印 Instance of 'Response'
     ///触发此响应的（冻结）请求。
@@ -110,11 +108,11 @@ class HttpUtil {
     } else {
       throw Exception('服务器未响应成功');
     }
-  }
+  }*/
 
 
   ///英文励志语录
-  static Future<QuotationEntity> fetchQuotationList() async {
+  /*static Future<QuotationEntity> fetchQuotationList() async {
     final response = await http.get(Api.englishQuotation);
     if (response.statusCode == 200) {
       //如果服务器确实返回了200 OK响应,然后解析JSON
@@ -123,7 +121,7 @@ class HttpUtil {
       //如果服务器没有返回200 OK响应,然后抛出一个异常。
       throw Exception(' HTTP状态码:${response.statusCode}');
     }
-  }
+  }*/
 
   ///今日疫情明细
   static Future<TodayEpidemicDataEntity> fetchTodayCOVID_19Data() async {
@@ -160,24 +158,24 @@ class HttpUtil {
   }
 
   ///必应壁纸
-  static Future<BingWallpaper> fetchBingWallpaper(int num) async {
+  /*static Future<BingWallpaper> fetchBingWallpaper(int num) async {
     final response = await http.get('https://cn.bing.com/HPImageArchive.aspx?format=js&n=$num');
     if (response.statusCode == 200) {
       return BingWallpaper.fromJson(json.decode(response.body));
     } else {
       throw Exception(' HTTP状态码:${response.statusCode}');
     }
-  }
+  }*/
 
   ///热词排行
-  static Future<RealTimeHotspotEntity> fetchHotNewsData(String id) async {
+  /*static Future<RealTimeHotspotEntity> fetchHotNewsData(String id) async {
     final response = await http.get('${Api.jdWanXiangBaseUrl}${Api.hotWordList}?typeId=$id&appkey=${Util.jdWxApiKey}');
     if (response.statusCode == 200) {
       return realTimeHotspotEntityFromJson(RealTimeHotspotEntity(), json.decode(response.body));
     } else {
       throw Exception(' HTTP状态码:${response.statusCode}');
     }
-  }
+  }*/
 
   ///热点词分类
   static Future<HotWordTypeEntity> fetchHotWordTypeData() async {

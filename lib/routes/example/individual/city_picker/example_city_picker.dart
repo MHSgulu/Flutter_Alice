@@ -14,7 +14,7 @@ class ExampleCityPicker extends StatelessWidget {
       theme: new ThemeData(
           primaryColor: Color(0xFFC91B3A),
           backgroundColor: Color(0xFFEFEFEF),
-          accentColor: Color(0xFF888888),
+          //accentColor: Color(0xFF888888),
           textTheme: TextTheme(
             //设置Material的默认字体样式
             bodyText2: TextStyle(color: Color(0xFF888888), fontSize: 16.0),

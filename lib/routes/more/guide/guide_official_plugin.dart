@@ -2,7 +2,6 @@ import 'package:alice/routes/example/official/plugins/example_battery.dart';
 import 'package:alice/routes/example/official/plugins/example_connectivity.dart';
 import 'package:alice/routes/example/official/plugins/example_device_info.dart';
 import 'package:alice/routes/example/official/plugins/example_image_picker.dart';
-import 'package:alice/routes/example/official/plugins/example_in_app_purchase.dart';
 import 'package:alice/routes/example/official/plugins/example_local_auth.dart';
 import 'package:alice/routes/example/official/plugins/example_package_info.dart';
 import 'package:alice/routes/example/official/plugins/example_video_play.dart';
@@ -108,7 +107,7 @@ class GuideOfficialPluginRouteState extends State<GuideOfficialPluginRoute> {
         Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleVideoPlay()));
         break;
       case 8:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleInAppPurchase()));
+        //Navigator.push(context, MaterialPageRoute(builder: (_) => ExampleInAppPurchase()));
         break;
     }
   }

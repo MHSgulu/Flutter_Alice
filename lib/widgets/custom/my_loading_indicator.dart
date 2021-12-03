@@ -29,7 +29,7 @@ class MyLoadingIndicator extends StatelessWidget {
           return Center(
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(
-                  valueColor ?? Theme.of(context).accentColor),
+                  valueColor ?? Colors.blue),
               strokeWidth: strokeWidth ?? 3.0,
             ),
           );
@@ -55,7 +55,7 @@ class MyLoadingIndicator extends StatelessWidget {
               ///要指定恒定的颜色，请使用：AlwaysStoppedAnimation <Color>（color）`。
               ///如果为null，则进度指示器将使用当前主题的[ThemeData.accentColor]呈现。
               valueColor: AlwaysStoppedAnimation<Color>(
-                valueColor ?? Theme.of(context).accentColor,
+                valueColor ?? Colors.blue,
               ),
               strokeWidth: strokeWidth ?? 3.0, //用于画圆的线的宽度。
               ///此值指示进度条的用途，屏幕阅读器将读出该值以指示此进度指示器的用途。

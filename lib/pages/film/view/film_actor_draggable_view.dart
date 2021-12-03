@@ -21,7 +21,7 @@ class FilmActorDraggableView extends StatefulWidget {
 }
 
 class _FilmActorDraggableViewState extends State<FilmActorDraggableView> {
-  List<String> actorPictureList = List();
+  List<String> actorPictureList = [];
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _FilmActorDraggableViewState extends State<FilmActorDraggableView> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: Colors.white,
-            brightness: Brightness.light,
+            //brightness: Brightness.light,
             leading: IconButton(
               icon: Icon(
                 Icons.close_rounded,

@@ -120,11 +120,11 @@ class QueryMobileHomeState
                       margin: EdgeInsets.fromLTRB(0, 16, 8, 0),
                       child: Align(
                         alignment: Alignment.bottomRight,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             if (_controller.text.trim() == '') {
-                              Scaffold.of(context).hideCurrentSnackBar();
-                              Scaffold.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text('查询的手机号码不能为空'),
                                 //backgroundColor: Colors.transparent,  ///SnackBar的背景色
                                 //elevation: 10.0, //阴影大小默认值为6.0。
@@ -144,7 +144,7 @@ class QueryMobileHomeState
                             } else {
                               print(_controller.text);
                               setState(() {
-                                _futureMobilePhoneEntity = HttpUtil.query(_controller.text);
+                                //_futureMobilePhoneEntity = HttpUtil.query(_controller.text);
                               });
                             }
                           },
@@ -361,14 +361,14 @@ class QueryMobileHomeState
                             margin: EdgeInsets.fromLTRB(0, 16, 8, 0),
                             child: Align(
                               alignment: Alignment.bottomRight,
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                 onPressed: () {
                                   if (_controller.text.trim() == '') {
                                     Fluttertoast.showToast(msg: '手机号码不能为空');
                                   } else {
                                     print(_controller.text);
                                     setState(() {
-                                      _futureMobilePhoneEntity = HttpUtil.query(_controller.text);
+                                      //_futureMobilePhoneEntity = HttpUtil.query(_controller.text);
                                     });
                                   }
                                 },

@@ -23,7 +23,7 @@ class _TaoModelListState extends State<TaoModelPagingList> {
 
   int _page = 1;
   bool isLoading = false;
-  List<String> avatarUrl = List();
+  List<String> avatarUrl = [];
 
   int _currentPage;
   int _allPages;
@@ -54,7 +54,7 @@ class _TaoModelListState extends State<TaoModelPagingList> {
           _allPages = response.data['showapi_res_body']['pagebean']['allPages'];
           // print('总页数：$_allPages');
 
-          var contentList = List();
+          var contentList = [];
           contentList = response.data['showapi_res_body']['pagebean']['contentlist'];
           //print(contentList);
 

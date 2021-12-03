@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+// ignore: implementation_imports
 import 'package:sqflite/src/factory_mixin.dart' as impl;
 import 'package:sqflite/utils/utils.dart';
 import 'model/item.dart';
@@ -220,7 +221,7 @@ class _SimpleDbTestPageState extends State<SimpleDbTestPage> {
 
             Future _countRecord() async {
               var db = await _openDatabase();
-              var result = await firstIntValue(
+              var result = firstIntValue(
                   await db.query('test', columns: ['COUNT(*)']));
               // ignore: deprecated_member_use
               Scaffold.of(context).showSnackBar(SnackBar(

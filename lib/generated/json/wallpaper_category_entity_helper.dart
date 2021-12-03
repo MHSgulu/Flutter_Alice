@@ -27,7 +27,7 @@ Map<String, dynamic> wallpaperCategoryEntityToJson(WallpaperCategoryEntity entit
 
 wallpaperCategoryResFromJson(WallpaperCategoryRes data, Map<String, dynamic> json) {
 	if (json['category'] != null) {
-		data.category = new List<WallpaperCategoryResCategory>();
+		data.category = <WallpaperCategoryResCategory>[];
 		(json['category'] as List).forEach((v) {
 			data.category.add(new WallpaperCategoryResCategory().fromJson(v));
 		});
@@ -70,7 +70,7 @@ wallpaperCategoryResCategoryFromJson(WallpaperCategoryResCategory data, Map<Stri
 				: json['rank'].toInt();
 	}
 	if (json['filter'] != null) {
-		data.filter = new List<dynamic>();
+		data.filter = <dynamic>[];
 		data.filter.addAll(json['filter']);
 	}
 	if (json['sn'] != null) {

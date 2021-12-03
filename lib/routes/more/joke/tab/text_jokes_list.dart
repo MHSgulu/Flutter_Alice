@@ -14,7 +14,7 @@ class TextJokeList extends StatefulWidget {
 class TextJokeListState extends State<TextJokeList>
     with AutomaticKeepAliveClientMixin {
   WrittenJokesEntity entity;
-  List<WrittenJokesResultShowapiResBodyContentlist> dataList = List();
+  List<WrittenJokesResultShowapiResBodyContentlist> dataList = [];
   RefreshController _refreshController;
 
   @override
