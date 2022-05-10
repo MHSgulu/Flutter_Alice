@@ -2,6 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ow.alice">
 
+    <!--  您的 Flutter 应用程序是使用旧版本的 Android 创建的
+嵌入。 它已被弃用，有利于 Android 嵌入 v2。 跟着
+迁移您的项目的步骤。 您也可以将 -ignore-deprecation 标志传递给
+忽略此检查并继续使用已弃用的 v1 嵌入。 然而，
+v1 Android 嵌入将在 Flutter 的未来版本中移除   -->
+
+
     <!--io.flutter.app.FlutterApplication是一个android.app.Application调用FlutterMain.startInitialization（this）; 在其onCreate方法中。
     在大多数情况下，您可以保持原样，但是如果您想提供其他功能，可以继承或重新实现FlutterApplication，然后将自定义类放在此处即可-->
 
